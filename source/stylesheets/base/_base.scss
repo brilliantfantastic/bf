@@ -5,4 +5,13 @@ body {
     image: url("/images/bg.png");
     repeat: repeat;
   }
+  @extend %opensans-light;
+}
+
+a {
+  color: $light;
+
+  &:hover {
+    border-bottom: solid 1px $light;
+  }
 }

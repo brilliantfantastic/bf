@@ -1,14 +1,16 @@
+$header-height: 200px;
+
 header {
   display: table;
   padding: 0 5%;
-  height: 80px;
+  height: $header-height;
   position: relative;
   -webkit-box-sizing: border-box;
   width: 100%;
   z-index: 9;
 
   li.logo {
-    height: 80px;
+    height: $header-height;
 
     a {
       background: {
@@ -19,11 +21,16 @@ header {
       }
       display: block;
       height: 100%;
+      padding: 0px 100px;
       width: 60px;
+
+      &:hover {
+        border-bottom: none;
+      }
     }
   }
 
   li {
-    line-height: 80px;
+    line-height: $header-height;
   }
 }
