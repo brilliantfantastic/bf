@@ -1,0 +1,24 @@
+ul.nav {
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+  width: 100%;
+
+  &:before, &:after {
+    box-sizing: border-box;
+    display: table;
+    content: " ";
+  }
+
+  &:after {
+    clear: both;
+  }
+
+  > li {
+    display: block;
+    float: left;
+    position: relative;
+  }
+}

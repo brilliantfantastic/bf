@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
     <title><%= current_page.data.title || "brilliant fantastic" %></title>
 
@@ -11,7 +12,13 @@
 
   <body class="<%= page_classes %>">
     <header>
-      <a class="logo" href="/"></a>
+      <div class="centered-list-container">
+        <ul class="nav">
+          <li><a href="/blog">blog</a></li>
+          <li class="logo"><a href="/"></a></li>
+          <li><a href="/contact">contact</a></li>
+        </ul>
+      </div>
     </header>
 
     <%= yield %>

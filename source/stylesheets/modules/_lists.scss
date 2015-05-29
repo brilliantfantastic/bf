@@ -1,0 +1,11 @@
+.centered-list-container {
+  float: right;
+  left: -50%;
+  margin: 0 auto;
+  position: relative;
+  text-align: left;
+
+  ul, ol {
+    left: 50%;
+  }
+}

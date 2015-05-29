@@ -7,14 +7,23 @@ header {
   width: 100%;
   z-index: 9;
 
-  a.logo {
-    background: {
-      image: image-url('/images/bf-robot-bw.png');
-      repeat: no-repeat;
-      position: center;
-      size: auto 60px;
+  li.logo {
+    height: 80px;
+
+    a {
+      background: {
+        image: image-url('/images/bf-robot-bw.png');
+        repeat: no-repeat;
+        position: center;
+        size: auto 60px;
+      }
+      display: block;
+      height: 100%;
+      width: 60px;
     }
-    display: block;
-    height: 100%;
+  }
+
+  li {
+    line-height: 80px;
   }
 }
