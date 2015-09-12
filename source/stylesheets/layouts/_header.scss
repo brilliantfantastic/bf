@@ -8,29 +8,4 @@ header {
   -webkit-box-sizing: border-box;
   width: 100%;
   z-index: 9;
-
-  li.logo {
-    height: $header-height;
-
-    a {
-      background: {
-        image: image-url('/images/bf-robot-bw.png');
-        repeat: no-repeat;
-        position: center;
-        size: auto 60px;
-      }
-      display: block;
-      height: 100%;
-      padding: 0px 100px;
-      width: 60px;
-
-      &:hover {
-        border-bottom: none;
-      }
-    }
-  }
-
-  li {
-    line-height: $header-height;
-  }
 }

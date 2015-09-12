@@ -15,21 +15,19 @@
       <div class="centered-list-container">
         <ul class="nav">
           <li class="phone-only">
-            <a class="hamburger" data-behavior="toggle-class" data-classname="open">
+            <a class="hamburger" data-behavior="toggle-class show-menu" data-classname="open" data-menu-selector="header .mobile-nav">
               <span class="lines"></span>
             </a>
+            <ul class="mobile-nav hidden">
+              <li><a href="/blog">blog</a></li>
+              <li><a href="/contact">contact</a></li>
+            </ul>
           </li>
           <li class="phone-kill"><a href="/blog">blog</a></li>
           <li class="logo"><a href="/"></a></li>
           <li class="phone-kill"><a href="/contact">contact</a></li>
         </ul>
       </div>
-      <!--
-      <ul class="nav right">
-        <li><a href="/blog">blog</a></li>
-        <li><a href="/contact">contact</a></li>
-      </ul>
-      -->
     </header>
 
     <%= yield %>
