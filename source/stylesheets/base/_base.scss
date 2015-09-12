@@ -15,9 +15,3 @@ a {
     border-bottom: solid 1px $light;
   }
 }
-
-@media screen and (max-width: $phone) {
-  .phone-kill {
-    display: none !important;
-  }
-}

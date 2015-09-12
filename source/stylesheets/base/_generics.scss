@@ -1,0 +1,13 @@
+.right { float: right; }
+
+@media screen and (min-width: $phone) {
+  .phone-only {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: $phone) {
+  .phone-kill {
+    display: none !important;
+  }
+}

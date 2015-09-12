@@ -9,6 +9,41 @@ header {
   width: 100%;
   z-index: 9;
 
+  .hamburger {
+    background-color: transparent;
+    border: none;
+    border-radius: 0.57143rem;
+    cursor: pointer;
+    z-index: 9;
+
+    .lines, .lines:before, .lines:after {
+      background-color: $alert;
+      border-radius: 200px;
+      display: inline-block;
+      height: 3px;
+      width: 34px;
+    }
+
+    .lines {
+      cursor: pointer;
+      position: relative;
+
+      &:before, &:after {
+        content: '';
+        left: 0;
+        position: absolute;
+      }
+
+      &:before {
+        top: 8px;
+      }
+
+      &:after {
+        top: -8px;
+      }
+    }
+  }
+
   li.logo {
     height: $header-height;
 
