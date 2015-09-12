@@ -15,7 +15,7 @@
       <div class="centered-list-container">
         <ul class="nav">
           <li class="phone-only">
-            <a class="hamburger">
+            <a class="hamburger" data-behavior="toggle-class" data-classname="open">
               <span class="lines"></span>
             </a>
           </li>
@@ -33,5 +33,6 @@
     </header>
 
     <%= yield %>
+    <%= javascript_include_tag "all" %>
   </body>
 </html>

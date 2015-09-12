@@ -1,3 +1,77 @@
+.hamburger {
+  background-color: transparent;
+  border-radius: 0.57143rem;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  z-index: 9;
+
+  &:active {
+    transition: 0;
+  }
+
+  &:hover {
+    border: none;
+  }
+
+  .lines, .lines:before, .lines:after {
+    background-color: $alert;
+    border-radius: 200px;
+    display: inline-block;
+    height: 3px;
+    width: 34px;
+  }
+
+  .lines {
+    position: relative;
+    transition: $animate-time;
+
+    &:before, &:after {
+      content: '';
+      left: 0;
+      position: absolute;
+      transform-origin: 0.28571rem center;
+      -webkit-transform-origin: 0.28571rem center;
+      transition: 0.3s;
+    }
+
+    &:before {
+      top: 8px;
+    }
+
+    &:after {
+      top: -8px;
+    }
+  }
+
+  &:hover .lines:before {
+    top: 10px;
+  }
+
+  &:hover .lines:after {
+    top: -10px;
+  }
+
+  &.open .lines {
+    background: transparent;
+  }
+
+  &.open .lines:before, &.open .lines:after {
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    top: 0;
+  }
+
+  &.open .lines:before {
+    -webkit-transform: rotate3d(0, 0, 1, 45deg);
+    transform: rotate3d(0, 0, 1, 45deg);
+  }
+
+  &.open .lines:after {
+    -webkit-transform: rotate3d(0, 0, 1, -45deg);
+    transform: rotate3d(0, 0, 1, -45deg);
+  }
+}
+
 ul.nav {
   box-sizing: border-box;
   list-style: none;
