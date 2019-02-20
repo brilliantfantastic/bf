@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { StaticQuery, graphql } from 'gatsby'
+import React from "react"
+import PropTypes from "prop-types"
+import { StaticQuery, graphql } from "gatsby"
 
-import Header from './header'
+import Header from "../Header"
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -16,7 +16,7 @@ const Layout = ({ children }) => (
       }
     `}
     render={data => (
-      <>
+      <div>
         <Header siteTitle={data.site.siteMetadata.title} />
         <div
           style={{
@@ -31,7 +31,7 @@ const Layout = ({ children }) => (
             © {new Date().getFullYear()} Brilliant Fantastic
           </footer>
         </div>
-      </>
+      </div>
     )}
   />
 )
