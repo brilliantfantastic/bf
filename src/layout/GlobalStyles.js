@@ -1,6 +1,9 @@
 import { createGlobalStyle } from "styled-components"
 
 import theme from "../layout/theme"
+import "../fonts/fat-frank.css"
+import "../fonts/lacrima-senza.css"
+import "../fonts/omnes-pro.css"
 
 const GlobalStyles = createGlobalStyle`
   html, body {
@@ -9,6 +12,8 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     background: ${theme.colors.backgroundPink};
+    font-family: ${theme.fonts.body};
+    font-size: 16px;
     margin: 0;
   }
 `;

@@ -3,6 +3,10 @@ const theme = {
   colors: {
     backgroundPink: `#ef73a5`,
   },
+  fonts: {
+    body: `LacrimaSenza`,
+    heading: `OmnesPro`,
+  },
   mq: {
     sm: `@media (min-width: 300px)`,
     mobile: `@media (min-width: 400px)`,
