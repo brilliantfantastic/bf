@@ -30,7 +30,7 @@ const ImageWrapper = styled.div`
   }
 
   ${props => props.theme.mq.xl} {
-    right: 96px;
+    right: 64px;
     width: ${props => `${Math.trunc(43 * props.theme.base / 1.62)}px`};
   }
 
