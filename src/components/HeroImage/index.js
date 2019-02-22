@@ -45,8 +45,9 @@ const HeroImage = () => (
       query HeroImageQuery {
         file(relativePath: { eq: "brillfan.png" }) {
           childImageSharp {
-            fluid(maxHeight: 800, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp
+            fluid(maxHeight: 800, quality: 100, traceSVG: { background: "#ef73a5",
+                                                            color: "#e83862" }) {
+              ...GatsbyImageSharpFluid_tracedSVG
             }
           }
         }
