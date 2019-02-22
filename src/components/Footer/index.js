@@ -3,11 +3,13 @@ import styled from "styled-components"
 
 const FooterWrapper = styled.footer`
   flex-shrink: 0;
+  font-family: ${props => props.theme.fonts.body};
+  margin: 1em auto;
 `
 
 const Footer = () => (
   <FooterWrapper>
-    © {new Date().getFullYear()} Brilliant Fantastic
+    &copy; {new Date().getFullYear()} Brilliant Fantastic
   </FooterWrapper>
 )
 
