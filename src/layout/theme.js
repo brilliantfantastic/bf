@@ -1,5 +1,8 @@
 const theme = {
   base: 16,
+  colors: {
+    backgroundPink: `#ef73a5`,
+  },
   mq: {
     mobile: `@media (min-width: 400px)`,
     phablet: `@media (min-width: 550px)`,
