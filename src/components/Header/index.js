@@ -2,10 +2,12 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
-const Header = ({ siteTitle }) => (
+import H1 from "../H1"
+
+const Header = ({ text }) => (
   <div>
     <div>
-      <h1 style={{ margin: 0 }}>
+      <H1 style={{ fontWeight: `300` }}>
         <Link
           to="/"
           style={{
@@ -13,19 +15,19 @@ const Header = ({ siteTitle }) => (
             textDecoration: `none`,
           }}
         >
-          {siteTitle}
+          {text}
         </Link>
-      </h1>
+      </H1>
     </div>
   </div>
 )
 
 Header.propTypes = {
-  siteTitle: PropTypes.string,
+  text: PropTypes.string,
 }
 
 Header.defaultProps = {
-  siteTitle: ``,
+  text: ``,
 }
 
 export default Header
