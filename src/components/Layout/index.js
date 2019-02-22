@@ -25,7 +25,7 @@ const Layout = ({ children }) => (
       query SiteTitleQuery {
         site {
           siteMetadata {
-            description
+            title
           }
         }
       }
@@ -36,7 +36,7 @@ const Layout = ({ children }) => (
           <GlobalStyles />
           <PageWrapper>
             <Content>
-              <Header text={data.site.siteMetadata.description} />
+              <Header siteTitle={data.site.siteMetadata.title} />
               {children}
             </Content>
             <Footer />

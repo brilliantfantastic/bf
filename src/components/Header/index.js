@@ -1,33 +1,33 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import styled from "styled-components"
 
-import H1 from "../H1"
+const LogoLink = styled(Link)`
+  color: black;
+  font-family: ${props => props.theme.fonts.heading};
+  font-size: 2rem;
+  text-decoration: none;
+`
 
-const Header = ({ text }) => (
-  <div>
-    <div>
-      <H1 style={{ fontWeight: `300` }}>
-        <Link
-          to="/"
-          style={{
-            color: `black`,
-            textDecoration: `none`,
-          }}
-        >
-          {text}
-        </Link>
-      </H1>
-    </div>
-  </div>
+const HeaderWrapper = styled.div`
+  margin: 16px;
+`
+
+const Header = ({ siteTitle }) => (
+  <HeaderWrapper>
+    <LogoLink to="/">
+      {siteTitle}
+    </LogoLink>
+  </HeaderWrapper>
 )
 
 Header.propTypes = {
-  text: PropTypes.string,
+  siteTitle: PropTypes.string,
 }
 
 Header.defaultProps = {
-  text: ``,
+  siteTitle: ``,
 }
 
 export default Header
