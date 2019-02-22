@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `brilliant fantastic`,
-    description: `A genuine, transparent software company of one`,
+    description: `A genuine and transparent software company of one`,
     author: `@jwright`,
   },
   plugins: [
