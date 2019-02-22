@@ -4,6 +4,7 @@ const theme = {
     backgroundPink: `#ef73a5`,
   },
   mq: {
+    sm: `@media (min-width: 300px)`,
     mobile: `@media (min-width: 400px)`,
     phablet: `@media (min-width: 550px)`,
     tablet: `@media (min-width: 750px)`,

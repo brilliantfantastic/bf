@@ -4,11 +4,12 @@ import Img from "gatsby-image"
 import styled from "styled-components"
 
 const ImageWrapper = styled.div`
+  bottom: -24px;
   position: fixed;
+  right: 24px;
+  width: ${props => `${Math.trunc(12 * props.theme.base / 1.62)}px`};
 
   ${props => props.theme.mq.mobile} {
-    bottom: -24px;
-    right: 24px;
     width: ${props => `${Math.trunc(19 * props.theme.base / 1.62)}px`};
   }
 
