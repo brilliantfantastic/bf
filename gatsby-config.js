@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `bf 2.Oh!`,
-    description: `The new home for the next version of Brilliant Fantastic`,
+    title: `brilliant fantastic`,
+    description: `A genuine, transparent software company of one`,
     author: `@jwright`,
   },
   plugins: [
