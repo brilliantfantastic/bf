@@ -7,26 +7,35 @@ import H1 from "../components/H1"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 
-const MainH1 = styled(H1)`
-  line-height: 1.2;
-  margin: 2em 2em 0.5em;
-  width: 50%;
+const Headings = styled.div`
+  padding: 3em 2em 0.5em;
+  width: 60%;
 
   ${props => props.theme.mq.mobile} {
-    margin-left: 0.5em;
+    padding-left: 0.5em;
   }
 
   ${props => props.theme.mq.tablet} {
-    margin-left: 1em;
+    padding-left: 1em;
   }
 
   ${props => props.theme.mq.desktop} {
-    margin-left: 2em;
+    padding-left: 2em;
   }
 
   ${props => props.theme.mq.xl} {
-    margin-left: 3em;
+    padding-left: 3em;
   }
+`
+
+const MainH1 = styled(H1)`
+  line-height: 1.2;
+`
+
+const MainH2 = styled.h2`
+  font-family: ${props => props.theme.fonts.body};
+  line-height: 1.4;
+  margin-top: 3em;
 `
 
 const IndexPage = () => (
@@ -43,9 +52,14 @@ const IndexPage = () => (
     render={data => (
       <Layout>
         <SEO title="Home" keywords={[`software company`]} />
-        <MainH1>
-          {data.site.siteMetadata.description}
-        </MainH1>
+        <Headings>
+          <MainH1>
+            {data.site.siteMetadata.description}
+          </MainH1>
+          <MainH2>
+            Hi, I am Jamie, the person behind the robot you see down there. I create software. Some of it for specific customers. Some of it for anyone who is interested.
+          </MainH2>
+        </Headings>
         <HeroImage />
       </Layout>
     )}
