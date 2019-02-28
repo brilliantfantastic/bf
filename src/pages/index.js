@@ -57,7 +57,7 @@ const IndexPage = () => (
             {data.site.siteMetadata.description}
           </MainH1>
           <MainH2>
-            Hi, I am Jamie, the person behind the robot you see down there. I create software. Some of it for specific customers. Some of it for anyone who is interested.
+            Hi, I'm Jamie, the person behind the robot you see down there. I create software. Some of it for specific customers. Some of it for anyone who is interested.
           </MainH2>
         </Headings>
         <HeroImage />
