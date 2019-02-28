@@ -15,6 +15,7 @@ const LogoLink = styled(Link)`
   color: black;
   font-family: ${props => props.theme.fonts.heading};
   font-size: 2rem;
+  line-height: 1.2;
   text-decoration: none;
 `
 
@@ -28,7 +29,9 @@ const Header = ({ siteTitle }) => (
       {siteTitle}
     </LogoLink>
     <MenuWrapper>
-      <Menu />
+      <Menu>
+        <div>Menu goes here, yo</div>
+      </Menu>
     </MenuWrapper>
   </HeaderWrapper>
 )
