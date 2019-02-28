@@ -3,6 +3,14 @@ import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
 
+import Menu from "../BurgerTime"
+
+const HeaderWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 16px;
+`
+
 const LogoLink = styled(Link)`
   color: black;
   font-family: ${props => props.theme.fonts.heading};
@@ -10,8 +18,8 @@ const LogoLink = styled(Link)`
   text-decoration: none;
 `
 
-const HeaderWrapper = styled.div`
-  margin: 16px;
+const MenuWrapper = styled.div`
+  align-self: flex-end;
 `
 
 const Header = ({ siteTitle }) => (
@@ -19,6 +27,9 @@ const Header = ({ siteTitle }) => (
     <LogoLink to="/">
       {siteTitle}
     </LogoLink>
+    <MenuWrapper>
+      <Menu />
+    </MenuWrapper>
   </HeaderWrapper>
 )
 
