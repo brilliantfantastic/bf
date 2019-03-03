@@ -2,6 +2,7 @@ import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import styled from 'styled-components'
 
+import Header from "../components/Header"
 import HeroImage from "../components/HeroImage"
 import H1 from "../components/H1"
 import Layout from "../components/Layout"
@@ -45,6 +46,7 @@ const IndexPage = () => (
         site {
           siteMetadata {
             description
+            title
           }
         }
       }
@@ -52,6 +54,10 @@ const IndexPage = () => (
     render={data => (
       <Layout>
         <SEO title="Home" keywords={[`software company`]} />
+        <Header
+          foreColor={props => props.theme.colors.backgroundPink}
+          siteTitle={data.site.siteMetadata.title}
+        />
         <Headings>
           <MainH1>
             {data.site.siteMetadata.description}
