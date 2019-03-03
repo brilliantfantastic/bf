@@ -1,8 +1,9 @@
 import React from "react"
 import styled from "styled-components"
+import { rgba } from "polished"
 
 const Overlay = styled.div`
-  background-color: rgba(0,0,0, 0.9);
+  background-color: ${props => rgba(props.theme.colors.foreground, 0.9)};
   height: 100%;
   left: 0;
   overflow-x: hidden;

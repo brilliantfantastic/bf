@@ -2,6 +2,8 @@ const theme = {
   base: 16,
   colors: {
     backgroundPink: `#ef73a5`,
+    background: `#fff`,
+    foreground: `#000`,
   },
   fonts: {
     body: `LacrimaSenza`,

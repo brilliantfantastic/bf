@@ -12,7 +12,7 @@ const HeaderWrapper = styled.div`
 `
 
 const LogoLink = styled(Link)`
-  color: black;
+  color: ${prop => prop.theme.colors.foreground};
   font-family: ${props => props.theme.fonts.heading};
   font-size: 2rem;
   line-height: 1.2;
@@ -20,7 +20,7 @@ const LogoLink = styled(Link)`
 `
 
 const MenuContents = styled.ul`
-  color: white;
+  color: ${props => props.theme.colors.background};
   display: flex;
   height: 100vh;
   flex-direction: column;

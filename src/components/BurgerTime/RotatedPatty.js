@@ -9,7 +9,7 @@ const RotatedPatty = styled.div`
   z-index: 10;
 
   &::before, &::after {
-    background-color: #fff;
+    background-color: ${props => props.theme.colors.background};
     content: "";
     height: 5px;
     left: 0;
