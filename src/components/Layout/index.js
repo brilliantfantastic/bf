@@ -36,7 +36,10 @@ const Layout = ({ children }) => (
           <GlobalStyles />
           <PageWrapper>
             <Content>
-              <Header siteTitle={data.site.siteMetadata.title} />
+              <Header
+                foreColor={`orange`}
+                siteTitle={data.site.siteMetadata.title}
+              />
               {children}
             </Content>
             <Footer />
