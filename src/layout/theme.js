@@ -5,6 +5,7 @@ const theme = {
     bfPink: `#ef73a5`,
     background: `#fff`,
     foreground: `#000`,
+    purple: `#a987f1`,
   },
   fonts: {
     body: `LacrimaSenza`,
