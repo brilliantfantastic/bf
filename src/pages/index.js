@@ -6,9 +6,10 @@ import Header from "../components/Header"
 import HeroImage from "../components/HeroImage"
 import H1 from "../components/H1"
 import Layout from "../components/Layout"
+import Latest from "../components/Latest"
 import SEO from "../components/SEO"
 
-const Headings = styled.div`
+const HeroWrapper = styled.div`
   padding: 3em 2em 0.5em;
   width: 60%;
 
@@ -58,14 +59,15 @@ const IndexPage = () => (
           foreColor={props => props.theme.colors.bfPink}
           siteTitle={data.site.siteMetadata.title}
         />
-        <Headings>
+        <HeroWrapper>
           <MainH1>
             {data.site.siteMetadata.description}
           </MainH1>
           <MainH2>
             Hi, I'm Jamie, the person behind the robot you see down there. I create software. Some of it for specific customers. Some of it for anyone who is interested.
           </MainH2>
-        </Headings>
+          <Latest />
+        </HeroWrapper>
         <HeroImage />
       </Layout>
     )}
