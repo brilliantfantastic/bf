@@ -11,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: ${theme.colors.backgroundPink};
+    background: ${theme.colors.bfPink};
     font-family: ${theme.fonts.body};
     font-size: 16px;
     margin: 0;

@@ -1,7 +1,8 @@
 const theme = {
   base: 16,
   colors: {
-    backgroundPink: `#ef73a5`,
+    bfGreen: `#a1d043`,
+    bfPink: `#ef73a5`,
     background: `#fff`,
     foreground: `#000`,
   },

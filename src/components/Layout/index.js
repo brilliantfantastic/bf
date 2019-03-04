@@ -11,17 +11,19 @@ const Content = styled.div`
 `
 
 const PageWrapper = styled.div`
+  background-color: ${props => props.backgroundColor};
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  z-index: -1;
 
 `
 
-const Layout = ({ children }) => (
+const Layout = ({ backgroundColor, children }) => (
   <ThemeProvider theme={theme}>
     <React.Fragment>
       <GlobalStyles />
-      <PageWrapper>
+      <PageWrapper backgroundColor={backgroundColor}>
         <Content>
           {children}
         </Content>

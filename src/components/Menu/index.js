@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Link } from "gatsby"
 
 import BurgerMenu from "../BurgerTime"
 
@@ -12,6 +13,11 @@ const MenuContents = styled.ul`
   margin: 0 auto;
   padding: 0;
   text-align: center;
+
+  a {
+    color: ${props => props.foreColor};
+    text-decoration: none;
+  }
 `
 
 const MenuHeading = styled.h3`
@@ -49,15 +55,15 @@ const Menu = ({ foreColor }) => (
   <MenuWrapper>
     <BurgerMenu>
       <MenuContents foreColor={foreColor}>
-        <MenuHeader>Work</MenuHeader>
+        <MenuHeader><Link to={`/work`}>Work</Link></MenuHeader>
         <MenuSection>
-          <MenuItem>Latest</MenuItem>
-          <MenuItem>Chronic</MenuItem>
-          <MenuItem>Tatsu</MenuItem>
+          <MenuItem><Link to={`/work`}>Latest</Link></MenuItem>
+          <MenuItem><Link to={`/work`}>Chronic</Link></MenuItem>
+          <MenuItem><Link to={`/work`}>Tatsu</Link></MenuItem>
         </MenuSection>
-        <MenuHeader>About</MenuHeader>
-        <MenuHeader>Blog</MenuHeader>
-        <MenuHeader>Reach Out</MenuHeader>
+        <MenuHeader><Link to={`/about`}>About</Link></MenuHeader>
+        <MenuHeader><Link to={`/blog`}>Blog</Link></MenuHeader>
+        <MenuHeader><Link to={`/contact`}>Reach Out</Link></MenuHeader>
       </MenuContents>
     </BurgerMenu>
   </MenuWrapper>

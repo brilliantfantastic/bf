@@ -52,10 +52,10 @@ const IndexPage = () => (
       }
     `}
     render={data => (
-      <Layout>
+      <Layout backgroundColor={props => props.theme.colors.bfPink}>
         <SEO title="Home" keywords={[`software company`]} />
         <Header
-          foreColor={props => props.theme.colors.backgroundPink}
+          foreColor={props => props.theme.colors.bfPink}
           siteTitle={data.site.siteMetadata.title}
         />
         <Headings>

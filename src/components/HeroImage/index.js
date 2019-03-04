@@ -8,7 +8,7 @@ const ImageWrapper = styled.div`
   position: fixed;
   right: 24px;
   width: ${props => `${Math.trunc(12 * props.theme.base / 1.62)}px`};
-  z-index: -1;
+  z-index: 0;
 
   ${props => props.theme.mq.mobile} {
     width: ${props => `${Math.trunc(19 * props.theme.base / 1.62)}px`};
