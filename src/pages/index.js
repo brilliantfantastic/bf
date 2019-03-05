@@ -60,6 +60,21 @@ const IndexPage = () => (
           siteTitle={data.site.siteMetadata.title}
         />
         <HeroWrapper>
+          <MainH1>bf 2.oh?</MainH1>
+          <MainH2>
+            Technically, it's my third round, but no one's counting
+            except me. I am building a more genuine and transparent
+            company. And I am more driven than ever.
+            <p>
+            More to come, but for now, you just have my writing.
+            </p>
+            <p>
+              <a href="mailto:hi@brilliantfantastic.com">
+                Send email correspondence
+              </a>
+            </p>
+          </MainH2>
+          {/*
           <MainH1>
             {data.site.siteMetadata.description}
           </MainH1>
@@ -67,6 +82,7 @@ const IndexPage = () => (
             Hi, I'm Jamie, the person behind the robot you see down there. I create software. Some of it for specific customers. Some of it for anyone who is interested.
           </MainH2>
           <Latest />
+          */}
         </HeroWrapper>
         <HeroImage />
       </Layout>
