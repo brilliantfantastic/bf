@@ -16,11 +16,11 @@ class BurgerTime extends Component {
 
   render() {
     const { closed } = this.state
-    const { children } = this.props;
+    const { children, foreColor } = this.props;
 
     return (
       <React.Fragment>
-        <Burger closed={closed} onClick={this.toggleMenu} />
+        <Burger closed={closed} foreColor={foreColor} onClick={this.toggleMenu} />
         {!closed && <Menu children={children} />}
       </React.Fragment>
     )

@@ -8,7 +8,7 @@ const Bun = styled.div`
   cursor: pointer;
 `
 
-const Burger = ({ closed, onClick }) => (
+const Burger = ({ closed, foreColor, onClick }) => (
   <Bun onClick={onClick}>
     {closed &&
       <React.Fragment>
@@ -17,7 +17,7 @@ const Burger = ({ closed, onClick }) => (
         <Patty />
       </React.Fragment>
     }
-    {!closed && <RotatedPatty />}
+    {!closed && <RotatedPatty foreColor={foreColor} />}
   </Bun>
 )
 

@@ -53,7 +53,7 @@ const MenuWrapper = styled.div`
 
 const Menu = ({ foreColor }) => (
   <MenuWrapper>
-    <BurgerMenu>
+    <BurgerMenu foreColor={foreColor}>
       <MenuContents foreColor={foreColor}>
         <MenuHeader><Link to={`/work`}>Work</Link></MenuHeader>
         <MenuSection>
