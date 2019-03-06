@@ -1,5 +1,5 @@
 import React from "react"
-import { StaticQuery, graphql } from "gatsby"
+import { Link, StaticQuery, graphql } from "gatsby"
 import styled from 'styled-components'
 
 import Header from "../components/Header"
@@ -67,12 +67,7 @@ const IndexPage = () => (
             except me. I am building a more genuine and transparent
             company. And I am more driven than ever.
             <p>
-            More to come, but for now, you just have my writing.
-            </p>
-            <p>
-              <a href="mailto:hi@brilliantfantastic.com">
-                Send email correspondence
-              </a>
+            More to come, but for now, you just have my <Link to="/blog">writing</Link>.
             </p>
           </MainH2>
           {/*
