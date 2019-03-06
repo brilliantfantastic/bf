@@ -56,6 +56,7 @@ const IndexPage = () => (
       <Layout backgroundColor={props => props.theme.colors.bfPink}>
         <SEO title="Home" keywords={[`software company`]} />
         <Header
+          displayLogo={false}
           foreColor={props => props.theme.colors.bfPink}
           siteTitle={data.site.siteMetadata.title}
         />

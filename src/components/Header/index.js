@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
-import { Link } from "gatsby"
 
+import LogoLink from "../LogoLink"
 import Menu from "../Menu"
 
 const HeaderWrapper = styled.div`
@@ -11,19 +11,9 @@ const HeaderWrapper = styled.div`
   margin: 16px;
 `
 
-const LogoLink = styled(Link)`
-  color: ${prop => prop.theme.colors.foreground};
-  font-family: ${props => props.theme.fonts.heading};
-  font-size: 2rem;
-  line-height: 1.2;
-  text-decoration: none;
-`
-
-const Header = ({ foreColor, siteTitle }) => (
+const Header = ({ displayLogo, foreColor, siteTitle }) => (
   <HeaderWrapper>
-    <LogoLink to="/">
-      {siteTitle}
-    </LogoLink>
+    <LogoLink displayLogo={displayLogo} siteTitle={siteTitle} />
     <Menu foreColor={foreColor} />
   </HeaderWrapper>
 )
