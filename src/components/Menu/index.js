@@ -1,8 +1,15 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
+import { rgba } from "polished"
 
 import BurgerMenu from "../BurgerTime"
+
+const ComingSoon = styled.span`
+  background-color: ${props => rgba(props.foreColor(props), 0.4)};
+  padding: 4px;
+  text-transform: lowercase;
+`
 
 const MenuContents = styled.ul`
   color: ${props => props.foreColor};
@@ -55,15 +62,12 @@ const Menu = ({ foreColor }) => (
   <MenuWrapper>
     <BurgerMenu foreColor={foreColor}>
       <MenuContents foreColor={foreColor}>
-        <MenuHeader><Link to={`/work`}>Work</Link></MenuHeader>
+        <MenuHeader>Work</MenuHeader>
         <MenuSection>
-          <MenuItem><Link to={`/work`}>Latest</Link></MenuItem>
-          <MenuItem><Link to={`/work`}>Chronic</Link></MenuItem>
-          <MenuItem><Link to={`/work`}>Tatsu</Link></MenuItem>
+          <MenuItem><ComingSoon foreColor={foreColor}>Coming Soon</ComingSoon></MenuItem>
         </MenuSection>
-        <MenuHeader><Link to={`/about`}>About</Link></MenuHeader>
         <MenuHeader><Link to={`/blog`}>Blog</Link></MenuHeader>
-        <MenuHeader><Link to={`/contact`}>Reach Out</Link></MenuHeader>
+        <MenuHeader><a href={`mailto:hi@brilliantfantastic.com`}>Reach Out</a></MenuHeader>
       </MenuContents>
     </BurgerMenu>
   </MenuWrapper>
