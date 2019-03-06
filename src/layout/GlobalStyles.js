@@ -16,6 +16,15 @@ const GlobalStyles = createGlobalStyle`
     font-size: 16px;
     margin: 0;
   }
+
+  a {
+    color: ${theme.colors.foreground};
+    text-decoration-style: wavy;
+
+    &:hover {
+      text-decoration-style: solid;
+    }
+  }
 `;
 
 export default GlobalStyles
