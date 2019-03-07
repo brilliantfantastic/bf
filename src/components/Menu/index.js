@@ -64,7 +64,7 @@ const Menu = ({ foreColor }) => (
       <MenuContents foreColor={foreColor}>
         <MenuHeader>Work</MenuHeader>
         <MenuSection>
-          <MenuItem><ComingSoon foreColor={foreColor}>Coming Soon</ComingSoon></MenuItem>
+          <MenuItem><ComingSoon foreColor={foreColor}>Details Soon...</ComingSoon></MenuItem>
         </MenuSection>
         <MenuHeader><Link to={`/blog`}>Blog</Link></MenuHeader>
         <MenuHeader><a href={`mailto:hi@brilliantfantastic.com`}>Reach Out</a></MenuHeader>
