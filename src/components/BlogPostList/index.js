@@ -2,29 +2,17 @@ import React from "react"
 import styled from "styled-components"
 
 import BlogPostExcerpt from "../BlogPostExcerpt"
-
-const BlogPostListWrapper = styled.div`
-  max-width: 768px;
-  width: 75%;
-
-  ${props => props.theme.mq.mobile} {
-    width: 90%;
-  }
-
-  ${props => props.theme.mq.tablet} {
-    width: 85%;
-  }
-`
+import BlogPostWrapper from "../BlogPostWrapper"
 
 const BlogPostList = ({ posts }) => (
-  <BlogPostListWrapper>
+  <BlogPostWrapper>
     {
       posts.filter(post => post.node.frontmatter.title.length > 0)
       .map(({ node: post }) => (
         <BlogPostExcerpt key={post.id} post={post} />
       ))
     }
-  </BlogPostListWrapper>
+  </BlogPostWrapper>
 )
 
 export default BlogPostList

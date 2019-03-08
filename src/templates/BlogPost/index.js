@@ -4,10 +4,13 @@ import styled from "styled-components"
 
 import BlogPostBody from "../../components/BlogPostBody"
 import BlogPostMetadata from "../../components/BlogPostMetadata"
+import BlogPostWrapper from "../../components/BlogPostWrapper"
 import ContentWrapper from "../../components/ContentWrapper"
 import Header from "../../components/Header"
 import H1 from "../../components/H1"
+import H3 from "../../components/H3"
 import Layout from "../../components/Layout"
+import Link from "../../components/Link"
 import SEO from "../../components/SEO"
 
 const MainH1 = styled(H1)`
@@ -27,14 +30,22 @@ const BlogPostTemplate = ({ data }) => {
         siteTitle={site.siteMetadata.title}
       />
       <ContentWrapper>
-        <MainH1>{post.frontmatter.title}</MainH1>
-        <BlogPostBody
-          dangerouslySetInnerHTML={{ __html: post.html }}
-        />
-        <BlogPostMetadata>
-          carefully crafted with <span role="img" aria-label="love">🖤</span> on {post.frontmatter.date}
-          <p>(this is totally a joke...the carefully crafted part)</p>
-        </BlogPostMetadata>
+        <BlogPostWrapper>
+          <MainH1>{post.frontmatter.title}</MainH1>
+          {post.frontmatter.sub_title &&
+            <H3>{post.frontmatter.sub_title}</H3>
+          }
+          <BlogPostBody
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
+          <BlogPostMetadata>
+            carefully crafted with <span role="img" aria-label="love">🖤</span> on {post.frontmatter.date}
+            <p>(this is totally a joke...the carefully crafted part)</p>
+          </BlogPostMetadata>
+          <Link to={`/blog`}>
+            &#8592; Back to all posts
+          </Link>
+        </BlogPostWrapper>
       </ContentWrapper>
     </Layout>
   )
@@ -49,6 +60,7 @@ export const query = graphql`
         author
         slug
         title
+        sub_title
       }
     }
     site {
