@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import styled from 'styled-components'
+import styled from "styled-components"
 
 import BlogPostBody from "../../components/BlogPostBody"
 import BlogPostMetadata from "../../components/BlogPostMetadata"

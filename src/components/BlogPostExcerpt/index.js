@@ -1,10 +1,10 @@
 import React from "react"
-import { Link } from "gatsby"
 import styled from "styled-components"
 
 import BlogPostBody from "../BlogPostBody"
 import BlogPostMetadata from "../BlogPostMetadata"
 import H2 from "../H2"
+import Link from "../Link"
 
 const BlogPostWrapper = styled.div`
   padding: 16px 0;

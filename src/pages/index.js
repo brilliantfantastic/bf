@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
 import styled from 'styled-components'
 
 import ContentWrapper from "../components/ContentWrapper"
@@ -7,6 +7,7 @@ import Header from "../components/Header"
 import HeroImage from "../components/HeroImage"
 import H1 from "../components/H1"
 import Layout from "../components/Layout"
+import Link from "../components/Link"
 import SEO from "../components/SEO"
 
 const HeroWrapper = styled(ContentWrapper)`
@@ -50,7 +51,7 @@ const IndexPage = () => (
             except me. I am building a more genuine and transparent
             company. And I am more driven than ever.
             <p>
-            More to come, but for now, you just have my <Link to="/blog">writing</Link>.
+            More to come, but for now, you just have my <Link fancy to="/blog">writing</Link>.
             </p>
           </MainH2>
           {/*
