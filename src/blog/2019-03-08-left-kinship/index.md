@@ -18,7 +18,7 @@ I have mad respect for agencies that I have worked closely with before. Agencies
 
 So what's next? Well, spoiler alert, the title should of given you a hint. I am doubling down on Brilliant Fantastic. Turns out, I am pretty fucking good as a "soloprenuer". My hard work directly impacts the success of my business in a very meaningful way.
 
-I have already set myself up differently than I ever have. I am only working with clients 4 days out of the week. This is a strict requirement. I tried to implement this with Kinship but because of various factors, it never worked. This is a hard and fast rule. I am going to work on the business using that fifth day.
+I have already set myself up differently than I ever have. My work schedule will allow me to work on the business during the week as a strict requirement. I tried to implement this with Kinship but because of various factors, it never worked.
 
 In addition, I am in process of implementing automation features that I feel are the future of tech service businesses. This will allow me to spend more time delivering value to clients and spending less time on bullshit. More on this later.
 
@@ -38,7 +38,7 @@ I am going to launch a clothing line.
 
 But...."Jamie, that's crazy, you will just half-ass all of those or burn out...".
 
-Fuck you, watch me. I won't find myself in a situation where I can't afford to keep a good thing going. You miss out on opportunities doing that.
+Well, all I can say is watch me. I won't find myself in a situation where I can't afford to keep a good thing going. You miss out on opportunities doing that.
 
 I am more driven than ever before.
 
