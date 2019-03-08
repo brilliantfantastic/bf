@@ -39,8 +39,7 @@ const BlogPostTemplate = ({ data }) => {
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
           <BlogPostMetadata>
-            carefully crafted with <span role="img" aria-label="love">🖤</span> on {post.frontmatter.date}
-            <p>(this is totally a joke...the carefully crafted part)</p>
+            carefully crafted with <span role="img" aria-label="love">🖤</span> (lol) on {post.frontmatter.date}
           </BlogPostMetadata>
           <Link to={`/blog`}>
             &#8592; Back to all posts
