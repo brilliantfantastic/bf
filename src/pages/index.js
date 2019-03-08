@@ -2,32 +2,15 @@ import React from "react"
 import { Link, StaticQuery, graphql } from "gatsby"
 import styled from 'styled-components'
 
+import ContentWrapper from "../components/ContentWrapper"
 import Header from "../components/Header"
 import HeroImage from "../components/HeroImage"
 import H1 from "../components/H1"
 import Layout from "../components/Layout"
-import Latest from "../components/Latest"
 import SEO from "../components/SEO"
 
-const HeroWrapper = styled.div`
-  padding: 3em 2em 0.5em;
+const HeroWrapper = styled(ContentWrapper)`
   width: 60%;
-
-  ${props => props.theme.mq.mobile} {
-    padding-left: 0.5em;
-  }
-
-  ${props => props.theme.mq.tablet} {
-    padding-left: 1em;
-  }
-
-  ${props => props.theme.mq.desktop} {
-    padding-left: 2em;
-  }
-
-  ${props => props.theme.mq.xl} {
-    padding-left: 3em;
-  }
 `
 
 const MainH1 = styled(H1)`
