@@ -1,14 +1,40 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
+
+import Header from "../../components/Header"
+import H1 from "../../components/H1"
+import Layout from "../../components/Layout"
+import SEO from "../../components/SEO"
 
 const BlogPostTemplate = ({ data }) => {
   const { markdownRemark: post } = data
 
   return (
-    <div>
-      <h1>{post.frontmatter.title}</h1>
-      This is a blog post
-    </div>
+    <StaticQuery
+      query={graphql`
+        query {
+          site {
+            siteMetadata {
+              title
+            }
+          }
+        }
+      `}
+      render={({ site }) => (
+        <Layout backgroundColor={props => props.theme.colors.skin}>
+          <SEO title={post.frontmatter.title} keywords={[``]} />
+          <Header
+            displayLogo={true}
+            foreColor={props => props.theme.colors.skin}
+            siteTitle={site.siteMetadata.title}
+          />
+          <div>
+            <H1>{post.frontmatter.title}</H1>
+            This is a blog post
+          </div>
+        </Layout>
+      )}
+    />
   )
 }
 
