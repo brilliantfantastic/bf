@@ -1,5 +1,4 @@
 import React from "react"
-import styled from "styled-components"
 
 import BlogPostExcerpt from "../BlogPostExcerpt"
 import BlogPostWrapper from "../BlogPostWrapper"
