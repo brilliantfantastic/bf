@@ -33,6 +33,7 @@ const BlogPage = () => (
                 author
                 slug
                 title
+                sub_title
               }
             }
           }
