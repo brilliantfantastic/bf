@@ -14,7 +14,7 @@ I had to leave because of some financial difficulties. Up to that point, I was n
 
 I have an idea what happened but I am still trying to completely wrap my head around it. If I do, I plan on writing a blog post with what I think happened so that others may learn from it. Right now, I think it boils down to scheduling, a lack of expertise is certain areas, and just plain lack of fucking hard work.
 
-I have mad respect for agencies that I have worked closely with before. Agencies like [TestDouble](http://testdouble.com), [One Design](http://onedesigncompany.com), and [Headway](http://headway.io) seem to have the basics down. It must have been hard to figure the basics ou. However, when working with them, they seemed to have the essentials down. They were well-oiled machines.
+I have mad respect for agencies that I have worked closely with before. Agencies like [TestDouble](http://testdouble.com), [One Design](http://onedesigncompany.com), and [Headway](http://headway.io) seem to have the basics down. It must have been hard to figure the basics out. However, when working with them, they seemed to have the essentials down. They were well-oiled machines.
 
 So what's next? Well, spoiler alert, the title should of given you a hint. I am doubling down on Brilliant Fantastic. Turns out, I am pretty fucking good as a "soloprenuer". My hard work directly impacts the success of my business in a very meaningful way.
 
