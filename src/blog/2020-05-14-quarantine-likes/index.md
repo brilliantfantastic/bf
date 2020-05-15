@@ -26,7 +26,7 @@ I know it’s easier said than done, but try to relish this time. There will nev
 - I like that companies are finally catching up with us around remote work
 - I like having the children at the age I have them at during this
 - I like to think of the stories we will tell together in the future about this time
-- I like that people are taking more chances, but the productive time
+- I like that people are taking more chances, but the productive kind
 - I like that people are sharing their creativity
 - I like the sharing of your art
 - I like looking at the homes of celebrities
