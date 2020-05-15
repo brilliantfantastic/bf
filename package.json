@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "brilliant-fantastic",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "The site for the magnificent Brilliant Fantastic",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Jamie Wright <jamie@brilliantfantastic.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.0.76",
