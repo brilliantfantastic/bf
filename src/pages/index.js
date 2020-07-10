@@ -43,22 +43,8 @@ const IndexPage = () => (
         <HeroWrapper>
           <MainH1>brilliant fantastic</MainH1>
           <MainH2>
-            Technically, it's my third round, but no one's counting
-            except me. I am building a more genuine and transparent
-            company. And I am more driven than ever.
-            <p>
-            More to come, but for now, you just have my <Link fancy to="/blog">writing</Link>.
-            </p>
+            A software company of one.
           </MainH2>
-          {/*
-          <MainH1>
-            {data.site.siteMetadata.description}
-          </MainH1>
-          <MainH2>
-            Hi, I'm Jamie, the person behind the robot you see down there. I create software. Some of it for specific customers. Some of it for anyone who is interested.
-          </MainH2>
-          <Latest />
-          */}
         </HeroWrapper>
         <HeroImage />
       </Layout>
