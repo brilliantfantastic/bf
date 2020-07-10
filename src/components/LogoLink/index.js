@@ -5,14 +5,15 @@ import { Link } from "gatsby"
 import Img from "gatsby-image"
 
 const StyledLink = styled(Link)`
-  color: ${prop => prop.theme.colors.foreground};
+  color: ${props => props.theme.colors.foreground};
   font-family: ${props => props.theme.fonts.heading};
   font-size: 2rem;
   line-height: 1.2;
   text-decoration: none;
+  visibility: ${props => props.display ? "visible" : "hidden"};
 `
 
-const LogoLink = ({ displayLogo, siteTitle }) => (
+const LogoLink = ({ display, displayLogo, siteTitle }) => (
   <StaticQuery
     query={graphql`
       query LogoLinkImageQuery {
@@ -27,7 +28,7 @@ const LogoLink = ({ displayLogo, siteTitle }) => (
     `}
     render={data => (
       <React.Fragment>
-        <StyledLink to="/">
+        <StyledLink to="/" display={display}>
           {displayLogo &&
             <Img
               fixed={data.file.childImageSharp.fixed}

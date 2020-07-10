@@ -39,13 +39,9 @@ const IndexPage = () => (
     render={data => (
       <Layout backgroundColor={props => props.theme.colors.bfPink}>
         <SEO title="Home" keywords={[`software company`]} />
-        <Header
-          displayLogo={false}
-          foreColor={props => props.theme.colors.bfPink}
-          siteTitle={data.site.siteMetadata.title}
-        />
+        <Header displayTitle={false} foreColor={props => props.theme.colors.bfPink} />
         <HeroWrapper>
-          <MainH1>bf 2.oh?</MainH1>
+          <MainH1>brilliant fantastic</MainH1>
           <MainH2>
             Technically, it's my third round, but no one's counting
             except me. I am building a more genuine and transparent

@@ -25,7 +25,6 @@ const BlogPostTemplate = ({ data }) => {
     <Layout backgroundColor={props => props.theme.colors.skin}>
       <SEO title={post.frontmatter.title} keywords={[``]} />
       <Header
-        displayLogo={true}
         foreColor={props => props.theme.colors.skin}
         siteTitle={site.siteMetadata.title}
       />

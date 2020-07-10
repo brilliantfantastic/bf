@@ -44,7 +44,6 @@ const BlogPage = () => (
       <Layout backgroundColor={props => props.theme.colors.skin}>
         <SEO title="Fantastical Blog" keywords={[``]} />
         <Header
-          displayLogo={true}
           foreColor={props => props.theme.colors.skin}
           siteTitle={data.site.siteMetadata.title}
         />
