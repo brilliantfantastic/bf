@@ -6,6 +6,7 @@
   "author": "Jamie Wright <jamie@brilliantfantastic.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
+    "classnames": "^2.2.6",
     "gatsby": "^2.0.76",
     "gatsby-image": "^2.0.29",
     "gatsby-plugin-catch-links": "^2.0.12",
