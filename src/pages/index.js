@@ -1,13 +1,12 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
-import styled from 'styled-components'
+import styled from "styled-components"
 
 import ContentWrapper from "../components/ContentWrapper"
 import Header from "../components/Header"
 import HeroImage from "../components/HeroImage"
 import H1 from "../components/H1"
 import Layout from "../components/Layout"
-import Link from "../components/Link"
 import SEO from "../components/SEO"
 
 const HeroWrapper = styled(ContentWrapper)`
@@ -20,8 +19,6 @@ const MainH1 = styled(H1)`
 
 const MainH2 = styled.h2`
   font-family: ${props => props.theme.fonts.body};
-  line-height: 1.4;
-  margin-top: 3em;
 `
 
 const IndexPage = () => (
