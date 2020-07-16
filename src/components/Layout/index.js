@@ -6,10 +6,6 @@ import Footer from "../../components/Footer";
 import GlobalStyles from "../../layout/GlobalStyles"
 import theme from "../../layout/theme"
 
-const Content = styled.div`
-  flex: 1 0 auto;
-`
-
 const PageWrapper = styled.div`
   background-color: ${props => props.backgroundColor};
   display: flex;
@@ -24,9 +20,7 @@ const Layout = ({ backgroundColor, children }) => (
     <React.Fragment>
       <GlobalStyles />
       <PageWrapper backgroundColor={backgroundColor}>
-        <Content>
-          {children}
-        </Content>
+        {children}
         <Footer />
       </PageWrapper>
     </React.Fragment>
