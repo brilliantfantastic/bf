@@ -6,7 +6,7 @@ import Footer from "../../components/Footer";
 import GlobalStyles from "../../layout/GlobalStyles"
 import theme from "../../layout/theme"
 
-const PageWrapper = styled.div`
+const PageWrapper = styled.main`
   background-color: ${props => props.backgroundColor};
   display: flex;
   flex-direction: column;
