@@ -13,9 +13,9 @@ You see, I was working on it with [Keith](http://www.standup.fm/hosts/keiththomp
 
 When Keith left, I drastically cut scope. The original plan was to create clients for the Mac, Android, iPhone, iPad, web, and perhaps even a Slack app. I decided to just concentrate on the iPhone app only.
 
-In addition to the scope cuts, I have been increasingly unhappy with the design I was trying to implement alone. It was not meeting the design I had envisioned. I have started to question the project as a whole.
+In addition to the scope cuts, I have been increasingly unhappy with the design I was trying to implement alone. It was not meeting the design I had envisioned.
 
-Perhaps the biggest issue I find myself in currently is that no one knows I am working on this app, including some of my best friends. I am very concerned with launching an amazing application (says me) to no one.
+Perhaps the biggest issue I find myself in currently with Chronic is that no one knows I am working on this app, including some of my best friends. I am very concerned with launching an amazing application (says me) to no one.
 
 So I am going to pause development on Chronic and I submit to you my new god-damn masterful (!!) 3-point plan.
 
@@ -39,6 +39,6 @@ Lastly, I am planning to work on a new smaller development project that is relat
 
 Chronic has this feature planned where it would send you things to do on your break. This could be reading Twitter where you left off or watching a YouTube video you saved for later. It could be a prompt to workout or to write in your journal. It was perhaps my favorite planned feature for Chronic.
 
-I always thought I would release it after Chronic as a by-product. Because it is less ambitious and fits into my amazing (!!) 3-point plan, I am going to switch that release schedule around a bit and release Breaktime first, then build it into Chronic. As you may have guessed, Breaktime will be released as a Slack app at first. It's Slack apps all the way down.
+I always thought I would release it after Chronic as a by-product. Because it is less ambitious and fits into my amazing (!!) 3-point plan, I am going to switch that release schedule around a bit and release Breaktime first, then build it into Chronic. As you may have guessed, Breaktime will be released as a Slack app at first. It's Slack apps all the way down. More on Breaktime in a future post.
 
 Chronic is not going away, I still need it to exist. It's just on pause while I implement my fantastic (!!) 3-point plan. Chronic is ambitious and it needs some new planning, strategy, and a team. Those are being worked on but in the meantime, no rest for the wicked (!!) 3-point plan.
