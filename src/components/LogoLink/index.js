@@ -1,19 +1,9 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
-import styled from "styled-components"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 
-const StyledLink = styled(Link)`
-  color: ${props => props.theme.colors.foreground};
-  font-family: ${props => props.theme.fonts.heading};
-  font-size: 2rem;
-  line-height: 1.2;
-  text-decoration: none;
-  visibility: ${props => props.display ? "visible" : "hidden"};
-`
-
-const LogoLink = ({ display, displayLogo, siteTitle }) => (
+const LogoLink = ({ display, siteTitle }) => (
   <StaticQuery
     query={graphql`
       query LogoLinkImageQuery {
@@ -28,16 +18,14 @@ const LogoLink = ({ display, displayLogo, siteTitle }) => (
     `}
     render={data => (
       <React.Fragment>
-        <StyledLink to="/" display={display}>
-          {displayLogo &&
-            <Img
-              fixed={data.file.childImageSharp.fixed}
-              alt="Latest Work"
-              style={{ display: `inline-block`, marginRight: `4px` }}
-            />
-          }
+        <Link to="/" className={`text-black font-heading text-3xl no-underline leading-tight ${display ? "inline-block" : "hidden"}`}>
+          <Img
+            fixed={data.file.childImageSharp.fixed}
+            alt="Latest Work"
+            style={{ display: `inline-block`, marginRight: `4px` }}
+          />
           {siteTitle}
-        </StyledLink>
+        </Link>
       </React.Fragment>
     )}
   />
