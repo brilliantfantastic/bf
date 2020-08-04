@@ -1,3 +1,5 @@
+const plugin = require("tailwindcss/plugin")
+
 module.exports = {
   purge: [],
   theme: {
@@ -19,5 +21,11 @@ module.exports = {
     },
   },
   variants: {},
-  plugins: [],
+  plugins: [
+    plugin(function({ addUtilities }) {
+      addUtilities({
+        ".wavy": { "text-decoration": "underline wavy" },
+      })
+    })
+  ],
 }

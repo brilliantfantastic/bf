@@ -1,14 +1,33 @@
-import styled from "styled-components"
+import React from "react"
 import { Link as GatsbyLink } from "gatsby"
 
-const Link = styled(GatsbyLink)`
-  color: ${props => props.theme.colors.foreground};
-  text-decoration: ${props => props.fancy ? `underline wavy` : `underline solid`};
+import cn from "classnames"
 
-  &:hover {
-    text-decoration: ${props => props.fancy ? `` : `none`};
-    text-decoration-style: ${props => props.fancy ? `solid` : ``};
+const Link = ({ activeClassName,
+                children,
+                className,
+                external=false,
+                fancy=false,
+                to,
+                ...rest }) => {
+  if (external) {
+    return (
+      <a href={to} {...rest}>
+        {children}
+      </a>
+    )
   }
-`
+
+  return (
+    <GatsbyLink
+      to={to}
+      activeClassName={activeClassName}
+      className={cn(`text-black ${fancy ? "wavy hover:underline" : "underline hover:no-underline"}`, className)}
+      {...rest}
+    >
+      {children}
+    </GatsbyLink>
+  )
+}
 
 export default Link
