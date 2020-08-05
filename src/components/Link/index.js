@@ -3,6 +3,11 @@ import { Link as GatsbyLink } from "gatsby"
 
 import cn from "classnames"
 
+const baseClassName = (fancy) => `
+  text-black
+  ${fancy ? "wavy hover:underline" : "underline hover:no-underline"}
+`;
+
 const Link = ({ activeClassName,
                 children,
                 className,
@@ -12,7 +17,10 @@ const Link = ({ activeClassName,
                 ...rest }) => {
   if (external) {
     return (
-      <a href={to} {...rest}>
+      <a
+        href={to}
+        className={cn(baseClassName(fancy), className)}
+        {...rest}>
         {children}
       </a>
     )
@@ -22,7 +30,7 @@ const Link = ({ activeClassName,
     <GatsbyLink
       to={to}
       activeClassName={activeClassName}
-      className={cn(`text-black ${fancy ? "wavy hover:underline" : "underline hover:no-underline"}`, className)}
+      className={cn(baseClassName(fancy), className)}
       {...rest}
     >
       {children}
