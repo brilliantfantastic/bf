@@ -1,10 +1,10 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 
-import Header from "../components/Header"
 import HeroSection from "../components/HeroSection"
 import Layout from "../components/Layout"
 import MySection from "../components/MySection"
+import NavBar from "../components/NavBar"
 import SEO from "../components/SEO"
 
 const IndexPage = () => (
@@ -22,8 +22,9 @@ const IndexPage = () => (
     render={() => (
       <Layout backgroundColor={props => props.theme.colors.white}>
         <SEO title="Home" keywords={[`software company`]} />
-        <Header displayTitle={false} foreColor={props => props.theme.colors.bfPink} />
+        <NavBar backgroundColor="bf-pink" displayLogo={true} displayTitle={false} />
         <HeroSection />
+        <MySection />
       </Layout>
     )}
   />
