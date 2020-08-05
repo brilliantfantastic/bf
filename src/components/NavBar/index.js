@@ -4,7 +4,9 @@ import { StaticQuery, graphql } from "gatsby"
 import LogoLink from "../LogoLink"
 import MenuLinkItem from "../MenuLinkItem"
 
-const NavBar = ({ backgroundColor = "white", displayLogo = true }) => (
+const NavBar = ({ backgroundColor = "white",
+                  displayLogo = true,
+                  displayTitle = true }) => (
   <StaticQuery
     query={graphql`
       query {
@@ -21,7 +23,11 @@ const NavBar = ({ backgroundColor = "white", displayLogo = true }) => (
           <div class="flex justify-between h-16">
             <div class="flex">
               <div class="flex-shrink-0 flex items-center">
-                <LogoLink display={displayLogo} siteTitle={data.site.siteMetadata.title} />
+                <LogoLink
+                  displayLogo={displayLogo}
+                  displayTitle={displayTitle}
+                  siteTitle={data.site.siteMetadata.title}
+                />
               </div>
               <div class="hidden sm:ml-6 sm:flex">
                 <MenuLinkItem href="/work" text="Work" />

@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 
-const LogoLink = ({ display, siteTitle }) => (
+const LogoLink = ({ displayLogo = true, displayTitle = true, siteTitle }) => (
   <StaticQuery
     query={graphql`
       query LogoLinkImageQuery {
@@ -18,13 +18,21 @@ const LogoLink = ({ display, siteTitle }) => (
     `}
     render={data => (
       <React.Fragment>
-        <Link to="/" className={`text-black font-heading text-3xl no-underline leading-tight ${display ? "inline-block" : "hidden"}`}>
+        <Link
+          to="/"
+          className={`text-black
+                      font-heading
+                      text-3xl
+                      no-underline
+                      leading-tight
+                      ${(displayLogo || displayTitle) ? "inline-block" : "hidden"}`}
+        >
           <Img
             fixed={data.file.childImageSharp.fixed}
             alt="Latest Work"
-            style={{ display: `inline-block`, marginRight: `4px` }}
+            className={`mr-2 ${displayLogo ? "inline-block" : "hidden"}`}
           />
-          {siteTitle}
+          {displayTitle && siteTitle}
         </Link>
       </React.Fragment>
     )}
