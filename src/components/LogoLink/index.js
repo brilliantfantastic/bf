@@ -29,7 +29,7 @@ const LogoLink = ({ displayLogo = true, displayTitle = true, siteTitle }) => (
         >
           <Img
             fixed={data.file.childImageSharp.fixed}
-            alt="Latest Work"
+            alt="Brilliant Fantastic logo"
             className={`mr-2 ${displayLogo ? "inline-block" : "hidden"}`}
           />
           {displayTitle && siteTitle}
