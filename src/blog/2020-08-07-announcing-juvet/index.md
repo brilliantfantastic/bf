@@ -36,15 +36,60 @@ From this experience, I know that a system like this excels in the real world.
 
 Juvet will have all the familiar pieces of an MVC framework that you have grown to love, like a router to route requests from a chat bot framework.
 
-### Add router here
+```ex
+defmodule Router do
+  use Juvet.Router
+
+  platform :slack do
+    command("/task", TaskController, :new)
+
+    action("delete_task", TaskController, :delete)
+
+    event("app_home_opened", HomeController, :show)
+
+    view_submission("create_task", TaskController, :create)
+  end
+end
+```
 
 A controller and action in Juvet will handle the incoming requests and prepare the data for the response.
 
-### Add controller here
+```ex
+defmodule TaskController do
+  use Juvet.Controller
+
+  def new(bot, %{ team_id: team_id } = params)
+    tags = Tag.find_by_team_id(team_id)
+
+    render(:modal, "new.json", %{ tags: tags })
+  end
+end
+```
 
 A view template will be used to describe what the user will see on their chat bot platform.
 
-### Add view here
+```ex
+template do
+  title "New Task"
+  callback_id :create_task
+
+  blocks do
+    section do
+      text "Track your work"
+    end
+
+    plain_text_input do
+      block_id :title
+      label "Title"
+      hint "A short description of your task"
+      optional false
+      placeholder "Get milk"
+    end
+  end
+
+  submit "Save Task"
+end
+```
 
 The result is a beautifully crafted response that the user sees inside Slack.
 
