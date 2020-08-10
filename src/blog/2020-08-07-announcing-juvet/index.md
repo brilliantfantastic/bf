@@ -8,7 +8,7 @@ sub-title: "Working towards a more familiar chat bot framework"
 
 I have been a fan of chat bots for quite a while, going back to the [Campfire](https://basecamp.com/retired/campfire) days when I built [my first plugin](https://github.com/github/hubot-scripts/commit/dfdb2805154c8f927ac9d8cee07890a64bda0531#diff-cd0614ffeae829469ec4cc2a9fe50202). Since then I have been hooked. I have been [talking about chat bots](https://www.youtube.com/watch?v=3De5_5Twnjc), [building chat bots](https://slack.com/apps/A04A2V1QU-tatsu), and [providing tools](https://github.com/tatsuio/dialogue) for others to build chat bots.
 
-Chat bots are important. They are important to the consumer because they are familiar (you know how to text) and they are easy to access (you already have the software). Chat bots are important to developers and entrepreneurs because they can extend you services and offerings to platforms where the customers already are.
+Chat bots are important. They are important to the consumer because they are familiar (you know how to text) and they are easy to access (you already have the software). Chat bots are important to developers and entrepreneurs because they can extend your services and offerings to platforms where the customers already are.
 
 **Developers need more familiar tooling for building chat bots.**
 
@@ -131,7 +131,7 @@ Elixir can leverage the Erlang OTP library, which is a set of libraries which fa
 
 Elixir developers can create small OTP processes that can hold state and these sandboxed processes can pass messages to other processes with no ceremony. Each process can represent a single sandboxed chat bot. If one process goes down, only one chat bot goes down. This is not possible in frameworks built in Ruby or Node without a lot of home-spun code to protect you from bringing down all the bots on your system.
 
-Theses OTP processes can fail and be spun up again automagically. Even new code can be deployed and these OTP processes will not be shut down, allowing you to deploy new Elixir code at any time without interrupting the bots.
+These OTP processes can fail and be spun up again automagically. Even new code can be deployed and these OTP processes will not be shut down, allowing you to deploy new Elixir code at any time without interrupting the bots.
 
 Sounds perfect.
 
