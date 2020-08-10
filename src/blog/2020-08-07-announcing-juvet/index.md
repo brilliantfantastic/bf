@@ -58,7 +58,7 @@ A controller and action in Juvet will handle the incoming requests and prepare t
 defmodule TaskController do
   use Juvet.Controller
 
-  def new(bot, %{ team_id: team_id } = params)
+  def new(_bot, %{ team_id: team_id } = params)
     tags = Tag.find_by_team_id(team_id)
 
     render(:modal, "new.json", %{ tags: tags })
@@ -70,13 +70,15 @@ A view template will be used to describe what the user will see on their chat bo
 
 ```ex
 template do
-  title "New Task"
+  title "Create a New Task"
   callback_id :create_task
 
   blocks do
     section do
-      text "Track your work"
+      text "Track your work with tasks."
     end
+
+    divider
 
     plain_text_input do
       block_id :title
@@ -84,6 +86,24 @@ template do
       hint "A short description of your task"
       optional false
       placeholder "Get milk"
+    end
+
+    plain_text_input do
+      block_id :description
+      label "Description"
+      multiline: true
+      optional true
+      placeholder " "
+    end
+
+    checkboxes_input do
+      label "Tags"
+      options do
+        for tag <- tags do
+          text tag.name
+          value tag.id
+        end
+      end
     end
   end
 
@@ -93,7 +113,7 @@ end
 
 The result is a beautifully crafted response that the user sees inside Slack.
 
-### Add slack message here
+![Slack modal](./images/slack-modal.png)
 
 ## Why Elixir?
 
