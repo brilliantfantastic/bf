@@ -34,7 +34,7 @@ A bot can be added to the supervision tree with the following function:
 {:ok, bot} = Juvet.create_bot(:my_bot_1)
 ```
 
-When a bot is added to the process architecture, the process architecture now adds a `BotSupervisor` and a `Bot` underneath the `FactorySupervisor`.
+When a bot is added to the process architecture, the process architecture now adds a `BotSupervisor` and a `Bot` underneath the `FactorySupervisor`. Obviously more than one can be added. There will be one supervisor and one process for each new team that is added.
 
 ![Bot Process Architecture](./images/bot-process-architecture.png)
 
