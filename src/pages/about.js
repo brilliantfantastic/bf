@@ -20,7 +20,6 @@ const AboutPage = () => (
       <Layout backgroundColor={props => props.theme.colors.bfGreen}>
         <SEO title="About" keywords={[``]} />
         <Header
-          displayLogo={true}
           foreColor={props => props.theme.colors.bfGreen}
           siteTitle={data.site.siteMetadata.title}
         />

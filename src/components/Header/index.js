@@ -11,9 +11,9 @@ const HeaderWrapper = styled.div`
   margin: 16px;
 `
 
-const Header = ({ displayLogo, foreColor, siteTitle }) => (
+const Header = ({ displayLogo = true, displayTitle = true, foreColor, siteTitle }) => (
   <HeaderWrapper>
-    <LogoLink displayLogo={displayLogo} siteTitle={siteTitle} />
+    <LogoLink display={displayTitle} displayLogo={displayLogo} siteTitle={siteTitle} />
     <Menu foreColor={foreColor} />
   </HeaderWrapper>
 )

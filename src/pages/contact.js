@@ -20,7 +20,6 @@ const ContactPage = () => (
       <Layout backgroundColor={props => props.theme.colors.purple}>
         <SEO title="Work" keywords={[``]} />
         <Header
-          displayLogo={true}
           foreColor={props => props.theme.colors.purple}
           siteTitle={data.site.siteMetadata.title}
         />
