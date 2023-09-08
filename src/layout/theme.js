@@ -7,6 +7,7 @@ const theme = {
     foreground: `#000`,
     purple: `#ad9be9`,
     skin: `#f8ede6`,
+    white: `#fff`,
   },
   fonts: {
     body: `LacrimaSenza`,

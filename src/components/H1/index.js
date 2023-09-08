@@ -1,18 +1,10 @@
-import styled from "styled-components"
+import React from "react"
+import cn from "classnames"
 
-const H1 = styled.h1`
-  font-family: ${props => props.theme.fonts.heading};
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin: 0;
+const H1 = ({ children, className, ...rest }) => (
+  <h1 {...rest} className={cn("font-bold font-heading text-3xl md:text-5xl lg:text-6xl", className)}>
+    {children}
+  </h1>
+)
 
-  ${props => props.theme.mq.tablet} {
-    font-size: 3.5rem;
-  }
-
-  ${props => props.theme.mq.desktop} {
-    font-size: 4.5rem;
-  }
-`;
-
-export default H1;
+export default H1

@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-import styled from "styled-components"
 
 import BlogPostBody from "../../components/BlogPostBody"
 import BlogPostMetadata from "../../components/BlogPostMetadata"
@@ -13,11 +12,6 @@ import Layout from "../../components/Layout"
 import Link from "../../components/Link"
 import SEO from "../../components/SEO"
 
-const MainH1 = styled(H1)`
-  line-height: 1.2;
-  padding-bottom: 1em;
-`
-
 const BlogPostTemplate = ({ data }) => {
   const { site, markdownRemark: post } = data
 
@@ -25,13 +19,12 @@ const BlogPostTemplate = ({ data }) => {
     <Layout backgroundColor={props => props.theme.colors.skin}>
       <SEO title={post.frontmatter.title} keywords={[``]} />
       <Header
-        displayLogo={true}
         foreColor={props => props.theme.colors.skin}
         siteTitle={site.siteMetadata.title}
       />
       <ContentWrapper>
         <BlogPostWrapper>
-          <MainH1>{post.frontmatter.title}</MainH1>
+          <H1 className="pb-8 leading-tight">{post.frontmatter.title}</H1>
           {post.frontmatter.sub_title &&
             <H3>{post.frontmatter.sub_title}</H3>
           }

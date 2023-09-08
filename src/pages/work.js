@@ -20,7 +20,6 @@ const WorkPage = () => (
       <Layout>
         <SEO title="Work" keywords={[``]} />
         <Header
-          displayLogo={true}
           foreColor={props => props.theme.colors.bfPink}
           siteTitle={data.site.siteMetadata.title}
         />
