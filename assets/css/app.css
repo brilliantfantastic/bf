@@ -33,27 +33,27 @@
   name: "brilliant";
   default: true;
   prefersdark: false;
-  color-scheme: "brilliant";
-  --color-base-100: oklch(100% 0 0);
-  --color-base-200: oklch(97.2% 0.006 260);
-  --color-base-300: oklch(92.6% 0.007 264);
-  --color-base-content: oklch(24.8% 0.028 260);
-  --color-primary: oklch(70.6% 0.145 353);
-  --color-primary-content: oklch(11.6% 0.038 350);
-  --color-secondary: oklch(79.4% 0.178 125);
-  --color-secondary-content: oklch(11.8% 0.042 128);
-  --color-accent: oklch(58.5% 0.22 275);
-  --color-accent-content: oklch(100% 0 0);
-  --color-neutral: oklch(28.5% 0.025 255);
-  --color-neutral-content: oklch(89.2% 0.012 250);
-  --color-info: oklch(67.5% 0.145 225);
-  --color-info-content: oklch(8.2% 0.028 235);
-  --color-success: oklch(72.3% 0.19 150);
-  --color-success-content: oklch(10.5% 0.038 148);
-  --color-warning: oklch(76.8% 0.17 70);
-  --color-warning-content: oklch(12.2% 0.043 74);
-  --color-error: oklch(62.8% 0.22 25);
-  --color-error-content: oklch(100% 0 0);
+  color-scheme: "light";
+  --color-base-100: oklch(98% 0.002 250);
+  --color-base-200: oklch(94% 0.004 250);
+  --color-base-300: oklch(88% 0.006 250);
+  --color-base-content: oklch(22% 0.01 250);
+  --color-primary: oklch(45% 0.008 250);
+  --color-primary-content: oklch(98% 0.002 250);
+  --color-secondary: oklch(55% 0.006 250);
+  --color-secondary-content: oklch(98% 0.002 250);
+  --color-accent: oklch(50% 0.01 250);
+  --color-accent-content: oklch(98% 0.002 250);
+  --color-neutral: oklch(30% 0.008 250);
+  --color-neutral-content: oklch(92% 0.004 250);
+  --color-info: oklch(60% 0.006 250);
+  --color-info-content: oklch(98% 0.002 250);
+  --color-success: oklch(55% 0.008 250);
+  --color-success-content: oklch(98% 0.002 250);
+  --color-warning: oklch(65% 0.006 250);
+  --color-warning-content: oklch(20% 0.008 250);
+  --color-error: oklch(50% 0.01 250);
+  --color-error-content: oklch(98% 0.002 250);
   --radius-selector: 0.25rem;
   --radius-field: 0.25rem;
   --radius-box: 0.5rem;
@@ -67,12 +67,12 @@
 @plugin "../vendor/daisyui-theme" {
   name: "fantastic";
   default: false;
-  prefersdark: true;
-  color-scheme: "fantastic";
-  --color-base-100: oklch(30.33% 0.016 252.42);
-  --color-base-200: oklch(25.26% 0.014 253.1);
-  --color-base-300: oklch(20.15% 0.012 254.09);
-  --color-base-content: oklch(97.807% 0.029 256.847);
+  prefersdark: false;
+  color-scheme: "light";
+  --color-base-100: oklch(78.5% 0.115 0);
+  --color-base-200: oklch(73% 0.13 358);
+  --color-base-300: oklch(68% 0.14 356);
+  --color-base-content: oklch(25% 0.02 350);
   --color-primary: oklch(58% 0.233 277.117);
   --color-primary-content: oklch(96% 0.018 272.314);
   --color-secondary: oklch(58% 0.233 277.117);
@@ -109,5 +109,56 @@
 
 /* Make LiveView wrapper divs transparent for layout */
 [data-phx-session], [data-phx-teleported-src] { display: contents }
+
+@theme {
+  --font-semibold: "Okkult", sans-serif;
+}
+
+/* Robot floating animations for fantastic theme */
+@keyframes robot-float-1 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(30px, -40px) rotate(8deg); }
+  50% { transform: translate(-20px, -70px) rotate(-5deg); }
+  75% { transform: translate(40px, -30px) rotate(12deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes robot-float-2 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(-40px, -20px) rotate(-10deg); }
+  40% { transform: translate(-60px, -50px) rotate(5deg); }
+  60% { transform: translate(-20px, -80px) rotate(-8deg); }
+  80% { transform: translate(20px, -40px) rotate(6deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes robot-float-3 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(50px, -30px) rotate(15deg); }
+  66% { transform: translate(-30px, -60px) rotate(-10deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes robot-float-4 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  15% { transform: translate(-25px, -50px) rotate(-12deg); }
+  35% { transform: translate(35px, -80px) rotate(8deg); }
+  55% { transform: translate(60px, -40px) rotate(-6deg); }
+  75% { transform: translate(20px, -20px) rotate(10deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes robot-float-5 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  30% { transform: translate(-50px, -25px) rotate(7deg); }
+  60% { transform: translate(25px, -55px) rotate(-14deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.robot-animate-1 { animation: robot-float-1 20s ease-in-out infinite; }
+.robot-animate-2 { animation: robot-float-2 17s ease-in-out infinite; }
+.robot-animate-3 { animation: robot-float-3 23s ease-in-out infinite; }
+.robot-animate-4 { animation: robot-float-4 15s ease-in-out infinite; }
+.robot-animate-5 { animation: robot-float-5 25s ease-in-out infinite; }
 
 /* This file is for your main application CSS */
