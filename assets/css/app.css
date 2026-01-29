@@ -10,8 +10,8 @@
   font-family: "Okkult";
   font-style: normal;
   font-weight: black;
-  src: url("../fonts/Okkult/Okkult-Black.woff") format("woff"),
-       url("../fonts/Okkult/Okkult-Black.woff2") format("woff2");
+  src: url("/fonts/Okkult/Okkult-Black.woff2") format("woff2"),
+       url("/fonts/Okkult/Okkult-Black.woff") format("woff");
 }
 
 /* A Tailwind plugin that makes "hero-#{ICON}" classes available.
@@ -111,7 +111,11 @@
 [data-phx-session], [data-phx-teleported-src] { display: contents }
 
 @theme {
-  --font-semibold: "Okkult", sans-serif;
+  --font-display: sans-serif;
+}
+
+[data-theme="fantastic"] {
+  --font-display: "Okkult", sans-serif;
 }
 
 /* Robot floating animations for fantastic theme */
