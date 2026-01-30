@@ -5,6 +5,8 @@ defmodule BrilliantFantasticWeb.Layouts do
   """
   use BrilliantFantasticWeb, :html
 
+  alias BrilliantFantasticWeb.Components.Illustrations
+
   # Embed all files in layouts/* within this module.
   # The default root.html.heex file contains the HTML
   # skeleton of your application, namely HTML headers
@@ -153,7 +155,7 @@ defmodule BrilliantFantasticWeb.Layouts do
   end
 
   @doc """
-  Renders a decorative background of animated SVG robots.
+  Renders a decorative background of animated SVG illustrations.
 
   Only visible when the fantastic theme is active, using the
   `hidden fantastic:block` CSS variant mechanism.
@@ -164,188 +166,21 @@ defmodule BrilliantFantasticWeb.Layouts do
       class="hidden fantastic:block fixed inset-0 z-0 overflow-hidden pointer-events-none"
       aria-hidden="true"
     >
-      <%!-- Robot 1: Boxy robot --%>
-      <svg
-        class="absolute w-10 opacity-15 robot-animate-1"
-        style="top: 8%; left: 12%;"
-        viewBox="0 0 64 80"
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect x="24" y="0" width="16" height="8" rx="2" />
-        <rect x="8" y="12" width="48" height="36" rx="4" />
-        <rect x="16" y="22" width="10" height="8" rx="2" />
-        <rect x="38" y="22" width="10" height="8" rx="2" />
-        <rect x="24" y="34" width="16" height="4" rx="1" />
-        <rect x="12" y="52" width="16" height="24" rx="3" />
-        <rect x="36" y="52" width="16" height="24" rx="3" />
-        <rect x="0" y="20" width="6" height="20" rx="3" />
-        <rect x="58" y="20" width="6" height="20" rx="3" />
-      </svg>
-
-      <%!-- Robot 2: Round/dome robot --%>
-      <svg
-        class="absolute w-8 opacity-12 robot-animate-2"
-        style="top: 25%; left: 75%;"
-        viewBox="0 0 64 72"
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle cx="32" cy="24" r="24" />
-        <circle cx="22" cy="20" r="5" fill="currentColor" opacity="0.3" />
-        <circle cx="42" cy="20" r="5" fill="currentColor" opacity="0.3" />
-        <ellipse cx="32" cy="32" rx="8" ry="3" opacity="0.3" />
-        <rect x="12" y="48" width="40" height="16" rx="4" />
-        <circle cx="20" cy="68" r="4" />
-        <circle cx="44" cy="68" r="4" />
-      </svg>
-
-      <%!-- Robot 3: Tall/thin robot --%>
-      <svg
-        class="absolute w-6 opacity-18 robot-animate-3"
-        style="top: 55%; left: 5%;"
-        viewBox="0 0 40 100"
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect x="12" y="0" width="16" height="4" rx="2" />
-        <rect x="8" y="6" width="24" height="20" rx="6" />
-        <circle cx="16" cy="14" r="3" opacity="0.3" />
-        <circle cx="24" cy="14" r="3" opacity="0.3" />
-        <rect x="14" y="28" width="12" height="32" rx="3" />
-        <rect x="0" y="30" width="12" height="6" rx="3" />
-        <rect x="28" y="30" width="12" height="6" rx="3" />
-        <rect x="10" y="62" width="8" height="20" rx="2" />
-        <rect x="22" y="62" width="8" height="20" rx="2" />
-        <rect x="8" y="80" width="12" height="6" rx="3" />
-        <rect x="20" y="80" width="12" height="6" rx="3" />
-      </svg>
-
-      <%!-- Robot 4: Squat/wide robot --%>
-      <svg
-        class="absolute w-14 opacity-10 robot-animate-4"
-        style="top: 70%; left: 60%;"
-        viewBox="0 0 80 56"
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect x="28" y="0" width="24" height="6" rx="3" />
-        <rect x="4" y="8" width="72" height="28" rx="8" />
-        <circle cx="24" cy="22" r="6" opacity="0.3" />
-        <circle cx="56" cy="22" r="6" opacity="0.3" />
-        <rect x="32" y="26" width="16" height="4" rx="2" opacity="0.3" />
-        <rect x="8" y="40" width="20" height="12" rx="4" />
-        <rect x="52" y="40" width="20" height="12" rx="4" />
-      </svg>
-
-      <%!-- Robot 5: Wheeled robot --%>
-      <svg
-        class="absolute w-10 opacity-15 robot-animate-5"
-        style="top: 40%; left: 35%;"
-        viewBox="0 0 64 72"
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect x="24" y="0" width="16" height="10" rx="3" />
-        <rect x="10" y="12" width="44" height="32" rx="6" />
-        <rect x="18" y="20" width="10" height="8" rx="2" opacity="0.3" />
-        <rect x="36" y="20" width="10" height="8" rx="2" opacity="0.3" />
-        <rect x="22" y="34" width="20" height="4" rx="2" opacity="0.3" />
-        <rect x="14" y="46" width="36" height="10" rx="4" />
-        <circle cx="18" cy="64" r="8" />
-        <circle cx="46" cy="64" r="8" />
-        <circle cx="18" cy="64" r="4" opacity="0.3" />
-        <circle cx="46" cy="64" r="4" opacity="0.3" />
-      </svg>
-
-      <%!-- Robot 6: Triangular/angular robot --%>
-      <svg
-        class="absolute w-8 opacity-12 robot-animate-1"
-        style="top: 15%; left: 50%;"
-        viewBox="0 0 60 80"
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <polygon points="30,0 50,24 10,24" />
-        <rect x="8" y="26" width="44" height="30" rx="4" />
-        <polygon points="20,34 24,42 16,42" opacity="0.3" />
-        <polygon points="40,34 44,42 36,42" opacity="0.3" />
-        <rect x="20" y="48" width="20" height="3" rx="1" opacity="0.3" />
-        <rect x="12" y="60" width="14" height="18" rx="3" />
-        <rect x="34" y="60" width="14" height="18" rx="3" />
-      </svg>
-
-      <%!-- Robot 7: Orb/sphere robot --%>
-      <svg
-        class="absolute w-10 opacity-10 robot-animate-2"
-        style="top: 80%; left: 25%;"
-        viewBox="0 0 64 64"
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle cx="32" cy="32" r="30" />
-        <circle cx="22" cy="24" r="6" opacity="0.3" />
-        <circle cx="42" cy="24" r="6" opacity="0.3" />
-        <ellipse cx="32" cy="40" rx="10" ry="5" opacity="0.3" />
-        <rect x="28" y="0" width="8" height="6" rx="2" />
-        <circle cx="8" cy="44" r="4" />
-        <circle cx="56" cy="44" r="4" />
-      </svg>
-
-      <%!-- Robot 8: Antenna robot --%>
-      <svg
-        class="absolute w-8 opacity-18 robot-animate-3"
-        style="top: 50%; left: 88%;"
-        viewBox="0 0 56 88"
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle cx="18" cy="4" r="4" />
-        <rect x="16" y="8" width="4" height="12" />
-        <circle cx="38" cy="4" r="4" />
-        <rect x="36" y="8" width="4" height="12" />
-        <rect x="6" y="22" width="44" height="30" rx="6" />
-        <circle cx="20" cy="34" r="5" opacity="0.3" />
-        <circle cx="36" cy="34" r="5" opacity="0.3" />
-        <rect x="18" y="44" width="20" height="3" rx="1" opacity="0.3" />
-        <rect x="16" y="56" width="24" height="14" rx="4" />
-        <rect x="10" y="72" width="12" height="14" rx="3" />
-        <rect x="34" y="72" width="12" height="14" rx="3" />
-      </svg>
-
-      <%!-- Robot 9: Mini caterpillar/tank robot --%>
-      <svg
-        class="absolute w-12 opacity-12 robot-animate-4"
-        style="top: 35%; left: 92%;"
-        viewBox="0 0 72 48"
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect x="20" y="0" width="32" height="6" rx="3" />
-        <rect x="8" y="8" width="56" height="22" rx="6" />
-        <circle cx="26" cy="18" r="4" opacity="0.3" />
-        <circle cx="46" cy="18" r="4" opacity="0.3" />
-        <rect x="4" y="32" width="64" height="14" rx="7" />
-        <circle cx="14" cy="39" r="5" opacity="0.3" />
-        <circle cx="32" cy="39" r="5" opacity="0.3" />
-        <circle cx="50" cy="39" r="5" opacity="0.3" />
-      </svg>
-
-      <%!-- Robot 10: Floating eye robot --%>
-      <svg
-        class="absolute w-8 opacity-15 robot-animate-5"
-        style="top: 65%; left: 45%;"
-        viewBox="0 0 56 64"
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <ellipse cx="28" cy="24" rx="26" ry="22" />
-        <circle cx="28" cy="20" r="12" opacity="0.3" />
-        <circle cx="28" cy="20" r="6" opacity="0.5" />
-        <rect x="8" y="48" width="8" height="14" rx="3" />
-        <rect x="24" y="46" width="8" height="16" rx="3" />
-        <rect x="40" y="48" width="8" height="14" rx="3" />
-      </svg>
+      <Illustrations.sad_cactus class="absolute w-10 opacity-30 robot-animate-1" style="top: 5%; left: 8%;" />
+      <Illustrations.ufo_beaming_cat class="absolute w-12 opacity-30 robot-animate-2" style="top: 20%; left: 72%;" />
+      <Illustrations.skull_flower class="absolute w-8 opacity-30 robot-animate-3" style="top: 55%; left: 4%;" />
+      <Illustrations.cool_ghost class="absolute w-10 opacity-30 robot-animate-4" style="top: 68%; left: 58%;" />
+      <Illustrations.palm_and_moon class="absolute w-10 opacity-30 robot-animate-5" style="top: 12%; left: 38%;" />
+      <Illustrations.alien_head class="absolute w-8 opacity-30 robot-animate-1" style="top: 30%; left: 15%;" />
+      <Illustrations.snake_and_dagger class="absolute w-8 opacity-30 robot-animate-2" style="top: 45%; left: 85%;" />
+      <Illustrations.cute_reaper class="absolute w-10 opacity-30 robot-animate-3" style="top: 78%; left: 22%;" />
+      <Illustrations.cosmic_eye class="absolute w-12 opacity-30 robot-animate-4" style="top: 38%; left: 48%;" />
+      <Illustrations.melting_face class="absolute w-8 opacity-30 robot-animate-5" style="top: 62%; left: 35%;" />
+      <Illustrations.floating_helmet class="absolute w-10 opacity-30 robot-animate-1" style="top: 85%; left: 70%;" />
+      <Illustrations.all_seeing_hand class="absolute w-8 opacity-30 robot-animate-3" style="top: 8%; left: 55%;" />
+      <Illustrations.broken_heart class="absolute w-8 opacity-30 robot-animate-4" style="top: 48%; left: 18%;" />
+      <Illustrations.mushroom class="absolute w-10 opacity-30 robot-animate-5" style="top: 88%; left: 45%;" />
+      <Illustrations.coffin_flower class="absolute w-6 opacity-30 robot-animate-2" style="top: 25%; left: 50%;" />
     </div>
     """
   end
