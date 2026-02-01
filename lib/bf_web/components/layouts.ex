@@ -155,6 +155,59 @@ defmodule BrilliantFantasticWeb.Layouts do
   end
 
   @doc """
+  Renders a decorative background of scattered sparkle shapes.
+
+  Only visible when the fantastic theme is active, using the
+  `hidden fantastic:block` CSS variant mechanism.
+  """
+  def sparkle_background(assigns) do
+    ~H"""
+    <div
+      class="hidden fantastic:block fixed inset-0 z-0 overflow-hidden pointer-events-none"
+      style="color: var(--color-sparkle)"
+      aria-hidden="true"
+    >
+      <.sparkle class="absolute w-2 opacity-40" style="top: 3%; left: 12%;" />
+      <.sparkle class="absolute w-4 opacity-40" style="top: 7%; left: 55%;" />
+      <.sparkle class="absolute w-2 opacity-40" style="top: 11%; left: 82%;" />
+      <.sparkle class="absolute w-3 opacity-40" style="top: 15%; left: 30%;" />
+      <.sparkle class="absolute w-2 opacity-40" style="top: 18%; left: 68%;" />
+      <.sparkle class="absolute w-4 opacity-40" style="top: 22%; left: 5%;" />
+      <.sparkle class="absolute w-2 opacity-40" style="top: 26%; left: 44%;" />
+      <.sparkle class="absolute w-3 opacity-40" style="top: 30%; left: 91%;" />
+      <.sparkle class="absolute w-2 opacity-40" style="top: 34%; left: 18%;" />
+      <.sparkle class="absolute w-4 opacity-40" style="top: 38%; left: 76%;" />
+      <.sparkle class="absolute w-2 opacity-40" style="top: 42%; left: 38%;" />
+      <.sparkle class="absolute w-3 opacity-40" style="top: 46%; left: 62%;" />
+      <.sparkle class="absolute w-2 opacity-40" style="top: 50%; left: 8%;" />
+      <.sparkle class="absolute w-4 opacity-40" style="top: 53%; left: 50%;" />
+      <.sparkle class="absolute w-2 opacity-40" style="top: 57%; left: 25%;" />
+      <.sparkle class="absolute w-3 opacity-40" style="top: 61%; left: 85%;" />
+      <.sparkle class="absolute w-2 opacity-40" style="top: 65%; left: 42%;" />
+      <.sparkle class="absolute w-4 opacity-40" style="top: 69%; left: 15%;" />
+      <.sparkle class="absolute w-2 opacity-40" style="top: 73%; left: 70%;" />
+      <.sparkle class="absolute w-3 opacity-40" style="top: 77%; left: 33%;" />
+      <.sparkle class="absolute w-2 opacity-40" style="top: 80%; left: 58%;" />
+      <.sparkle class="absolute w-4 opacity-40" style="top: 84%; left: 88%;" />
+      <.sparkle class="absolute w-2 opacity-40" style="top: 88%; left: 20%;" />
+      <.sparkle class="absolute w-3 opacity-40" style="top: 92%; left: 48%;" />
+      <.sparkle class="absolute w-2 opacity-40" style="top: 96%; left: 75%;" />
+    </div>
+    """
+  end
+
+  attr :class, :string, default: nil
+  attr :style, :string, default: nil
+
+  defp sparkle(assigns) do
+    ~H"""
+    <svg class={@class} style={@style} viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 0 L12 8 L20 10 L12 12 L10 20 L8 12 L0 10 L8 8 Z" />
+    </svg>
+    """
+  end
+
+  @doc """
   Renders a decorative background of animated SVG illustrations.
 
   Only visible when the fantastic theme is active, using the

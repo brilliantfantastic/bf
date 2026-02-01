@@ -127,6 +127,7 @@
 
 [data-theme="fantastic"] {
   --font-display: "Okkult", sans-serif;
+  --color-sparkle: oklch(95% 0.03 80);
 }
 
 /* Robot floating animations for fantastic theme */
