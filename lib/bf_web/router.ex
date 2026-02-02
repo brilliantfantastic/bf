@@ -18,6 +18,11 @@ defmodule BrilliantFantasticWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/blog", BlogController, :index
+    get "/projects", ProjectController, :index
+    get "/for_hire", ForHireController, :index
+    get "/for-hire", ForHireController, :index
+    get "/contact", ContactController, :index
   end
 
   # Other scopes may use custom stacks.
