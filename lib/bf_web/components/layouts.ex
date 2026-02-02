@@ -155,6 +155,51 @@ defmodule BrilliantFantasticWeb.Layouts do
   end
 
   @doc """
+  Renders a sticky responsive navigation menu.
+
+  Desktop shows a horizontal link bar; mobile shows a hamburger button
+  that opens a full-screen overlay. Uses daisyUI semantic color classes
+  so it automatically adapts to the active theme.
+  """
+  def nav_menu(assigns) do
+    ~H"""
+    <nav class="fixed top-0 left-0 right-0 z-20 lg:sticky bg-base-200/90 backdrop-blur border-b border-base-300">
+      <%!-- Desktop: horizontal links --%>
+      <div class="hidden lg:flex items-center justify-between px-6 lg:px-16 py-3">
+        <div class="flex items-center gap-8">
+          <a href="/" class="font-display text-xl">Brilliant Fantastic</a>
+          <a href="/blog" class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors">Blog</a>
+          <a href="/projects" class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors">Projects</a>
+          <a href="/for_hire" class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors">For Hire</a>
+          <a href="/contact" class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors">Contact</a>
+        </div>
+        <.theme_toggle />
+      </div>
+
+      <%!-- Mobile: hamburger + vertical menu --%>
+      <div class="lg:hidden">
+        <div class="flex items-center justify-between px-6 py-3">
+          <a href="/" class="font-display text-xl">Brilliant Fantastic</a>
+          <button phx-click={JS.toggle(to: "#mobile-menu")} aria-label="Toggle menu">
+            <.icon name="hero-bars-3" class="size-6" />
+          </button>
+        </div>
+
+        <ul id="mobile-menu" class="hidden menu menu-vertical bg-base-200/90 border-t border-base-300 px-6 pb-4">
+          <li><a href="/blog" class="font-display text-lg">Blog</a></li>
+          <li><a href="/projects" class="font-display text-lg">Projects</a></li>
+          <li><a href="/for_hire" class="font-display text-lg">For Hire</a></li>
+          <li><a href="/contact" class="font-display text-lg">Contact</a></li>
+          <li class="mt-2"><.theme_toggle /></li>
+        </ul>
+      </div>
+    </nav>
+    <%!-- Spacer to offset fixed mobile nav --%>
+    <div class="h-12 lg:hidden" aria-hidden="true"></div>
+    """
+  end
+
+  @doc """
   Renders a decorative background of scattered sparkle shapes.
 
   Only visible when the fantastic theme is active, using the
