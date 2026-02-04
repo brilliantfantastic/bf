@@ -164,16 +164,13 @@ defmodule BrilliantFantasticWeb.Layouts do
   def nav_menu(assigns) do
     ~H"""
     <nav class="fixed top-0 left-0 right-0 z-20 lg:sticky bg-base-200/90 backdrop-blur border-b border-base-300">
-      <%!-- Desktop: horizontal links --%>
+      <%!-- Desktop: horizontal links spread across full width --%>
       <div class="hidden lg:flex items-center justify-between px-6 lg:px-16 py-3">
-        <div class="flex items-center gap-8">
-          <a href="/" class="font-display text-xl">Brilliant Fantastic</a>
-          <a href="/blog" class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors">Blog</a>
-          <a href="/projects" class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors">Projects</a>
-          <a href="/for_hire" class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors">For Hire</a>
-          <a href="/contact" class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors">Contact</a>
-        </div>
-        <.theme_toggle />
+        <a href="/" class="font-display text-xl">Brilliant Fantastic</a>
+        <a href="/blog" class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors">Blog</a>
+        <a href="/projects" class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors">Projects</a>
+        <a href="/for_hire" class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors">For Hire</a>
+        <a href="/contact" class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors">Contact</a>
       </div>
 
       <%!-- Mobile: hamburger + vertical menu --%>
