@@ -41,26 +41,26 @@
   default: true;
   prefersdark: false;
   color-scheme: "light";
-  --color-base-100: oklch(98% 0.002 250);
-  --color-base-200: oklch(94% 0.004 250);
-  --color-base-300: oklch(88% 0.006 250);
-  --color-base-content: oklch(22% 0.01 250);
-  --color-primary: oklch(45% 0.008 250);
-  --color-primary-content: oklch(98% 0.002 250);
-  --color-secondary: oklch(55% 0.006 250);
-  --color-secondary-content: oklch(98% 0.002 250);
-  --color-accent: oklch(50% 0.01 250);
-  --color-accent-content: oklch(98% 0.002 250);
-  --color-neutral: oklch(30% 0.008 250);
-  --color-neutral-content: oklch(92% 0.004 250);
-  --color-info: oklch(60% 0.006 250);
-  --color-info-content: oklch(98% 0.002 250);
-  --color-success: oklch(55% 0.008 250);
-  --color-success-content: oklch(98% 0.002 250);
-  --color-warning: oklch(65% 0.006 250);
-  --color-warning-content: oklch(20% 0.008 250);
-  --color-error: oklch(50% 0.01 250);
-  --color-error-content: oklch(98% 0.002 250);
+  --color-base-100: oklch(98% 0.002 250); /* cool white */
+  --color-base-200: oklch(94% 0.004 250); /* pale silver */
+  --color-base-300: oklch(88% 0.006 250); /* light silver */
+  --color-base-content: oklch(22% 0.01 250); /* charcoal */
+  --color-primary: oklch(45% 0.008 250); /* dark slate */
+  --color-primary-content: oklch(98% 0.002 250); /* cool white */
+  --color-secondary: oklch(55% 0.006 250); /* medium slate */
+  --color-secondary-content: oklch(98% 0.002 250); /* cool white */
+  --color-accent: oklch(50% 0.01 250); /* steel gray */
+  --color-accent-content: oklch(98% 0.002 250); /* cool white */
+  --color-neutral: oklch(30% 0.008 250); /* dark charcoal */
+  --color-neutral-content: oklch(92% 0.004 250); /* bright silver */
+  --color-info: oklch(60% 0.006 250); /* pewter */
+  --color-info-content: oklch(98% 0.002 250); /* cool white */
+  --color-success: oklch(55% 0.008 250); /* medium slate */
+  --color-success-content: oklch(98% 0.002 250); /* cool white */
+  --color-warning: oklch(65% 0.006 250); /* ash gray */
+  --color-warning-content: oklch(20% 0.008 250); /* near black */
+  --color-error: oklch(50% 0.01 250); /* steel gray */
+  --color-error-content: oklch(98% 0.002 250); /* cool white */
   --radius-selector: 0.25rem;
   --radius-field: 0.25rem;
   --radius-box: 0.5rem;
@@ -76,26 +76,26 @@
   default: false;
   prefersdark: false;
   color-scheme: "light";
-  --color-base-100: oklch(78.5% 0.115 0);
-  --color-base-200: oklch(73% 0.13 358);
-  --color-base-300: oklch(68% 0.14 356);
-  --color-base-content: oklch(25% 0.02 350);
-  --color-primary: oklch(58% 0.233 277.117);
-  --color-primary-content: oklch(96% 0.018 272.314);
-  --color-secondary: oklch(58% 0.233 277.117);
-  --color-secondary-content: oklch(96% 0.018 272.314);
-  --color-accent: oklch(60% 0.25 292.717);
-  --color-accent-content: oklch(96% 0.016 293.756);
-  --color-neutral: oklch(37% 0.044 257.287);
-  --color-neutral-content: oklch(98% 0.003 247.858);
-  --color-info: oklch(58% 0.158 241.966);
-  --color-info-content: oklch(97% 0.013 236.62);
-  --color-success: oklch(60% 0.118 184.704);
-  --color-success-content: oklch(98% 0.014 180.72);
-  --color-warning: oklch(66% 0.179 58.318);
-  --color-warning-content: oklch(98% 0.022 95.277);
-  --color-error: oklch(58% 0.253 17.585);
-  --color-error-content: oklch(96% 0.015 12.422);
+  --color-base-100: oklch(78.5% 0.115 0); /* salmon pink */
+  --color-base-200: oklch(73% 0.13 358); /* dusty rose */
+  --color-base-300: oklch(68% 0.14 356); /* muted raspberry */
+  --color-base-content: oklch(25% 0.02 350); /* dark burgundy */
+  --color-primary: oklch(58% 0.233 277.117); /* electric indigo */
+  --color-primary-content: oklch(96% 0.018 272.314); /* pale lavender */
+  --color-secondary: oklch(58% 0.233 277.117); /* electric indigo */
+  --color-secondary-content: oklch(96% 0.018 272.314); /* pale lavender */
+  --color-accent: oklch(60% 0.25 292.717); /* vivid purple */
+  --color-accent-content: oklch(96% 0.016 293.756); /* pale lilac */
+  --color-neutral: oklch(37% 0.044 257.287); /* dark navy */
+  --color-neutral-content: oklch(98% 0.003 247.858); /* cool white */
+  --color-info: oklch(58% 0.158 241.966); /* cerulean blue */
+  --color-info-content: oklch(97% 0.013 236.62); /* pale sky blue */
+  --color-success: oklch(60% 0.118 184.704); /* ocean teal */
+  --color-success-content: oklch(98% 0.014 180.72); /* pale mint */
+  --color-warning: oklch(66% 0.179 58.318); /* warm amber */
+  --color-warning-content: oklch(98% 0.022 95.277); /* pale cream */
+  --color-error: oklch(58% 0.253 17.585); /* vivid scarlet */
+  --color-error-content: oklch(96% 0.015 12.422); /* pale blush */
   --radius-selector: 0.25rem;
   --radius-field: 0.25rem;
   --radius-box: 0.5rem;
@@ -127,7 +127,7 @@
 
 [data-theme="fantastic"] {
   --font-display: "Okkult", sans-serif;
-  --color-sparkle: oklch(95% 0.03 80);
+  --color-sparkle: oklch(95% 0.03 80); /* pale gold */
 }
 
 /* Robot floating animations for fantastic theme */
