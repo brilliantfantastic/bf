@@ -131,7 +131,7 @@
 }
 
 /* Robot floating animations for fantastic theme */
-@keyframes robot-float-1 {
+@keyframes robot-float-wobble {
   0% { transform: translate(0, 0) rotate(0deg); }
   25% { transform: translate(30px, -40px) rotate(8deg); }
   50% { transform: translate(-20px, -70px) rotate(-5deg); }
@@ -139,7 +139,7 @@
   100% { transform: translate(0, 0) rotate(0deg); }
 }
 
-@keyframes robot-float-2 {
+@keyframes robot-float-zigzag {
   0% { transform: translate(0, 0) rotate(0deg); }
   20% { transform: translate(-40px, -20px) rotate(-10deg); }
   40% { transform: translate(-60px, -50px) rotate(5deg); }
@@ -148,14 +148,14 @@
   100% { transform: translate(0, 0) rotate(0deg); }
 }
 
-@keyframes robot-float-3 {
+@keyframes robot-float-swoop {
   0% { transform: translate(0, 0) rotate(0deg); }
   33% { transform: translate(50px, -30px) rotate(15deg); }
   66% { transform: translate(-30px, -60px) rotate(-10deg); }
   100% { transform: translate(0, 0) rotate(0deg); }
 }
 
-@keyframes robot-float-4 {
+@keyframes robot-float-wander {
   0% { transform: translate(0, 0) rotate(0deg); }
   15% { transform: translate(-25px, -50px) rotate(-12deg); }
   35% { transform: translate(35px, -80px) rotate(8deg); }
@@ -164,17 +164,17 @@
   100% { transform: translate(0, 0) rotate(0deg); }
 }
 
-@keyframes robot-float-5 {
+@keyframes robot-float-drift {
   0% { transform: translate(0, 0) rotate(0deg); }
   30% { transform: translate(-50px, -25px) rotate(7deg); }
   60% { transform: translate(25px, -55px) rotate(-14deg); }
   100% { transform: translate(0, 0) rotate(0deg); }
 }
 
-.robot-animate-1 { animation: robot-float-1 20s ease-in-out infinite; }
-.robot-animate-2 { animation: robot-float-2 17s ease-in-out infinite; }
-.robot-animate-3 { animation: robot-float-3 23s ease-in-out infinite; }
-.robot-animate-4 { animation: robot-float-4 15s ease-in-out infinite; }
-.robot-animate-5 { animation: robot-float-5 25s ease-in-out infinite; }
+.robot-animate-wobble { animation: robot-float-wobble 20s ease-in-out infinite; }
+.robot-animate-zigzag { animation: robot-float-zigzag 17s ease-in-out infinite; }
+.robot-animate-swoop { animation: robot-float-swoop 23s ease-in-out infinite; }
+.robot-animate-wander { animation: robot-float-wander 15s ease-in-out infinite; }
+.robot-animate-drift { animation: robot-float-drift 25s ease-in-out infinite; }
 
 /* This file is for your main application CSS */

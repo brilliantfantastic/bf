@@ -261,21 +261,21 @@ defmodule BrilliantFantasticWeb.Layouts do
       class="hidden fantastic:block fixed inset-0 z-0 overflow-hidden pointer-events-none"
       aria-hidden="true"
     >
-      <Illustrations.sad_cactus class="absolute w-10 opacity-30 robot-animate-1" style="top: 5%; left: 8%;" />
-      <Illustrations.ufo_beaming_cat class="absolute w-12 opacity-30 robot-animate-2" style="top: 20%; left: 72%;" />
-      <Illustrations.skull_flower class="absolute w-8 opacity-30 robot-animate-3" style="top: 55%; left: 4%;" />
-      <Illustrations.cool_ghost class="absolute w-10 opacity-30 robot-animate-4" style="top: 68%; left: 58%;" />
-      <Illustrations.palm_and_moon class="absolute w-10 opacity-30 robot-animate-5" style="top: 12%; left: 38%;" />
-      <Illustrations.alien_head class="absolute w-8 opacity-30 robot-animate-1" style="top: 30%; left: 15%;" />
-      <Illustrations.snake_and_dagger class="absolute w-8 opacity-30 robot-animate-2" style="top: 45%; left: 85%;" />
-      <Illustrations.cute_reaper class="absolute w-10 opacity-30 robot-animate-3" style="top: 78%; left: 22%;" />
-      <Illustrations.cosmic_eye class="absolute w-12 opacity-30 robot-animate-4" style="top: 38%; left: 48%;" />
-      <Illustrations.melting_face class="absolute w-8 opacity-30 robot-animate-5" style="top: 62%; left: 35%;" />
-      <Illustrations.floating_helmet class="absolute w-10 opacity-30 robot-animate-1" style="top: 85%; left: 70%;" />
-      <Illustrations.all_seeing_hand class="absolute w-8 opacity-30 robot-animate-3" style="top: 8%; left: 55%;" />
-      <Illustrations.broken_heart class="absolute w-8 opacity-30 robot-animate-4" style="top: 48%; left: 18%;" />
-      <Illustrations.mushroom class="absolute w-10 opacity-30 robot-animate-5" style="top: 88%; left: 45%;" />
-      <Illustrations.coffin_flower class="absolute w-6 opacity-30 robot-animate-2" style="top: 25%; left: 50%;" />
+      <Illustrations.sad_cactus class="absolute w-10 opacity-30 robot-animate-wobble" style="top: 5%; left: 8%;" />
+      <Illustrations.ufo_beaming_cat class="absolute w-12 opacity-30 robot-animate-zigzag" style="top: 20%; left: 72%;" />
+      <Illustrations.skull_flower class="absolute w-8 opacity-30 robot-animate-swoop" style="top: 55%; left: 4%;" />
+      <Illustrations.cool_ghost class="absolute w-10 opacity-30 robot-animate-wander" style="top: 68%; left: 58%;" />
+      <Illustrations.palm_and_moon class="absolute w-10 opacity-30 robot-animate-drift" style="top: 12%; left: 38%;" />
+      <Illustrations.alien_head class="absolute w-8 opacity-30 robot-animate-wobble" style="top: 30%; left: 15%;" />
+      <Illustrations.snake_and_dagger class="absolute w-8 opacity-30 robot-animate-zigzag" style="top: 45%; left: 85%;" />
+      <Illustrations.cute_reaper class="absolute w-10 opacity-30 robot-animate-swoop" style="top: 78%; left: 22%;" />
+      <Illustrations.cosmic_eye class="absolute w-12 opacity-30 robot-animate-wander" style="top: 38%; left: 48%;" />
+      <Illustrations.melting_face class="absolute w-8 opacity-30 robot-animate-drift" style="top: 62%; left: 35%;" />
+      <Illustrations.floating_helmet class="absolute w-10 opacity-30 robot-animate-wobble" style="top: 85%; left: 70%;" />
+      <Illustrations.all_seeing_hand class="absolute w-8 opacity-30 robot-animate-swoop" style="top: 8%; left: 55%;" />
+      <Illustrations.broken_heart class="absolute w-8 opacity-30 robot-animate-wander" style="top: 48%; left: 18%;" />
+      <Illustrations.mushroom class="absolute w-10 opacity-30 robot-animate-drift" style="top: 88%; left: 45%;" />
+      <Illustrations.coffin_flower class="absolute w-6 opacity-30 robot-animate-zigzag" style="top: 25%; left: 50%;" />
     </div>
     """
   end
