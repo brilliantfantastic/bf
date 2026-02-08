@@ -1,0 +1,201 @@
+<div id="theme-toggle-float">
+  <Layouts.theme_toggle />
+</div>
+
+<div class="flex flex-col min-h-dvh">
+  <Layouts.flash_group flash={@flash} />
+
+  <section class="flex-1 grid lg:grid-cols-2 items-center px-6 lg:px-16">
+    <div>
+      <h1 class="font-display text-7xl lg:text-9xl leading-none">
+        Brilliant Fantastic
+      </h1>
+    </div>
+    <div></div>
+  </section>
+</div>
+
+<div id="nav-sentinel" class="h-0" aria-hidden="true"></div>
+
+<Layouts.nav_menu />
+
+<.latest_blog_section />
+
+<.meet_jamie />
+
+<.contact_section />
+
+<div id="nav-morph-controller" phx-hook=".NavMorph" phx-update="ignore"></div>
+<script :type={Phoenix.LiveView.ColocatedHook} name=".NavMorph">
+  // Sparkle SVG path (matches the sparkle component in layouts.ex)
+  const SPARKLE_PATH = "M10 0 L12 8 L20 10 L12 12 L10 20 L8 12 L0 10 L8 8 Z";
+
+  // Lazy AudioContext shared across morph sounds
+  let audioCtx = null;
+  function getAudioContext() {
+    if (!audioCtx) {
+      audioCtx = new AudioContext();
+    }
+    return audioCtx;
+  }
+
+  // Warm up AudioContext on first user interaction
+  function warmUpAudio() {
+    getAudioContext();
+    document.removeEventListener("click", warmUpAudio);
+    document.removeEventListener("touchstart", warmUpAudio);
+  }
+
+  function getTheme() {
+    return document.documentElement.getAttribute("data-theme") || "brilliant";
+  }
+
+  // Synthesized morph sound: sine sweep 2400→800Hz (150ms) + noise burst
+  function playMorphSound() {
+    try {
+      const ctx = getAudioContext();
+      if (ctx.state === "suspended") ctx.resume();
+      const now = ctx.currentTime;
+
+      // Sine sweep
+      const osc = ctx.createOscillator();
+      const oscGain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(2400, now);
+      osc.frequency.exponentialRampToValueAtTime(800, now + 0.15);
+      oscGain.gain.setValueAtTime(0.15, now);
+      oscGain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+      osc.connect(oscGain).connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.2);
+
+      // Short noise burst
+      const bufferSize = ctx.sampleRate * 0.05;
+      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = (Math.random() * 2 - 1) * 0.3;
+      }
+      const noise = ctx.createBufferSource();
+      const noiseGain = ctx.createGain();
+      noise.buffer = buffer;
+      noiseGain.gain.setValueAtTime(0.1, now);
+      noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+      noise.connect(noiseGain).connect(ctx.destination);
+      noise.start(now);
+    } catch (_) {}
+  }
+
+  // Synthesized unmorph sound: ascending sweep 600→1800Hz (120ms)
+  function playUnmorphSound() {
+    try {
+      const ctx = getAudioContext();
+      if (ctx.state === "suspended") ctx.resume();
+      const now = ctx.currentTime;
+
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(600, now);
+      osc.frequency.exponentialRampToValueAtTime(1800, now + 0.12);
+      gain.gain.setValueAtTime(0.12, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.18);
+    } catch (_) {}
+  }
+
+  // Spawn particle burst from the floating toggle position
+  function spawnParticleBurst() {
+    const floatEl = document.getElementById("theme-toggle-float");
+    if (!floatEl) return;
+
+    const rect = floatEl.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const count = 10;
+
+    for (let i = 0; i < count; i++) {
+      const sparkle = document.createElement("div");
+      sparkle.className = "morph-particle";
+      sparkle.innerHTML = `<svg viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="${SPARKLE_PATH}" /></svg>`;
+      sparkle.style.left = cx + "px";
+      sparkle.style.top = cy + "px";
+
+      const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.5;
+      const distance = 40 + Math.random() * 60;
+      const tx = Math.cos(angle) * distance;
+      const ty = Math.sin(angle) * distance;
+
+      sparkle.style.setProperty("--tx", tx + "px");
+      sparkle.style.setProperty("--ty", ty + "px");
+
+      document.body.appendChild(sparkle);
+      sparkle.addEventListener("animationend", () => sparkle.remove());
+    }
+  }
+
+  export default {
+    mounted() {
+      // Warm up audio on first interaction
+      document.addEventListener("click", warmUpAudio, { once: true });
+      document.addEventListener("touchstart", warmUpAudio, { once: true });
+
+      const sentinel = document.getElementById("nav-sentinel");
+      if (!sentinel) return;
+
+      let merged = false;
+      let initialLoad = true;
+
+      // Suppress animation on initial mount if already scrolled
+      document.body.classList.add("nav-morph-no-transition");
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.body.classList.remove("nav-morph-no-transition");
+          initialLoad = false;
+        });
+      });
+
+      this.observer = new IntersectionObserver((entries) => {
+        const entry = entries[0];
+        // sentinel exiting viewport means nav has reached the top
+        const shouldMerge = !entry.isIntersecting;
+
+        if (shouldMerge === merged) return;
+        merged = shouldMerge;
+
+        if (shouldMerge) {
+          document.body.classList.remove("nav-unmerging");
+          document.body.classList.add("nav-merged");
+
+          if (!initialLoad && getTheme() === "fantastic") {
+            spawnParticleBurst();
+            playMorphSound();
+          }
+        } else {
+          document.body.classList.add("nav-unmerging");
+          document.body.classList.remove("nav-merged");
+
+          if (!initialLoad && getTheme() === "fantastic") {
+            playUnmorphSound();
+          }
+
+          // Remove unmerging class after transition completes
+          setTimeout(() => {
+            document.body.classList.remove("nav-unmerging");
+          }, 350);
+        }
+      }, { threshold: 0 });
+
+      this.observer.observe(sentinel);
+    },
+
+    destroyed() {
+      if (this.observer) {
+        this.observer.disconnect();
+      }
+      document.body.classList.remove("nav-merged", "nav-unmerging", "nav-morph-no-transition");
+    }
+  }
+</script>

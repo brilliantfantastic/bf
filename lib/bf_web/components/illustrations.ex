@@ -161,7 +161,11 @@ defmodule BrilliantFantasticWeb.Components.Illustrations do
       <path d="M50 40 Q50 22 48 18" />
       <circle cx="48" cy="42" r="2.5" fill="currentColor" stroke="none" />
       <circle cx="53" cy="43" r="2.5" fill="currentColor" stroke="none" />
-      <path d="M75 15 Q82 20 82 30 Q82 40 75 45 Q80 38 80 30 Q80 22 75 15" fill="currentColor" stroke="none" />
+      <path
+        d="M75 15 Q82 20 82 30 Q82 40 75 45 Q80 38 80 30 Q80 22 75 15"
+        fill="currentColor"
+        stroke="none"
+      />
       <circle cx="20" cy="15" r="1" fill="currentColor" stroke="none" />
       <circle cx="30" cy="10" r="0.7" fill="currentColor" stroke="none" />
       <path d="M25 90 Q50 86 75 90" />
