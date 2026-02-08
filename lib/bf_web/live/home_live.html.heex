@@ -146,6 +146,7 @@
       if (!sentinel) return;
 
       let merged = false;
+      let logoVisible = false;
       let initialLoad = true;
 
       // Suppress animation on initial mount if already scrolled
@@ -157,10 +158,22 @@
         });
       });
 
+      // Logo observer: triggers earlier (150px before sentinel exits)
+      this.logoObserver = new IntersectionObserver((entries) => {
+        const shouldShow = !entries[0].isIntersecting;
+        if (shouldShow === logoVisible) return;
+        logoVisible = shouldShow;
+
+        if (shouldShow) {
+          document.body.classList.add("nav-logo-visible");
+        } else {
+          document.body.classList.remove("nav-logo-visible");
+        }
+      }, { rootMargin: "-150px 0px 0px 0px", threshold: 0 });
+
+      // Toggle morph observer: triggers when sentinel fully exits
       this.observer = new IntersectionObserver((entries) => {
-        const entry = entries[0];
-        // sentinel exiting viewport means nav has reached the top
-        const shouldMerge = !entry.isIntersecting;
+        const shouldMerge = !entries[0].isIntersecting;
 
         if (shouldMerge === merged) return;
         merged = shouldMerge;
@@ -188,14 +201,14 @@
         }
       }, { threshold: 0 });
 
+      this.logoObserver.observe(sentinel);
       this.observer.observe(sentinel);
     },
 
     destroyed() {
-      if (this.observer) {
-        this.observer.disconnect();
-      }
-      document.body.classList.remove("nav-merged", "nav-unmerging", "nav-morph-no-transition");
+      if (this.logoObserver) this.logoObserver.disconnect();
+      if (this.observer) this.observer.disconnect();
+      document.body.classList.remove("nav-merged", "nav-unmerging", "nav-logo-visible", "nav-morph-no-transition");
     }
   }
 </script>

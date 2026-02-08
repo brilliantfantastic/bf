@@ -166,7 +166,7 @@ defmodule BrilliantFantasticWeb.Layouts do
     <nav class="sticky top-0 z-20 bg-base-200/90 backdrop-blur border-b border-base-300">
       <%!-- Desktop: horizontal links spread across full width --%>
       <div class="hidden lg:flex items-center justify-between px-6 lg:px-16 py-3">
-        <a href="/" class="font-display text-xl">Brilliant Fantastic</a>
+        <a href="/" class="nav-logo font-display text-xl">Brilliant Fantastic</a>
         <a
           href="/blog"
           class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors"
@@ -197,7 +197,7 @@ defmodule BrilliantFantasticWeb.Layouts do
       <%!-- Mobile: hamburger + vertical menu --%>
       <div class="lg:hidden">
         <div class="flex items-center justify-between px-6 py-3">
-          <a href="/" class="font-display text-xl">Brilliant Fantastic</a>
+          <a href="/" class="nav-logo font-display text-xl">Brilliant Fantastic</a>
           <div class="flex items-center gap-3">
             <div id="theme-toggle-nav-mobile"><.theme_toggle /></div>
             <button phx-click={JS.toggle(to: "#mobile-menu")} aria-label="Toggle menu">
