@@ -14,20 +14,305 @@
     </script>
     <script>
       (() => {
+        const FANTASTIC_PALETTES = [
+          { name: "Obsidian Carnival", colorScheme: "dark", colors: {
+            "--color-base-100": "oklch(18% 0.03 340)", "--color-base-200": "oklch(14% 0.04 335)",
+            "--color-base-300": "oklch(10% 0.03 330)", "--color-base-content": "oklch(92% 0.03 50)",
+            "--color-primary": "oklch(70% 0.28 350)", "--color-primary-content": "oklch(98% 0.01 350)",
+            "--color-secondary": "oklch(82% 0.22 90)", "--color-secondary-content": "oklch(20% 0.06 90)",
+            "--color-accent": "oklch(68% 0.28 310)", "--color-accent-content": "oklch(96% 0.02 310)",
+            "--color-neutral": "oklch(22% 0.02 340)", "--color-neutral-content": "oklch(88% 0.04 50)",
+            "--color-sparkle": "oklch(85% 0.22 60)",
+          }},
+          { name: "Midnight Lagoon", colorScheme: "dark", colors: {
+            "--color-base-100": "oklch(22% 0.08 220)", "--color-base-200": "oklch(18% 0.07 215)",
+            "--color-base-300": "oklch(14% 0.06 210)", "--color-base-content": "oklch(92% 0.04 190)",
+            "--color-primary": "oklch(75% 0.18 195)", "--color-primary-content": "oklch(15% 0.06 195)",
+            "--color-secondary": "oklch(65% 0.15 170)", "--color-secondary-content": "oklch(95% 0.03 170)",
+            "--color-accent": "oklch(70% 0.22 260)", "--color-accent-content": "oklch(95% 0.02 260)",
+            "--color-neutral": "oklch(18% 0.05 220)", "--color-neutral-content": "oklch(85% 0.06 190)",
+            "--color-sparkle": "oklch(80% 0.16 195)",
+          }},
+          { name: "Witch's Brew", colorScheme: "dark", colors: {
+            "--color-base-100": "oklch(20% 0.08 300)", "--color-base-200": "oklch(16% 0.07 295)",
+            "--color-base-300": "oklch(12% 0.06 290)", "--color-base-content": "oklch(88% 0.06 100)",
+            "--color-primary": "oklch(72% 0.24 135)", "--color-primary-content": "oklch(15% 0.08 135)",
+            "--color-secondary": "oklch(68% 0.18 75)", "--color-secondary-content": "oklch(18% 0.06 75)",
+            "--color-accent": "oklch(60% 0.26 310)", "--color-accent-content": "oklch(94% 0.03 310)",
+            "--color-neutral": "oklch(16% 0.06 300)", "--color-neutral-content": "oklch(78% 0.10 100)",
+            "--color-sparkle": "oklch(80% 0.18 100)",
+          }},
+          { name: "Neon Underglow", colorScheme: "dark", colors: {
+            "--color-base-100": "oklch(15% 0.01 260)", "--color-base-200": "oklch(12% 0.01 255)",
+            "--color-base-300": "oklch(9% 0.01 250)", "--color-base-content": "oklch(92% 0.02 0)",
+            "--color-primary": "oklch(82% 0.26 145)", "--color-primary-content": "oklch(12% 0.06 145)",
+            "--color-secondary": "oklch(72% 0.30 340)", "--color-secondary-content": "oklch(12% 0.06 340)",
+            "--color-accent": "oklch(85% 0.22 100)", "--color-accent-content": "oklch(12% 0.06 100)",
+            "--color-neutral": "oklch(12% 0.01 0)", "--color-neutral-content": "oklch(82% 0.26 145)",
+            "--color-sparkle": "oklch(85% 0.24 145)",
+          }},
+          { name: "Volcanic Glass", colorScheme: "dark", colors: {
+            "--color-base-100": "oklch(18% 0.04 30)", "--color-base-200": "oklch(14% 0.03 25)",
+            "--color-base-300": "oklch(10% 0.02 20)", "--color-base-content": "oklch(90% 0.06 55)",
+            "--color-primary": "oklch(68% 0.24 40)", "--color-primary-content": "oklch(98% 0.02 40)",
+            "--color-secondary": "oklch(58% 0.22 20)", "--color-secondary-content": "oklch(95% 0.02 20)",
+            "--color-accent": "oklch(75% 0.20 65)", "--color-accent-content": "oklch(18% 0.06 65)",
+            "--color-neutral": "oklch(15% 0.03 30)", "--color-neutral-content": "oklch(85% 0.08 55)",
+            "--color-sparkle": "oklch(80% 0.22 45)",
+          }},
+          { name: "Phantom Orchid", colorScheme: "dark", colors: {
+            "--color-base-100": "oklch(20% 0.06 270)", "--color-base-200": "oklch(16% 0.05 265)",
+            "--color-base-300": "oklch(12% 0.04 260)", "--color-base-content": "oklch(88% 0.06 290)",
+            "--color-primary": "oklch(72% 0.14 290)", "--color-primary-content": "oklch(18% 0.06 290)",
+            "--color-secondary": "oklch(65% 0.10 310)", "--color-secondary-content": "oklch(95% 0.02 310)",
+            "--color-accent": "oklch(58% 0.18 275)", "--color-accent-content": "oklch(94% 0.03 275)",
+            "--color-neutral": "oklch(16% 0.04 270)", "--color-neutral-content": "oklch(82% 0.08 290)",
+            "--color-sparkle": "oklch(78% 0.12 290)",
+          }},
+          { name: "Abyssal Reef", colorScheme: "dark", colors: {
+            "--color-base-100": "oklch(18% 0.06 240)", "--color-base-200": "oklch(14% 0.05 235)",
+            "--color-base-300": "oklch(10% 0.04 230)", "--color-base-content": "oklch(90% 0.06 180)",
+            "--color-primary": "oklch(72% 0.20 180)", "--color-primary-content": "oklch(15% 0.06 180)",
+            "--color-secondary": "oklch(60% 0.16 200)", "--color-secondary-content": "oklch(95% 0.02 200)",
+            "--color-accent": "oklch(68% 0.22 160)", "--color-accent-content": "oklch(15% 0.06 160)",
+            "--color-neutral": "oklch(14% 0.04 240)", "--color-neutral-content": "oklch(80% 0.14 180)",
+            "--color-sparkle": "oklch(78% 0.20 175)",
+          }},
+          { name: "Smoky Quartz", colorScheme: "dark", colors: {
+            "--color-base-100": "oklch(25% 0.04 45)", "--color-base-200": "oklch(20% 0.03 40)",
+            "--color-base-300": "oklch(16% 0.03 35)", "--color-base-content": "oklch(88% 0.06 55)",
+            "--color-primary": "oklch(68% 0.14 25)", "--color-primary-content": "oklch(95% 0.03 25)",
+            "--color-secondary": "oklch(72% 0.12 65)", "--color-secondary-content": "oklch(22% 0.06 65)",
+            "--color-accent": "oklch(60% 0.16 10)", "--color-accent-content": "oklch(94% 0.02 10)",
+            "--color-neutral": "oklch(20% 0.03 45)", "--color-neutral-content": "oklch(82% 0.08 55)",
+            "--color-sparkle": "oklch(75% 0.14 50)",
+          }},
+          { name: "Bubblegum Daydream", colorScheme: "light", colors: {
+            "--color-base-100": "oklch(92% 0.08 350)", "--color-base-200": "oklch(88% 0.10 345)",
+            "--color-base-300": "oklch(84% 0.12 340)", "--color-base-content": "oklch(25% 0.06 290)",
+            "--color-primary": "oklch(65% 0.20 250)", "--color-primary-content": "oklch(96% 0.02 250)",
+            "--color-secondary": "oklch(78% 0.18 90)", "--color-secondary-content": "oklch(22% 0.06 90)",
+            "--color-accent": "oklch(70% 0.24 330)", "--color-accent-content": "oklch(96% 0.02 330)",
+            "--color-neutral": "oklch(30% 0.08 290)", "--color-neutral-content": "oklch(92% 0.06 350)",
+            "--color-sparkle": "oklch(88% 0.16 80)",
+          }},
+          { name: "Lemon Fizz", colorScheme: "light", colors: {
+            "--color-base-100": "oklch(95% 0.10 100)", "--color-base-200": "oklch(92% 0.12 95)",
+            "--color-base-300": "oklch(88% 0.14 90)", "--color-base-content": "oklch(22% 0.06 130)",
+            "--color-primary": "oklch(72% 0.24 140)", "--color-primary-content": "oklch(18% 0.08 140)",
+            "--color-secondary": "oklch(80% 0.20 100)", "--color-secondary-content": "oklch(22% 0.06 100)",
+            "--color-accent": "oklch(68% 0.26 150)", "--color-accent-content": "oklch(96% 0.02 150)",
+            "--color-neutral": "oklch(28% 0.06 130)", "--color-neutral-content": "oklch(90% 0.10 100)",
+            "--color-sparkle": "oklch(90% 0.18 95)",
+          }},
+          { name: "Peach Blossom", colorScheme: "light", colors: {
+            "--color-base-100": "oklch(90% 0.08 50)", "--color-base-200": "oklch(86% 0.10 45)",
+            "--color-base-300": "oklch(82% 0.12 40)", "--color-base-content": "oklch(25% 0.06 20)",
+            "--color-primary": "oklch(62% 0.20 10)", "--color-primary-content": "oklch(96% 0.02 10)",
+            "--color-secondary": "oklch(55% 0.14 350)", "--color-secondary-content": "oklch(96% 0.02 350)",
+            "--color-accent": "oklch(68% 0.18 30)", "--color-accent-content": "oklch(96% 0.02 30)",
+            "--color-neutral": "oklch(30% 0.06 20)", "--color-neutral-content": "oklch(88% 0.08 50)",
+            "--color-sparkle": "oklch(85% 0.10 40)",
+          }},
+          { name: "Honeydew Morning", colorScheme: "light", colors: {
+            "--color-base-100": "oklch(92% 0.08 155)", "--color-base-200": "oklch(88% 0.10 150)",
+            "--color-base-300": "oklch(84% 0.12 145)", "--color-base-content": "oklch(22% 0.06 160)",
+            "--color-primary": "oklch(68% 0.18 80)", "--color-primary-content": "oklch(20% 0.06 80)",
+            "--color-secondary": "oklch(62% 0.14 155)", "--color-secondary-content": "oklch(96% 0.02 155)",
+            "--color-accent": "oklch(72% 0.20 70)", "--color-accent-content": "oklch(20% 0.06 70)",
+            "--color-neutral": "oklch(28% 0.06 160)", "--color-neutral-content": "oklch(88% 0.08 155)",
+            "--color-sparkle": "oklch(85% 0.14 80)",
+          }},
+          { name: "Ceramic Glaze", colorScheme: "light", colors: {
+            "--color-base-100": "oklch(88% 0.04 70)", "--color-base-200": "oklch(84% 0.05 65)",
+            "--color-base-300": "oklch(78% 0.06 60)", "--color-base-content": "oklch(25% 0.06 40)",
+            "--color-primary": "oklch(55% 0.16 190)", "--color-primary-content": "oklch(94% 0.03 190)",
+            "--color-secondary": "oklch(60% 0.14 35)", "--color-secondary-content": "oklch(96% 0.02 35)",
+            "--color-accent": "oklch(50% 0.14 195)", "--color-accent-content": "oklch(94% 0.02 195)",
+            "--color-neutral": "oklch(30% 0.06 40)", "--color-neutral-content": "oklch(86% 0.04 70)",
+            "--color-sparkle": "oklch(80% 0.10 70)",
+          }},
+          { name: "Lavender Haze", colorScheme: "light", colors: {
+            "--color-base-100": "oklch(92% 0.06 290)", "--color-base-200": "oklch(88% 0.08 285)",
+            "--color-base-300": "oklch(84% 0.10 280)", "--color-base-content": "oklch(25% 0.10 290)",
+            "--color-primary": "oklch(58% 0.20 280)", "--color-primary-content": "oklch(96% 0.02 280)",
+            "--color-secondary": "oklch(62% 0.18 320)", "--color-secondary-content": "oklch(96% 0.02 320)",
+            "--color-accent": "oklch(55% 0.22 270)", "--color-accent-content": "oklch(96% 0.02 270)",
+            "--color-neutral": "oklch(30% 0.10 290)", "--color-neutral-content": "oklch(90% 0.06 290)",
+            "--color-sparkle": "oklch(82% 0.12 285)",
+          }},
+          { name: "Cotton Candy", colorScheme: "light", colors: {
+            "--color-base-100": "oklch(94% 0.06 340)", "--color-base-200": "oklch(90% 0.08 220)",
+            "--color-base-300": "oklch(86% 0.10 340)", "--color-base-content": "oklch(25% 0.08 300)",
+            "--color-primary": "oklch(65% 0.22 240)", "--color-primary-content": "oklch(96% 0.02 240)",
+            "--color-secondary": "oklch(72% 0.20 340)", "--color-secondary-content": "oklch(22% 0.06 340)",
+            "--color-accent": "oklch(68% 0.18 260)", "--color-accent-content": "oklch(96% 0.02 260)",
+            "--color-neutral": "oklch(30% 0.08 300)", "--color-neutral-content": "oklch(90% 0.06 340)",
+            "--color-sparkle": "oklch(88% 0.14 300)",
+          }},
+          { name: "Campfire Stories", colorScheme: "light", colors: {
+            "--color-base-100": "oklch(85% 0.06 70)", "--color-base-200": "oklch(78% 0.10 55)",
+            "--color-base-300": "oklch(72% 0.12 45)", "--color-base-content": "oklch(22% 0.06 30)",
+            "--color-primary": "oklch(58% 0.22 30)", "--color-primary-content": "oklch(96% 0.02 30)",
+            "--color-secondary": "oklch(65% 0.20 55)", "--color-secondary-content": "oklch(18% 0.06 55)",
+            "--color-accent": "oklch(52% 0.20 15)", "--color-accent-content": "oklch(96% 0.02 15)",
+            "--color-neutral": "oklch(25% 0.06 30)", "--color-neutral-content": "oklch(85% 0.06 70)",
+            "--color-sparkle": "oklch(78% 0.18 55)",
+          }},
+          { name: "Terracotta Garden", colorScheme: "light", colors: {
+            "--color-base-100": "oklch(82% 0.08 60)", "--color-base-200": "oklch(76% 0.10 50)",
+            "--color-base-300": "oklch(70% 0.12 45)", "--color-base-content": "oklch(22% 0.04 45)",
+            "--color-primary": "oklch(55% 0.14 155)", "--color-primary-content": "oklch(94% 0.03 155)",
+            "--color-secondary": "oklch(62% 0.12 35)", "--color-secondary-content": "oklch(96% 0.02 35)",
+            "--color-accent": "oklch(50% 0.16 160)", "--color-accent-content": "oklch(94% 0.02 160)",
+            "--color-neutral": "oklch(28% 0.06 45)", "--color-neutral-content": "oklch(82% 0.08 60)",
+            "--color-sparkle": "oklch(75% 0.10 65)",
+          }},
+          { name: "Golden Hour", colorScheme: "light", colors: {
+            "--color-base-100": "oklch(86% 0.12 75)", "--color-base-200": "oklch(80% 0.14 65)",
+            "--color-base-300": "oklch(74% 0.16 55)", "--color-base-content": "oklch(22% 0.06 40)",
+            "--color-primary": "oklch(60% 0.24 35)", "--color-primary-content": "oklch(96% 0.02 35)",
+            "--color-secondary": "oklch(68% 0.22 50)", "--color-secondary-content": "oklch(20% 0.06 50)",
+            "--color-accent": "oklch(55% 0.24 15)", "--color-accent-content": "oklch(96% 0.02 15)",
+            "--color-neutral": "oklch(25% 0.06 40)", "--color-neutral-content": "oklch(85% 0.10 75)",
+            "--color-sparkle": "oklch(82% 0.20 65)",
+          }},
+          { name: "Arctic Aurora", colorScheme: "dark", colors: {
+            "--color-base-100": "oklch(22% 0.06 210)", "--color-base-200": "oklch(18% 0.05 205)",
+            "--color-base-300": "oklch(14% 0.04 200)", "--color-base-content": "oklch(92% 0.04 180)",
+            "--color-primary": "oklch(72% 0.22 160)", "--color-primary-content": "oklch(15% 0.06 160)",
+            "--color-secondary": "oklch(68% 0.26 340)", "--color-secondary-content": "oklch(15% 0.06 340)",
+            "--color-accent": "oklch(78% 0.20 190)", "--color-accent-content": "oklch(15% 0.06 190)",
+            "--color-neutral": "oklch(16% 0.04 210)", "--color-neutral-content": "oklch(85% 0.08 180)",
+            "--color-sparkle": "oklch(82% 0.20 160)",
+          }},
+          { name: "Deep Space", colorScheme: "dark", colors: {
+            "--color-base-100": "oklch(14% 0.06 270)", "--color-base-200": "oklch(10% 0.05 265)",
+            "--color-base-300": "oklch(7% 0.04 260)", "--color-base-content": "oklch(94% 0.02 0)",
+            "--color-primary": "oklch(70% 0.22 290)", "--color-primary-content": "oklch(96% 0.02 290)",
+            "--color-secondary": "oklch(60% 0.16 210)", "--color-secondary-content": "oklch(96% 0.02 210)",
+            "--color-accent": "oklch(65% 0.24 310)", "--color-accent-content": "oklch(96% 0.02 310)",
+            "--color-neutral": "oklch(10% 0.04 270)", "--color-neutral-content": "oklch(88% 0.04 0)",
+            "--color-sparkle": "oklch(88% 0.14 290)",
+          }},
+          { name: "Rainy Tokyo", colorScheme: "dark", colors: {
+            "--color-base-100": "oklch(25% 0.02 240)", "--color-base-200": "oklch(20% 0.02 235)",
+            "--color-base-300": "oklch(16% 0.02 230)", "--color-base-content": "oklch(88% 0.02 0)",
+            "--color-primary": "oklch(75% 0.22 195)", "--color-primary-content": "oklch(15% 0.06 195)",
+            "--color-secondary": "oklch(70% 0.26 345)", "--color-secondary-content": "oklch(15% 0.06 345)",
+            "--color-accent": "oklch(80% 0.18 100)", "--color-accent-content": "oklch(15% 0.06 100)",
+            "--color-neutral": "oklch(18% 0.02 240)", "--color-neutral-content": "oklch(82% 0.04 0)",
+            "--color-sparkle": "oklch(80% 0.20 195)",
+          }},
+          { name: "Acid Trip", colorScheme: "dark", colors: {
+            "--color-base-100": "oklch(22% 0.14 300)", "--color-base-200": "oklch(18% 0.12 295)",
+            "--color-base-300": "oklch(14% 0.10 290)", "--color-base-content": "oklch(92% 0.04 100)",
+            "--color-primary": "oklch(82% 0.30 145)", "--color-primary-content": "oklch(12% 0.08 145)",
+            "--color-secondary": "oklch(75% 0.30 340)", "--color-secondary-content": "oklch(12% 0.06 340)",
+            "--color-accent": "oklch(88% 0.26 85)", "--color-accent-content": "oklch(12% 0.06 85)",
+            "--color-neutral": "oklch(16% 0.10 300)", "--color-neutral-content": "oklch(88% 0.26 85)",
+            "--color-sparkle": "oklch(90% 0.28 120)",
+          }},
+          { name: "Glacier Mint", colorScheme: "light", colors: {
+            "--color-base-100": "oklch(95% 0.04 190)", "--color-base-200": "oklch(91% 0.06 185)",
+            "--color-base-300": "oklch(87% 0.08 180)", "--color-base-content": "oklch(22% 0.06 210)",
+            "--color-primary": "oklch(55% 0.14 210)", "--color-primary-content": "oklch(96% 0.02 210)",
+            "--color-secondary": "oklch(65% 0.12 175)", "--color-secondary-content": "oklch(20% 0.06 175)",
+            "--color-accent": "oklch(50% 0.16 220)", "--color-accent-content": "oklch(96% 0.02 220)",
+            "--color-neutral": "oklch(30% 0.06 210)", "--color-neutral-content": "oklch(92% 0.04 190)",
+            "--color-sparkle": "oklch(82% 0.10 185)",
+          }},
+          { name: "Cinnamon Toast", colorScheme: "light", colors: {
+            "--color-base-100": "oklch(82% 0.06 65)", "--color-base-200": "oklch(74% 0.08 55)",
+            "--color-base-300": "oklch(66% 0.10 48)", "--color-base-content": "oklch(22% 0.06 40)",
+            "--color-primary": "oklch(48% 0.14 35)", "--color-primary-content": "oklch(92% 0.04 65)",
+            "--color-secondary": "oklch(60% 0.10 55)", "--color-secondary-content": "oklch(96% 0.02 55)",
+            "--color-accent": "oklch(55% 0.16 25)", "--color-accent-content": "oklch(94% 0.02 25)",
+            "--color-neutral": "oklch(28% 0.06 40)", "--color-neutral-content": "oklch(82% 0.06 65)",
+            "--color-sparkle": "oklch(75% 0.12 60)",
+          }},
+          { name: "Cloud Nine", colorScheme: "light", colors: {
+            "--color-base-100": "oklch(96% 0.02 240)", "--color-base-200": "oklch(93% 0.04 235)",
+            "--color-base-300": "oklch(90% 0.06 230)", "--color-base-content": "oklch(25% 0.06 240)",
+            "--color-primary": "oklch(60% 0.16 240)", "--color-primary-content": "oklch(96% 0.02 240)",
+            "--color-secondary": "oklch(55% 0.12 260)", "--color-secondary-content": "oklch(96% 0.02 260)",
+            "--color-accent": "oklch(65% 0.14 220)", "--color-accent-content": "oklch(96% 0.02 220)",
+            "--color-neutral": "oklch(32% 0.06 240)", "--color-neutral-content": "oklch(94% 0.02 240)",
+            "--color-sparkle": "oklch(85% 0.10 235)",
+          }},
+        ];
+
+        const COLOR_PROPS = [
+          "--color-base-100", "--color-base-200", "--color-base-300",
+          "--color-base-content", "--color-primary", "--color-primary-content",
+          "--color-secondary", "--color-secondary-content", "--color-accent",
+          "--color-accent-content", "--color-neutral", "--color-neutral-content",
+          "--color-sparkle"
+        ];
+
+        const SECTION_IDS = [
+          "section-hero", "section-nav", "section-blog",
+          "section-jamie", "section-contact"
+        ];
+
+        const pickRandom = (arr, n) => {
+          const copy = [...arr];
+          const result = [];
+          for (let i = 0; i < n && copy.length; i++) {
+            const idx = Math.floor(Math.random() * copy.length);
+            result.push(copy.splice(idx, 1)[0]);
+          }
+          return result;
+        };
+
+        const applyRandomPalettes = () => {
+          const picks = pickRandom(FANTASTIC_PALETTES, SECTION_IDS.length + 1);
+          const rootPalette = picks[0];
+          const el = document.documentElement;
+          for (const [k, v] of Object.entries(rootPalette.colors)) el.style.setProperty(k, v);
+          if (picks.some(p => p.colorScheme === "dark")) el.style.colorScheme = "dark";
+
+          let css = "";
+          SECTION_IDS.forEach((id, i) => {
+            const palette = picks[i + 1] || picks[0];
+            const props = Object.entries(palette.colors)
+              .map(([k, v]) => `${k}: ${v}`)
+              .join("; ");
+            const bg = palette.colors["--color-base-100"].replace(")", " / 0.55)");
+            css += `#${id} { ${props}; background-color: ${bg}; color: var(--color-base-content); }\n`;
+          });
+
+          const styleEl = document.createElement("style");
+          styleEl.id = "fantastic-palette-overrides";
+          styleEl.textContent = css;
+          document.head.appendChild(styleEl);
+        };
+
+        const clearPalette = () => {
+          const el = document.documentElement;
+          for (const prop of COLOR_PROPS) el.style.removeProperty(prop);
+          el.style.removeProperty("color-scheme");
+          const existing = document.getElementById("fantastic-palette-overrides");
+          if (existing) existing.remove();
+        };
+
         const setTheme = (theme) => {
           if (theme === "system") {
             localStorage.removeItem("phx:theme");
             document.documentElement.removeAttribute("data-theme");
+            clearPalette();
           } else {
             localStorage.setItem("phx:theme", theme);
             document.documentElement.setAttribute("data-theme", theme);
+            if (theme === "fantastic") applyRandomPalettes();
+            else clearPalette();
           }
         };
+
         if (!document.documentElement.hasAttribute("data-theme")) {
           setTheme(localStorage.getItem("phx:theme") || "system");
         }
         window.addEventListener("storage", (e) => e.key === "phx:theme" && setTheme(e.newValue || "system"));
-
         window.addEventListener("phx:set-theme", (e) => setTheme(e.target.dataset.phxTheme));
       })();
     </script>

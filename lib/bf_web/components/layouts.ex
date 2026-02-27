@@ -163,7 +163,7 @@ defmodule BrilliantFantasticWeb.Layouts do
   """
   def nav_menu(assigns) do
     ~H"""
-    <nav class="sticky top-0 z-20 bg-base-200/90 backdrop-blur border-b border-base-300">
+    <nav id="section-nav" class="sticky top-0 z-20 bg-base-200/90 backdrop-blur border-b border-base-300">
       <%!-- Desktop: horizontal links spread across full width --%>
       <div class="hidden lg:flex items-center justify-between px-6 lg:px-16 py-3">
         <a href="/" class="nav-logo font-display text-xl">Brilliant Fantastic</a>
