@@ -124,19 +124,11 @@ defmodule BrilliantFantasticWeb.Layouts do
   """
   def theme_toggle(assigns) do
     ~H"""
-    <div class="card relative flex flex-row items-center border-2 border-base-300 bg-base-300 rounded-full">
-      <div class="absolute w-1/3 h-full rounded-full border-1 border-base-200 bg-base-100 brightness-200 left-0 [[data-theme=brilliant]_&]:left-1/3 [[data-theme=fantastic]_&]:left-2/3 transition-[left]" />
+    <div class="theme-toggle card relative flex flex-row items-center border-2 border-base-300 bg-base-300 rounded-full">
+      <div class="theme-toggle-indicator absolute w-1/2 h-full rounded-full border-1 border-base-200 bg-base-100 brightness-200 left-0 [[data-theme=fantastic]_&]:left-1/2 transition-[left]" />
 
       <button
-        class="flex p-2 cursor-pointer w-1/3"
-        phx-click={JS.dispatch("phx:set-theme")}
-        data-phx-theme="system"
-      >
-        <.icon name="hero-swatch-solid" class="size-4 opacity-75 hover:opacity-100" />
-      </button>
-
-      <button
-        class="flex p-2 cursor-pointer w-1/3"
+        class="flex p-2 cursor-pointer w-1/2"
         phx-click={JS.dispatch("phx:set-theme")}
         data-phx-theme="brilliant"
       >
@@ -144,7 +136,7 @@ defmodule BrilliantFantasticWeb.Layouts do
       </button>
 
       <button
-        class="flex p-2 cursor-pointer w-1/3"
+        class="flex p-2 cursor-pointer w-1/2"
         phx-click={JS.dispatch("phx:set-theme")}
         data-phx-theme="fantastic"
       >

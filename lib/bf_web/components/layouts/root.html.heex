@@ -296,23 +296,21 @@
           if (existing) existing.remove();
         };
 
+        window.__themeDirection = null;
+
         const setTheme = (theme) => {
-          if (theme === "system") {
-            localStorage.removeItem("phx:theme");
-            document.documentElement.removeAttribute("data-theme");
-            clearPalette();
-          } else {
-            localStorage.setItem("phx:theme", theme);
-            document.documentElement.setAttribute("data-theme", theme);
-            if (theme === "fantastic") applyRandomPalettes();
-            else clearPalette();
-          }
+          const prev = document.documentElement.getAttribute("data-theme");
+          window.__themeDirection = (theme === "fantastic") ? "to-fantastic" : "to-brilliant";
+          localStorage.setItem("phx:theme", theme);
+          document.documentElement.setAttribute("data-theme", theme);
+          if (theme === "fantastic") applyRandomPalettes();
+          else clearPalette();
         };
 
         if (!document.documentElement.hasAttribute("data-theme")) {
-          setTheme(localStorage.getItem("phx:theme") || "system");
+          setTheme(localStorage.getItem("phx:theme") || "brilliant");
         }
-        window.addEventListener("storage", (e) => e.key === "phx:theme" && setTheme(e.newValue || "system"));
+        window.addEventListener("storage", (e) => e.key === "phx:theme" && setTheme(e.newValue || "brilliant"));
         window.addEventListener("phx:set-theme", (e) => setTheme(e.target.dataset.phxTheme));
       })();
     </script>
