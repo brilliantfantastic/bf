@@ -2,7 +2,9 @@ defmodule BrilliantFantasticWeb.ErrorJSONTest do
   use BrilliantFantasticWeb.ConnCase, async: true
 
   test "renders 404" do
-    assert BrilliantFantasticWeb.ErrorJSON.render("404.json", %{}) == %{errors: %{detail: "Not Found"}}
+    assert BrilliantFantasticWeb.ErrorJSON.render("404.json", %{}) == %{
+             errors: %{detail: "Not Found"}
+           }
   end
 
   test "renders 500" do

@@ -17,7 +17,7 @@ defmodule BrilliantFantasticWeb.Router do
   scope "/", BrilliantFantasticWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", HomeLive
     get "/blog", BlogController, :index
     get "/projects", ProjectController, :index
     get "/for_hire", ForHireController, :index

@@ -177,4 +177,120 @@
 .robot-animate-wander { animation: robot-float-wander 15s ease-in-out infinite; }
 .robot-animate-drift { animation: robot-float-drift 25s ease-in-out infinite; }
 
+/* Nav logo: collapsed initially, appears before toggle morph */
+.nav-logo {
+  opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: opacity 300ms ease, max-width 350ms ease;
+}
+.nav-logo-visible .nav-logo {
+  opacity: 1;
+  max-width: 250px;
+}
+
+/* Fantastic theme: playful logo appearance */
+@keyframes fantastic-logo-appear {
+  0% { opacity: 0; transform: translateY(8px) scale(0.8) rotate(-3deg); }
+  50% { opacity: 1; transform: translateY(-4px) scale(1.05) rotate(1deg); }
+  70% { transform: translateY(2px) scale(0.98) rotate(-0.5deg); }
+  100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+}
+
+[data-theme="fantastic"] .nav-logo {
+  transition: opacity 300ms ease, max-width 450ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+[data-theme="fantastic"] .nav-logo-visible .nav-logo {
+  animation: fantastic-logo-appear 600ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Floating toggle: fixed at top-right, fades out on merge */
+#theme-toggle-float {
+  position: fixed;
+  top: 1rem;
+  right: 1.5rem;
+  z-index: 30;
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+.nav-merged #theme-toggle-float {
+  opacity: 0;
+  transform: scale(0.75) translateY(8px);
+  pointer-events: none;
+}
+
+/* Nav inline toggle: collapsed to zero width initially, expands on merge */
+#theme-toggle-nav,
+#theme-toggle-nav-mobile {
+  opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+  transform: scale(0.75);
+  pointer-events: none;
+  transition: opacity 300ms ease, transform 300ms ease, max-width 350ms ease;
+}
+.nav-merged #theme-toggle-nav,
+.nav-merged #theme-toggle-nav-mobile {
+  opacity: 1;
+  max-width: 150px;
+  overflow: visible;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* Fantastic theme: bouncy spring for toggle appearance + width expansion */
+[data-theme="fantastic"] #theme-toggle-nav,
+[data-theme="fantastic"] #theme-toggle-nav-mobile {
+  transition: opacity 300ms ease, transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1), max-width 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes fantastic-toggle-appear {
+  0% { opacity: 0; transform: scale(0.5) rotate(-10deg); }
+  60% { opacity: 1; transform: scale(1.15) rotate(3deg); }
+  80% { transform: scale(0.95) rotate(-1deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+[data-theme="fantastic"] .nav-merged #theme-toggle-nav,
+[data-theme="fantastic"] .nav-merged #theme-toggle-nav-mobile {
+  animation: fantastic-toggle-appear 500ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Morph ring effect for fantastic theme */
+@keyframes morph-ring-expand {
+  0% { transform: scale(0.5); opacity: 0.6; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* Particle burst sparkles */
+.morph-particle {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+  z-index: 50;
+  color: var(--color-sparkle, oklch(80% 0.15 80));
+  animation: morph-particle-burst 500ms ease-out forwards;
+}
+
+@keyframes morph-particle-burst {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(0.3);
+  }
+}
+
+/* Suppress all morph transitions on initial load */
+.nav-morph-no-transition .nav-logo,
+.nav-morph-no-transition #theme-toggle-float,
+.nav-morph-no-transition #theme-toggle-nav,
+.nav-morph-no-transition #theme-toggle-nav-mobile {
+  transition: none !important;
+  animation: none !important;
+}
+
 /* This file is for your main application CSS */

@@ -163,36 +163,60 @@ defmodule BrilliantFantasticWeb.Layouts do
   """
   def nav_menu(assigns) do
     ~H"""
-    <nav class="fixed top-0 left-0 right-0 z-20 lg:sticky bg-base-200/90 backdrop-blur border-b border-base-300">
+    <nav id="section-nav" class="sticky top-0 z-20 bg-base-200/90 backdrop-blur border-b border-base-300">
       <%!-- Desktop: horizontal links spread across full width --%>
       <div class="hidden lg:flex items-center justify-between px-6 lg:px-16 py-3">
-        <a href="/" class="font-display text-xl">Brilliant Fantastic</a>
-        <a href="/blog" class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors">Blog</a>
-        <a href="/projects" class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors">Projects</a>
-        <a href="/for_hire" class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors">For Hire</a>
-        <a href="/contact" class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors">Contact</a>
+        <a href="/" class="nav-logo font-display text-xl">Brilliant Fantastic</a>
+        <a
+          href="/blog"
+          class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors"
+        >
+          Blog
+        </a>
+        <a
+          href="/projects"
+          class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors"
+        >
+          Projects
+        </a>
+        <a
+          href="/for_hire"
+          class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors"
+        >
+          For Hire
+        </a>
+        <a
+          href="/contact"
+          class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors"
+        >
+          Contact
+        </a>
+        <div id="theme-toggle-nav"><.theme_toggle /></div>
       </div>
 
       <%!-- Mobile: hamburger + vertical menu --%>
       <div class="lg:hidden">
         <div class="flex items-center justify-between px-6 py-3">
-          <a href="/" class="font-display text-xl">Brilliant Fantastic</a>
-          <button phx-click={JS.toggle(to: "#mobile-menu")} aria-label="Toggle menu">
-            <.icon name="hero-bars-3" class="size-6" />
-          </button>
+          <a href="/" class="nav-logo font-display text-xl">Brilliant Fantastic</a>
+          <div class="flex items-center gap-3">
+            <div id="theme-toggle-nav-mobile"><.theme_toggle /></div>
+            <button phx-click={JS.toggle(to: "#mobile-menu")} aria-label="Toggle menu">
+              <.icon name="hero-bars-3" class="size-6" />
+            </button>
+          </div>
         </div>
 
-        <ul id="mobile-menu" class="hidden menu menu-vertical bg-base-200/90 border-t border-base-300 px-6 pb-4">
+        <ul
+          id="mobile-menu"
+          class="hidden menu menu-vertical bg-base-200/90 border-t border-base-300 px-6 pb-4"
+        >
           <li><a href="/blog" class="font-display text-lg">Blog</a></li>
           <li><a href="/projects" class="font-display text-lg">Projects</a></li>
           <li><a href="/for_hire" class="font-display text-lg">For Hire</a></li>
           <li><a href="/contact" class="font-display text-lg">Contact</a></li>
-          <li class="mt-2"><.theme_toggle /></li>
         </ul>
       </div>
     </nav>
-    <%!-- Spacer to offset fixed mobile nav --%>
-    <div class="h-12 lg:hidden" aria-hidden="true"></div>
     """
   end
 
@@ -243,7 +267,13 @@ defmodule BrilliantFantasticWeb.Layouts do
 
   defp sparkle(assigns) do
     ~H"""
-    <svg class={@class} style={@style} viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      class={@class}
+      style={@style}
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path d="M10 0 L12 8 L20 10 L12 12 L10 20 L8 12 L0 10 L8 8 Z" />
     </svg>
     """
@@ -261,21 +291,66 @@ defmodule BrilliantFantasticWeb.Layouts do
       class="hidden fantastic:block fixed inset-0 z-0 overflow-hidden pointer-events-none"
       aria-hidden="true"
     >
-      <Illustrations.sad_cactus class="absolute w-10 opacity-30 robot-animate-wobble" style="top: 5%; left: 8%;" />
-      <Illustrations.ufo_beaming_cat class="absolute w-12 opacity-30 robot-animate-zigzag" style="top: 20%; left: 72%;" />
-      <Illustrations.skull_flower class="absolute w-8 opacity-30 robot-animate-swoop" style="top: 55%; left: 4%;" />
-      <Illustrations.cool_ghost class="absolute w-10 opacity-30 robot-animate-wander" style="top: 68%; left: 58%;" />
-      <Illustrations.palm_and_moon class="absolute w-10 opacity-30 robot-animate-drift" style="top: 12%; left: 38%;" />
-      <Illustrations.alien_head class="absolute w-8 opacity-30 robot-animate-wobble" style="top: 30%; left: 15%;" />
-      <Illustrations.snake_and_dagger class="absolute w-8 opacity-30 robot-animate-zigzag" style="top: 45%; left: 85%;" />
-      <Illustrations.cute_reaper class="absolute w-10 opacity-30 robot-animate-swoop" style="top: 78%; left: 22%;" />
-      <Illustrations.cosmic_eye class="absolute w-12 opacity-30 robot-animate-wander" style="top: 38%; left: 48%;" />
-      <Illustrations.melting_face class="absolute w-8 opacity-30 robot-animate-drift" style="top: 62%; left: 35%;" />
-      <Illustrations.floating_helmet class="absolute w-10 opacity-30 robot-animate-wobble" style="top: 85%; left: 70%;" />
-      <Illustrations.all_seeing_hand class="absolute w-8 opacity-30 robot-animate-swoop" style="top: 8%; left: 55%;" />
-      <Illustrations.broken_heart class="absolute w-8 opacity-30 robot-animate-wander" style="top: 48%; left: 18%;" />
-      <Illustrations.mushroom class="absolute w-10 opacity-30 robot-animate-drift" style="top: 88%; left: 45%;" />
-      <Illustrations.coffin_flower class="absolute w-6 opacity-30 robot-animate-zigzag" style="top: 25%; left: 50%;" />
+      <Illustrations.sad_cactus
+        class="absolute w-10 opacity-30 robot-animate-wobble"
+        style="top: 5%; left: 8%;"
+      />
+      <Illustrations.ufo_beaming_cat
+        class="absolute w-12 opacity-30 robot-animate-zigzag"
+        style="top: 20%; left: 72%;"
+      />
+      <Illustrations.skull_flower
+        class="absolute w-8 opacity-30 robot-animate-swoop"
+        style="top: 55%; left: 4%;"
+      />
+      <Illustrations.cool_ghost
+        class="absolute w-10 opacity-30 robot-animate-wander"
+        style="top: 68%; left: 58%;"
+      />
+      <Illustrations.palm_and_moon
+        class="absolute w-10 opacity-30 robot-animate-drift"
+        style="top: 12%; left: 38%;"
+      />
+      <Illustrations.alien_head
+        class="absolute w-8 opacity-30 robot-animate-wobble"
+        style="top: 30%; left: 15%;"
+      />
+      <Illustrations.snake_and_dagger
+        class="absolute w-8 opacity-30 robot-animate-zigzag"
+        style="top: 45%; left: 85%;"
+      />
+      <Illustrations.cute_reaper
+        class="absolute w-10 opacity-30 robot-animate-swoop"
+        style="top: 78%; left: 22%;"
+      />
+      <Illustrations.cosmic_eye
+        class="absolute w-12 opacity-30 robot-animate-wander"
+        style="top: 38%; left: 48%;"
+      />
+      <Illustrations.melting_face
+        class="absolute w-8 opacity-30 robot-animate-drift"
+        style="top: 62%; left: 35%;"
+      />
+      <Illustrations.floating_helmet
+        class="absolute w-10 opacity-30 robot-animate-wobble"
+        style="top: 85%; left: 70%;"
+      />
+      <Illustrations.all_seeing_hand
+        class="absolute w-8 opacity-30 robot-animate-swoop"
+        style="top: 8%; left: 55%;"
+      />
+      <Illustrations.broken_heart
+        class="absolute w-8 opacity-30 robot-animate-wander"
+        style="top: 48%; left: 18%;"
+      />
+      <Illustrations.mushroom
+        class="absolute w-10 opacity-30 robot-animate-drift"
+        style="top: 88%; left: 45%;"
+      />
+      <Illustrations.coffin_flower
+        class="absolute w-6 opacity-30 robot-animate-zigzag"
+        style="top: 25%; left: 50%;"
+      />
     </div>
     """
   end
