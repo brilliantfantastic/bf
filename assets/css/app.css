@@ -502,4 +502,63 @@
 [data-theme="fantastic"] .makeup .gu { color: #75715e; }
 [data-theme="fantastic"] .makeup .err { color: #960050; background-color: #1e0010; }
 
+/* ── Hero: Direction E — World-Building ─────────────────────────── */
+
+/* Architectural layer (brilliant mode) */
+.hero-world-architecture {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 600ms ease;
+}
+
+[data-theme="fantastic"] .hero-world-architecture {
+  opacity: 0;
+}
+
+/* Vertical construction lines */
+.hero-world-line-v {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--color-base-content);
+  opacity: 0.06;
+}
+
+/* Horizontal construction lines */
+.hero-world-line-h {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-base-content);
+  opacity: 0.06;
+}
+
+/* Geometric rectangles (architectural blocks) */
+.hero-world-rect {
+  position: absolute;
+  border: 1px solid var(--color-base-content);
+  opacity: 0.04;
+}
+
+/* Illustrations layer (fantastic mode) */
+.hero-world-illustrations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Perspective depth for scroll-through feel */
+#section-hero {
+  perspective: 800px;
+}
+
+.hero-world-illustrations > * {
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
 /* This file is for your main application CSS */

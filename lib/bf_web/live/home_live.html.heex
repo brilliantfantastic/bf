@@ -5,13 +5,53 @@
 <div class="flex flex-col min-h-dvh">
   <Layouts.flash_group flash={@flash} />
 
-  <section id="section-hero" class="flex-1 grid lg:grid-cols-2 items-center px-6 lg:px-16">
-    <div>
-      <h1 class="font-display text-7xl lg:text-9xl leading-none">
+  <section id="section-hero" class="relative overflow-hidden" style="min-height: 150vh;">
+    <%!-- Brilliant: architectural geometric shapes --%>
+    <div class="hero-world-architecture" aria-hidden="true">
+      <div class="hero-world-line hero-world-line-v" style="left: 15%;"></div>
+      <div class="hero-world-line hero-world-line-v" style="left: 50%;"></div>
+      <div class="hero-world-line hero-world-line-v" style="left: 85%;"></div>
+      <div class="hero-world-line hero-world-line-h" style="top: 30%;"></div>
+      <div class="hero-world-line hero-world-line-h" style="top: 60%;"></div>
+      <div class="hero-world-rect" style="top: 20%; left: 10%; width: 120px; height: 80px;"></div>
+      <div class="hero-world-rect" style="top: 50%; left: 60%; width: 160px; height: 100px;"></div>
+      <div class="hero-world-rect" style="top: 70%; left: 25%; width: 100px; height: 60px;"></div>
+    </div>
+
+    <%!-- Fantastic: large illustrations populate the space --%>
+    <div class="hero-world-illustrations hidden fantastic:block" aria-hidden="true">
+      <Illustrations.ufo_beaming_cat
+        class="absolute w-32 lg:w-48 opacity-60 robot-animate-wobble"
+        style="top: 8%; left: 5%;"
+      />
+      <Illustrations.cosmic_eye
+        class="absolute w-28 lg:w-40 opacity-50 robot-animate-drift"
+        style="top: 15%; right: 10%;"
+      />
+      <Illustrations.cool_ghost
+        class="absolute w-24 lg:w-36 opacity-55 robot-animate-zigzag"
+        style="top: 45%; left: 8%;"
+      />
+      <Illustrations.skull_flower
+        class="absolute w-20 lg:w-32 opacity-45 robot-animate-swoop"
+        style="top: 55%; right: 15%;"
+      />
+      <Illustrations.cute_reaper
+        class="absolute w-28 lg:w-40 opacity-50 robot-animate-wander"
+        style="top: 75%; left: 20%;"
+      />
+      <Illustrations.mushroom
+        class="absolute w-24 lg:w-36 opacity-55 robot-animate-drift"
+        style="top: 80%; right: 8%;"
+      />
+    </div>
+
+    <%!-- Title pinned in center of first viewport --%>
+    <div class="sticky top-0 h-dvh flex items-center justify-center z-10 px-6">
+      <h1 class="font-display text-7xl lg:text-9xl leading-none text-center">
         Brilliant Fantastic
       </h1>
     </div>
-    <div></div>
   </section>
 </div>
 
