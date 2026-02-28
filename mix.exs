@@ -65,7 +65,10 @@ defmodule BrilliantFantastic.MixProject do
       {:gettext, "~> 1.0"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.2.0"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.5"},
+      {:nimble_publisher, "~> 1.1", runtime: false},
+      {:makeup_elixir, "~> 0.16", runtime: false},
+      {:makeup_erlang, "~> 1.0", runtime: false}
     ]
   end
 

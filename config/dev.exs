@@ -63,7 +63,8 @@ config :bf, BrilliantFantasticWeb.Endpoint,
       ~r"priv/gettext/.*\.po$"E,
       # Router, Controllers, LiveViews and LiveComponents
       ~r"lib/bf_web/router\.ex$"E,
-      ~r"lib/bf_web/(controllers|live|components)/.*\.(ex|heex)$"E
+      ~r"lib/bf_web/(controllers|live|components)/.*\.(ex|heex)$"E,
+      ~r"priv/posts/.*(md)$"E
     ]
   ]
 
