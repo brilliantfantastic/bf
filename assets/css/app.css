@@ -293,14 +293,54 @@
   animation: none !important;
 }
 
-/* Fantastic: springy indicator slide + glow */
-[data-theme="fantastic"] .theme-toggle-indicator {
-  transition: left 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 0 12px 2px var(--color-sparkle, oklch(80% 0.15 80));
+/* Toggle letter base: 3D extruded text */
+.toggle-letter {
+  font-size: 2.25rem;
+  line-height: 1;
+  color: var(--color-base-content);
+  text-shadow:
+    0px 1px 0 color-mix(in oklch, var(--color-base-content) 80%, var(--color-base-300)),
+    0px 2px 0 color-mix(in oklch, var(--color-base-content) 60%, var(--color-base-300)),
+    0px 3px 0 color-mix(in oklch, var(--color-base-content) 40%, var(--color-base-300)),
+    0px 4px 0 color-mix(in oklch, var(--color-base-content) 25%, var(--color-base-300)),
+    0px 5px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Fantastic: smile icon wiggles on hover */
-[data-theme="fantastic"] .theme-toggle button:last-child .size-4 {
+/* B uses OmnesPro (brilliant font) */
+.toggle-letter-b { font-family: "OmnesPro", sans-serif; }
+
+/* f uses Okkult (fantastic font) */
+.toggle-letter-f { font-family: "Okkult", sans-serif; }
+
+/* Active indicator: dot for brilliant, wiggle for fantastic */
+.toggle-letter {
+  position: relative;
+}
+.toggle-letter::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-base-content);
+  transition: transform 300ms ease;
+}
+
+/* Brilliant: dot under active B */
+[data-theme="brilliant"] .toggle-letter-b::after {
+  transform: translateX(-50%) scale(1);
+}
+
+/* Fantastic: dot hidden, wiggle on active f instead */
+[data-theme="fantastic"] .toggle-letter-f::after {
+  transform: translateX(-50%) scale(0);
+}
+
+/* Fantastic: f letter wiggles */
+[data-theme="fantastic"] .theme-toggle button:last-child .toggle-letter {
   animation: toggle-icon-wiggle 2s ease-in-out infinite;
 }
 

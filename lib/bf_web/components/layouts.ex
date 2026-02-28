@@ -124,23 +124,21 @@ defmodule BrilliantFantasticWeb.Layouts do
   """
   def theme_toggle(assigns) do
     ~H"""
-    <div class="theme-toggle card relative flex flex-row items-center border-2 border-base-300 bg-base-300 rounded-full">
-      <div class="theme-toggle-indicator absolute w-1/2 h-full rounded-full border-1 border-base-200 bg-base-100 brightness-200 left-0 [[data-theme=fantastic]_&]:left-1/2 transition-[left]" />
-
+    <div class="theme-toggle flex flex-row items-baseline gap-3">
       <button
-        class="flex p-2 cursor-pointer w-1/2"
+        class="flex items-center justify-center cursor-pointer"
         phx-click={JS.dispatch("phx:set-theme")}
         data-phx-theme="brilliant"
       >
-        <.icon name="hero-scale-solid" class="size-4 opacity-75 hover:opacity-100" />
+        <span class="toggle-letter toggle-letter-b">B</span>
       </button>
 
       <button
-        class="flex p-2 cursor-pointer w-1/2"
+        class="flex items-center justify-center cursor-pointer"
         phx-click={JS.dispatch("phx:set-theme")}
         data-phx-theme="fantastic"
       >
-        <.icon name="hero-face-smile-solid" class="size-4 opacity-75 hover:opacity-100" />
+        <span class="toggle-letter toggle-letter-f">f</span>
       </button>
     </div>
     """
