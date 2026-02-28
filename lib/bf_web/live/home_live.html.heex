@@ -5,13 +5,18 @@
 <div class="flex flex-col min-h-dvh">
   <Layouts.flash_group flash={@flash} />
 
-  <section id="section-hero" class="flex-1 grid lg:grid-cols-2 items-center px-6 lg:px-16">
-    <div>
-      <h1 class="font-display text-7xl lg:text-9xl leading-none">
-        Brilliant Fantastic
+  <section id="section-hero" class="flex-1 flex items-center justify-center px-6 lg:px-16">
+    <div class="text-center">
+      <h1 id="hero-title" class="font-display text-7xl lg:text-9xl leading-none hero-transform-title">
+        <span class="hero-word">
+          <span class="hero-letter" style="--letter-index: 0">B</span><span class="hero-letter" style="--letter-index: 1">r</span><span class="hero-letter" style="--letter-index: 2">i</span><span class="hero-letter" style="--letter-index: 3">l</span><span class="hero-letter" style="--letter-index: 4">l</span><span class="hero-letter" style="--letter-index: 5">i</span><span class="hero-letter" style="--letter-index: 6">a</span><span class="hero-letter" style="--letter-index: 7">n</span><span class="hero-letter" style="--letter-index: 8">t</span>
+        </span>
+        <span class="inline-block mx-4"></span>
+        <span class="hero-word">
+          <span class="hero-letter" style="--letter-index: 9">F</span><span class="hero-letter" style="--letter-index: 10">a</span><span class="hero-letter" style="--letter-index: 11">n</span><span class="hero-letter" style="--letter-index: 12">t</span><span class="hero-letter" style="--letter-index: 13">a</span><span class="hero-letter" style="--letter-index: 14">s</span><span class="hero-letter" style="--letter-index: 15">t</span><span class="hero-letter" style="--letter-index: 16">i</span><span class="hero-letter" style="--letter-index: 17">c</span>
+        </span>
       </h1>
     </div>
-    <div></div>
   </section>
 </div>
 
@@ -25,7 +30,31 @@
 
 <.contact_section />
 
+<div id="hero-transform-controller" phx-hook=".HeroTransform" phx-update="ignore"></div>
 <div id="nav-morph-controller" phx-hook=".NavMorph" phx-update="ignore"></div>
+<script :type={Phoenix.LiveView.ColocatedHook} name=".HeroTransform">
+  export default {
+    mounted() {
+      const title = document.getElementById("hero-title");
+      if (!title) return;
+
+      const trigger = () => {
+        const theme = document.documentElement.getAttribute("data-theme") || "brilliant";
+        if (theme === "fantastic") {
+          title.classList.add("hero-transforming");
+          setTimeout(() => title.classList.remove("hero-transforming"), 800);
+        }
+      };
+
+      this._themeListener = trigger;
+      window.addEventListener("phx:set-theme", this._themeListener);
+    },
+
+    destroyed() {
+      window.removeEventListener("phx:set-theme", this._themeListener);
+    }
+  }
+</script>
 <script :type={Phoenix.LiveView.ColocatedHook} name=".NavMorph">
   // Sparkle SVG path (matches the sparkle component in layouts.ex)
   const SPARKLE_PATH = "M10 0 L12 8 L20 10 L12 12 L10 20 L8 12 L0 10 L8 8 Z";
