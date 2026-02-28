@@ -502,4 +502,54 @@
 [data-theme="fantastic"] .makeup .gu { color: #75715e; }
 [data-theme="fantastic"] .makeup .err { color: #960050; background-color: #1e0010; }
 
+/* ── Hero: Direction F — Anti-Hero ──────────────────────────────── */
+
+/* Thin editorial rule lines */
+.hero-anti-rule {
+  width: 80px;
+  height: 1px;
+  background: var(--color-base-content);
+  opacity: 0.25;
+  transition: width 600ms ease, opacity 600ms ease;
+}
+
+[data-theme="fantastic"] .hero-anti-rule {
+  width: 120px;
+  opacity: 0.5;
+  background: var(--color-primary);
+  box-shadow: 0 0 8px var(--color-primary);
+}
+
+/* Cascade reveal: sections start faded down, slide up on fantastic */
+#section-blog,
+#section-jamie,
+#section-contact {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+[data-theme="fantastic"] #section-blog,
+[data-theme="fantastic"] #section-jamie,
+[data-theme="fantastic"] #section-contact {
+  animation: anti-hero-cascade 600ms ease both;
+}
+
+@keyframes anti-hero-cascade {
+  from {
+    opacity: 0.4;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Subtle text glow in fantastic mode */
+[data-theme="fantastic"] #section-hero h1 {
+  text-shadow: 0 0 30px var(--color-primary), 0 0 60px oklch(58% 0.233 277 / 0.3);
+  transition: text-shadow 600ms ease;
+}
+
 /* This file is for your main application CSS */
