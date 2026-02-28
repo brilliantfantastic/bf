@@ -1,0 +1,45 @@
+<Layouts.nav_menu />
+
+<section class="px-6 lg:px-16 py-16 max-w-4xl mx-auto">
+  <h1 class="font-display text-5xl mb-12">Blog</h1>
+
+  <div :if={@posts == []} class="text-base-content/60">
+    No posts yet. Check back soon!
+  </div>
+
+  <ul class="space-y-10">
+    <li :for={post <- @posts}>
+      <article>
+        <time class="text-sm text-base-content/50" datetime={post.date}>
+          {Calendar.strftime(post.date, "%B %-d, %Y")}
+        </time>
+        <h2 class="font-display text-2xl lg:text-3xl mt-1">
+          <.link navigate={~p"/blog/#{post.id}"} class="hover:text-primary transition-colors">
+            {post.title}
+          </.link>
+        </h2>
+        <p class="mt-2 text-base-content/70 leading-relaxed">{post.summary}</p>
+      </article>
+    </li>
+  </ul>
+
+  <nav :if={@total_pages > 1} class="flex items-center gap-4 mt-12 font-display">
+    <.link
+      :if={@page > 1}
+      patch={~p"/blog?page=#{@page - 1}"}
+      class="text-primary hover:text-primary/80 transition-colors"
+    >
+      &larr; Newer
+    </.link>
+    <span class="text-base-content/50 text-sm">
+      Page {@page} of {@total_pages}
+    </span>
+    <.link
+      :if={@page < @total_pages}
+      patch={~p"/blog?page=#{@page + 1}"}
+      class="text-primary hover:text-primary/80 transition-colors"
+    >
+      Older &rarr;
+    </.link>
+  </nav>
+</section>

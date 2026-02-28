@@ -25,6 +25,9 @@
    The heroicons installation itself is managed by your mix.exs */
 @plugin "../vendor/heroicons";
 
+/* Tailwind Typography plugin for prose classes (bundled with standalone CLI) */
+@plugin "@tailwindcss/typography";
+
 /* daisyUI Tailwind Plugin. You can update this file by fetching the latest version with:
    curl -sLO https://github.com/saadeghi/daisyui/releases/latest/download/daisyui.js
    Make sure to look at the daisyUI changelog: https://daisyui.com/docs/changelog/ */
@@ -349,5 +352,154 @@
   25% { transform: rotate(8deg); }
   75% { transform: rotate(-8deg); }
 }
+
+/* ── Blog: Code block containers per theme ──────────────────────── */
+.prose pre {
+  border-radius: var(--radius-box, 0.5rem);
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+[data-theme="brilliant"] .prose pre {
+  background: oklch(94% 0.004 250); /* base-200 */
+  border: 1px solid oklch(88% 0.006 250); /* base-300 */
+}
+
+[data-theme="fantastic"] .prose pre {
+  background: oklch(25% 0.02 280);
+  border: 1px solid oklch(35% 0.04 280);
+  box-shadow: 0 0 20px -4px oklch(58% 0.233 277.117 / 0.2); /* primary glow */
+}
+
+/* ── Brilliant theme: Tango syntax highlighting (muted, editorial) ── */
+[data-theme="brilliant"] .makeup { color: #000; background: transparent; }
+[data-theme="brilliant"] .makeup .k,
+[data-theme="brilliant"] .makeup .kc,
+[data-theme="brilliant"] .makeup .kd,
+[data-theme="brilliant"] .makeup .kn,
+[data-theme="brilliant"] .makeup .kp,
+[data-theme="brilliant"] .makeup .kr,
+[data-theme="brilliant"] .makeup .kt,
+[data-theme="brilliant"] .makeup .nt,
+[data-theme="brilliant"] .makeup .ow { color: #204a87; font-weight: bold; }
+[data-theme="brilliant"] .makeup .s,
+[data-theme="brilliant"] .makeup .s1,
+[data-theme="brilliant"] .makeup .s2,
+[data-theme="brilliant"] .makeup .sa,
+[data-theme="brilliant"] .makeup .sb,
+[data-theme="brilliant"] .makeup .sc,
+[data-theme="brilliant"] .makeup .dl,
+[data-theme="brilliant"] .makeup .se,
+[data-theme="brilliant"] .makeup .sh,
+[data-theme="brilliant"] .makeup .si,
+[data-theme="brilliant"] .makeup .sr,
+[data-theme="brilliant"] .makeup .ss,
+[data-theme="brilliant"] .makeup .sx { color: #4e9a06; }
+[data-theme="brilliant"] .makeup .c,
+[data-theme="brilliant"] .makeup .c1,
+[data-theme="brilliant"] .makeup .ch,
+[data-theme="brilliant"] .makeup .cm,
+[data-theme="brilliant"] .makeup .cp,
+[data-theme="brilliant"] .makeup .cpf,
+[data-theme="brilliant"] .makeup .cs,
+[data-theme="brilliant"] .makeup .sd { color: #8f5902; font-style: italic; }
+[data-theme="brilliant"] .makeup .m,
+[data-theme="brilliant"] .makeup .mb,
+[data-theme="brilliant"] .makeup .mf,
+[data-theme="brilliant"] .makeup .mh,
+[data-theme="brilliant"] .makeup .mi,
+[data-theme="brilliant"] .makeup .mo,
+[data-theme="brilliant"] .makeup .il { color: #0000cf; font-weight: bold; }
+[data-theme="brilliant"] .makeup .na { color: #c4a000; }
+[data-theme="brilliant"] .makeup .nb,
+[data-theme="brilliant"] .makeup .bp { color: #204a87; }
+[data-theme="brilliant"] .makeup .nc { color: #000; }
+[data-theme="brilliant"] .makeup .nd { color: #5c35cc; font-weight: bold; }
+[data-theme="brilliant"] .makeup .ne { color: #cc0000; font-weight: bold; }
+[data-theme="brilliant"] .makeup .nf { color: #000; }
+[data-theme="brilliant"] .makeup .o { color: #ce5c00; font-weight: bold; }
+[data-theme="brilliant"] .makeup .p { color: #000; font-weight: bold; }
+[data-theme="brilliant"] .makeup .n,
+[data-theme="brilliant"] .makeup .ni,
+[data-theme="brilliant"] .makeup .nl,
+[data-theme="brilliant"] .makeup .nn,
+[data-theme="brilliant"] .makeup .no,
+[data-theme="brilliant"] .makeup .nv,
+[data-theme="brilliant"] .makeup .nx,
+[data-theme="brilliant"] .makeup .py,
+[data-theme="brilliant"] .makeup .vc,
+[data-theme="brilliant"] .makeup .vg,
+[data-theme="brilliant"] .makeup .vi,
+[data-theme="brilliant"] .makeup .vm { color: #000; }
+
+/* ── Fantastic theme: Monokai syntax highlighting (vivid, electric) ── */
+[data-theme="fantastic"] .makeup { color: #f8f8f2; background: transparent; }
+[data-theme="fantastic"] .makeup .k,
+[data-theme="fantastic"] .makeup .kc,
+[data-theme="fantastic"] .makeup .kd,
+[data-theme="fantastic"] .makeup .kp,
+[data-theme="fantastic"] .makeup .kr,
+[data-theme="fantastic"] .makeup .kt { color: #66d9ef; }
+[data-theme="fantastic"] .makeup .kn,
+[data-theme="fantastic"] .makeup .nt,
+[data-theme="fantastic"] .makeup .o,
+[data-theme="fantastic"] .makeup .ow { color: #f92672; }
+[data-theme="fantastic"] .makeup .s,
+[data-theme="fantastic"] .makeup .s1,
+[data-theme="fantastic"] .makeup .s2,
+[data-theme="fantastic"] .makeup .sa,
+[data-theme="fantastic"] .makeup .sb,
+[data-theme="fantastic"] .makeup .sc,
+[data-theme="fantastic"] .makeup .dl,
+[data-theme="fantastic"] .makeup .sh,
+[data-theme="fantastic"] .makeup .si,
+[data-theme="fantastic"] .makeup .sr,
+[data-theme="fantastic"] .makeup .ss,
+[data-theme="fantastic"] .makeup .sx { color: #e6db74; }
+[data-theme="fantastic"] .makeup .se { color: #ae81ff; }
+[data-theme="fantastic"] .makeup .c,
+[data-theme="fantastic"] .makeup .c1,
+[data-theme="fantastic"] .makeup .ch,
+[data-theme="fantastic"] .makeup .cm,
+[data-theme="fantastic"] .makeup .cp,
+[data-theme="fantastic"] .makeup .cpf,
+[data-theme="fantastic"] .makeup .cs { color: #75715e; }
+[data-theme="fantastic"] .makeup .m,
+[data-theme="fantastic"] .makeup .mb,
+[data-theme="fantastic"] .makeup .mf,
+[data-theme="fantastic"] .makeup .mh,
+[data-theme="fantastic"] .makeup .mi,
+[data-theme="fantastic"] .makeup .mo,
+[data-theme="fantastic"] .makeup .il,
+[data-theme="fantastic"] .makeup .l,
+[data-theme="fantastic"] .makeup .ld { color: #ae81ff; }
+[data-theme="fantastic"] .makeup .na,
+[data-theme="fantastic"] .makeup .nc,
+[data-theme="fantastic"] .makeup .nd,
+[data-theme="fantastic"] .makeup .ne,
+[data-theme="fantastic"] .makeup .nf,
+[data-theme="fantastic"] .makeup .nx { color: #a6e22e; }
+[data-theme="fantastic"] .makeup .n,
+[data-theme="fantastic"] .makeup .nb,
+[data-theme="fantastic"] .makeup .bp,
+[data-theme="fantastic"] .makeup .ni,
+[data-theme="fantastic"] .makeup .nl,
+[data-theme="fantastic"] .makeup .nn,
+[data-theme="fantastic"] .makeup .no,
+[data-theme="fantastic"] .makeup .nv,
+[data-theme="fantastic"] .makeup .py,
+[data-theme="fantastic"] .makeup .p,
+[data-theme="fantastic"] .makeup .vc,
+[data-theme="fantastic"] .makeup .vg,
+[data-theme="fantastic"] .makeup .vi,
+[data-theme="fantastic"] .makeup .vm { color: #f8f8f2; }
+[data-theme="fantastic"] .makeup .gd { color: #f92672; }
+[data-theme="fantastic"] .makeup .gi { color: #a6e22e; }
+[data-theme="fantastic"] .makeup .gs { font-weight: bold; }
+[data-theme="fantastic"] .makeup .ge { font-style: italic; }
+[data-theme="fantastic"] .makeup .gu { color: #75715e; }
+[data-theme="fantastic"] .makeup .err { color: #960050; background-color: #1e0010; }
 
 /* This file is for your main application CSS */
