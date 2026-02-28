@@ -502,4 +502,67 @@
 [data-theme="fantastic"] .makeup .gu { color: #75715e; }
 [data-theme="fantastic"] .makeup .err { color: #960050; background-color: #1e0010; }
 
+/* ── Hero: Direction C — Typography Art ─────────────────────────── */
+
+/* Mega-letter sizing */
+.hero-typo-title {
+  font-size: clamp(4rem, 18vw, 20rem);
+}
+
+.hero-typo-letter {
+  display: inline-block;
+  transition: transform 150ms ease-out;
+}
+
+/* Construction lines (brilliant mode only) */
+.hero-typo-construction {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.hero-typo-line {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  background: var(--color-base-content);
+  opacity: 0.08;
+  transition: opacity 500ms ease;
+}
+
+.hero-typo-line-cap { top: 25%; }
+.hero-typo-line-x { top: 50%; }
+.hero-typo-line-base { top: 75%; }
+
+/* Hide construction lines in fantastic mode */
+[data-theme="fantastic"] .hero-typo-line {
+  opacity: 0;
+}
+
+/* Fantastic: breathing glow + multi-layer text-shadow */
+[data-theme="fantastic"] .hero-typo-title {
+  animation: hero-typo-breathe 3s ease-in-out infinite;
+}
+
+[data-theme="fantastic"] .hero-typo-letter {
+  text-shadow:
+    0 0 20px var(--color-primary),
+    0 0 40px oklch(58% 0.233 277 / 0.4),
+    0 0 80px oklch(60% 0.25 293 / 0.2);
+  transition: transform 150ms ease-out, text-shadow 600ms ease;
+}
+
+@keyframes hero-typo-breathe {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.05); }
+}
+
+/* Word spacing */
+.hero-typo-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 /* This file is for your main application CSS */
