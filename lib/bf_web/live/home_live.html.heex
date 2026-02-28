@@ -5,13 +5,11 @@
 <div class="flex flex-col min-h-dvh">
   <Layouts.flash_group flash={@flash} />
 
-  <section id="section-hero" class="flex-1 grid lg:grid-cols-2 items-center px-6 lg:px-16">
-    <div>
-      <h1 class="font-display text-7xl lg:text-9xl leading-none">
-        Brilliant Fantastic
-      </h1>
-    </div>
-    <div></div>
+  <section id="section-hero" class="flex-1 relative flex items-center justify-center overflow-hidden">
+    <canvas id="hero-canvas" class="hero-canvas"></canvas>
+    <h1 class="font-display text-7xl lg:text-9xl leading-none text-center relative z-10 hero-canvas-text px-6">
+      Brilliant<br />Fantastic
+    </h1>
   </section>
 </div>
 
@@ -25,7 +23,196 @@
 
 <.contact_section />
 
+<div id="hero-canvas-controller" phx-hook=".HeroCanvas" phx-update="ignore"></div>
 <div id="nav-morph-controller" phx-hook=".NavMorph" phx-update="ignore"></div>
+<script :type={Phoenix.LiveView.ColocatedHook} name=".HeroCanvas">
+  export default {
+    mounted() {
+      const canvas = document.getElementById("hero-canvas");
+      const hero = document.getElementById("section-hero");
+      if (!canvas || !hero) return;
+
+      const ctx = canvas.getContext("2d");
+      let raf = null;
+      let mouseX = -1000;
+      let mouseY = -1000;
+
+      // Particle pool
+      const PARTICLE_COUNT = 150;
+      const particles = [];
+
+      function initParticles() {
+        particles.length = 0;
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5,
+            size: 1.5 + Math.random() * 2,
+          });
+        }
+      }
+
+      function resize() {
+        const rect = hero.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        if (particles.length === 0) initParticles();
+      }
+
+      resize();
+      window.addEventListener("resize", resize);
+
+      hero.addEventListener("mousemove", (e) => {
+        const rect = hero.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+      });
+      hero.addEventListener("mouseleave", () => { mouseX = -1000; mouseY = -1000; });
+
+      // Read CSS custom properties for colors
+      function getColors() {
+        const style = getComputedStyle(document.documentElement);
+        return {
+          primary: style.getPropertyValue("--color-primary").trim() || "oklch(45% 0.008 250)",
+          accent: style.getPropertyValue("--color-accent").trim() || "oklch(50% 0.01 250)",
+          content: style.getPropertyValue("--color-base-content").trim() || "oklch(22% 0.01 250)",
+        };
+      }
+
+      // Grid state for brilliant mode
+      let gridPhase = 0;
+
+      function drawBrilliant() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        gridPhase += 0.002;
+
+        const spacing = 40;
+        const cols = Math.ceil(canvas.width / spacing);
+        const rows = Math.ceil(canvas.height / spacing);
+
+        ctx.strokeStyle = "oklch(22% 0.01 250 / 0.06)";
+        ctx.lineWidth = 0.5;
+
+        // Slowly evolving grid
+        for (let r = 0; r <= rows; r++) {
+          ctx.beginPath();
+          for (let c = 0; c <= cols; c++) {
+            const x = c * spacing;
+            const y = r * spacing + Math.sin(gridPhase + c * 0.3) * 2;
+            if (c === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+
+        for (let c = 0; c <= cols; c++) {
+          ctx.beginPath();
+          for (let r = 0; r <= rows; r++) {
+            const x = c * spacing + Math.cos(gridPhase + r * 0.3) * 2;
+            const y = r * spacing;
+            if (r === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+
+        // Blueprint dots at intersections
+        ctx.fillStyle = "oklch(22% 0.01 250 / 0.1)";
+        for (let r = 0; r <= rows; r++) {
+          for (let c = 0; c <= cols; c++) {
+            const x = c * spacing + Math.cos(gridPhase + r * 0.3) * 2;
+            const y = r * spacing + Math.sin(gridPhase + c * 0.3) * 2;
+            ctx.beginPath();
+            ctx.arc(x, y, 1, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+      }
+
+      function drawFantastic() {
+        // Semi-transparent clear for trails
+        ctx.fillStyle = "oklch(78.5% 0.115 0 / 0.08)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        const connectionDist = 100;
+
+        particles.forEach((p) => {
+          // Mouse attraction
+          const dx = mouseX - p.x;
+          const dy = mouseY - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 200 && dist > 0) {
+            const force = (1 - dist / 200) * 0.03;
+            p.vx += (dx / dist) * force;
+            p.vy += (dy / dist) * force;
+          }
+
+          // Velocity damping
+          p.vx *= 0.99;
+          p.vy *= 0.99;
+
+          // Move
+          p.x += p.vx;
+          p.y += p.vy;
+
+          // Wrap around
+          if (p.x < 0) p.x = canvas.width;
+          if (p.x > canvas.width) p.x = 0;
+          if (p.y < 0) p.y = canvas.height;
+          if (p.y > canvas.height) p.y = 0;
+
+          // Draw particle
+          ctx.fillStyle = "oklch(58% 0.233 277 / 0.7)";
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        // Connection lines between nearby particles
+        ctx.strokeStyle = "oklch(60% 0.25 293 / 0.15)";
+        ctx.lineWidth = 0.5;
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < connectionDist) {
+              ctx.globalAlpha = 1 - dist / connectionDist;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+        ctx.globalAlpha = 1;
+      }
+
+      function animate() {
+        const theme = document.documentElement.getAttribute("data-theme") || "brilliant";
+        if (theme === "fantastic") {
+          drawFantastic();
+        } else {
+          drawBrilliant();
+        }
+        raf = requestAnimationFrame(animate);
+      }
+
+      raf = requestAnimationFrame(animate);
+
+      this._cleanup = () => {
+        if (raf) cancelAnimationFrame(raf);
+        window.removeEventListener("resize", resize);
+      };
+    },
+
+    destroyed() {
+      if (this._cleanup) this._cleanup();
+    }
+  }
+</script>
 <script :type={Phoenix.LiveView.ColocatedHook} name=".NavMorph">
   // Sparkle SVG path (matches the sparkle component in layouts.ex)
   const SPARKLE_PATH = "M10 0 L12 8 L20 10 L12 12 L10 20 L8 12 L0 10 L8 8 Z";
