@@ -5,13 +5,21 @@
 <div class="flex flex-col min-h-dvh">
   <Layouts.flash_group flash={@flash} />
 
-  <section id="section-hero" class="flex-1 grid lg:grid-cols-2 items-center px-6 lg:px-16">
-    <div>
-      <h1 class="font-display text-7xl lg:text-9xl leading-none">
-        Brilliant Fantastic
+  <section id="section-hero" class="flex-1 relative flex items-center justify-center overflow-hidden">
+    <%!-- Brilliant half (base layer, always visible) --%>
+    <div class="split-layer split-brilliant">
+      <h1 class="split-title split-title-brilliant" style="font-family: 'OmnesPro', sans-serif;">
+        Brilliant<br />Fantastic
       </h1>
     </div>
-    <div></div>
+    <%!-- Fantastic half (clipped overlay) --%>
+    <div class="split-layer split-fantastic">
+      <h1 class="split-title split-title-fantastic" style="font-family: 'Okkult', sans-serif;">
+        Brilliant<br />Fantastic
+      </h1>
+    </div>
+    <%!-- Center divider line --%>
+    <div class="split-divider"></div>
   </section>
 </div>
 

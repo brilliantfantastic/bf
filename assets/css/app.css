@@ -502,4 +502,76 @@
 [data-theme="fantastic"] .makeup .gu { color: #75715e; }
 [data-theme="fantastic"] .makeup .err { color: #960050; background-color: #1e0010; }
 
+/* ── Hero: Direction I — Split-Screen Duality ──────────────────── */
+
+.split-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.split-title {
+  font-size: clamp(3.5rem, 10vw, 9rem);
+  line-height: 1;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+/* Brilliant half: light bg, dark text, always visible as base */
+.split-brilliant {
+  background: oklch(98% 0.002 250);
+  z-index: 1;
+}
+
+.split-title-brilliant {
+  color: oklch(22% 0.01 250);
+}
+
+/* Fantastic half: colorful bg, styled text, clipped on top */
+.split-fantastic {
+  background: oklch(78.5% 0.115 0);
+  z-index: 2;
+  clip-path: inset(0 0 0 50%);
+  transition: clip-path 800ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.split-title-fantastic {
+  color: oklch(25% 0.02 350);
+  text-shadow: 0 0 30px oklch(58% 0.233 277 / 0.4);
+}
+
+/* Toggle slides the clip — fantastic mode shows full fantastic */
+[data-theme="fantastic"] .split-fantastic {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Brilliant mode shows full brilliant (fantastic clipped to right half) */
+[data-theme="brilliant"] .split-fantastic {
+  clip-path: inset(0 0 0 50%);
+}
+
+/* Center divider */
+.split-divider {
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: 50%;
+  width: 2px;
+  background: oklch(50% 0.01 250 / 0.3);
+  z-index: 3;
+  transition: left 800ms cubic-bezier(0.4, 0, 0.2, 1), opacity 400ms ease;
+}
+
+[data-theme="fantastic"] .split-divider {
+  left: 0%;
+  opacity: 0;
+}
+
+[data-theme="brilliant"] .split-divider {
+  left: 50%;
+  opacity: 1;
+}
+
 /* This file is for your main application CSS */
