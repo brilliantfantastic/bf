@@ -5,13 +5,28 @@
 <div class="flex flex-col min-h-dvh">
   <Layouts.flash_group flash={@flash} />
 
-  <section id="section-hero" class="flex-1 grid lg:grid-cols-2 items-center px-6 lg:px-16">
-    <div>
-      <h1 class="font-display text-7xl lg:text-9xl leading-none">
-        Brilliant Fantastic
-      </h1>
+  <section id="section-hero" class="flex-1 relative flex items-center justify-center overflow-hidden">
+    <%!-- Background image slot --%>
+    <div class="hero-bg"></div>
+    <%!-- Fragment layer --%>
+    <div class="fragment-field" aria-hidden="true">
+      <div class="fragment fragment-sq" style="--x: 8%; --y: 12%; --size: 20px; --delay: 0s; --dur: 18s; --rot: 45deg;"></div>
+      <div class="fragment fragment-tri" style="--x: 85%; --y: 8%; --size: 24px; --delay: -3s; --dur: 22s; --rot: 120deg;"></div>
+      <div class="fragment fragment-circle" style="--x: 15%; --y: 75%; --size: 16px; --delay: -7s; --dur: 20s; --rot: 0deg;"></div>
+      <div class="fragment fragment-sq" style="--x: 72%; --y: 65%; --size: 28px; --delay: -2s; --dur: 16s; --rot: 30deg;"></div>
+      <div class="fragment fragment-tri" style="--x: 40%; --y: 20%; --size: 18px; --delay: -5s; --dur: 24s; --rot: 200deg;"></div>
+      <div class="fragment fragment-circle" style="--x: 60%; --y: 80%; --size: 22px; --delay: -10s; --dur: 19s; --rot: 0deg;"></div>
+      <div class="fragment fragment-sq" style="--x: 92%; --y: 45%; --size: 14px; --delay: -8s; --dur: 21s; --rot: 60deg;"></div>
+      <div class="fragment fragment-tri" style="--x: 25%; --y: 50%; --size: 26px; --delay: -1s; --dur: 17s; --rot: 280deg;"></div>
+      <div class="fragment fragment-circle" style="--x: 50%; --y: 35%; --size: 12px; --delay: -6s; --dur: 23s; --rot: 0deg;"></div>
+      <div class="fragment fragment-sq" style="--x: 78%; --y: 25%; --size: 20px; --delay: -4s; --dur: 15s; --rot: 15deg;"></div>
+      <div class="fragment fragment-tri" style="--x: 5%; --y: 40%; --size: 30px; --delay: -9s; --dur: 25s; --rot: 160deg;"></div>
+      <div class="fragment fragment-circle" style="--x: 35%; --y: 90%; --size: 18px; --delay: -11s; --dur: 20s; --rot: 0deg;"></div>
     </div>
-    <div></div>
+    <%!-- Text layer --%>
+    <h1 class="font-display text-7xl lg:text-9xl leading-none text-center relative z-10 fragment-text px-6">
+      Brilliant<br />Fantastic
+    </h1>
   </section>
 </div>
 
