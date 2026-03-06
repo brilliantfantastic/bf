@@ -5,13 +5,16 @@
 <div class="flex flex-col min-h-dvh">
   <Layouts.flash_group flash={@flash} />
 
-  <section id="section-hero" class="flex-1 grid lg:grid-cols-2 items-center px-6 lg:px-16">
-    <div>
-      <h1 class="font-display text-7xl lg:text-9xl leading-none">
-        Brilliant Fantastic
-      </h1>
-    </div>
-    <div></div>
+  <section id="section-hero" class="flex-1 relative flex items-center justify-center overflow-hidden">
+    <%!-- Background image slot — add bg image/video here --%>
+    <div class="hero-bg"></div>
+    <%!-- Curtain panels --%>
+    <div class="curtain-left"></div>
+    <div class="curtain-right"></div>
+    <%!-- Text layer --%>
+    <h1 class="font-display text-7xl lg:text-9xl leading-none text-center relative z-10 curtain-text px-6">
+      Brilliant<br />Fantastic
+    </h1>
   </section>
 </div>
 
