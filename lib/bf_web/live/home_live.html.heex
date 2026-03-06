@@ -5,13 +5,43 @@
 <div class="flex flex-col min-h-dvh">
   <Layouts.flash_group flash={@flash} />
 
-  <section id="section-hero" class="flex-1 grid lg:grid-cols-2 items-center px-6 lg:px-16">
-    <div>
-      <h1 class="font-display text-7xl lg:text-9xl leading-none">
-        Brilliant Fantastic
+  <section id="section-hero" class="hero-holo relative overflow-hidden min-h-dvh flex items-center justify-center">
+    <!-- Background layer for images -->
+    <div class="hero-bg absolute inset-0 z-0"></div>
+
+    <!-- Holographic surface -->
+    <div class="holo-surface absolute inset-0 z-1" aria-hidden="true"></div>
+
+    <!-- Scan lines overlay -->
+    <div class="holo-scanlines absolute inset-0 z-2 pointer-events-none" aria-hidden="true"></div>
+
+    <!-- Prismatic light leaks (fantastic only) -->
+    <div class="holo-prism holo-prism-1 hidden fantastic:block" aria-hidden="true"></div>
+    <div class="holo-prism holo-prism-2 hidden fantastic:block" aria-hidden="true"></div>
+    <div class="holo-prism holo-prism-3 hidden fantastic:block" aria-hidden="true"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 text-center px-6">
+      <h1 class="holo-title font-display leading-none">
+        <span class="holo-text-layer holo-text-main">Brilliant<br>Fantastic</span>
+        <span class="holo-text-layer holo-text-red" aria-hidden="true">Brilliant<br>Fantastic</span>
+        <span class="holo-text-layer holo-text-green" aria-hidden="true">Brilliant<br>Fantastic</span>
+        <span class="holo-text-layer holo-text-blue" aria-hidden="true">Brilliant<br>Fantastic</span>
       </h1>
+      <p class="holo-sub mt-8 text-lg tracking-[0.3em] uppercase">
+        Iridescent by design
+      </p>
     </div>
-    <div></div>
+
+    <!-- Floating holographic shards (fantastic) -->
+    <div class="holo-shards absolute inset-0 z-5 pointer-events-none hidden fantastic:block" aria-hidden="true">
+      <div class="holo-shard holo-shard-1"></div>
+      <div class="holo-shard holo-shard-2"></div>
+      <div class="holo-shard holo-shard-3"></div>
+      <div class="holo-shard holo-shard-4"></div>
+      <div class="holo-shard holo-shard-5"></div>
+      <div class="holo-shard holo-shard-6"></div>
+    </div>
   </section>
 </div>
 
