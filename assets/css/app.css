@@ -502,4 +502,69 @@
 [data-theme="fantastic"] .makeup .gu { color: #75715e; }
 [data-theme="fantastic"] .makeup .err { color: #960050; background-color: #1e0010; }
 
+/* ── Hero: Direction P — Perspective Tilt ────────────────────────── */
+
+.tilt-perspective {
+  perspective: 1000px;
+}
+
+.tilt-card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 200ms ease-out;
+  transform-style: preserve-3d;
+}
+
+/* Background image slot */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--color-base-200);
+  border-radius: 0;
+}
+
+/* Holographic shine overlay */
+.tilt-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  transition: opacity 400ms ease;
+  opacity: 0.5;
+}
+
+[data-theme="fantastic"] .tilt-shine {
+  opacity: 1;
+  mix-blend-mode: screen;
+}
+
+/* Text pops forward in fantastic */
+.tilt-text {
+  transition: transform 400ms ease, text-shadow 400ms ease;
+}
+
+[data-theme="fantastic"] .tilt-text {
+  transform: translateZ(40px);
+  text-shadow:
+    0 10px 30px oklch(0% 0 0 / 0.3),
+    0 0 40px var(--color-primary),
+    0 0 80px oklch(60% 0.25 293 / 0.4);
+}
+
+/* Brilliant: subtle border and shadow for card depth */
+.tilt-card {
+  box-shadow: 0 10px 40px oklch(0% 0 0 / 0.05);
+}
+
+[data-theme="fantastic"] .tilt-card {
+  box-shadow:
+    0 20px 60px oklch(0% 0 0 / 0.2),
+    0 0 100px oklch(58% 0.233 277 / 0.15);
+}
+
 /* This file is for your main application CSS */

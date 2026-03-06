@@ -5,13 +5,17 @@
 <div class="flex flex-col min-h-dvh">
   <Layouts.flash_group flash={@flash} />
 
-  <section id="section-hero" class="flex-1 grid lg:grid-cols-2 items-center px-6 lg:px-16">
-    <div>
-      <h1 class="font-display text-7xl lg:text-9xl leading-none">
-        Brilliant Fantastic
+  <section id="section-hero" class="flex-1 relative flex items-center justify-center overflow-hidden tilt-perspective">
+    <div id="tilt-card" class="tilt-card">
+      <%!-- Background image slot --%>
+      <div class="hero-bg"></div>
+      <%!-- Holographic shine overlay --%>
+      <div class="tilt-shine"></div>
+      <%!-- Text layer --%>
+      <h1 class="font-display text-7xl lg:text-9xl leading-none text-center relative z-10 tilt-text px-6">
+        Brilliant<br />Fantastic
       </h1>
     </div>
-    <div></div>
   </section>
 </div>
 
@@ -25,7 +29,64 @@
 
 <.contact_section />
 
+<div id="hero-tilt-controller" phx-hook=".HeroTilt" phx-update="ignore"></div>
 <div id="nav-morph-controller" phx-hook=".NavMorph" phx-update="ignore"></div>
+<script :type={Phoenix.LiveView.ColocatedHook} name=".HeroTilt">
+  export default {
+    mounted() {
+      const hero = document.getElementById("section-hero");
+      const card = document.getElementById("tilt-card");
+      const shine = card && card.querySelector(".tilt-shine");
+      if (!hero || !card) return;
+
+      const onMove = (e) => {
+        const rect = hero.getBoundingClientRect();
+        const cx = (e.clientX - rect.left) / rect.width - 0.5;
+        const cy = (e.clientY - rect.top) / rect.height - 0.5;
+
+        const theme = document.documentElement.getAttribute("data-theme") || "brilliant";
+        const maxTilt = theme === "fantastic" ? 8 : 2.5;
+
+        const rotateY = cx * maxTilt;
+        const rotateX = -cy * maxTilt;
+
+        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+        // Move the shine to follow cursor
+        if (shine) {
+          const shineX = (cx + 0.5) * 100;
+          const shineY = (cy + 0.5) * 100;
+          shine.style.background = `radial-gradient(circle at ${shineX}% ${shineY}%, oklch(98% 0.01 250 / 0.15) 0%, transparent 60%)`;
+
+          if (theme === "fantastic") {
+            shine.style.background = `
+              radial-gradient(circle at ${shineX}% ${shineY}%, oklch(80% 0.2 160 / 0.3) 0%, transparent 40%),
+              radial-gradient(circle at ${100 - shineX}% ${shineY}%, oklch(70% 0.25 280 / 0.2) 0%, transparent 50%),
+              linear-gradient(${135 + rotateY * 5}deg, oklch(60% 0.3 300 / 0.1) 0%, transparent 50%, oklch(65% 0.25 180 / 0.1) 100%)
+            `;
+          }
+        }
+      };
+
+      const onLeave = () => {
+        card.style.transform = "";
+        if (shine) shine.style.background = "";
+      };
+
+      hero.addEventListener("mousemove", onMove);
+      hero.addEventListener("mouseleave", onLeave);
+
+      this._cleanup = () => {
+        hero.removeEventListener("mousemove", onMove);
+        hero.removeEventListener("mouseleave", onLeave);
+      };
+    },
+
+    destroyed() {
+      if (this._cleanup) this._cleanup();
+    }
+  }
+</script>
 <script :type={Phoenix.LiveView.ColocatedHook} name=".NavMorph">
   // Sparkle SVG path (matches the sparkle component in layouts.ex)
   const SPARKLE_PATH = "M10 0 L12 8 L20 10 L12 12 L10 20 L8 12 L0 10 L8 8 Z";
