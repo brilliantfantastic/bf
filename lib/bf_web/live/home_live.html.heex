@@ -5,13 +5,23 @@
 <div class="flex flex-col min-h-dvh">
   <Layouts.flash_group flash={@flash} />
 
-  <section id="section-hero" class="flex-1 grid lg:grid-cols-2 items-center px-6 lg:px-16">
-    <div>
-      <h1 class="font-display text-7xl lg:text-9xl leading-none">
-        Brilliant Fantastic
+  <section id="section-hero" class="flex-1 relative flex items-center justify-center overflow-hidden">
+    <%!-- Background image slot --%>
+    <div class="hero-bg"></div>
+    <%!-- Scanline overlay (fantastic only) --%>
+    <div class="chromatic-scanlines"></div>
+    <%!-- Text with RGB split layers --%>
+    <div class="chromatic-container relative z-10 px-6">
+      <div class="chromatic-layer chromatic-r font-display text-7xl lg:text-9xl leading-none text-center" aria-hidden="true">
+        Brilliant<br />Fantastic
+      </div>
+      <div class="chromatic-layer chromatic-b font-display text-7xl lg:text-9xl leading-none text-center" aria-hidden="true">
+        Brilliant<br />Fantastic
+      </div>
+      <h1 class="chromatic-layer chromatic-main font-display text-7xl lg:text-9xl leading-none text-center">
+        Brilliant<br />Fantastic
       </h1>
     </div>
-    <div></div>
   </section>
 </div>
 
@@ -25,7 +35,55 @@
 
 <.contact_section />
 
+<div id="hero-chromatic-controller" phx-hook=".HeroChromatic" phx-update="ignore"></div>
 <div id="nav-morph-controller" phx-hook=".NavMorph" phx-update="ignore"></div>
+<script :type={Phoenix.LiveView.ColocatedHook} name=".HeroChromatic">
+  export default {
+    mounted() {
+      const hero = document.getElementById("section-hero");
+      if (!hero) return;
+
+      let glitchTimer = null;
+
+      const triggerGlitch = () => {
+        const theme = document.documentElement.getAttribute("data-theme") || "brilliant";
+        if (theme !== "fantastic") return;
+
+        hero.classList.add("chromatic-glitch");
+        setTimeout(() => hero.classList.remove("chromatic-glitch"), 150 + Math.random() * 200);
+
+        // Schedule next glitch at random interval
+        glitchTimer = setTimeout(triggerGlitch, 2000 + Math.random() * 5000);
+      };
+
+      const onTheme = () => {
+        const theme = document.documentElement.getAttribute("data-theme") || "brilliant";
+        if (theme === "fantastic") {
+          // Initial big glitch on switch
+          hero.classList.add("chromatic-glitch");
+          setTimeout(() => hero.classList.remove("chromatic-glitch"), 300);
+          glitchTimer = setTimeout(triggerGlitch, 1500 + Math.random() * 3000);
+        } else {
+          if (glitchTimer) clearTimeout(glitchTimer);
+          hero.classList.remove("chromatic-glitch");
+        }
+      };
+
+      window.addEventListener("phx:set-theme", onTheme);
+      // Start periodic glitches if already in fantastic
+      onTheme();
+
+      this._cleanup = () => {
+        window.removeEventListener("phx:set-theme", onTheme);
+        if (glitchTimer) clearTimeout(glitchTimer);
+      };
+    },
+
+    destroyed() {
+      if (this._cleanup) this._cleanup();
+    }
+  }
+</script>
 <script :type={Phoenix.LiveView.ColocatedHook} name=".NavMorph">
   // Sparkle SVG path (matches the sparkle component in layouts.ex)
   const SPARKLE_PATH = "M10 0 L12 8 L20 10 L12 12 L10 20 L8 12 L0 10 L8 8 Z";

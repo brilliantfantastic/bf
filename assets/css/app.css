@@ -502,4 +502,139 @@
 [data-theme="fantastic"] .makeup .gu { color: #75715e; }
 [data-theme="fantastic"] .makeup .err { color: #960050; background-color: #1e0010; }
 
+/* ── Hero: Direction N — Chromatic Distortion ───────────────────── */
+
+/* Background image slot */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--color-base-200);
+}
+
+.chromatic-container {
+  position: relative;
+}
+
+.chromatic-layer {
+  position: relative;
+}
+
+/* RGB split layers: positioned on top of main */
+.chromatic-r,
+.chromatic-b {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Brilliant: tiny elegant chromatic aberration */
+.chromatic-r {
+  color: oklch(55% 0.2 25 / 0.08);
+  transform: translate(1px, -1px);
+  transition: transform 600ms ease, color 400ms ease;
+}
+
+.chromatic-b {
+  color: oklch(55% 0.2 260 / 0.08);
+  transform: translate(-1px, 1px);
+  transition: transform 600ms ease, color 400ms ease;
+}
+
+.chromatic-main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Fantastic: heavy RGB split */
+[data-theme="fantastic"] .chromatic-r {
+  color: oklch(65% 0.3 25 / 0.4);
+  transform: translate(6px, -4px);
+  animation: chromatic-drift-r 3s ease-in-out infinite;
+}
+
+[data-theme="fantastic"] .chromatic-b {
+  color: oklch(55% 0.3 260 / 0.35);
+  transform: translate(-6px, 4px);
+  animation: chromatic-drift-b 3.5s ease-in-out infinite;
+}
+
+@keyframes chromatic-drift-r {
+  0%, 100% { transform: translate(6px, -4px); }
+  25% { transform: translate(8px, -2px); }
+  75% { transform: translate(4px, -6px); }
+}
+
+@keyframes chromatic-drift-b {
+  0%, 100% { transform: translate(-6px, 4px); }
+  33% { transform: translate(-4px, 6px); }
+  66% { transform: translate(-8px, 2px); }
+}
+
+/* Fantastic: main text glow */
+[data-theme="fantastic"] .chromatic-main {
+  text-shadow: 0 0 20px var(--color-primary);
+}
+
+/* Scanlines overlay — fantastic only */
+.chromatic-scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    oklch(0% 0 0 / 0.06) 2px,
+    oklch(0% 0 0 / 0.06) 4px
+  );
+  transition: opacity 600ms ease;
+}
+
+[data-theme="fantastic"] .chromatic-scanlines {
+  opacity: 1;
+  animation: scanline-flicker 8s linear infinite;
+}
+
+@keyframes scanline-flicker {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.5; }
+  52% { opacity: 0.9; }
+  54% { opacity: 0.6; }
+}
+
+/* Glitch: triggered periodically by JS */
+.chromatic-glitch .chromatic-r {
+  transform: translate(12px, -6px) skewX(-2deg) !important;
+  animation: none !important;
+}
+
+.chromatic-glitch .chromatic-b {
+  transform: translate(-10px, 8px) skewX(3deg) !important;
+  animation: none !important;
+}
+
+.chromatic-glitch .chromatic-scanlines {
+  opacity: 1 !important;
+}
+
+/* VHS tracking bar */
+.chromatic-glitch::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: oklch(98% 0.002 250 / 0.08);
+  z-index: 20;
+  animation: vhs-tracking 150ms linear;
+}
+
+@keyframes vhs-tracking {
+  from { top: -40px; }
+  to { top: 100%; }
+}
+
 /* This file is for your main application CSS */
