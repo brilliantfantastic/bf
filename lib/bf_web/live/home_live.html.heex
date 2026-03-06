@@ -5,13 +5,15 @@
 <div class="flex flex-col min-h-dvh">
   <Layouts.flash_group flash={@flash} />
 
-  <section id="section-hero" class="flex-1 grid lg:grid-cols-2 items-center px-6 lg:px-16">
-    <div>
-      <h1 class="font-display text-7xl lg:text-9xl leading-none">
-        Brilliant Fantastic
-      </h1>
+  <section id="section-hero" class="flex-1 relative flex items-center justify-center overflow-hidden">
+    <div class="blob-container" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
     </div>
-    <div></div>
+    <h1 class="font-display text-7xl lg:text-9xl leading-none text-center relative z-10 px-6">
+      Brilliant<br />Fantastic
+    </h1>
   </section>
 </div>
 
