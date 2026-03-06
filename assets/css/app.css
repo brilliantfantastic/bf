@@ -502,4 +502,197 @@
 [data-theme="fantastic"] .makeup .gu { color: #75715e; }
 [data-theme="fantastic"] .makeup .err { color: #960050; background-color: #1e0010; }
 
+/* ── Hero: Direction Z — Kaleidoscope ──────────────────────────── */
+
+.hero-kaleidoscope {
+  background: oklch(97% 0.005 250);
+  transition: background 0.6s ease;
+}
+
+[data-theme="fantastic"] .hero-kaleidoscope {
+  background: oklch(8% 0.03 280);
+}
+
+/* Jewel-toned geometric accents for brilliant */
+.kaleid-gem {
+  position: absolute;
+  border: 2px solid;
+  opacity: 0.2;
+  animation: kaleid-gem-rotate 20s linear infinite;
+}
+
+.kaleid-gem-1 {
+  width: 80px; height: 80px;
+  top: 10%; left: 8%;
+  border-color: oklch(55% 0.15 155); /* emerald */
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  animation-delay: 0s;
+}
+.kaleid-gem-2 {
+  width: 60px; height: 60px;
+  top: 15%; right: 12%;
+  border-color: oklch(50% 0.18 25); /* ruby */
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  animation-delay: -3s;
+}
+.kaleid-gem-3 {
+  width: 50px; height: 50px;
+  bottom: 20%; left: 15%;
+  border-color: oklch(55% 0.15 250); /* sapphire */
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  animation-delay: -7s;
+}
+.kaleid-gem-4 {
+  width: 70px; height: 70px;
+  bottom: 25%; right: 10%;
+  border-color: oklch(65% 0.12 80); /* amber */
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  animation-delay: -5s;
+}
+.kaleid-gem-5 {
+  width: 40px; height: 40px;
+  top: 50%; left: 5%;
+  border-color: oklch(55% 0.15 310); /* amethyst */
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  animation-delay: -10s;
+}
+.kaleid-gem-6 {
+  width: 55px; height: 55px;
+  top: 40%; right: 6%;
+  border-color: oklch(55% 0.15 155); /* emerald */
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  animation-delay: -15s;
+}
+
+[data-theme="fantastic"] .kaleid-gem { opacity: 0; }
+
+@keyframes kaleid-gem-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Title */
+.kaleid-title {
+  font-size: clamp(3.5rem, 13vw, 11rem);
+  position: relative;
+}
+
+.kaleid-word { display: block; }
+
+/* Brilliant: jewel-toned gradient text */
+[data-theme="brilliant"] .kaleid-word-1 {
+  background: linear-gradient(135deg, oklch(45% 0.15 155), oklch(45% 0.15 250));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="brilliant"] .kaleid-word-2 {
+  background: linear-gradient(135deg, oklch(45% 0.18 25), oklch(55% 0.12 80));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Fantastic: rapid color cycling text */
+[data-theme="fantastic"] .kaleid-word-1 {
+  animation: kaleid-color-cycle-1 2s linear infinite;
+  text-shadow:
+    0 0 20px oklch(70% 0.3 280 / 0.6),
+    0 0 40px oklch(60% 0.25 320 / 0.3);
+}
+
+[data-theme="fantastic"] .kaleid-word-2 {
+  animation: kaleid-color-cycle-2 1.5s linear infinite;
+  text-shadow:
+    0 0 20px oklch(70% 0.3 40 / 0.6),
+    0 0 40px oklch(60% 0.25 80 / 0.3);
+}
+
+@keyframes kaleid-color-cycle-1 {
+  0% { color: oklch(80% 0.25 0); }
+  16% { color: oklch(80% 0.25 60); }
+  33% { color: oklch(80% 0.25 120); }
+  50% { color: oklch(80% 0.25 180); }
+  66% { color: oklch(80% 0.25 240); }
+  83% { color: oklch(80% 0.25 300); }
+  100% { color: oklch(80% 0.25 360); }
+}
+
+@keyframes kaleid-color-cycle-2 {
+  0% { color: oklch(85% 0.3 180); }
+  16% { color: oklch(85% 0.3 240); }
+  33% { color: oklch(85% 0.3 300); }
+  50% { color: oklch(85% 0.3 0); }
+  66% { color: oklch(85% 0.3 60); }
+  83% { color: oklch(85% 0.3 120); }
+  100% { color: oklch(85% 0.3 180); }
+}
+
+/* Mirrored ghost text copies */
+.kaleid-mirrors {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.kaleid-mirror {
+  position: absolute;
+  font-size: clamp(2rem, 8vw, 6rem);
+  white-space: nowrap;
+  opacity: 0.15;
+  mix-blend-mode: screen;
+}
+
+.kaleid-mirror-1 {
+  top: -120%;
+  left: 50%;
+  transform: translateX(-50%) scaleY(-1) rotate(5deg);
+  animation: kaleid-mirror-drift 8s ease-in-out infinite alternate;
+  color: oklch(70% 0.3 280);
+}
+
+.kaleid-mirror-2 {
+  top: 180%;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  animation: kaleid-mirror-drift 10s ease-in-out infinite alternate-reverse;
+  color: oklch(70% 0.3 40);
+}
+
+.kaleid-mirror-3 {
+  top: 30%;
+  left: -40%;
+  transform: rotate(90deg);
+  animation: kaleid-mirror-drift 12s ease-in-out infinite alternate;
+  color: oklch(70% 0.3 160);
+}
+
+.kaleid-mirror-4 {
+  top: 30%;
+  right: -40%;
+  transform: rotate(-90deg) scaleX(-1);
+  animation: kaleid-mirror-drift 9s ease-in-out infinite alternate-reverse;
+  color: oklch(70% 0.3 320);
+}
+
+@keyframes kaleid-mirror-drift {
+  0% { opacity: 0.1; transform-origin: center; filter: blur(0px); }
+  50% { opacity: 0.25; filter: blur(2px); }
+  100% { opacity: 0.1; filter: blur(0px); }
+}
+
+/* Tagline */
+.kaleid-tagline {
+  color: oklch(50% 0.06 250);
+  transition: color 0.6s ease;
+}
+
+[data-theme="fantastic"] .kaleid-tagline {
+  animation: kaleid-color-cycle-1 3s linear infinite;
+  text-shadow: 0 0 8px oklch(70% 0.2 280 / 0.5);
+}
+
 /* This file is for your main application CSS */
