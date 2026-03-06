@@ -502,4 +502,55 @@
 [data-theme="fantastic"] .makeup .gu { color: #75715e; }
 [data-theme="fantastic"] .makeup .err { color: #960050; background-color: #1e0010; }
 
+/* ── Hero: Direction J — Parallax Depth ─────────────────────────── */
+
+.parallax-hero {
+  perspective: 600px;
+}
+
+.parallax-layer {
+  position: absolute;
+  transition: transform 200ms ease-out;
+  padding: 0 1.5rem;
+}
+
+/* Shadow layer: furthest back, blurred */
+.parallax-shadow {
+  z-index: 1;
+  color: var(--color-base-content);
+  opacity: 0.06;
+  filter: blur(4px);
+  transition: transform 200ms ease-out, opacity 400ms ease, color 400ms ease, filter 400ms ease;
+}
+
+/* Mid layer: slight offset, semi-transparent */
+.parallax-mid {
+  z-index: 2;
+  color: var(--color-base-content);
+  opacity: 0.12;
+  transition: transform 200ms ease-out, opacity 400ms ease, color 400ms ease;
+}
+
+/* Front layer: primary readable text */
+.parallax-front {
+  z-index: 3;
+  position: relative;
+}
+
+/* Fantastic: dramatic depth with colored layers */
+[data-theme="fantastic"] .parallax-shadow {
+  opacity: 0.2;
+  color: oklch(58% 0.233 277);
+  filter: blur(8px);
+}
+
+[data-theme="fantastic"] .parallax-mid {
+  opacity: 0.25;
+  color: oklch(60% 0.25 293);
+}
+
+[data-theme="fantastic"] .parallax-front {
+  text-shadow: 0 0 20px oklch(58% 0.233 277 / 0.3);
+}
+
 /* This file is for your main application CSS */

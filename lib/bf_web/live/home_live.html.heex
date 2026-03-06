@@ -5,13 +5,19 @@
 <div class="flex flex-col min-h-dvh">
   <Layouts.flash_group flash={@flash} />
 
-  <section id="section-hero" class="flex-1 grid lg:grid-cols-2 items-center px-6 lg:px-16">
-    <div>
-      <h1 class="font-display text-7xl lg:text-9xl leading-none">
-        Brilliant Fantastic
-      </h1>
+  <section id="section-hero" class="flex-1 relative flex items-center justify-center overflow-hidden parallax-hero">
+    <%!-- Shadow layer (deepest) --%>
+    <div class="parallax-layer parallax-shadow font-display text-7xl lg:text-9xl leading-none text-center" aria-hidden="true">
+      Brilliant<br />Fantastic
     </div>
-    <div></div>
+    <%!-- Mid layer --%>
+    <div class="parallax-layer parallax-mid font-display text-7xl lg:text-9xl leading-none text-center" aria-hidden="true">
+      Brilliant<br />Fantastic
+    </div>
+    <%!-- Front layer (primary text) --%>
+    <h1 class="parallax-layer parallax-front font-display text-7xl lg:text-9xl leading-none text-center">
+      Brilliant<br />Fantastic
+    </h1>
   </section>
 </div>
 
@@ -25,7 +31,51 @@
 
 <.contact_section />
 
+<div id="hero-parallax-controller" phx-hook=".HeroParallax" phx-update="ignore"></div>
 <div id="nav-morph-controller" phx-hook=".NavMorph" phx-update="ignore"></div>
+<script :type={Phoenix.LiveView.ColocatedHook} name=".HeroParallax">
+  export default {
+    mounted() {
+      const hero = document.getElementById("section-hero");
+      if (!hero) return;
+
+      const shadow = hero.querySelector(".parallax-shadow");
+      const mid = hero.querySelector(".parallax-mid");
+      const front = hero.querySelector(".parallax-front");
+
+      const onMove = (e) => {
+        const rect = hero.getBoundingClientRect();
+        const cx = (e.clientX - rect.left) / rect.width - 0.5;
+        const cy = (e.clientY - rect.top) / rect.height - 0.5;
+
+        const theme = document.documentElement.getAttribute("data-theme") || "brilliant";
+        const intensity = theme === "fantastic" ? 1 : 0.4;
+
+        shadow.style.transform = `translate(${cx * -30 * intensity}px, ${cy * -30 * intensity}px)`;
+        mid.style.transform = `translate(${cx * -15 * intensity}px, ${cy * -15 * intensity}px)`;
+        front.style.transform = `translate(${cx * 5 * intensity}px, ${cy * 5 * intensity}px)`;
+      };
+
+      const onLeave = () => {
+        shadow.style.transform = "";
+        mid.style.transform = "";
+        front.style.transform = "";
+      };
+
+      hero.addEventListener("mousemove", onMove);
+      hero.addEventListener("mouseleave", onLeave);
+
+      this._cleanup = () => {
+        hero.removeEventListener("mousemove", onMove);
+        hero.removeEventListener("mouseleave", onLeave);
+      };
+    },
+
+    destroyed() {
+      if (this._cleanup) this._cleanup();
+    }
+  }
+</script>
 <script :type={Phoenix.LiveView.ColocatedHook} name=".NavMorph">
   // Sparkle SVG path (matches the sparkle component in layouts.ex)
   const SPARKLE_PATH = "M10 0 L12 8 L20 10 L12 12 L10 20 L8 12 L0 10 L8 8 Z";
