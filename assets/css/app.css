@@ -502,4 +502,88 @@
 [data-theme="fantastic"] .makeup .gu { color: #75715e; }
 [data-theme="fantastic"] .makeup .err { color: #960050; background-color: #1e0010; }
 
+/* ── Hero: Direction T — Liquid ──────────────────────────────────── */
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Fluid background: shifting warm gradients */
+.liquid-fluid {
+  position: absolute;
+  inset: -20%;
+  z-index: 1;
+  pointer-events: none;
+  transition: filter 800ms ease;
+}
+
+/* ── Brilliant: warm earth tones, subtle shimmer ── */
+[data-theme="brilliant"] .hero-bg {
+  background: oklch(95% 0.02 80);
+}
+
+[data-theme="brilliant"] .liquid-fluid {
+  background:
+    radial-gradient(ellipse at 30% 40%, oklch(85% 0.08 70 / 0.6) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 60%, oklch(80% 0.06 150 / 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, oklch(82% 0.07 40 / 0.3) 0%, transparent 40%);
+  filter: url(#liquid-warp);
+  animation: liquid-drift 20s ease-in-out infinite;
+}
+
+[data-theme="brilliant"] .liquid-text {
+  color: oklch(25% 0.04 50);
+  text-shadow: 0 2px 20px oklch(85% 0.08 70 / 0.3);
+}
+
+@keyframes liquid-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(3%, -2%) scale(1.02); }
+  66% { transform: translate(-2%, 3%) scale(0.98); }
+}
+
+/* ── Fantastic: PSYCHEDELIC MELTDOWN ── */
+[data-theme="fantastic"] .hero-bg {
+  background: oklch(20% 0.05 300);
+}
+
+[data-theme="fantastic"] .liquid-fluid {
+  background:
+    radial-gradient(ellipse at 20% 30%, oklch(65% 0.3 330 / 0.8) 0%, transparent 40%),
+    radial-gradient(ellipse at 80% 20%, oklch(70% 0.25 180 / 0.7) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 70%, oklch(60% 0.3 280 / 0.6) 0%, transparent 45%),
+    radial-gradient(ellipse at 30% 90%, oklch(75% 0.2 100 / 0.5) 0%, transparent 35%),
+    radial-gradient(ellipse at 70% 50%, oklch(55% 0.25 20 / 0.6) 0%, transparent 50%);
+  filter: url(#liquid-warp-heavy) saturate(2);
+  animation: liquid-melt 8s ease-in-out infinite;
+}
+
+@keyframes liquid-melt {
+  0%, 100% { transform: translate(0, 0) scale(1.1) rotate(0deg); }
+  25% { transform: translate(4%, -3%) scale(1.15) rotate(1deg); }
+  50% { transform: translate(-3%, 4%) scale(1.05) rotate(-1deg); }
+  75% { transform: translate(2%, 2%) scale(1.12) rotate(0.5deg); }
+}
+
+/* Fantastic: text also gets warped + dripping effect */
+[data-theme="fantastic"] .liquid-text {
+  color: oklch(95% 0.02 300);
+  filter: url(#liquid-warp);
+  text-shadow:
+    0 0 20px oklch(65% 0.3 330 / 0.6),
+    0 0 60px oklch(70% 0.25 180 / 0.4),
+    0 0 100px oklch(60% 0.3 280 / 0.3),
+    0 5px 3px oklch(0% 0 0 / 0.4);
+  animation: liquid-text-waver 4s ease-in-out infinite;
+  transform: scale(1.1);
+}
+
+@keyframes liquid-text-waver {
+  0%, 100% { transform: scale(1.1) skewX(0deg); }
+  25% { transform: scale(1.12) skewX(-0.5deg); }
+  75% { transform: scale(1.08) skewX(0.5deg); }
+}
+
 /* This file is for your main application CSS */
