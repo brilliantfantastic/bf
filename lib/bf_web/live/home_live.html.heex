@@ -5,13 +5,19 @@
 <div class="flex flex-col min-h-dvh">
   <Layouts.flash_group flash={@flash} />
 
-  <section id="section-hero" class="flex-1 grid lg:grid-cols-2 items-center px-6 lg:px-16">
-    <div>
-      <h1 class="font-display text-7xl lg:text-9xl leading-none">
-        Brilliant Fantastic
-      </h1>
-    </div>
-    <div></div>
+  <section id="section-hero" class="flex-1 relative flex items-center justify-center overflow-hidden">
+    <%!-- Background image slot --%>
+    <div class="hero-bg"></div>
+    <%!-- Vignette overlay --%>
+    <div class="grain-vignette"></div>
+    <%!-- Film grain canvas --%>
+    <canvas id="grain-canvas" class="grain-canvas"></canvas>
+    <%!-- Film burn overlay (fantastic) --%>
+    <div class="grain-burn"></div>
+    <%!-- Text layer --%>
+    <h1 class="font-display text-7xl lg:text-9xl leading-none text-center relative z-10 grain-text px-6">
+      Brilliant<br />Fantastic
+    </h1>
   </section>
 </div>
 
@@ -25,7 +31,96 @@
 
 <.contact_section />
 
+<div id="hero-grain-controller" phx-hook=".HeroGrain" phx-update="ignore"></div>
 <div id="nav-morph-controller" phx-hook=".NavMorph" phx-update="ignore"></div>
+<script :type={Phoenix.LiveView.ColocatedHook} name=".HeroGrain">
+  export default {
+    mounted() {
+      const canvas = document.getElementById("grain-canvas");
+      const hero = document.getElementById("section-hero");
+      if (!canvas || !hero) return;
+
+      const ctx = canvas.getContext("2d");
+      let raf = null;
+      let frame = 0;
+
+      function resize() {
+        const rect = hero.getBoundingClientRect();
+        // Grain at half-resolution for performance
+        canvas.width = Math.floor(rect.width / 2);
+        canvas.height = Math.floor(rect.height / 2);
+      }
+
+      resize();
+      window.addEventListener("resize", resize);
+
+      function drawGrain() {
+        const theme = document.documentElement.getAttribute("data-theme") || "brilliant";
+        const w = canvas.width;
+        const h = canvas.height;
+        const imageData = ctx.createImageData(w, h);
+        const data = imageData.data;
+        frame++;
+
+        if (theme === "fantastic") {
+          // Heavy grain with color shifts
+          for (let i = 0; i < data.length; i += 4) {
+            const noise = Math.random();
+            // Occasional color flashes
+            if (noise > 0.97) {
+              // Hot pixel — random color
+              data[i] = Math.random() * 255;
+              data[i + 1] = Math.random() * 100;
+              data[i + 2] = Math.random() * 255;
+              data[i + 3] = 80;
+            } else {
+              const v = (noise - 0.5) * 100;
+              data[i] = 128 + v;
+              data[i + 1] = 128 + v;
+              data[i + 2] = 128 + v;
+              data[i + 3] = 50;
+            }
+          }
+
+          // Film damage: horizontal scratch
+          if (frame % 30 < 3) {
+            const y = Math.floor(Math.random() * h);
+            for (let x = 0; x < w; x++) {
+              const idx = (y * w + x) * 4;
+              data[idx] = 255;
+              data[idx + 1] = 255;
+              data[idx + 2] = 255;
+              data[idx + 3] = 30 + Math.random() * 40;
+            }
+          }
+        } else {
+          // Subtle elegant grain
+          for (let i = 0; i < data.length; i += 4) {
+            const v = (Math.random() - 0.5) * 50 + 128;
+            data[i] = v;
+            data[i + 1] = v;
+            data[i + 2] = v;
+            data[i + 3] = 15;
+          }
+        }
+
+        ctx.putImageData(imageData, 0, 0);
+        raf = requestAnimationFrame(drawGrain);
+      }
+
+      raf = requestAnimationFrame(drawGrain);
+
+      this._cleanup = () => {
+        if (raf) cancelAnimationFrame(raf);
+        window.removeEventListener("resize", resize);
+      };
+    },
+
+    destroyed() {
+      if (this._cleanup) this._cleanup();
+    }
+  }
+</script>
 <script :type={Phoenix.LiveView.ColocatedHook} name=".NavMorph">
   // Sparkle SVG path (matches the sparkle component in layouts.ex)
   const SPARKLE_PATH = "M10 0 L12 8 L20 10 L12 12 L10 20 L8 12 L0 10 L8 8 Z";

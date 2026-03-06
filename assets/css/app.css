@@ -502,4 +502,96 @@
 [data-theme="fantastic"] .makeup .gu { color: #75715e; }
 [data-theme="fantastic"] .makeup .err { color: #960050; background-color: #1e0010; }
 
+/* ── Hero: Direction Q — Film Grain ──────────────────────────────── */
+
+/* Background image slot */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--color-base-200);
+}
+
+/* Grain canvas: half-res, stretched, composited */
+.grain-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  opacity: 0.6;
+  transition: opacity 400ms ease;
+}
+
+[data-theme="fantastic"] .grain-canvas {
+  opacity: 1;
+  mix-blend-mode: soft-light;
+}
+
+/* Vignette: darkened edges */
+.grain-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 40%, oklch(0% 0 0 / 0.2) 100%);
+  transition: background 600ms ease;
+}
+
+[data-theme="fantastic"] .grain-vignette {
+  background: radial-gradient(ellipse at center, transparent 20%, oklch(0% 0 0 / 0.5) 100%);
+}
+
+/* Film burn: warm edge bleeds in fantastic */
+.grain-burn {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 800ms ease;
+}
+
+[data-theme="fantastic"] .grain-burn {
+  opacity: 1;
+  background:
+    radial-gradient(circle at 0% 0%, oklch(70% 0.25 50 / 0.15) 0%, transparent 30%),
+    radial-gradient(circle at 100% 100%, oklch(60% 0.3 30 / 0.12) 0%, transparent 25%),
+    radial-gradient(circle at 90% 10%, oklch(65% 0.2 340 / 0.1) 0%, transparent 20%);
+  animation: grain-burn-flicker 5s ease-in-out infinite;
+}
+
+@keyframes grain-burn-flicker {
+  0%, 100% { opacity: 0.8; }
+  30% { opacity: 1; }
+  60% { opacity: 0.6; }
+  80% { opacity: 0.9; }
+}
+
+/* Text styling */
+.grain-text {
+  z-index: 8;
+  transition: text-shadow 400ms ease, color 400ms ease;
+}
+
+[data-theme="fantastic"] .grain-text {
+  text-shadow:
+    0 0 20px oklch(70% 0.25 50 / 0.4),
+    0 0 60px oklch(58% 0.233 277 / 0.2);
+  animation: grain-text-jitter 10s linear infinite;
+}
+
+@keyframes grain-text-jitter {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-0.5px, 0.5px); }
+  20% { transform: translate(0.5px, -0.5px); }
+  30% { transform: translate(0, 0); }
+  70% { transform: translate(0, 0); }
+  72% { transform: translate(1px, -1px); }
+  74% { transform: translate(-1px, 0.5px); }
+  76% { transform: translate(0, 0); }
+}
+
 /* This file is for your main application CSS */
