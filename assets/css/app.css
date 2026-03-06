@@ -502,4 +502,142 @@
 [data-theme="fantastic"] .makeup .gu { color: #75715e; }
 [data-theme="fantastic"] .makeup .err { color: #960050; background-color: #1e0010; }
 
+/* ── Hero: Direction W — Botanical ─────────────────────────────── */
+
+/* Brilliant: warm earthy palette, organic curves */
+.hero-botanical {
+  background: linear-gradient(175deg, oklch(96% 0.02 90) 0%, oklch(92% 0.04 100) 40%, oklch(88% 0.03 80) 100%);
+  transition: background 0.8s ease;
+}
+
+[data-theme="fantastic"] .hero-botanical {
+  background: linear-gradient(175deg, oklch(35% 0.12 150) 0%, oklch(25% 0.15 170) 40%, oklch(20% 0.1 130) 100%);
+}
+
+/* Vine line art - brilliant mode */
+.botanical-vine {
+  position: absolute;
+  height: 100%;
+  width: 200px;
+  color: oklch(65% 0.06 120);
+  opacity: 0.3;
+  transition: opacity 0.6s ease, color 0.6s ease;
+}
+.botanical-vine-1 { left: 3%; }
+.botanical-vine-2 { right: 3%; transform: scaleX(-1); }
+
+[data-theme="fantastic"] .botanical-vine { opacity: 0; }
+
+/* Title styling */
+.botanical-title {
+  font-size: clamp(3.5rem, 12vw, 10rem);
+}
+
+.botanical-word {
+  display: block;
+}
+
+[data-theme="brilliant"] .botanical-word-1 {
+  color: oklch(35% 0.04 80);
+}
+[data-theme="brilliant"] .botanical-word-2 {
+  color: oklch(50% 0.06 120);
+}
+
+[data-theme="fantastic"] .botanical-title {
+  animation: botanical-title-glow 3s ease-in-out infinite alternate;
+}
+
+[data-theme="fantastic"] .botanical-word-1 {
+  color: oklch(85% 0.2 140);
+  text-shadow: 0 0 30px oklch(70% 0.25 140 / 0.5), 0 0 60px oklch(60% 0.2 160 / 0.3);
+}
+
+[data-theme="fantastic"] .botanical-word-2 {
+  color: oklch(80% 0.25 320);
+  text-shadow: 0 0 30px oklch(70% 0.3 320 / 0.5), 0 0 60px oklch(60% 0.25 300 / 0.3);
+  animation: botanical-word-bloom 4s ease-in-out infinite alternate;
+}
+
+@keyframes botanical-title-glow {
+  0% { filter: brightness(1); }
+  100% { filter: brightness(1.15); }
+}
+
+@keyframes botanical-word-bloom {
+  0% { transform: scale(1); letter-spacing: 0; }
+  100% { transform: scale(1.03); letter-spacing: 0.05em; }
+}
+
+/* Leaf accent SVGs */
+.botanical-leaf-accent {
+  width: clamp(150px, 30vw, 400px);
+  margin: 0 auto;
+  color: oklch(60% 0.06 120);
+  opacity: 0.5;
+  transition: color 0.6s ease, opacity 0.6s ease;
+}
+.botanical-leaf-accent-bottom {
+  transform: scaleY(-1);
+}
+
+[data-theme="fantastic"] .botanical-leaf-accent {
+  color: oklch(75% 0.2 140);
+  opacity: 0.8;
+  animation: botanical-accent-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes botanical-accent-pulse {
+  0% { opacity: 0.5; filter: drop-shadow(0 0 4px oklch(70% 0.2 140 / 0.5)); }
+  100% { opacity: 0.9; filter: drop-shadow(0 0 12px oklch(70% 0.25 320 / 0.6)); }
+}
+
+/* Tagline */
+[data-theme="brilliant"] .botanical-tagline {
+  color: oklch(50% 0.04 80);
+  letter-spacing: 0.2em;
+}
+
+[data-theme="fantastic"] .botanical-tagline {
+  color: oklch(80% 0.15 60);
+  animation: botanical-tagline-float 5s ease-in-out infinite;
+}
+
+@keyframes botanical-tagline-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Floating emoji flowers in fantastic */
+.botanical-flower {
+  position: absolute;
+  font-size: 2rem;
+  animation: botanical-flower-float 8s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px oklch(80% 0.2 320 / 0.4));
+}
+
+.botanical-flower-1 { top: 8%; left: 10%; animation-delay: 0s; font-size: 3rem; }
+.botanical-flower-2 { top: 15%; right: 12%; animation-delay: -1s; font-size: 2.5rem; }
+.botanical-flower-3 { top: 60%; left: 5%; animation-delay: -2s; }
+.botanical-flower-4 { top: 70%; right: 8%; animation-delay: -3s; font-size: 3.5rem; }
+.botanical-flower-5 { top: 40%; left: 15%; animation-delay: -4s; font-size: 2rem; }
+.botanical-flower-6 { bottom: 10%; left: 20%; animation-delay: -5s; font-size: 2.5rem; }
+.botanical-flower-7 { top: 25%; right: 25%; animation-delay: -6s; font-size: 1.8rem; }
+.botanical-flower-8 { bottom: 20%; right: 15%; animation-delay: -7s; font-size: 3rem; }
+
+@keyframes botanical-flower-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-20px) rotate(10deg) scale(1.1);
+  }
+  50% {
+    transform: translateY(-35px) rotate(-5deg) scale(1.05);
+  }
+  75% {
+    transform: translateY(-15px) rotate(8deg) scale(1.15);
+  }
+}
+
 /* This file is for your main application CSS */
