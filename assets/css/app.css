@@ -502,4 +502,207 @@
 [data-theme="fantastic"] .makeup .gu { color: #75715e; }
 [data-theme="fantastic"] .makeup .err { color: #960050; background-color: #1e0010; }
 
+/* ── Hero: Direction U — Terminal ────────────────────────────────── */
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.terminal-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 800ms ease;
+}
+
+/* CRT scanlines */
+.terminal-scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 1px,
+    oklch(0% 0 0 / 0.03) 1px,
+    oklch(0% 0 0 / 0.03) 2px
+  );
+}
+
+/* Terminal chrome */
+.terminal-chrome {
+  font-family: "Courier New", "Consolas", monospace;
+  max-width: 700px;
+}
+
+.terminal-prompt {
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  transition: color 400ms ease;
+}
+
+.terminal-title {
+  font-family: "Courier New", "Consolas", monospace;
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: bold;
+  line-height: 1.1;
+  transition: all 600ms ease;
+}
+
+.terminal-line {
+  display: block;
+}
+
+.terminal-cursor {
+  display: inline-block;
+  font-family: "Courier New", monospace;
+  font-size: 2rem;
+  animation: terminal-blink 1s step-end infinite;
+  transition: color 400ms ease;
+}
+
+@keyframes terminal-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Error messages hidden by default */
+.terminal-errors {
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 600ms ease, max-height 600ms ease;
+}
+
+.terminal-error {
+  padding: 0.25rem 0;
+}
+
+/* ── Brilliant: amber-on-dark, clean terminal ── */
+[data-theme="brilliant"] .hero-bg {
+  background: oklch(15% 0.01 250);
+}
+
+[data-theme="brilliant"] .terminal-prompt {
+  color: oklch(65% 0.12 85);
+}
+
+[data-theme="brilliant"] .terminal-title {
+  color: oklch(82% 0.1 80);
+  text-shadow: 0 0 10px oklch(82% 0.1 80 / 0.3);
+}
+
+[data-theme="brilliant"] .terminal-cursor {
+  color: oklch(82% 0.1 80);
+}
+
+[data-theme="brilliant"] .terminal-scanlines {
+  opacity: 0.5;
+}
+
+/* Subtle CRT curve effect */
+[data-theme="brilliant"] #section-hero {
+  border-radius: 8px;
+}
+
+/* ── Fantastic: FULL GLITCH MELTDOWN ── */
+[data-theme="fantastic"] .hero-bg {
+  background: oklch(5% 0.02 145);
+}
+
+[data-theme="fantastic"] .terminal-canvas {
+  opacity: 0.7;
+}
+
+[data-theme="fantastic"] .terminal-prompt {
+  color: oklch(75% 0.25 145);
+  text-shadow: 0 0 5px oklch(75% 0.25 145);
+  animation: terminal-glitch-text 3s linear infinite;
+}
+
+[data-theme="fantastic"] .terminal-title {
+  color: oklch(85% 0.25 145);
+  text-shadow:
+    0 0 10px oklch(85% 0.25 145),
+    0 0 30px oklch(75% 0.3 145),
+    0 0 60px oklch(65% 0.25 145 / 0.5),
+    3px 0 0 oklch(75% 0.25 350),
+    -3px 0 0 oklch(80% 0.2 195);
+  animation: terminal-glitch-title 2s linear infinite;
+}
+
+[data-theme="fantastic"] .terminal-cursor {
+  color: oklch(85% 0.25 145);
+  text-shadow: 0 0 8px oklch(85% 0.25 145);
+  animation: terminal-blink 0.3s step-end infinite;
+}
+
+[data-theme="fantastic"] .terminal-errors {
+  opacity: 1;
+  max-height: 200px;
+  color: oklch(70% 0.25 25);
+  text-shadow: 0 0 5px oklch(70% 0.25 25);
+  animation: terminal-error-flicker 4s linear infinite;
+}
+
+[data-theme="fantastic"] .terminal-error:nth-child(2) {
+  color: oklch(80% 0.2 100);
+  text-shadow: 0 0 5px oklch(80% 0.2 100);
+}
+
+[data-theme="fantastic"] .terminal-error:nth-child(3) {
+  color: oklch(75% 0.25 350);
+  text-shadow: 0 0 5px oklch(75% 0.25 350);
+}
+
+[data-theme="fantastic"] .terminal-scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 1px,
+    oklch(0% 0 0 / 0.08) 1px,
+    oklch(0% 0 0 / 0.08) 2px
+  );
+  animation: terminal-scanline-shift 0.1s linear infinite;
+}
+
+@keyframes terminal-glitch-title {
+  0%, 85%, 100% { transform: translate(0, 0) skewX(0deg); }
+  86% { transform: translate(-4px, 2px) skewX(-2deg); }
+  88% { transform: translate(3px, -1px) skewX(1deg); }
+  90% { transform: translate(0, 0) skewX(0deg); }
+  92% { transform: translate(2px, 3px) skewX(-1deg); }
+  94% { transform: translate(-1px, -2px) skewX(2deg); }
+}
+
+@keyframes terminal-glitch-text {
+  0%, 90%, 100% { transform: translate(0, 0); }
+  91% { transform: translate(-3px, 1px); }
+  93% { transform: translate(2px, -1px); }
+  95% { transform: translate(0, 0); }
+}
+
+@keyframes terminal-error-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+  51% { opacity: 1; }
+  80% { opacity: 1; }
+  81% { opacity: 0.4; }
+  82% { opacity: 1; }
+}
+
+@keyframes terminal-scanline-shift {
+  from { background-position: 0 0; }
+  to { background-position: 0 4px; }
+}
+
 /* This file is for your main application CSS */

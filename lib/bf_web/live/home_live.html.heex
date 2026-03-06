@@ -5,13 +5,27 @@
 <div class="flex flex-col min-h-dvh">
   <Layouts.flash_group flash={@flash} />
 
-  <section id="section-hero" class="flex-1 grid lg:grid-cols-2 items-center px-6 lg:px-16">
-    <div>
-      <h1 class="font-display text-7xl lg:text-9xl leading-none">
-        Brilliant Fantastic
-      </h1>
+  <section id="section-hero" class="flex-1 relative flex overflow-hidden terminal-stage">
+    <div class="hero-bg"></div>
+    <div class="terminal-scanlines"></div>
+    <canvas id="terminal-canvas" class="terminal-canvas"></canvas>
+    <%!-- Terminal chrome --%>
+    <div class="relative z-10 p-8 lg:p-16 w-full flex flex-col justify-center">
+      <div class="terminal-chrome">
+        <div class="terminal-prompt">user@bf ~ $</div>
+        <h1 id="terminal-output" class="terminal-title">
+          <span class="terminal-line">Brilliant</span>
+          <span class="terminal-line">Fantastic</span>
+        </h1>
+        <div class="terminal-cursor">_</div>
+        <%!-- Error messages (fantastic only) --%>
+        <div class="terminal-errors" aria-hidden="true">
+          <div class="terminal-error">SEGFAULT: reality.exe has stopped responding</div>
+          <div class="terminal-error">WARNING: aesthetic overflow detected</div>
+          <div class="terminal-error">ERR 418: too fantastic to handle</div>
+        </div>
+      </div>
     </div>
-    <div></div>
   </section>
 </div>
 
@@ -25,7 +39,87 @@
 
 <.contact_section />
 
+<div id="hero-terminal-controller" phx-hook=".HeroTerminal" phx-update="ignore"></div>
 <div id="nav-morph-controller" phx-hook=".NavMorph" phx-update="ignore"></div>
+<script :type={Phoenix.LiveView.ColocatedHook} name=".HeroTerminal">
+  const MATRIX_CHARS = "アイウエオカキクケコサシスセソタチツテトBRILLIANTFANTASTIC0123456789";
+
+  export default {
+    mounted() {
+      const canvas = document.getElementById("terminal-canvas");
+      const hero = document.getElementById("section-hero");
+      if (!canvas || !hero) return;
+
+      const ctx = canvas.getContext("2d");
+      let raf = null;
+      let columns = [];
+      let fontSize = 14;
+
+      function resize() {
+        const rect = hero.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        const cols = Math.floor(canvas.width / fontSize);
+        columns = Array.from({ length: cols }, () => Math.random() * canvas.height / fontSize);
+      }
+
+      resize();
+      window.addEventListener("resize", resize);
+
+      function draw() {
+        const theme = document.documentElement.getAttribute("data-theme") || "brilliant";
+
+        if (theme !== "fantastic") {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          raf = requestAnimationFrame(draw);
+          return;
+        }
+
+        // Trail fade
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < columns.length; i++) {
+          const char = MATRIX_CHARS[Math.floor(Math.random() * MATRIX_CHARS.length)];
+          const x = i * fontSize;
+          const y = columns[i] * fontSize;
+
+          // Random color: mostly green, occasional pink/cyan
+          const roll = Math.random();
+          if (roll > 0.97) {
+            ctx.fillStyle = "oklch(75% 0.25 350)";
+          } else if (roll > 0.94) {
+            ctx.fillStyle = "oklch(80% 0.2 195)";
+          } else {
+            ctx.fillStyle = `oklch(${65 + Math.random() * 20}% 0.25 145)`;
+          }
+
+          ctx.fillText(char, x, y);
+
+          if (y > canvas.height && Math.random() > 0.975) {
+            columns[i] = 0;
+          }
+          columns[i]++;
+        }
+
+        raf = requestAnimationFrame(draw);
+      }
+
+      raf = requestAnimationFrame(draw);
+
+      this._cleanup = () => {
+        if (raf) cancelAnimationFrame(raf);
+        window.removeEventListener("resize", resize);
+      };
+    },
+
+    destroyed() {
+      if (this._cleanup) this._cleanup();
+    }
+  }
+</script>
 <script :type={Phoenix.LiveView.ColocatedHook} name=".NavMorph">
   // Sparkle SVG path (matches the sparkle component in layouts.ex)
   const SPARKLE_PATH = "M10 0 L12 8 L20 10 L12 12 L10 20 L8 12 L0 10 L8 8 Z";
