@@ -502,4 +502,108 @@
 [data-theme="fantastic"] .makeup .gu { color: #75715e; }
 [data-theme="fantastic"] .makeup .err { color: #960050; background-color: #1e0010; }
 
+/* ── Hero: Direction G — Kinetic Marquee ────────────────────────── */
+
+.marquee-band {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0.5rem 0;
+}
+
+.marquee-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  width: max-content;
+}
+
+.marquee-text {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-base-content);
+}
+
+.marquee-text-sm { font-size: clamp(1.5rem, 4vw, 3rem); }
+.marquee-text-lg { font-size: clamp(3rem, 8vw, 7rem); }
+.marquee-text-xl { font-size: clamp(4rem, 12vw, 10rem); }
+
+.marquee-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-base-content);
+  opacity: 0.3;
+  flex-shrink: 0;
+}
+
+/* Scrolling keyframes */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.marquee-scroll-left {
+  animation: marquee-left 30s linear infinite;
+}
+
+.marquee-scroll-right {
+  animation: marquee-right 25s linear infinite;
+}
+
+.marquee-scroll-left-slow {
+  animation: marquee-left 40s linear infinite;
+}
+
+/* Fantastic mode: speed up + add color + rotation */
+[data-theme="fantastic"] .marquee-scroll-left {
+  animation-duration: 15s;
+}
+
+[data-theme="fantastic"] .marquee-scroll-right {
+  animation-duration: 12s;
+}
+
+[data-theme="fantastic"] .marquee-scroll-left-slow {
+  animation-duration: 20s;
+}
+
+[data-theme="fantastic"] .marquee-band-1 {
+  transform: rotate(-1deg);
+}
+
+[data-theme="fantastic"] .marquee-band-2 {
+  transform: rotate(0.5deg);
+}
+
+[data-theme="fantastic"] .marquee-band-3 {
+  transform: rotate(-0.8deg);
+}
+
+[data-theme="fantastic"] .marquee-band {
+  transition: transform 600ms ease;
+}
+
+[data-theme="fantastic"] .marquee-text {
+  text-shadow: 0 0 30px var(--color-primary);
+}
+
+[data-theme="fantastic"] .marquee-dot {
+  opacity: 0.6;
+  background: var(--color-primary);
+  box-shadow: 0 0 8px var(--color-primary);
+}
+
+/* Brilliant mode transitions */
+.marquee-band {
+  transition: transform 600ms ease;
+  transform: rotate(0deg);
+}
+
 /* This file is for your main application CSS */
