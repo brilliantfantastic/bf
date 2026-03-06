@@ -5,13 +5,11 @@
 <div class="flex flex-col min-h-dvh">
   <Layouts.flash_group flash={@flash} />
 
-  <section id="section-hero" class="flex-1 grid lg:grid-cols-2 items-center px-6 lg:px-16">
-    <div>
-      <h1 class="font-display text-7xl lg:text-9xl leading-none">
-        Brilliant Fantastic
-      </h1>
-    </div>
-    <div></div>
+  <section id="section-hero" class="flex-1 relative flex items-center justify-center overflow-hidden spotlight-stage">
+    <div class="spotlight-mask"></div>
+    <h1 class="font-display text-7xl lg:text-9xl leading-none text-center relative z-10 spotlight-text px-6">
+      Brilliant<br />Fantastic
+    </h1>
   </section>
 </div>
 
@@ -25,7 +23,73 @@
 
 <.contact_section />
 
+<div id="hero-spotlight-controller" phx-hook=".HeroSpotlight" phx-update="ignore"></div>
 <div id="nav-morph-controller" phx-hook=".NavMorph" phx-update="ignore"></div>
+<script :type={Phoenix.LiveView.ColocatedHook} name=".HeroSpotlight">
+  export default {
+    mounted() {
+      const hero = document.getElementById("section-hero");
+      const mask = hero && hero.querySelector(".spotlight-mask");
+      if (!hero || !mask) return;
+
+      let targetX = 50;
+      let targetY = 50;
+      let currentX = 50;
+      let currentY = 50;
+      let raf = null;
+
+      const onMove = (e) => {
+        const rect = hero.getBoundingClientRect();
+        targetX = ((e.clientX - rect.left) / rect.width) * 100;
+        targetY = ((e.clientY - rect.top) / rect.height) * 100;
+      };
+
+      const onLeave = () => {
+        targetX = 50;
+        targetY = 50;
+      };
+
+      const animate = () => {
+        currentX += (targetX - currentX) * 0.08;
+        currentY += (targetY - currentY) * 0.08;
+
+        const theme = document.documentElement.getAttribute("data-theme") || "brilliant";
+
+        if (theme === "fantastic") {
+          // Multiple colored spots
+          mask.style.background = `
+            radial-gradient(circle 250px at ${currentX}% ${currentY}%, oklch(58% 0.233 277 / 0.6) 0%, transparent 70%),
+            radial-gradient(circle 200px at ${100 - currentX}% ${100 - currentY}%, oklch(60% 0.25 293 / 0.4) 0%, transparent 70%),
+            radial-gradient(circle 180px at ${currentX * 0.7 + 15}% ${currentY * 0.5 + 25}%, oklch(58% 0.253 18 / 0.3) 0%, transparent 70%),
+            oklch(18% 0.02 280)
+          `;
+        } else {
+          // Single clean white spotlight
+          mask.style.background = `
+            radial-gradient(circle 300px at ${currentX}% ${currentY}%, oklch(98% 0.002 250 / 0.9) 0%, oklch(98% 0.002 250 / 0.1) 50%, oklch(22% 0.01 250) 80%),
+            oklch(22% 0.01 250)
+          `;
+        }
+
+        raf = requestAnimationFrame(animate);
+      };
+
+      hero.addEventListener("mousemove", onMove);
+      hero.addEventListener("mouseleave", onLeave);
+      raf = requestAnimationFrame(animate);
+
+      this._cleanup = () => {
+        hero.removeEventListener("mousemove", onMove);
+        hero.removeEventListener("mouseleave", onLeave);
+        if (raf) cancelAnimationFrame(raf);
+      };
+    },
+
+    destroyed() {
+      if (this._cleanup) this._cleanup();
+    }
+  }
+</script>
 <script :type={Phoenix.LiveView.ColocatedHook} name=".NavMorph">
   // Sparkle SVG path (matches the sparkle component in layouts.ex)
   const SPARKLE_PATH = "M10 0 L12 8 L20 10 L12 12 L10 20 L8 12 L0 10 L8 8 Z";

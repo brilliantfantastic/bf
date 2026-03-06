@@ -502,4 +502,35 @@
 [data-theme="fantastic"] .makeup .gu { color: #75715e; }
 [data-theme="fantastic"] .makeup .err { color: #960050; background-color: #1e0010; }
 
+/* ── Hero: Direction K — Spotlight Stage ────────────────────────── */
+
+.spotlight-stage {
+  background: oklch(22% 0.01 250);
+  cursor: none;
+}
+
+.spotlight-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: oklch(22% 0.01 250);
+  transition: background 300ms ease;
+}
+
+.spotlight-text {
+  color: oklch(98% 0.002 250);
+  z-index: 2;
+  mix-blend-mode: difference;
+}
+
+[data-theme="fantastic"] .spotlight-stage {
+  background: oklch(18% 0.02 280);
+}
+
+[data-theme="fantastic"] .spotlight-text {
+  mix-blend-mode: normal;
+  color: oklch(96% 0.018 272);
+  text-shadow: 0 0 40px oklch(58% 0.233 277 / 0.5);
+}
+
 /* This file is for your main application CSS */
