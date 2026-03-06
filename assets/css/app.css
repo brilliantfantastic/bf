@@ -502,4 +502,116 @@
 [data-theme="fantastic"] .makeup .gu { color: #75715e; }
 [data-theme="fantastic"] .makeup .err { color: #960050; background-color: #1e0010; }
 
+/* ── Hero: Direction O — Aurora / Northern Lights ───────────────── */
+
+/* Background image slot */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--color-base-200);
+}
+
+/* Aurora bands: absolutely positioned gradient strips */
+.aurora-band {
+  position: absolute;
+  left: -20%;
+  right: -20%;
+  height: 30%;
+  z-index: 2;
+  pointer-events: none;
+  filter: blur(40px);
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 800ms ease, filter 800ms ease;
+}
+
+/* Brilliant: very subtle silver/gray undulation */
+[data-theme="brilliant"] .aurora-band {
+  opacity: 0.04;
+  filter: blur(60px);
+}
+
+[data-theme="brilliant"] .aurora-band-1 {
+  top: 10%;
+  background: linear-gradient(90deg, transparent 10%, oklch(90% 0.005 250) 40%, oklch(88% 0.006 250) 60%, transparent 90%);
+  animation: aurora-wave 12s ease-in-out infinite;
+}
+
+[data-theme="brilliant"] .aurora-band-2 {
+  top: 30%;
+  background: linear-gradient(90deg, transparent 20%, oklch(92% 0.004 250) 50%, transparent 80%);
+  animation: aurora-wave 15s ease-in-out infinite reverse;
+}
+
+[data-theme="brilliant"] .aurora-band-3 {
+  top: 50%;
+  background: linear-gradient(90deg, transparent 15%, oklch(88% 0.006 250) 45%, transparent 85%);
+  animation: aurora-wave 10s ease-in-out infinite;
+  animation-delay: -3s;
+}
+
+[data-theme="brilliant"] .aurora-band-4 {
+  top: 65%;
+  background: linear-gradient(90deg, transparent 25%, oklch(91% 0.004 250) 55%, transparent 75%);
+  animation: aurora-wave 14s ease-in-out infinite reverse;
+  animation-delay: -5s;
+}
+
+/* Fantastic: vivid aurora */
+[data-theme="fantastic"] .aurora-band {
+  opacity: 0.7;
+  filter: blur(50px);
+}
+
+[data-theme="fantastic"] .aurora-band-1 {
+  top: 5%;
+  background: linear-gradient(90deg, transparent 5%, oklch(70% 0.2 160) 30%, oklch(65% 0.25 180) 50%, oklch(60% 0.2 200) 70%, transparent 95%);
+  animation: aurora-wave 6s ease-in-out infinite, aurora-pulse 4s ease-in-out infinite;
+}
+
+[data-theme="fantastic"] .aurora-band-2 {
+  top: 25%;
+  background: linear-gradient(90deg, transparent 10%, oklch(60% 0.25 280) 35%, oklch(65% 0.3 300) 55%, oklch(55% 0.2 260) 75%, transparent 90%);
+  animation: aurora-wave 8s ease-in-out infinite reverse, aurora-pulse 5s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+[data-theme="fantastic"] .aurora-band-3 {
+  top: 45%;
+  background: linear-gradient(90deg, transparent 15%, oklch(65% 0.2 340) 40%, oklch(70% 0.25 10) 60%, oklch(60% 0.2 30) 80%, transparent 95%);
+  animation: aurora-wave 7s ease-in-out infinite, aurora-pulse 6s ease-in-out infinite;
+  animation-delay: -4s;
+}
+
+[data-theme="fantastic"] .aurora-band-4 {
+  top: 65%;
+  background: linear-gradient(90deg, transparent 20%, oklch(55% 0.25 145) 45%, oklch(65% 0.2 170) 65%, transparent 85%);
+  animation: aurora-wave 9s ease-in-out infinite reverse, aurora-pulse 3s ease-in-out infinite;
+  animation-delay: -1s;
+}
+
+@keyframes aurora-wave {
+  0%, 100% { transform: translateX(-5%) skewX(-3deg); }
+  50% { transform: translateX(5%) skewX(3deg); }
+}
+
+@keyframes aurora-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+
+/* Text styling */
+.aurora-text {
+  z-index: 5;
+  transition: text-shadow 600ms ease;
+}
+
+[data-theme="fantastic"] .aurora-text {
+  text-shadow:
+    0 0 40px oklch(70% 0.2 160 / 0.5),
+    0 0 80px oklch(60% 0.25 280 / 0.3),
+    0 2px 4px oklch(0% 0 0 / 0.3);
+}
+
 /* This file is for your main application CSS */
