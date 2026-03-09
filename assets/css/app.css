@@ -702,4 +702,341 @@
   font-weight: bold;
 }
 
+/* ── Brutalist: Full Page — Brilliant Theme Only ───────────────── */
+
+/* Structural-only shared utilities (no visual opinion) */
+.brutal-divider {
+  height: 1px;
+  border: none;
+}
+
+/* Brilliant-scoped brutalist utilities */
+[data-theme="brilliant"] .brutal-section-marker {
+  font-family: "Courier New", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+[data-theme="brilliant"] .brutal-label {
+  font-family: "Courier New", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+/* ── Nav: Brilliant Brutalist ── */
+[data-theme="brilliant"] #section-nav {
+  background: oklch(93% 0.01 80 / 0.95);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 2px solid oklch(20% 0.01 250 / 0.15);
+  border-radius: 0;
+}
+
+[data-theme="brilliant"] #section-nav a {
+  font-family: "Courier New", monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+[data-theme="brilliant"] #section-nav a.font-display.nav-logo,
+[data-theme="brilliant"] #section-nav a.font-display.text-xl {
+  font-family: "OmnesPro", sans-serif;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 1.25rem;
+}
+
+[data-theme="brilliant"] #section-nav a:hover {
+  color: oklch(55% 0.22 25);
+}
+
+/* ── Blog Section: Brilliant Brutalist ── */
+[data-theme="brilliant"] #section-blog {
+  background: oklch(55% 0.22 25);
+  color: oklch(93% 0.01 80);
+  border-top: 2px solid oklch(20% 0.01 250 / 0.15);
+  border-bottom: 2px solid oklch(20% 0.01 250 / 0.15);
+  position: relative;
+}
+
+[data-theme="brilliant"] #section-blog h2 {
+  font-family: "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+  color: oklch(93% 0.01 80);
+  border-bottom: 1px solid oklch(93% 0.01 80 / 0.4);
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+[data-theme="brilliant"] #section-blog .brutal-featured,
+[data-theme="brilliant"] #section-blog .bg-base-200\/80 {
+  background: transparent;
+  border: 1px solid oklch(93% 0.01 80 / 0.2);
+  border-radius: 0;
+  position: relative;
+}
+
+[data-theme="brilliant"] #section-blog .brutal-featured::before,
+[data-theme="brilliant"] #section-blog .lg\:col-span-2.bg-base-200\/80::before {
+  content: "FEATURED";
+  position: absolute;
+  top: -0.5rem;
+  left: 1rem;
+  font-family: "Courier New", monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  color: oklch(15% 0.01 250);
+  background: oklch(55% 0.22 25);
+  padding: 0 0.5rem;
+}
+
+[data-theme="brilliant"] #section-blog h3 {
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: oklch(93% 0.01 80);
+}
+
+[data-theme="brilliant"] #section-blog h3 a {
+  color: oklch(93% 0.01 80);
+}
+
+[data-theme="brilliant"] #section-blog .text-base-content\/70,
+[data-theme="brilliant"] #section-blog .text-lg {
+  color: oklch(93% 0.01 80 / 0.7);
+}
+
+[data-theme="brilliant"] #section-blog .text-primary {
+  color: oklch(93% 0.01 80);
+}
+
+[data-theme="brilliant"] #section-blog a.hover\:text-primary:hover {
+  color: oklch(98% 0.01 80);
+}
+
+[data-theme="brilliant"] #section-blog .brutal-recent,
+[data-theme="brilliant"] #section-blog div:not(.lg\:col-span-2).bg-base-200\/80 {
+  background: transparent;
+  border: 1px solid oklch(93% 0.01 80 / 0.2);
+  border-radius: 0;
+}
+
+[data-theme="brilliant"] #section-blog .brutal-recent::before,
+[data-theme="brilliant"] #section-blog div:not(.lg\:col-span-2).bg-base-200\/80::before {
+  content: "ARCHIVE";
+  position: absolute;
+  top: -0.5rem;
+  left: 1rem;
+  font-family: "Courier New", monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  color: oklch(93% 0.01 80 / 0.6);
+  background: oklch(55% 0.22 25);
+  padding: 0 0.5rem;
+}
+
+[data-theme="brilliant"] #section-blog ul li {
+  border-bottom: 1px solid oklch(93% 0.01 80 / 0.12);
+  padding-bottom: 0.75rem;
+}
+
+[data-theme="brilliant"] #section-blog ul li:last-child {
+  border-bottom: none;
+}
+
+/* ── Meet Jamie: Brilliant Brutalist ── */
+[data-theme="brilliant"] #section-jamie {
+  background: oklch(93% 0.01 80);
+  position: relative;
+}
+
+[data-theme="brilliant"] #section-jamie::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: oklch(55% 0.22 25);
+}
+
+[data-theme="brilliant"] #section-jamie h2 {
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  -webkit-text-stroke: 1.5px oklch(15% 0.01 250);
+  color: transparent;
+}
+
+[data-theme="brilliant"] #section-jamie p {
+  font-family: "Courier New", monospace;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+[data-theme="brilliant"] #section-jamie .brutal-image-frame {
+  border: 2px solid oklch(20% 0.01 250);
+  border-radius: 0;
+  position: relative;
+}
+
+[data-theme="brilliant"] #section-jamie .brutal-image-frame img {
+  border-radius: 0;
+  filter: grayscale(100%);
+}
+
+[data-theme="brilliant"] #section-jamie .brutal-image-accent {
+  background: oklch(55% 0.22 25 / 0.15);
+  border-radius: 0;
+  transform: rotate(0deg);
+}
+
+/* ── Contact Section: Brilliant Brutalist ── */
+[data-theme="brilliant"] #section-contact {
+  background: oklch(15% 0.01 250);
+  color: oklch(93% 0.01 80);
+  position: relative;
+}
+
+[data-theme="brilliant"] #section-contact::before {
+  content: "CONNECT";
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Courier New", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  color: oklch(55% 0.22 25);
+}
+
+[data-theme="brilliant"] #section-contact h2 {
+  -webkit-text-stroke: 2px oklch(93% 0.01 80);
+  color: transparent;
+}
+
+[data-theme="brilliant"] #section-contact h2 a {
+  color: transparent;
+  -webkit-text-stroke: 2px oklch(93% 0.01 80);
+}
+
+[data-theme="brilliant"] #section-contact h2 a:hover {
+  color: oklch(55% 0.22 25);
+  -webkit-text-stroke: 0;
+}
+
+/* ── Inner Pages: Brilliant Brutalist ── */
+[data-theme="brilliant"] .brutal-page {
+  background: oklch(96% 0.005 250);
+}
+
+[data-theme="brilliant"] .brutal-page-header {
+  border-bottom: 2px solid oklch(20% 0.01 250 / 0.12);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+[data-theme="brilliant"] .brutal-page-header h1 {
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  -webkit-text-stroke: 2px oklch(15% 0.01 250);
+  color: transparent;
+}
+
+[data-theme="brilliant"] .brutal-page-header .brutal-label {
+  color: oklch(55% 0.22 25);
+}
+
+/* ── Blog Index: Brilliant Brutalist ── */
+[data-theme="brilliant"] .brutal-blog-list article {
+  border-bottom: 1px solid oklch(20% 0.01 250 / 0.1);
+  padding-bottom: 2rem;
+}
+
+[data-theme="brilliant"] .brutal-blog-list article time {
+  font-family: "Courier New", monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+[data-theme="brilliant"] .brutal-blog-list article h2 {
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+
+[data-theme="brilliant"] .brutal-blog-list article h2 a:hover {
+  color: oklch(55% 0.22 25);
+}
+
+/* ── Blog Show: Brilliant Brutalist ── */
+[data-theme="brilliant"] .brutal-blog-post header h1 {
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+[data-theme="brilliant"] .brutal-blog-post header time {
+  font-family: "Courier New", monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+[data-theme="brilliant"] .brutal-blog-post header .brutal-author {
+  font-family: "Courier New", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: oklch(55% 0.22 25);
+}
+
+[data-theme="brilliant"] .brutal-blog-post .prose {
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  line-height: 1.9;
+}
+
+[data-theme="brilliant"] .brutal-blog-post .prose h2,
+[data-theme="brilliant"] .brutal-blog-post .prose h3 {
+  font-family: "OmnesPro", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid oklch(20% 0.01 250 / 0.1);
+  padding-bottom: 0.5rem;
+}
+
+[data-theme="brilliant"] .brutal-blog-post .border-t {
+  border-color: oklch(55% 0.22 25);
+}
+
+[data-theme="brilliant"] .brutal-back-link {
+  font-family: "Courier New", monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+[data-theme="brilliant"] .brutal-back-link:hover {
+  color: oklch(55% 0.22 25);
+}
+
+/* ── Blog Pagination: Brilliant Brutalist ── */
+[data-theme="brilliant"] .brutal-pagination {
+  font-family: "Courier New", monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+[data-theme="brilliant"] .brutal-pagination a:hover {
+  color: oklch(55% 0.22 25);
+}
+
 /* This file is for your main application CSS */

@@ -1,17 +1,17 @@
 <Layouts.nav_menu />
 
-<section class="px-6 lg:px-16 py-16 max-w-4xl mx-auto">
-  <.link navigate={~p"/blog"} class="text-primary hover:text-primary/80 transition-colors text-sm font-display">
+<section class="px-6 lg:px-16 py-16 max-w-4xl mx-auto brutal-page">
+  <.link navigate={~p"/blog"} class="text-primary hover:text-primary/80 transition-colors text-sm font-display brutal-back-link">
     &larr; Back to blog
   </.link>
 
-  <article class="mt-8">
+  <article class="mt-8 brutal-blog-post">
     <header class="mb-10">
       <time class="text-sm text-base-content/50" datetime={@post.date}>
         {Calendar.strftime(@post.date, "%B %-d, %Y")}
       </time>
       <h1 class="font-display text-4xl lg:text-5xl mt-2">{@post.title}</h1>
-      <p class="mt-3 text-base-content/60">By {@post.author}</p>
+      <p class="mt-3 text-base-content/60 brutal-author">By {@post.author}</p>
     </header>
 
     <div class="prose lg:prose-xl prose-headings:font-display max-w-none">
@@ -20,7 +20,7 @@
   </article>
 
   <div class="mt-16 pt-8 border-t border-base-300">
-    <.link navigate={~p"/blog"} class="text-primary hover:text-primary/80 transition-colors font-display">
+    <.link navigate={~p"/blog"} class="text-primary hover:text-primary/80 transition-colors font-display brutal-back-link">
       &larr; Back to blog
     </.link>
   </div>
