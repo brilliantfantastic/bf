@@ -1,9 +1,24 @@
 defmodule BrilliantFantasticWeb.HomeLive do
   use BrilliantFantasticWeb, :live_view
 
-  embed_templates "home_live/*"
+  alias BrilliantFantasticWeb.Components.Illustrations
+
+  @directions ~w(
+    transformation typography_art generative_canvas world_building
+    anti_hero marquee typewriter chromatic tilt fragments
+    neon_noir liquid terminal brutalist botanical holographic
+    cosmic kaleidoscope
+  )
+
+  embed_templates "home_live/**/*"
 
   def mount(_params, _session, socket) do
-    {:ok, socket}
+    direction = if connected?(socket), do: Enum.random(@directions)
+
+    {:ok, assign(socket, :direction, direction)}
+  end
+
+  def handle_event("randomize-direction", _params, socket) do
+    {:noreply, assign(socket, :direction, Enum.random(@directions))}
   end
 end

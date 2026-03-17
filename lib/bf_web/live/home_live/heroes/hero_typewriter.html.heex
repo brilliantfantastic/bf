@@ -1,0 +1,95 @@
+<section id="section-hero" class="flex-1 flex items-center justify-center px-6 lg:px-16">
+  <div class="text-center">
+    <h1 id="hero-typewriter" class="font-display text-7xl lg:text-9xl leading-none typewriter-text">
+      <span id="typewriter-target"></span><span class="typewriter-cursor">|</span>
+    </h1>
+  </div>
+</section>
+
+<div id="hero-typewriter-controller" phx-hook=".HeroTypewriter" phx-update="ignore"></div>
+<script :type={Phoenix.LiveView.ColocatedHook} name=".HeroTypewriter">
+  const GLITCH_CHARS = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`0123456789";
+  const TEXT = "Brilliant Fantastic";
+
+  export default {
+    mounted() {
+      const target = document.getElementById("typewriter-target");
+      if (!target) return;
+
+      let currentText = "";
+      let charIndex = 0;
+      let typeTimer = null;
+      let isTyped = false;
+
+      const getTheme = () =>
+        document.documentElement.getAttribute("data-theme") || "brilliant";
+
+      // Type one character at a time
+      const typeNext = () => {
+        if (charIndex >= TEXT.length) {
+          isTyped = true;
+          return;
+        }
+
+        const theme = getTheme();
+        const char = TEXT[charIndex];
+
+        if (theme === "fantastic" && char !== " ") {
+          // Glitch: show random chars before resolving
+          let glitchCount = 0;
+          const maxGlitches = 3 + Math.floor(Math.random() * 3);
+
+          const glitchStep = () => {
+            if (glitchCount < maxGlitches) {
+              const randomChar = GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
+              target.innerHTML = currentText +
+                `<span class="typewriter-glitch">${randomChar}</span>`;
+              glitchCount++;
+              setTimeout(glitchStep, 30 + Math.random() * 40);
+            } else {
+              // Resolve to correct character
+              currentText += char;
+              charIndex++;
+              target.textContent = currentText;
+              typeTimer = setTimeout(typeNext, 20 + Math.random() * 40);
+            }
+          };
+
+          glitchStep();
+        } else {
+          // Clean typewriter
+          currentText += char;
+          charIndex++;
+          target.textContent = currentText;
+          const delay = char === " " ? 120 : (60 + Math.random() * 80);
+          typeTimer = setTimeout(typeNext, delay);
+        }
+      };
+
+      // Reset and retype on theme change
+      const restart = () => {
+        if (typeTimer) clearTimeout(typeTimer);
+        currentText = "";
+        charIndex = 0;
+        isTyped = false;
+        target.textContent = "";
+        typeTimer = setTimeout(typeNext, 400);
+      };
+
+      // Initial type
+      typeTimer = setTimeout(typeNext, 600);
+
+      this._themeListener = () => restart();
+      window.addEventListener("phx:set-theme", this._themeListener);
+
+      this._cleanup = () => {
+        if (typeTimer) clearTimeout(typeTimer);
+        window.removeEventListener("phx:set-theme", this._themeListener);
+      };
+    },
+
+    destroyed() {
+      if (this._cleanup) this._cleanup();
+    }
+  }
+</script>

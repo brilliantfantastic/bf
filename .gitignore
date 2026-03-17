@@ -35,3 +35,6 @@ bf-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Claude Code
+.claude/
+

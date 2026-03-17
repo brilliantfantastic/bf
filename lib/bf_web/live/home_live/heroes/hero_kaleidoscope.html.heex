@@ -1,0 +1,180 @@
+<section id="section-hero" class="hero-kaleidoscope relative overflow-hidden min-h-dvh flex items-center justify-center">
+    <!-- Background layer for images -->
+    <div class="hero-bg absolute inset-0 z-0"></div>
+
+    <!-- Kaleidoscope canvas -->
+    <canvas id="hero-kaleidoscope-canvas" class="absolute inset-0 z-1" aria-hidden="true"></canvas>
+
+    <!-- Geometric jewel accents (brilliant) -->
+    <div class="kaleid-gems absolute inset-0 z-2 pointer-events-none" aria-hidden="true">
+      <div class="kaleid-gem kaleid-gem-1"></div>
+      <div class="kaleid-gem kaleid-gem-2"></div>
+      <div class="kaleid-gem kaleid-gem-3"></div>
+      <div class="kaleid-gem kaleid-gem-4"></div>
+      <div class="kaleid-gem kaleid-gem-5"></div>
+      <div class="kaleid-gem kaleid-gem-6"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 text-center px-6">
+      <h1 class="kaleid-title font-display leading-none">
+        <span class="kaleid-word kaleid-word-1">Brilliant</span>
+        <span class="kaleid-word kaleid-word-2">Fantastic</span>
+      </h1>
+      <!-- Fantastic: mirrored ghost copies of the title -->
+      <div class="kaleid-mirrors hidden fantastic:block" aria-hidden="true">
+        <span class="kaleid-mirror kaleid-mirror-1 font-display">Brilliant Fantastic</span>
+        <span class="kaleid-mirror kaleid-mirror-2 font-display">Brilliant Fantastic</span>
+        <span class="kaleid-mirror kaleid-mirror-3 font-display">Brilliant Fantastic</span>
+        <span class="kaleid-mirror kaleid-mirror-4 font-display">Brilliant Fantastic</span>
+      </div>
+      <p class="kaleid-tagline mt-8 text-lg tracking-[0.3em] uppercase">
+        Infinite symmetry
+      </p>
+    </div>
+  </section>
+
+<div id="kaleidoscope-controller" phx-hook=".HeroKaleidoscope" phx-update="ignore"></div>
+<script :type={Phoenix.LiveView.ColocatedHook} name=".HeroKaleidoscope">
+  export default {
+    mounted() {
+      const canvas = document.getElementById("hero-kaleidoscope-canvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      let raf;
+      let time = 0;
+
+      const resize = () => {
+        const hero = canvas.parentElement;
+        canvas.width = hero.offsetWidth;
+        canvas.height = hero.offsetHeight;
+      };
+      resize();
+      window.addEventListener("resize", resize);
+      this._resizeHandler = resize;
+
+      const getTheme = () => document.documentElement.getAttribute("data-theme") || "brilliant";
+      const SEGMENTS = 12;
+
+      const animate = () => {
+        time += 0.008;
+        const w = canvas.width;
+        const h = canvas.height;
+        const cx = w / 2;
+        const cy = h / 2;
+        const theme = getTheme();
+        const isFantastic = theme === "fantastic";
+
+        ctx.fillStyle = isFantastic ? "oklch(10% 0.03 280)" : "oklch(97% 0.005 250)";
+        ctx.fillRect(0, 0, w, h);
+
+        const radius = Math.max(w, h) * 0.6;
+        const segAngle = (Math.PI * 2) / SEGMENTS;
+
+        ctx.save();
+        ctx.translate(cx, cy);
+
+        for (let seg = 0; seg < SEGMENTS; seg++) {
+          ctx.save();
+          ctx.rotate(segAngle * seg);
+
+          // Mirror every other segment
+          if (seg % 2 === 1) {
+            ctx.scale(-1, 1);
+          }
+
+          // Clip to triangle segment
+          ctx.beginPath();
+          ctx.moveTo(0, 0);
+          ctx.lineTo(radius * Math.cos(0), radius * Math.sin(0));
+          ctx.lineTo(radius * Math.cos(segAngle), radius * Math.sin(segAngle));
+          ctx.closePath();
+          ctx.clip();
+
+          // Draw shapes within each segment
+          const shapeCount = isFantastic ? 8 : 4;
+          for (let i = 0; i < shapeCount; i++) {
+            const t = time + i * 0.4;
+            const dist = 50 + i * (radius / shapeCount) * 0.7;
+            const x = dist * Math.cos(t * (0.3 + i * 0.1));
+            const y = dist * Math.sin(t * (0.2 + i * 0.15));
+            const size = 15 + Math.sin(t * 0.5) * 10;
+
+            if (isFantastic) {
+              const hue = (time * 80 + i * 45 + seg * 30) % 360;
+              ctx.fillStyle = `oklch(65% 0.25 ${hue} / 0.6)`;
+              ctx.strokeStyle = `oklch(80% 0.3 ${hue} / 0.8)`;
+              ctx.lineWidth = 2;
+              ctx.shadowColor = `oklch(70% 0.3 ${hue})`;
+              ctx.shadowBlur = 15;
+            } else {
+              const jewels = [
+                "oklch(55% 0.15 155 / 0.3)", // emerald
+                "oklch(50% 0.18 25 / 0.3)",  // ruby
+                "oklch(55% 0.15 250 / 0.3)", // sapphire
+                "oklch(65% 0.12 80 / 0.3)",  // amber
+              ];
+              ctx.fillStyle = jewels[i % jewels.length];
+              ctx.strokeStyle = jewels[i % jewels.length].replace("0.3)", "0.5)");
+              ctx.lineWidth = 1;
+              ctx.shadowBlur = 0;
+            }
+
+            ctx.beginPath();
+            const sides = 3 + (i % 4);
+            for (let s = 0; s <= sides; s++) {
+              const angle = (Math.PI * 2 * s) / sides + time * 0.2;
+              const px = x + size * Math.cos(angle);
+              const py = y + size * Math.sin(angle);
+              if (s === 0) ctx.moveTo(px, py);
+              else ctx.lineTo(px, py);
+            }
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+          }
+
+          ctx.restore();
+        }
+
+        // Fantastic: center mandala
+        if (isFantastic) {
+          const rings = 5;
+          for (let r = 0; r < rings; r++) {
+            const ringR = 30 + r * 25;
+            const hue = (time * 60 + r * 72) % 360;
+            ctx.strokeStyle = `oklch(70% 0.3 ${hue} / 0.5)`;
+            ctx.lineWidth = 2;
+            ctx.shadowColor = `oklch(70% 0.3 ${hue})`;
+            ctx.shadowBlur = 10;
+            ctx.beginPath();
+            const petals = 6 + r * 2;
+            for (let p = 0; p <= petals * 20; p++) {
+              const a = (Math.PI * 2 * p) / (petals * 20);
+              const wobble = Math.sin(a * petals + time * 2) * (8 + r * 3);
+              const px = (ringR + wobble) * Math.cos(a);
+              const py = (ringR + wobble) * Math.sin(a);
+              if (p === 0) ctx.moveTo(px, py);
+              else ctx.lineTo(px, py);
+            }
+            ctx.closePath();
+            ctx.stroke();
+          }
+        }
+
+        ctx.restore();
+
+        raf = requestAnimationFrame(animate);
+      };
+
+      animate();
+
+      this._themeHandler = () => {};
+      window.addEventListener("phx:set-theme", this._themeHandler);
+    },
+    destroyed() {
+      window.removeEventListener("resize", this._resizeHandler);
+      window.removeEventListener("phx:set-theme", this._themeHandler);
+    }
+  }
+</script>
