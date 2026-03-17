@@ -1,0 +1,81 @@
+<section id="section-hero" class="flex-1 flex items-center justify-center overflow-hidden relative">
+    <div class="hero-typo-construction">
+      <div class="hero-typo-line hero-typo-line-cap"></div>
+      <div class="hero-typo-line hero-typo-line-x"></div>
+      <div class="hero-typo-line hero-typo-line-base"></div>
+    </div>
+    <h1 id="hero-title" class="font-display hero-typo-title leading-none text-center relative z-10">
+      <span class="hero-typo-word">
+        <span class="hero-typo-letter" data-index="0">B</span><span class="hero-typo-letter" data-index="1">r</span><span class="hero-typo-letter" data-index="2">i</span><span class="hero-typo-letter" data-index="3">l</span><span class="hero-typo-letter" data-index="4">l</span><span class="hero-typo-letter" data-index="5">i</span><span class="hero-typo-letter" data-index="6">a</span><span class="hero-typo-letter" data-index="7">n</span><span class="hero-typo-letter" data-index="8">t</span>
+      </span>
+      <br />
+      <span class="hero-typo-word">
+        <span class="hero-typo-letter" data-index="9">F</span><span class="hero-typo-letter" data-index="10">a</span><span class="hero-typo-letter" data-index="11">n</span><span class="hero-typo-letter" data-index="12">t</span><span class="hero-typo-letter" data-index="13">a</span><span class="hero-typo-letter" data-index="14">s</span><span class="hero-typo-letter" data-index="15">t</span><span class="hero-typo-letter" data-index="16">i</span><span class="hero-typo-letter" data-index="17">c</span>
+      </span>
+    </h1>
+  </section>
+
+<div id="hero-typo-controller" phx-hook=".HeroTypography" phx-update="ignore"></div>
+<script :type={Phoenix.LiveView.ColocatedHook} name=".HeroTypography">
+  export default {
+    mounted() {
+      const hero = document.getElementById("section-hero");
+      const letters = document.querySelectorAll(".hero-typo-letter");
+      if (!hero || !letters.length) return;
+
+      let raf = null;
+      let mouseX = -1000;
+      let mouseY = -1000;
+
+      const onMove = (e) => {
+        const rect = hero.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+      };
+
+      const animate = () => {
+        const theme = document.documentElement.getAttribute("data-theme") || "brilliant";
+        if (theme !== "fantastic") {
+          letters.forEach(l => { l.style.transform = ""; });
+          raf = requestAnimationFrame(animate);
+          return;
+        }
+
+        letters.forEach(l => {
+          const rect = l.getBoundingClientRect();
+          const heroRect = hero.getBoundingClientRect();
+          const lx = rect.left - heroRect.left + rect.width / 2;
+          const ly = rect.top - heroRect.top + rect.height / 2;
+          const dx = lx - mouseX;
+          const dy = ly - mouseY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          const maxDist = 200;
+
+          if (dist < maxDist && dist > 0) {
+            const force = (1 - dist / maxDist) * 25;
+            const tx = (dx / dist) * force;
+            const ty = (dy / dist) * force;
+            l.style.transform = `translate(${tx}px, ${ty}px)`;
+          } else {
+            l.style.transform = "";
+          }
+        });
+
+        raf = requestAnimationFrame(animate);
+      };
+
+      hero.addEventListener("mousemove", onMove);
+      hero.addEventListener("mouseleave", () => { mouseX = -1000; mouseY = -1000; });
+      raf = requestAnimationFrame(animate);
+
+      this._cleanup = () => {
+        hero.removeEventListener("mousemove", onMove);
+        if (raf) cancelAnimationFrame(raf);
+      };
+    },
+
+    destroyed() {
+      if (this._cleanup) this._cleanup();
+    }
+  }
+</script>
