@@ -14,7 +14,9 @@ defmodule BrilliantFantasticWeb.HomeLive do
   embed_templates "home_live/heroes/*"
 
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, :direction, Enum.random(@directions))}
+    direction = if connected?(socket), do: Enum.random(@directions)
+
+    {:ok, assign(socket, :direction, direction)}
   end
 
   def handle_event("randomize-direction", _params, socket) do

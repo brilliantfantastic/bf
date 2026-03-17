@@ -33,6 +33,7 @@
   <%!-- Fantastic: random direction --%>
   <div id="hero-fantastic-wrap" class="flex-1 flex flex-col">
     <%= case @direction do %>
+      <% nil -> %>
       <% "transformation" -> %><.hero_transformation />
       <% "typography_art" -> %><.hero_typography_art />
       <% "generative_canvas" -> %><.hero_generative_canvas />
