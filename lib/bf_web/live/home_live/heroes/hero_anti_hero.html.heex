@@ -1,0 +1,44 @@
+<section id="section-hero" class="hero-anti flex-1 flex items-center justify-center px-6 lg:px-16">
+  <div class="text-center max-w-4xl">
+    <div class="hero-anti-rule mx-auto mb-8"></div>
+    <h1 class="font-display text-7xl lg:text-9xl leading-none">
+      Brilliant Fantastic
+    </h1>
+    <div class="hero-anti-rule mx-auto mt-8"></div>
+    <p class="mt-6 text-sm tracking-widest uppercase text-base-content/40 fantastic:text-base-content/60">
+      toggle the letters
+    </p>
+  </div>
+</section>
+
+<div id="hero-anti-controller" phx-hook=".HeroAnti" phx-update="ignore"></div>
+<script :type={Phoenix.LiveView.ColocatedHook} name=".HeroAnti">
+  export default {
+    mounted() {
+      const sections = document.querySelectorAll(
+        "#section-blog, #section-jamie, #section-contact"
+      );
+
+      const apply = () => {
+        const theme = document.documentElement.getAttribute("data-theme") || "brilliant";
+        sections.forEach((s, i) => {
+          if (theme === "fantastic") {
+            s.style.transitionDelay = `${i * 120}ms`;
+            s.classList.add("anti-hero-revealed");
+          } else {
+            s.style.transitionDelay = "0ms";
+            s.classList.remove("anti-hero-revealed");
+          }
+        });
+      };
+
+      apply();
+      this._themeListener = () => requestAnimationFrame(apply);
+      window.addEventListener("phx:set-theme", this._themeListener);
+    },
+
+    destroyed() {
+      window.removeEventListener("phx:set-theme", this._themeListener);
+    }
+  }
+</script>

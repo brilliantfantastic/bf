@@ -1,36 +1,63 @@
 <div id="theme-toggle-float">
-  <Layouts.theme_toggle />
+  <Layouts.theme_toggle randomize />
 </div>
 
 <div class="flex flex-col min-h-dvh">
   <Layouts.flash_group flash={@flash} />
 
-  <section id="section-hero" class="flex-1 relative overflow-hidden brutal-stage">
-    <div class="hero-bg"></div>
-    <%!-- Exposed grid --%>
-    <div class="brutal-grid" aria-hidden="true">
-      <div class="brutal-cell brutal-cell-1"></div>
-      <div class="brutal-cell brutal-cell-2"></div>
-      <div class="brutal-cell brutal-cell-3"></div>
-      <div class="brutal-cell brutal-cell-4"></div>
-    </div>
-    <%!-- Text layers — multiple overlapping in fantastic --%>
-    <div class="brutal-text-container">
-      <div class="brutal-ghost brutal-ghost-1 font-display" aria-hidden="true">Brilliant</div>
-      <div class="brutal-ghost brutal-ghost-2 font-display" aria-hidden="true">Fantastic</div>
-      <h1 class="brutal-title font-display">
-        <span class="brutal-word brutal-word-1">Brilliant</span>
-        <span class="brutal-word brutal-word-2">Fantastic</span>
-      </h1>
-    </div>
-    <%!-- Structural accent marker --%>
-    <div class="brutal-marker">EST. 2024</div>
-  </section>
+  <%!-- Brilliant: always brutalist --%>
+  <div id="hero-brilliant-wrap" class="flex-1 flex flex-col">
+    <section id="section-hero-brilliant" class="flex-1 relative overflow-hidden brutal-stage">
+      <div class="hero-bg"></div>
+      <%!-- Exposed grid --%>
+      <div class="brutal-grid" aria-hidden="true">
+        <div class="brutal-cell brutal-cell-1"></div>
+        <div class="brutal-cell brutal-cell-2"></div>
+        <div class="brutal-cell brutal-cell-3"></div>
+        <div class="brutal-cell brutal-cell-4"></div>
+      </div>
+      <%!-- Text layers — multiple overlapping in fantastic --%>
+      <div class="brutal-text-container">
+        <div class="brutal-ghost brutal-ghost-1 font-display" aria-hidden="true">Brilliant</div>
+        <div class="brutal-ghost brutal-ghost-2 font-display" aria-hidden="true">Fantastic</div>
+        <h1 class="brutal-title font-display">
+          <span class="brutal-word brutal-word-1">Brilliant</span>
+          <span class="brutal-word brutal-word-2">Fantastic</span>
+        </h1>
+      </div>
+      <%!-- Structural accent marker --%>
+      <div class="brutal-marker">EST. 2024</div>
+    </section>
+  </div>
+
+  <%!-- Fantastic: random direction --%>
+  <div id="hero-fantastic-wrap" class="flex-1 flex flex-col">
+    <%= case @direction do %>
+      <% "transformation" -> %><.hero_transformation />
+      <% "typography_art" -> %><.hero_typography_art />
+      <% "generative_canvas" -> %><.hero_generative_canvas />
+      <% "world_building" -> %><.hero_world_building />
+      <% "anti_hero" -> %><.hero_anti_hero />
+      <% "marquee" -> %><.hero_marquee />
+      <% "typewriter" -> %><.hero_typewriter />
+      <% "chromatic" -> %><.hero_chromatic />
+      <% "tilt" -> %><.hero_tilt />
+      <% "fragments" -> %><.hero_fragments />
+      <% "neon_noir" -> %><.hero_neon_noir />
+      <% "liquid" -> %><.hero_liquid />
+      <% "terminal" -> %><.hero_terminal />
+      <% "brutalist" -> %><.hero_brutalist />
+      <% "botanical" -> %><.hero_botanical />
+      <% "holographic" -> %><.hero_holographic />
+      <% "cosmic" -> %><.hero_cosmic />
+      <% "kaleidoscope" -> %><.hero_kaleidoscope />
+    <% end %>
+  </div>
 </div>
 
 <div id="nav-sentinel" class="h-0" aria-hidden="true"></div>
 
-<Layouts.nav_menu morph />
+<Layouts.nav_menu morph randomize_direction />
 
 <.latest_blog_section />
 

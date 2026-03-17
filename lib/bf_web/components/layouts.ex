@@ -122,7 +122,18 @@ defmodule BrilliantFantasticWeb.Layouts do
 
   See <head> in root.html.heex which applies the theme before page load.
   """
+  attr :randomize, :boolean, default: false, doc: "Also push randomize-direction on fantastic click"
+
   def theme_toggle(assigns) do
+    fantastic_click =
+      if assigns.randomize do
+        JS.dispatch("phx:set-theme") |> JS.push("randomize-direction")
+      else
+        JS.dispatch("phx:set-theme")
+      end
+
+    assigns = assign(assigns, :fantastic_click, fantastic_click)
+
     ~H"""
     <div class="theme-toggle flex flex-row items-baseline gap-3">
       <button
@@ -135,7 +146,7 @@ defmodule BrilliantFantasticWeb.Layouts do
 
       <button
         class="flex items-center justify-center cursor-pointer"
-        phx-click={JS.dispatch("phx:set-theme")}
+        phx-click={@fantastic_click}
         data-phx-theme="fantastic"
       >
         <span class="toggle-letter toggle-letter-f">f</span>
@@ -152,6 +163,7 @@ defmodule BrilliantFantasticWeb.Layouts do
   so it automatically adapts to the active theme.
   """
   attr :morph, :boolean, default: false, doc: "Enable scroll-driven morph animation (home page only)"
+  attr :randomize_direction, :boolean, default: false, doc: "Pass randomize to theme toggle"
 
   def nav_menu(assigns) do
     ~H"""
@@ -185,7 +197,7 @@ defmodule BrilliantFantasticWeb.Layouts do
         >
           Contact
         </a>
-        <div id={if(@morph, do: "theme-toggle-nav")}><.theme_toggle /></div>
+        <div id={if(@morph, do: "theme-toggle-nav")}><.theme_toggle randomize={@randomize_direction} /></div>
       </div>
 
       <%!-- Mobile: hamburger + vertical menu --%>
@@ -195,7 +207,7 @@ defmodule BrilliantFantasticWeb.Layouts do
             Brilliant Fantastic
           </a>
           <div class="flex items-center gap-3">
-            <div id={if(@morph, do: "theme-toggle-nav-mobile")}><.theme_toggle /></div>
+            <div id={if(@morph, do: "theme-toggle-nav-mobile")}><.theme_toggle randomize={@randomize_direction} /></div>
             <button phx-click={JS.toggle(to: "#mobile-menu")} aria-label="Toggle menu">
               <.icon name="hero-bars-3" class="size-6" />
             </button>

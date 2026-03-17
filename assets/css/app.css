@@ -1039,4 +1039,1938 @@
   color: oklch(55% 0.22 25);
 }
 
+/* ── Hero Wrap: show only the active theme's hero ────────────── */
+[data-theme="brilliant"] #hero-fantastic-wrap { display: none; }
+[data-theme="fantastic"] #hero-brilliant-wrap { display: none; }
+
+/* ── Hero: Direction A — Transformation ─────────────────────────── */
+
+.hero-letter {
+  display: inline-block;
+  transition: transform 400ms ease, color 400ms ease, text-shadow 400ms ease;
+  transition-delay: calc(var(--letter-index) * 30ms);
+}
+
+/* Fantastic mode: colored text-shadows on each letter */
+[data-theme="fantastic"] .hero-letter {
+  text-shadow:
+    0 0 20px var(--color-primary),
+    0 0 40px oklch(58% 0.233 277 / 0.3);
+}
+
+/* Staggered dance animation during transformation */
+.hero-transforming .hero-letter {
+  animation: hero-letter-dance 800ms ease both;
+  animation-delay: calc(var(--letter-index) * 40ms);
+}
+
+@keyframes hero-letter-dance {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-12px) scale(1.1) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(4px) scale(0.95) rotate(3deg);
+  }
+  75% {
+    transform: translateY(-6px) scale(1.05) rotate(-2deg);
+  }
+  100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+/* Subtle continuous float in fantastic mode */
+[data-theme="fantastic"] .hero-letter:nth-child(odd) {
+  animation: hero-letter-float-a 4s ease-in-out infinite;
+  animation-delay: calc(var(--letter-index) * 200ms);
+}
+
+[data-theme="fantastic"] .hero-letter:nth-child(even) {
+  animation: hero-letter-float-b 5s ease-in-out infinite;
+  animation-delay: calc(var(--letter-index) * 200ms);
+}
+
+@keyframes hero-letter-float-a {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(1.5deg); }
+}
+
+@keyframes hero-letter-float-b {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(3px) rotate(-1deg); }
+}
+
+/* During transformation, override the float with the dance */
+.hero-transforming [data-theme="fantastic"] .hero-letter:nth-child(odd),
+.hero-transforming [data-theme="fantastic"] .hero-letter:nth-child(even) {
+  animation: hero-letter-dance 800ms ease both;
+}
+
+/* Entrance animation on first load */
+.hero-letter {
+  animation: hero-letter-entrance 600ms ease both;
+  animation-delay: calc(var(--letter-index) * 50ms);
+}
+
+@keyframes hero-letter-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ── Hero: Direction C — Typography Art ─────────────────────────── */
+
+/* Mega-letter sizing */
+.hero-typo-title {
+  font-size: clamp(4rem, 18vw, 20rem);
+}
+
+.hero-typo-letter {
+  display: inline-block;
+  transition: transform 150ms ease-out;
+}
+
+/* Construction lines (brilliant mode only) */
+.hero-typo-construction {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.hero-typo-line {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  background: var(--color-base-content);
+  opacity: 0.08;
+  transition: opacity 500ms ease;
+}
+
+.hero-typo-line-cap { top: 25%; }
+.hero-typo-line-x { top: 50%; }
+.hero-typo-line-base { top: 75%; }
+
+/* Hide construction lines in fantastic mode */
+[data-theme="fantastic"] .hero-typo-line {
+  opacity: 0;
+}
+
+/* Fantastic: breathing glow + multi-layer text-shadow */
+[data-theme="fantastic"] .hero-typo-title {
+  animation: hero-typo-breathe 3s ease-in-out infinite;
+}
+
+[data-theme="fantastic"] .hero-typo-letter {
+  text-shadow:
+    0 0 20px var(--color-primary),
+    0 0 40px oklch(58% 0.233 277 / 0.4),
+    0 0 80px oklch(60% 0.25 293 / 0.2);
+  transition: transform 150ms ease-out, text-shadow 600ms ease;
+}
+
+@keyframes hero-typo-breathe {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.05); }
+}
+
+/* Word spacing */
+.hero-typo-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+
+/* ── Hero: Direction D — Generative Canvas ─────────────────────── */
+
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Text readability over canvas */
+.hero-canvas-text {
+  text-shadow:
+    0 2px 20px oklch(98% 0.002 250 / 0.8),
+    0 0 40px oklch(98% 0.002 250 / 0.4);
+}
+
+[data-theme="fantastic"] .hero-canvas-text {
+  text-shadow:
+    0 2px 20px oklch(78.5% 0.115 0 / 0.6),
+    0 0 60px oklch(58% 0.233 277 / 0.3);
+}
+
+/* ── Hero: Direction E — World-Building ─────────────────────────── */
+
+/* Architectural layer (brilliant mode) */
+.hero-world-architecture {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 600ms ease;
+}
+
+[data-theme="fantastic"] .hero-world-architecture {
+  opacity: 0;
+}
+
+/* Vertical construction lines */
+.hero-world-line-v {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--color-base-content);
+  opacity: 0.06;
+}
+
+/* Horizontal construction lines */
+.hero-world-line-h {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-base-content);
+  opacity: 0.06;
+}
+
+/* Geometric rectangles (architectural blocks) */
+.hero-world-rect {
+  position: absolute;
+  border: 1px solid var(--color-base-content);
+  opacity: 0.04;
+}
+
+/* Illustrations layer (fantastic mode) */
+.hero-world-illustrations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Perspective depth for scroll-through feel */
+.hero-world {
+  perspective: 800px;
+}
+
+.hero-world-illustrations > * {
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+/* ── Hero: Direction F — Anti-Hero ──────────────────────────────── */
+
+/* Thin editorial rule lines */
+.hero-anti-rule {
+  width: 80px;
+  height: 1px;
+  background: var(--color-base-content);
+  opacity: 0.25;
+  transition: width 600ms ease, opacity 600ms ease;
+}
+
+[data-theme="fantastic"] .hero-anti-rule {
+  width: 120px;
+  opacity: 0.5;
+  background: var(--color-primary);
+  box-shadow: 0 0 8px var(--color-primary);
+}
+
+/* Subtle text glow in fantastic mode */
+[data-theme="fantastic"] .hero-anti h1 {
+  text-shadow: 0 0 30px var(--color-primary), 0 0 60px oklch(58% 0.233 277 / 0.3);
+  transition: text-shadow 600ms ease;
+}
+
+/* ── Hero: Direction G — Kinetic Marquee ────────────────────────── */
+
+.marquee-band {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0.5rem 0;
+}
+
+.marquee-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  width: max-content;
+}
+
+.marquee-text {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-base-content);
+}
+
+.marquee-text-sm { font-size: clamp(1.5rem, 4vw, 3rem); }
+.marquee-text-lg { font-size: clamp(3rem, 8vw, 7rem); }
+.marquee-text-xl { font-size: clamp(4rem, 12vw, 10rem); }
+
+.marquee-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-base-content);
+  opacity: 0.3;
+  flex-shrink: 0;
+}
+
+/* Scrolling keyframes */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.marquee-scroll-left {
+  animation: marquee-left 30s linear infinite;
+}
+
+.marquee-scroll-right {
+  animation: marquee-right 25s linear infinite;
+}
+
+.marquee-scroll-left-slow {
+  animation: marquee-left 40s linear infinite;
+}
+
+/* Fantastic mode: speed up + add color + rotation */
+[data-theme="fantastic"] .marquee-scroll-left {
+  animation-duration: 15s;
+}
+
+[data-theme="fantastic"] .marquee-scroll-right {
+  animation-duration: 12s;
+}
+
+[data-theme="fantastic"] .marquee-scroll-left-slow {
+  animation-duration: 20s;
+}
+
+[data-theme="fantastic"] .marquee-band-1 {
+  transform: rotate(-1deg);
+}
+
+[data-theme="fantastic"] .marquee-band-2 {
+  transform: rotate(0.5deg);
+}
+
+[data-theme="fantastic"] .marquee-band-3 {
+  transform: rotate(-0.8deg);
+}
+
+[data-theme="fantastic"] .marquee-band {
+  transition: transform 600ms ease;
+}
+
+[data-theme="fantastic"] .marquee-text {
+  text-shadow: 0 0 30px var(--color-primary);
+}
+
+[data-theme="fantastic"] .marquee-dot {
+  opacity: 0.6;
+  background: var(--color-primary);
+  box-shadow: 0 0 8px var(--color-primary);
+}
+
+/* Brilliant mode transitions */
+.marquee-band {
+  transition: transform 600ms ease;
+  transform: rotate(0deg);
+}
+
+/* ── Hero: Direction L — Typewriter / Glitch ────────────────────── */
+
+.typewriter-text {
+  min-height: 1.2em;
+}
+
+/* Blinking cursor */
+.typewriter-cursor {
+  display: inline-block;
+  font-weight: 300;
+  opacity: 1;
+  animation: typewriter-blink 800ms step-end infinite;
+  margin-left: 2px;
+  color: var(--color-base-content);
+}
+
+@keyframes typewriter-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Glitch character flash */
+.typewriter-glitch {
+  display: inline-block;
+  color: var(--color-primary);
+  opacity: 0.7;
+  transform: translateY(-2px);
+}
+
+/* Fantastic mode: glitch chars get extra flair */
+[data-theme="fantastic"] .typewriter-glitch {
+  text-shadow: 0 0 10px var(--color-primary), 0 0 20px var(--color-accent);
+  animation: typewriter-glitch-flash 60ms linear;
+}
+
+@keyframes typewriter-glitch-flash {
+  0% { opacity: 0; transform: translateY(4px) scaleY(1.3); }
+  50% { opacity: 1; transform: translateY(-2px) scaleY(0.8); }
+  100% { opacity: 0.7; transform: translateY(0) scaleY(1); }
+}
+
+/* Fantastic mode: finished text has subtle glow */
+[data-theme="fantastic"] .typewriter-text {
+  text-shadow: 0 0 20px oklch(58% 0.233 277 / 0.4);
+}
+
+/* Fantastic mode: cursor color */
+[data-theme="fantastic"] .typewriter-cursor {
+  color: var(--color-primary);
+  text-shadow: 0 0 8px var(--color-primary);
+}
+
+/* ── Hero: Direction N — Chromatic Distortion ───────────────────── */
+
+.chromatic-container {
+  position: relative;
+}
+
+.chromatic-layer {
+  position: relative;
+}
+
+/* RGB split layers: positioned on top of main */
+.chromatic-r,
+.chromatic-b {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Brilliant: tiny elegant chromatic aberration */
+.chromatic-r {
+  color: oklch(55% 0.2 25 / 0.08);
+  transform: translate(1px, -1px);
+  transition: transform 600ms ease, color 400ms ease;
+}
+
+.chromatic-b {
+  color: oklch(55% 0.2 260 / 0.08);
+  transform: translate(-1px, 1px);
+  transition: transform 600ms ease, color 400ms ease;
+}
+
+.chromatic-main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Fantastic: heavy RGB split */
+[data-theme="fantastic"] .chromatic-r {
+  color: oklch(65% 0.3 25 / 0.4);
+  transform: translate(6px, -4px);
+  animation: chromatic-drift-r 3s ease-in-out infinite;
+}
+
+[data-theme="fantastic"] .chromatic-b {
+  color: oklch(55% 0.3 260 / 0.35);
+  transform: translate(-6px, 4px);
+  animation: chromatic-drift-b 3.5s ease-in-out infinite;
+}
+
+@keyframes chromatic-drift-r {
+  0%, 100% { transform: translate(6px, -4px); }
+  25% { transform: translate(8px, -2px); }
+  75% { transform: translate(4px, -6px); }
+}
+
+@keyframes chromatic-drift-b {
+  0%, 100% { transform: translate(-6px, 4px); }
+  33% { transform: translate(-4px, 6px); }
+  66% { transform: translate(-8px, 2px); }
+}
+
+/* Fantastic: main text glow */
+[data-theme="fantastic"] .chromatic-main {
+  text-shadow: 0 0 20px var(--color-primary);
+}
+
+/* Scanlines overlay — fantastic only */
+.chromatic-scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    oklch(0% 0 0 / 0.06) 2px,
+    oklch(0% 0 0 / 0.06) 4px
+  );
+  transition: opacity 600ms ease;
+}
+
+[data-theme="fantastic"] .chromatic-scanlines {
+  opacity: 1;
+  animation: scanline-flicker 8s linear infinite;
+}
+
+@keyframes scanline-flicker {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.5; }
+  52% { opacity: 0.9; }
+  54% { opacity: 0.6; }
+}
+
+/* Glitch: triggered periodically by JS */
+.chromatic-glitch .chromatic-r {
+  transform: translate(12px, -6px) skewX(-2deg) !important;
+  animation: none !important;
+}
+
+.chromatic-glitch .chromatic-b {
+  transform: translate(-10px, 8px) skewX(3deg) !important;
+  animation: none !important;
+}
+
+.chromatic-glitch .chromatic-scanlines {
+  opacity: 1 !important;
+}
+
+/* VHS tracking bar */
+.chromatic-glitch::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: oklch(98% 0.002 250 / 0.08);
+  z-index: 20;
+  animation: vhs-tracking 150ms linear;
+}
+
+@keyframes vhs-tracking {
+  from { top: -40px; }
+  to { top: 100%; }
+}
+
+/* ── Hero: Direction P — Perspective Tilt ────────────────────────── */
+
+.tilt-perspective {
+  perspective: 1000px;
+}
+
+.tilt-card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 200ms ease-out;
+  transform-style: preserve-3d;
+}
+
+/* Holographic shine overlay */
+.tilt-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  transition: opacity 400ms ease;
+  opacity: 0.5;
+}
+
+[data-theme="fantastic"] .tilt-shine {
+  opacity: 1;
+  mix-blend-mode: screen;
+}
+
+/* Text pops forward in fantastic */
+.tilt-text {
+  transition: transform 400ms ease, text-shadow 400ms ease;
+}
+
+[data-theme="fantastic"] .tilt-text {
+  transform: translateZ(40px);
+  text-shadow:
+    0 10px 30px oklch(0% 0 0 / 0.3),
+    0 0 40px var(--color-primary),
+    0 0 80px oklch(60% 0.25 293 / 0.4);
+}
+
+/* Brilliant: subtle border and shadow for card depth */
+.tilt-card {
+  box-shadow: 0 10px 40px oklch(0% 0 0 / 0.05);
+}
+
+[data-theme="fantastic"] .tilt-card {
+  box-shadow:
+    0 20px 60px oklch(0% 0 0 / 0.2),
+    0 0 100px oklch(58% 0.233 277 / 0.15);
+}
+
+/* ── Hero: Direction R — Floating Fragments ─────────────────────── */
+
+.fragment-field {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Base fragment: positioned via custom properties */
+.fragment {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  animation: fragment-drift var(--dur) ease-in-out infinite;
+  animation-delay: var(--delay);
+  transition: opacity 600ms ease, border-color 600ms ease,
+              background 600ms ease, box-shadow 600ms ease,
+              filter 600ms ease;
+}
+
+/* Shapes */
+.fragment-sq {
+  border: 1px solid var(--color-base-content);
+  opacity: 0.06;
+  transform: rotate(var(--rot));
+}
+
+.fragment-tri {
+  width: 0;
+  height: 0;
+  border-left: calc(var(--size) / 2) solid transparent;
+  border-right: calc(var(--size) / 2) solid transparent;
+  border-bottom: var(--size) solid var(--color-base-content);
+  opacity: 0.05;
+  background: none !important;
+  transform: rotate(var(--rot));
+}
+
+.fragment-circle {
+  border-radius: 50%;
+  border: 1px solid var(--color-base-content);
+  opacity: 0.06;
+}
+
+/* Drift animation */
+@keyframes fragment-drift {
+  0%, 100% {
+    transform: rotate(var(--rot)) translate(0, 0);
+  }
+  25% {
+    transform: rotate(calc(var(--rot) + 20deg)) translate(15px, -25px);
+  }
+  50% {
+    transform: rotate(calc(var(--rot) + 5deg)) translate(-10px, -40px);
+  }
+  75% {
+    transform: rotate(calc(var(--rot) - 15deg)) translate(20px, -15px);
+  }
+}
+
+/* ── Fantastic: fragments come alive ─────────────────────── */
+
+[data-theme="fantastic"] .fragment-sq {
+  opacity: 0.5;
+  border-color: var(--color-primary);
+  background: oklch(58% 0.233 277 / 0.08);
+  box-shadow: 0 0 15px oklch(58% 0.233 277 / 0.3);
+  animation-duration: calc(var(--dur) * 0.5);
+}
+
+[data-theme="fantastic"] .fragment-tri {
+  opacity: 0.45;
+  border-bottom-color: var(--color-accent);
+  filter: drop-shadow(0 0 10px oklch(60% 0.25 293 / 0.4));
+  animation-duration: calc(var(--dur) * 0.5);
+}
+
+[data-theme="fantastic"] .fragment-circle {
+  opacity: 0.5;
+  border-color: oklch(58% 0.253 18);
+  background: oklch(58% 0.253 18 / 0.06);
+  box-shadow: 0 0 12px oklch(58% 0.253 18 / 0.3);
+  animation-duration: calc(var(--dur) * 0.5);
+}
+
+/* Some fragments get blur for depth-of-field effect */
+[data-theme="fantastic"] .fragment:nth-child(3n) {
+  filter: blur(2px);
+}
+
+[data-theme="fantastic"] .fragment:nth-child(3n+1) {
+  filter: blur(0px);
+}
+
+[data-theme="fantastic"] .fragment:nth-child(3n+2) {
+  filter: blur(4px);
+}
+
+/* Fantastic: pulsing glow cycle on fragments */
+[data-theme="fantastic"] .fragment-sq {
+  animation: fragment-drift var(--dur) ease-in-out infinite,
+             fragment-pulse-indigo 3s ease-in-out infinite;
+}
+
+[data-theme="fantastic"] .fragment-circle {
+  animation: fragment-drift var(--dur) ease-in-out infinite,
+             fragment-pulse-scarlet 4s ease-in-out infinite;
+}
+
+@keyframes fragment-pulse-indigo {
+  0%, 100% { box-shadow: 0 0 15px oklch(58% 0.233 277 / 0.3); }
+  50% { box-shadow: 0 0 30px oklch(58% 0.233 277 / 0.6); }
+}
+
+@keyframes fragment-pulse-scarlet {
+  0%, 100% { box-shadow: 0 0 12px oklch(58% 0.253 18 / 0.3); }
+  50% { box-shadow: 0 0 25px oklch(58% 0.253 18 / 0.5); }
+}
+
+/* Text styling */
+.fragment-text {
+  transition: text-shadow 600ms ease;
+}
+
+[data-theme="fantastic"] .fragment-text {
+  text-shadow:
+    0 0 30px var(--color-primary),
+    0 0 60px oklch(60% 0.25 293 / 0.3);
+}
+
+
+/* ── Hero: Direction S — Neon Noir ──────────────────────────────── */
+
+.neon-stage {
+  min-height: 100%;
+}
+
+/* Rain: CSS gradient stripes */
+.neon-rain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.04;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 3px,
+    oklch(80% 0.01 250 / 0.4) 3px,
+    oklch(80% 0.01 250 / 0.4) 4px
+  );
+  animation: neon-rain-fall 0.8s linear infinite;
+}
+
+@keyframes neon-rain-fall {
+  from { background-position: 0 -100px; }
+  to { background-position: 0 100px; }
+}
+
+/* Floor: gradient reflection at bottom */
+.neon-floor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  z-index: 1;
+  background: linear-gradient(to top, oklch(12% 0.015 260 / 0.8) 0%, transparent 100%);
+}
+
+/* ── Brilliant: Film noir — warm amber accents, slanted drama ── */
+.neon-title {
+  transition: all 800ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.neon-word {
+  display: inline-block;
+  transition: all 800ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="brilliant"] .neon-word-1 {
+  color: oklch(92% 0.03 70);
+  text-shadow: 0 2px 30px oklch(75% 0.08 60 / 0.3);
+  font-style: italic;
+}
+
+[data-theme="brilliant"] .neon-word-2 {
+  color: oklch(80% 0.06 40);
+  text-shadow: 0 2px 20px oklch(65% 0.1 40 / 0.2);
+  font-style: italic;
+}
+
+[data-theme="brilliant"] .neon-tagline {
+  color: oklch(70% 0.04 60);
+  border-top: 1px solid oklch(70% 0.04 60 / 0.3);
+  padding-top: 1rem;
+  width: fit-content;
+}
+
+[data-theme="brilliant"] .neon-rain {
+  opacity: 0.04;
+}
+
+[data-theme="brilliant"] .neon-floor {
+  background: linear-gradient(to top,
+    oklch(12% 0.02 260 / 0.6) 0%,
+    oklch(20% 0.03 50 / 0.1) 40%,
+    transparent 100%
+  );
+}
+
+/* ── Fantastic: FULL NEON — text repositions, flickers, glows insane ── */
+[data-theme="fantastic"] .neon-rain {
+  opacity: 0.12;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 2px,
+    oklch(70% 0.2 200 / 0.15) 2px,
+    oklch(70% 0.2 200 / 0.15) 3px
+  );
+}
+
+/* Fantastic: text goes CENTER, HUGE, overlapping */
+[data-theme="fantastic"] .neon-stage {
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme="fantastic"] .neon-stage > div:last-child {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  text-align: center;
+}
+
+[data-theme="fantastic"] .neon-word-1 {
+  color: oklch(75% 0.25 350);
+  font-style: normal;
+  text-shadow:
+    0 0 7px oklch(75% 0.25 350),
+    0 0 20px oklch(75% 0.25 350),
+    0 0 42px oklch(75% 0.25 350),
+    0 0 82px oklch(65% 0.3 340),
+    0 0 120px oklch(65% 0.3 340 / 0.5);
+  animation: neon-flicker-pink 4s ease-in-out infinite;
+}
+
+[data-theme="fantastic"] .neon-word-2 {
+  color: oklch(80% 0.2 195);
+  font-style: normal;
+  font-size: 1.15em;
+  text-shadow:
+    0 0 7px oklch(80% 0.2 195),
+    0 0 20px oklch(80% 0.2 195),
+    0 0 42px oklch(80% 0.2 195),
+    0 0 82px oklch(70% 0.25 200),
+    0 0 150px oklch(70% 0.25 200 / 0.4);
+  animation: neon-flicker-cyan 3s ease-in-out infinite;
+  animation-delay: -1.5s;
+}
+
+[data-theme="fantastic"] .neon-tagline {
+  color: oklch(85% 0.15 100);
+  border-top: none;
+  text-shadow: 0 0 10px oklch(85% 0.15 100), 0 0 30px oklch(85% 0.15 100 / 0.5);
+  animation: neon-flicker-yellow 6s ease-in-out infinite;
+  letter-spacing: 0.5em;
+}
+
+/* Neon flicker keyframes — each color gets its own rhythm */
+@keyframes neon-flicker-pink {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow:
+      0 0 7px oklch(75% 0.25 350),
+      0 0 20px oklch(75% 0.25 350),
+      0 0 42px oklch(75% 0.25 350),
+      0 0 82px oklch(65% 0.3 340),
+      0 0 120px oklch(65% 0.3 340 / 0.5);
+  }
+  20%, 24%, 55% {
+    text-shadow:
+      0 0 4px oklch(75% 0.25 350 / 0.5),
+      0 0 10px oklch(75% 0.25 350 / 0.3);
+  }
+}
+
+@keyframes neon-flicker-cyan {
+  0%, 30%, 32%, 60%, 62%, 64%, 100% {
+    text-shadow:
+      0 0 7px oklch(80% 0.2 195),
+      0 0 20px oklch(80% 0.2 195),
+      0 0 42px oklch(80% 0.2 195),
+      0 0 82px oklch(70% 0.25 200),
+      0 0 150px oklch(70% 0.25 200 / 0.4);
+  }
+  31%, 61%, 63% {
+    text-shadow:
+      0 0 4px oklch(80% 0.2 195 / 0.4),
+      0 0 8px oklch(80% 0.2 195 / 0.2);
+  }
+}
+
+@keyframes neon-flicker-yellow {
+  0%, 40%, 42%, 80%, 82%, 100% {
+    text-shadow: 0 0 10px oklch(85% 0.15 100), 0 0 30px oklch(85% 0.15 100 / 0.5);
+  }
+  41%, 81% {
+    text-shadow: 0 0 3px oklch(85% 0.15 100 / 0.3);
+  }
+}
+
+/* Fantastic floor: neon puddle reflections */
+[data-theme="fantastic"] .neon-floor {
+  height: 40%;
+  background: linear-gradient(to top,
+    oklch(8% 0.03 280) 0%,
+    oklch(30% 0.15 350 / 0.15) 20%,
+    oklch(30% 0.12 200 / 0.1) 40%,
+    transparent 100%
+  );
+  animation: neon-floor-pulse 3s ease-in-out infinite;
+}
+
+@keyframes neon-floor-pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+
+/* ── Hero: Direction T — Liquid ──────────────────────────────────── */
+
+/* Fluid background: shifting warm gradients */
+.liquid-fluid {
+  position: absolute;
+  inset: -20%;
+  z-index: 1;
+  pointer-events: none;
+  transition: filter 800ms ease;
+}
+
+/* ── Brilliant: warm earth tones, subtle shimmer ── */
+[data-theme="brilliant"] .liquid-fluid {
+  background:
+    radial-gradient(ellipse at 30% 40%, oklch(85% 0.08 70 / 0.6) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 60%, oklch(80% 0.06 150 / 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, oklch(82% 0.07 40 / 0.3) 0%, transparent 40%);
+  filter: url(#liquid-warp);
+  animation: liquid-drift 20s ease-in-out infinite;
+}
+
+[data-theme="brilliant"] .liquid-text {
+  color: oklch(25% 0.04 50);
+  text-shadow: 0 2px 20px oklch(85% 0.08 70 / 0.3);
+}
+
+@keyframes liquid-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(3%, -2%) scale(1.02); }
+  66% { transform: translate(-2%, 3%) scale(0.98); }
+}
+
+/* ── Fantastic: PSYCHEDELIC MELTDOWN ── */
+[data-theme="fantastic"] .liquid-fluid {
+  background:
+    radial-gradient(ellipse at 20% 30%, oklch(65% 0.3 330 / 0.8) 0%, transparent 40%),
+    radial-gradient(ellipse at 80% 20%, oklch(70% 0.25 180 / 0.7) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 70%, oklch(60% 0.3 280 / 0.6) 0%, transparent 45%),
+    radial-gradient(ellipse at 30% 90%, oklch(75% 0.2 100 / 0.5) 0%, transparent 35%),
+    radial-gradient(ellipse at 70% 50%, oklch(55% 0.25 20 / 0.6) 0%, transparent 50%);
+  filter: url(#liquid-warp-heavy) saturate(2);
+  animation: liquid-melt 8s ease-in-out infinite;
+}
+
+@keyframes liquid-melt {
+  0%, 100% { transform: translate(0, 0) scale(1.1) rotate(0deg); }
+  25% { transform: translate(4%, -3%) scale(1.15) rotate(1deg); }
+  50% { transform: translate(-3%, 4%) scale(1.05) rotate(-1deg); }
+  75% { transform: translate(2%, 2%) scale(1.12) rotate(0.5deg); }
+}
+
+/* Fantastic: text also gets warped + dripping effect */
+[data-theme="fantastic"] .liquid-text {
+  color: oklch(95% 0.02 300);
+  filter: url(#liquid-warp);
+  text-shadow:
+    0 0 20px oklch(65% 0.3 330 / 0.6),
+    0 0 60px oklch(70% 0.25 180 / 0.4),
+    0 0 100px oklch(60% 0.3 280 / 0.3),
+    0 5px 3px oklch(0% 0 0 / 0.4);
+  animation: liquid-text-waver 4s ease-in-out infinite;
+  transform: scale(1.1);
+}
+
+@keyframes liquid-text-waver {
+  0%, 100% { transform: scale(1.1) skewX(0deg); }
+  25% { transform: scale(1.12) skewX(-0.5deg); }
+  75% { transform: scale(1.08) skewX(0.5deg); }
+}
+
+/* ── Hero: Direction U -- Terminal ────────────────────────────────── */
+
+.terminal-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 800ms ease;
+}
+
+/* CRT scanlines */
+.terminal-scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 1px,
+    oklch(0% 0 0 / 0.03) 1px,
+    oklch(0% 0 0 / 0.03) 2px
+  );
+}
+
+/* Terminal chrome */
+.terminal-chrome {
+  font-family: "Courier New", "Consolas", monospace;
+  max-width: 700px;
+}
+
+.terminal-prompt {
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  transition: color 400ms ease;
+}
+
+.terminal-title {
+  font-family: "Courier New", "Consolas", monospace;
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: bold;
+  line-height: 1.1;
+  transition: all 600ms ease;
+}
+
+.terminal-line {
+  display: block;
+}
+
+.terminal-cursor {
+  display: inline-block;
+  font-family: "Courier New", monospace;
+  font-size: 2rem;
+  animation: terminal-blink 1s step-end infinite;
+  transition: color 400ms ease;
+}
+
+@keyframes terminal-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Error messages hidden by default */
+.terminal-errors {
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 600ms ease, max-height 600ms ease;
+}
+
+.terminal-error {
+  padding: 0.25rem 0;
+}
+
+/* -- Brilliant: amber-on-dark, clean terminal -- */
+[data-theme="brilliant"] .terminal-prompt {
+  color: oklch(65% 0.12 85);
+}
+
+[data-theme="brilliant"] .terminal-title {
+  color: oklch(82% 0.1 80);
+  text-shadow: 0 0 10px oklch(82% 0.1 80 / 0.3);
+}
+
+[data-theme="brilliant"] .terminal-cursor {
+  color: oklch(82% 0.1 80);
+}
+
+[data-theme="brilliant"] .terminal-scanlines {
+  opacity: 0.5;
+}
+
+/* Subtle CRT curve effect */
+[data-theme="brilliant"] .terminal-stage {
+  border-radius: 8px;
+}
+
+/* -- Fantastic: FULL GLITCH MELTDOWN -- */
+[data-theme="fantastic"] .terminal-canvas {
+  opacity: 0.7;
+}
+
+[data-theme="fantastic"] .terminal-prompt {
+  color: oklch(75% 0.25 145);
+  text-shadow: 0 0 5px oklch(75% 0.25 145);
+  animation: terminal-glitch-text 3s linear infinite;
+}
+
+[data-theme="fantastic"] .terminal-title {
+  color: oklch(85% 0.25 145);
+  text-shadow:
+    0 0 10px oklch(85% 0.25 145),
+    0 0 30px oklch(75% 0.3 145),
+    0 0 60px oklch(65% 0.25 145 / 0.5),
+    3px 0 0 oklch(75% 0.25 350),
+    -3px 0 0 oklch(80% 0.2 195);
+  animation: terminal-glitch-title 2s linear infinite;
+}
+
+[data-theme="fantastic"] .terminal-cursor {
+  color: oklch(85% 0.25 145);
+  text-shadow: 0 0 8px oklch(85% 0.25 145);
+  animation: terminal-blink 0.3s step-end infinite;
+}
+
+[data-theme="fantastic"] .terminal-errors {
+  opacity: 1;
+  max-height: 200px;
+  color: oklch(70% 0.25 25);
+  text-shadow: 0 0 5px oklch(70% 0.25 25);
+  animation: terminal-error-flicker 4s linear infinite;
+}
+
+[data-theme="fantastic"] .terminal-error:nth-child(2) {
+  color: oklch(80% 0.2 100);
+  text-shadow: 0 0 5px oklch(80% 0.2 100);
+}
+
+[data-theme="fantastic"] .terminal-error:nth-child(3) {
+  color: oklch(75% 0.25 350);
+  text-shadow: 0 0 5px oklch(75% 0.25 350);
+}
+
+[data-theme="fantastic"] .terminal-scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 1px,
+    oklch(0% 0 0 / 0.08) 1px,
+    oklch(0% 0 0 / 0.08) 2px
+  );
+  animation: terminal-scanline-shift 0.1s linear infinite;
+}
+
+@keyframes terminal-glitch-title {
+  0%, 85%, 100% { transform: translate(0, 0) skewX(0deg); }
+  86% { transform: translate(-4px, 2px) skewX(-2deg); }
+  88% { transform: translate(3px, -1px) skewX(1deg); }
+  90% { transform: translate(0, 0) skewX(0deg); }
+  92% { transform: translate(2px, 3px) skewX(-1deg); }
+  94% { transform: translate(-1px, -2px) skewX(2deg); }
+}
+
+@keyframes terminal-glitch-text {
+  0%, 90%, 100% { transform: translate(0, 0); }
+  91% { transform: translate(-3px, 1px); }
+  93% { transform: translate(2px, -1px); }
+  95% { transform: translate(0, 0); }
+}
+
+@keyframes terminal-error-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+  51% { opacity: 1; }
+  80% { opacity: 1; }
+  81% { opacity: 0.4; }
+  82% { opacity: 1; }
+}
+
+@keyframes terminal-scanline-shift {
+  from { background-position: 0 0; }
+  to { background-position: 0 4px; }
+}
+
+
+/* ── Hero: Direction W -- Botanical ─────────────────────────────── */
+
+/* Brilliant: warm earthy palette, organic curves */
+.hero-botanical {
+  background: linear-gradient(175deg, oklch(96% 0.02 90) 0%, oklch(92% 0.04 100) 40%, oklch(88% 0.03 80) 100%);
+  transition: background 0.8s ease;
+}
+
+[data-theme="fantastic"] .hero-botanical {
+  background: linear-gradient(175deg, oklch(35% 0.12 150) 0%, oklch(25% 0.15 170) 40%, oklch(20% 0.1 130) 100%);
+}
+
+/* Vine line art - brilliant mode */
+.botanical-vine {
+  position: absolute;
+  height: 100%;
+  width: 200px;
+  color: oklch(65% 0.06 120);
+  opacity: 0.3;
+  transition: opacity 0.6s ease, color 0.6s ease;
+}
+.botanical-vine-1 { left: 3%; }
+.botanical-vine-2 { right: 3%; transform: scaleX(-1); }
+
+[data-theme="fantastic"] .botanical-vine { opacity: 0; }
+
+/* Title styling */
+.botanical-title {
+  font-size: clamp(3.5rem, 12vw, 10rem);
+}
+
+.botanical-word {
+  display: block;
+}
+
+[data-theme="brilliant"] .botanical-word-1 {
+  color: oklch(35% 0.04 80);
+}
+[data-theme="brilliant"] .botanical-word-2 {
+  color: oklch(50% 0.06 120);
+}
+
+[data-theme="fantastic"] .botanical-title {
+  animation: botanical-title-glow 3s ease-in-out infinite alternate;
+}
+
+[data-theme="fantastic"] .botanical-word-1 {
+  color: oklch(85% 0.2 140);
+  text-shadow: 0 0 30px oklch(70% 0.25 140 / 0.5), 0 0 60px oklch(60% 0.2 160 / 0.3);
+}
+
+[data-theme="fantastic"] .botanical-word-2 {
+  color: oklch(80% 0.25 320);
+  text-shadow: 0 0 30px oklch(70% 0.3 320 / 0.5), 0 0 60px oklch(60% 0.25 300 / 0.3);
+  animation: botanical-word-bloom 4s ease-in-out infinite alternate;
+}
+
+@keyframes botanical-title-glow {
+  0% { filter: brightness(1); }
+  100% { filter: brightness(1.15); }
+}
+
+@keyframes botanical-word-bloom {
+  0% { transform: scale(1); letter-spacing: 0; }
+  100% { transform: scale(1.03); letter-spacing: 0.05em; }
+}
+
+/* Leaf accent SVGs */
+.botanical-leaf-accent {
+  width: clamp(150px, 30vw, 400px);
+  margin: 0 auto;
+  color: oklch(60% 0.06 120);
+  opacity: 0.5;
+  transition: color 0.6s ease, opacity 0.6s ease;
+}
+.botanical-leaf-accent-bottom {
+  transform: scaleY(-1);
+}
+
+[data-theme="fantastic"] .botanical-leaf-accent {
+  color: oklch(75% 0.2 140);
+  opacity: 0.8;
+  animation: botanical-accent-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes botanical-accent-pulse {
+  0% { opacity: 0.5; filter: drop-shadow(0 0 4px oklch(70% 0.2 140 / 0.5)); }
+  100% { opacity: 0.9; filter: drop-shadow(0 0 12px oklch(70% 0.25 320 / 0.6)); }
+}
+
+/* Tagline */
+[data-theme="brilliant"] .botanical-tagline {
+  color: oklch(50% 0.04 80);
+  letter-spacing: 0.2em;
+}
+
+[data-theme="fantastic"] .botanical-tagline {
+  color: oklch(80% 0.15 60);
+  animation: botanical-tagline-float 5s ease-in-out infinite;
+}
+
+@keyframes botanical-tagline-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Floating emoji flowers in fantastic */
+.botanical-flower {
+  position: absolute;
+  font-size: 2rem;
+  animation: botanical-flower-float 8s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px oklch(80% 0.2 320 / 0.4));
+}
+
+.botanical-flower-1 { top: 8%; left: 10%; animation-delay: 0s; font-size: 3rem; }
+.botanical-flower-2 { top: 15%; right: 12%; animation-delay: -1s; font-size: 2.5rem; }
+.botanical-flower-3 { top: 60%; left: 5%; animation-delay: -2s; }
+.botanical-flower-4 { top: 70%; right: 8%; animation-delay: -3s; font-size: 3.5rem; }
+.botanical-flower-5 { top: 40%; left: 15%; animation-delay: -4s; font-size: 2rem; }
+.botanical-flower-6 { bottom: 10%; left: 20%; animation-delay: -5s; font-size: 2.5rem; }
+.botanical-flower-7 { top: 25%; right: 25%; animation-delay: -6s; font-size: 1.8rem; }
+.botanical-flower-8 { bottom: 20%; right: 15%; animation-delay: -7s; font-size: 3rem; }
+
+@keyframes botanical-flower-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-20px) rotate(10deg) scale(1.1);
+  }
+  50% {
+    transform: translateY(-35px) rotate(-5deg) scale(1.05);
+  }
+  75% {
+    transform: translateY(-15px) rotate(8deg) scale(1.15);
+  }
+}
+
+/* ── Hero: Direction X -- Holographic ───────────────────────────── */
+
+/* Brilliant: clean white with subtle rainbow iridescence */
+.hero-holo {
+  background: oklch(97% 0.005 250);
+  transition: background 0.6s ease;
+}
+
+[data-theme="fantastic"] .hero-holo {
+  background: oklch(12% 0.02 280);
+}
+
+/* Holographic surface shimmer */
+.holo-surface {
+  background: linear-gradient(
+    135deg,
+    oklch(96% 0.02 0 / 0.1) 0%,
+    oklch(96% 0.02 60 / 0.15) 15%,
+    oklch(96% 0.02 120 / 0.1) 30%,
+    oklch(96% 0.02 180 / 0.15) 45%,
+    oklch(96% 0.02 240 / 0.1) 60%,
+    oklch(96% 0.02 300 / 0.15) 75%,
+    oklch(96% 0.02 360 / 0.1) 100%
+  );
+  background-size: 200% 200%;
+  animation: holo-shimmer 8s linear infinite;
+  opacity: 0.5;
+  transition: opacity 0.6s ease;
+}
+
+[data-theme="fantastic"] .holo-surface {
+  background: linear-gradient(
+    135deg,
+    oklch(60% 0.25 0 / 0.3) 0%,
+    oklch(60% 0.25 60 / 0.4) 15%,
+    oklch(60% 0.25 120 / 0.3) 30%,
+    oklch(60% 0.25 180 / 0.4) 45%,
+    oklch(60% 0.25 240 / 0.3) 60%,
+    oklch(60% 0.25 300 / 0.4) 75%,
+    oklch(60% 0.25 360 / 0.3) 100%
+  );
+  background-size: 300% 300%;
+  animation: holo-shimmer 3s linear infinite;
+  opacity: 1;
+}
+
+@keyframes holo-shimmer {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 200%; }
+}
+
+/* Scan lines */
+.holo-scanlines {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    oklch(50% 0 0 / 0.03) 2px,
+    oklch(50% 0 0 / 0.03) 4px
+  );
+  opacity: 0.4;
+  transition: opacity 0.6s ease;
+}
+
+[data-theme="fantastic"] .holo-scanlines {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 1px,
+    oklch(90% 0.1 180 / 0.06) 1px,
+    oklch(90% 0.1 180 / 0.06) 2px
+  );
+  opacity: 1;
+  animation: holo-scanline-scroll 2s linear infinite;
+}
+
+@keyframes holo-scanline-scroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+/* Title with holographic foil gradient */
+.holo-title {
+  position: relative;
+  font-size: clamp(3.5rem, 12vw, 10rem);
+  display: inline-block;
+}
+
+.holo-text-layer {
+  display: block;
+}
+
+.holo-text-red,
+.holo-text-green,
+.holo-text-blue {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Brilliant: subtle rainbow text gradient */
+[data-theme="brilliant"] .holo-text-main {
+  background: linear-gradient(
+    90deg,
+    oklch(35% 0.08 0) 0%,
+    oklch(35% 0.08 60) 20%,
+    oklch(35% 0.08 120) 40%,
+    oklch(35% 0.08 180) 60%,
+    oklch(35% 0.08 240) 80%,
+    oklch(35% 0.08 300) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: holo-text-shift 6s linear infinite;
+}
+
+@keyframes holo-text-shift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Fantastic: aggressive RGB split + chromatic aberration */
+[data-theme="fantastic"] .holo-text-main {
+  background: linear-gradient(
+    90deg,
+    oklch(90% 0.3 0) 0%,
+    oklch(90% 0.3 60) 16%,
+    oklch(90% 0.3 120) 33%,
+    oklch(90% 0.3 180) 50%,
+    oklch(90% 0.3 240) 66%,
+    oklch(90% 0.3 300) 83%,
+    oklch(90% 0.3 360) 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: holo-text-shift 2s linear infinite;
+  filter: drop-shadow(0 0 20px oklch(80% 0.2 280 / 0.5));
+}
+
+[data-theme="fantastic"] .holo-text-red {
+  opacity: 0.4;
+  color: oklch(65% 0.3 25);
+  animation: holo-split-red 3s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+}
+
+[data-theme="fantastic"] .holo-text-green {
+  opacity: 0.3;
+  color: oklch(65% 0.3 145);
+  animation: holo-split-green 3s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+}
+
+[data-theme="fantastic"] .holo-text-blue {
+  opacity: 0.4;
+  color: oklch(65% 0.3 265);
+  animation: holo-split-blue 3s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+}
+
+@keyframes holo-split-red {
+  0% { transform: translate(-2px, -1px); }
+  100% { transform: translate(4px, 2px); }
+}
+
+@keyframes holo-split-green {
+  0% { transform: translate(2px, 1px); }
+  100% { transform: translate(-3px, -2px); }
+}
+
+@keyframes holo-split-blue {
+  0% { transform: translate(1px, 2px); }
+  100% { transform: translate(-2px, -3px); }
+}
+
+/* Prismatic light leaks */
+.holo-prism {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(60px);
+  mix-blend-mode: screen;
+  animation: holo-prism-drift 10s ease-in-out infinite alternate;
+}
+
+.holo-prism-1 {
+  width: 40vw;
+  height: 40vw;
+  top: -10%;
+  right: -5%;
+  background: radial-gradient(circle, oklch(70% 0.3 0 / 0.4), oklch(70% 0.3 40 / 0.2), transparent 70%);
+  animation-delay: 0s;
+}
+
+.holo-prism-2 {
+  width: 35vw;
+  height: 35vw;
+  bottom: -5%;
+  left: -10%;
+  background: radial-gradient(circle, oklch(70% 0.3 240 / 0.4), oklch(70% 0.3 200 / 0.2), transparent 70%);
+  animation-delay: -3s;
+  animation-duration: 12s;
+}
+
+.holo-prism-3 {
+  width: 30vw;
+  height: 30vw;
+  top: 30%;
+  left: 40%;
+  background: radial-gradient(circle, oklch(70% 0.3 120 / 0.3), oklch(70% 0.3 160 / 0.15), transparent 70%);
+  animation-delay: -6s;
+  animation-duration: 8s;
+}
+
+@keyframes holo-prism-drift {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.1); }
+  66% { transform: translate(-20px, 30px) scale(0.9); }
+  100% { transform: translate(15px, 10px) scale(1.05); }
+}
+
+/* Subtitle */
+.holo-sub {
+  color: oklch(50% 0.02 250);
+  transition: color 0.6s ease;
+}
+
+[data-theme="fantastic"] .holo-sub {
+  color: oklch(80% 0.1 280);
+  text-shadow: 0 0 10px oklch(70% 0.2 280 / 0.5);
+  animation: holo-sub-flicker 4s ease-in-out infinite;
+}
+
+@keyframes holo-sub-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+  52% { opacity: 1; }
+  54% { opacity: 0.6; }
+  56% { opacity: 1; }
+}
+
+/* Floating holographic shards */
+.holo-shard {
+  position: absolute;
+  width: 60px;
+  height: 80px;
+  background: linear-gradient(135deg,
+    oklch(80% 0.2 0 / 0.3),
+    oklch(80% 0.2 120 / 0.3),
+    oklch(80% 0.2 240 / 0.3)
+  );
+  clip-path: polygon(50% 0%, 100% 30%, 80% 100%, 20% 100%, 0% 30%);
+  animation: holo-shard-float 12s ease-in-out infinite;
+  backdrop-filter: blur(4px);
+}
+
+.holo-shard-1 { top: 10%; left: 8%; animation-delay: 0s; transform: rotate(15deg); }
+.holo-shard-2 { top: 20%; right: 12%; animation-delay: -2s; width: 40px; height: 60px; }
+.holo-shard-3 { bottom: 25%; left: 15%; animation-delay: -4s; transform: rotate(-20deg); }
+.holo-shard-4 { bottom: 15%; right: 20%; animation-delay: -6s; width: 70px; height: 90px; }
+.holo-shard-5 { top: 50%; left: 5%; animation-delay: -8s; width: 35px; height: 50px; }
+.holo-shard-6 { top: 40%; right: 5%; animation-delay: -10s; transform: rotate(30deg); }
+
+@keyframes holo-shard-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+  25% { transform: translateY(-30px) rotate(90deg); opacity: 0.9; }
+  50% { transform: translateY(-10px) rotate(180deg); opacity: 0.5; }
+  75% { transform: translateY(-40px) rotate(270deg); opacity: 0.8; }
+}
+
+
+/* ── Hero: Direction Y -- Cosmic ────────────────────────────────── */
+
+.hero-cosmic {
+  background: oklch(12% 0.01 250);
+  transition: background 0.8s ease;
+}
+
+[data-theme="fantastic"] .hero-cosmic {
+  background: oklch(5% 0.02 280);
+}
+
+.cosmic-constellations {
+  width: 100%;
+  height: 100%;
+  color: oklch(70% 0.01 250);
+  transition: opacity 0.6s ease;
+}
+
+[data-theme="fantastic"] .cosmic-constellations {
+  opacity: 0;
+}
+
+.cosmic-nebula {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(80px);
+  mix-blend-mode: screen;
+  animation: cosmic-nebula-pulse 12s ease-in-out infinite alternate;
+}
+
+.cosmic-nebula-1 {
+  width: 50vw; height: 50vw;
+  top: -15%; left: -10%;
+  background: radial-gradient(circle, oklch(45% 0.25 310 / 0.4), oklch(35% 0.2 280 / 0.15), transparent 70%);
+}
+
+.cosmic-nebula-2 {
+  width: 40vw; height: 40vw;
+  bottom: -10%; right: -5%;
+  background: radial-gradient(circle, oklch(50% 0.25 200 / 0.35), oklch(40% 0.2 220 / 0.1), transparent 70%);
+  animation-delay: -4s; animation-duration: 15s;
+}
+
+.cosmic-nebula-3 {
+  width: 35vw; height: 35vw;
+  top: 30%; right: 20%;
+  background: radial-gradient(circle, oklch(55% 0.3 30 / 0.25), oklch(45% 0.25 50 / 0.1), transparent 70%);
+  animation-delay: -8s; animation-duration: 10s;
+}
+
+@keyframes cosmic-nebula-pulse {
+  0% { transform: scale(1) translate(0, 0); opacity: 0.6; }
+  50% { transform: scale(1.15) translate(20px, -10px); opacity: 0.9; }
+  100% { transform: scale(0.95) translate(-15px, 15px); opacity: 0.7; }
+}
+
+.cosmic-title {
+  font-size: clamp(3.5rem, 13vw, 11rem);
+}
+
+.cosmic-word { display: block; }
+
+[data-theme="brilliant"] .cosmic-word {
+  color: oklch(95% 0.005 250);
+  text-shadow: 0 0 20px oklch(80% 0.01 250 / 0.3);
+}
+
+[data-theme="fantastic"] .cosmic-word-1 {
+  color: oklch(92% 0.1 280);
+  text-shadow:
+    0 0 10px oklch(80% 0.2 280 / 0.8),
+    0 0 30px oklch(70% 0.25 300 / 0.5),
+    0 0 60px oklch(60% 0.3 320 / 0.3),
+    0 0 100px oklch(50% 0.25 280 / 0.15);
+  animation: cosmic-word-pulse 4s ease-in-out infinite alternate;
+}
+
+[data-theme="fantastic"] .cosmic-word-2 {
+  color: oklch(90% 0.15 50);
+  text-shadow:
+    0 0 10px oklch(80% 0.25 40 / 0.8),
+    0 0 30px oklch(70% 0.3 20 / 0.5),
+    0 0 60px oklch(60% 0.25 60 / 0.3),
+    0 0 100px oklch(50% 0.2 30 / 0.15);
+  animation: cosmic-word-pulse 4s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes cosmic-word-pulse {
+  0% { filter: brightness(1); transform: scale(1); }
+  100% { filter: brightness(1.2); transform: scale(1.02); }
+}
+
+.cosmic-tagline {
+  color: oklch(70% 0.01 250);
+  transition: color 0.6s ease;
+}
+
+[data-theme="fantastic"] .cosmic-tagline {
+  color: oklch(80% 0.1 200);
+  text-shadow: 0 0 10px oklch(70% 0.15 200 / 0.5);
+  animation: cosmic-tagline-drift 6s ease-in-out infinite;
+}
+
+@keyframes cosmic-tagline-drift {
+  0%, 100% { transform: translateY(0); letter-spacing: 0.3em; }
+  50% { transform: translateY(-3px); letter-spacing: 0.5em; }
+}
+
+.cosmic-supernova {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 60vmin; height: 60vmin;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid oklch(70% 0.2 280 / 0.3);
+  box-shadow:
+    0 0 40px oklch(60% 0.25 280 / 0.15),
+    inset 0 0 40px oklch(60% 0.25 310 / 0.1);
+  z-index: 3;
+  pointer-events: none;
+  animation: cosmic-supernova-expand 8s ease-in-out infinite;
+}
+
+@keyframes cosmic-supernova-expand {
+  0%, 100% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.4; }
+  50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+}
+
+
+/* ── Hero: Direction Z -- Kaleidoscope ──────────────────────────── */
+
+.hero-kaleidoscope {
+  background: oklch(97% 0.005 250);
+  transition: background 0.6s ease;
+}
+
+[data-theme="fantastic"] .hero-kaleidoscope {
+  background: oklch(8% 0.03 280);
+}
+
+/* Jewel-toned geometric accents for brilliant */
+.kaleid-gem {
+  position: absolute;
+  border: 2px solid;
+  opacity: 0.2;
+  animation: kaleid-gem-rotate 20s linear infinite;
+}
+
+.kaleid-gem-1 {
+  width: 80px; height: 80px;
+  top: 10%; left: 8%;
+  border-color: oklch(55% 0.15 155); /* emerald */
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  animation-delay: 0s;
+}
+.kaleid-gem-2 {
+  width: 60px; height: 60px;
+  top: 15%; right: 12%;
+  border-color: oklch(50% 0.18 25); /* ruby */
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  animation-delay: -3s;
+}
+.kaleid-gem-3 {
+  width: 50px; height: 50px;
+  bottom: 20%; left: 15%;
+  border-color: oklch(55% 0.15 250); /* sapphire */
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  animation-delay: -7s;
+}
+.kaleid-gem-4 {
+  width: 70px; height: 70px;
+  bottom: 25%; right: 10%;
+  border-color: oklch(65% 0.12 80); /* amber */
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  animation-delay: -5s;
+}
+.kaleid-gem-5 {
+  width: 40px; height: 40px;
+  top: 50%; left: 5%;
+  border-color: oklch(55% 0.15 310); /* amethyst */
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  animation-delay: -10s;
+}
+.kaleid-gem-6 {
+  width: 55px; height: 55px;
+  top: 40%; right: 6%;
+  border-color: oklch(55% 0.15 155); /* emerald */
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  animation-delay: -15s;
+}
+
+[data-theme="fantastic"] .kaleid-gem { opacity: 0; }
+
+@keyframes kaleid-gem-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Title */
+.kaleid-title {
+  font-size: clamp(3.5rem, 13vw, 11rem);
+  position: relative;
+}
+
+.kaleid-word { display: block; }
+
+/* Brilliant: jewel-toned gradient text */
+[data-theme="brilliant"] .kaleid-word-1 {
+  background: linear-gradient(135deg, oklch(45% 0.15 155), oklch(45% 0.15 250));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="brilliant"] .kaleid-word-2 {
+  background: linear-gradient(135deg, oklch(45% 0.18 25), oklch(55% 0.12 80));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Fantastic: rapid color cycling text */
+[data-theme="fantastic"] .kaleid-word-1 {
+  animation: kaleid-color-cycle-1 2s linear infinite;
+  text-shadow:
+    0 0 20px oklch(70% 0.3 280 / 0.6),
+    0 0 40px oklch(60% 0.25 320 / 0.3);
+}
+
+[data-theme="fantastic"] .kaleid-word-2 {
+  animation: kaleid-color-cycle-2 1.5s linear infinite;
+  text-shadow:
+    0 0 20px oklch(70% 0.3 40 / 0.6),
+    0 0 40px oklch(60% 0.25 80 / 0.3);
+}
+
+@keyframes kaleid-color-cycle-1 {
+  0% { color: oklch(80% 0.25 0); }
+  16% { color: oklch(80% 0.25 60); }
+  33% { color: oklch(80% 0.25 120); }
+  50% { color: oklch(80% 0.25 180); }
+  66% { color: oklch(80% 0.25 240); }
+  83% { color: oklch(80% 0.25 300); }
+  100% { color: oklch(80% 0.25 360); }
+}
+
+@keyframes kaleid-color-cycle-2 {
+  0% { color: oklch(85% 0.3 180); }
+  16% { color: oklch(85% 0.3 240); }
+  33% { color: oklch(85% 0.3 300); }
+  50% { color: oklch(85% 0.3 0); }
+  66% { color: oklch(85% 0.3 60); }
+  83% { color: oklch(85% 0.3 120); }
+  100% { color: oklch(85% 0.3 180); }
+}
+
+/* Mirrored ghost text copies */
+.kaleid-mirrors {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.kaleid-mirror {
+  position: absolute;
+  font-size: clamp(2rem, 8vw, 6rem);
+  white-space: nowrap;
+  opacity: 0.15;
+  mix-blend-mode: screen;
+}
+
+.kaleid-mirror-1 {
+  top: -120%;
+  left: 50%;
+  transform: translateX(-50%) scaleY(-1) rotate(5deg);
+  animation: kaleid-mirror-drift 8s ease-in-out infinite alternate;
+  color: oklch(70% 0.3 280);
+}
+
+.kaleid-mirror-2 {
+  top: 180%;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  animation: kaleid-mirror-drift 10s ease-in-out infinite alternate-reverse;
+  color: oklch(70% 0.3 40);
+}
+
+.kaleid-mirror-3 {
+  top: 30%;
+  left: -40%;
+  transform: rotate(90deg);
+  animation: kaleid-mirror-drift 12s ease-in-out infinite alternate;
+  color: oklch(70% 0.3 160);
+}
+
+.kaleid-mirror-4 {
+  top: 30%;
+  right: -40%;
+  transform: rotate(-90deg) scaleX(-1);
+  animation: kaleid-mirror-drift 9s ease-in-out infinite alternate-reverse;
+  color: oklch(70% 0.3 320);
+}
+
+@keyframes kaleid-mirror-drift {
+  0% { opacity: 0.1; transform-origin: center; filter: blur(0px); }
+  50% { opacity: 0.25; filter: blur(2px); }
+  100% { opacity: 0.1; filter: blur(0px); }
+}
+
+/* Tagline */
+.kaleid-tagline {
+  color: oklch(50% 0.06 250);
+  transition: color 0.6s ease;
+}
+
+[data-theme="fantastic"] .kaleid-tagline {
+  animation: kaleid-color-cycle-1 3s linear infinite;
+  text-shadow: 0 0 8px oklch(70% 0.2 280 / 0.5);
+}
+
 /* This file is for your main application CSS */
