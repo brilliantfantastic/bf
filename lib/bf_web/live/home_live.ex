@@ -10,8 +10,7 @@ defmodule BrilliantFantasticWeb.HomeLive do
     cosmic kaleidoscope
   )
 
-  embed_templates "home_live/*"
-  embed_templates "home_live/heroes/*"
+  embed_templates "home_live/**/*"
 
   def mount(_params, _session, socket) do
     direction = if connected?(socket), do: Enum.random(@directions)
