@@ -192,7 +192,7 @@ defmodule BrilliantFantasticWeb.Layouts do
           For Hire
         </a>
         <a
-          href="/contact"
+          href="/#section-contact"
           class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors"
         >
           Contact
@@ -221,7 +221,7 @@ defmodule BrilliantFantasticWeb.Layouts do
           <li><a href="/blog" class="font-display text-lg">Blog</a></li>
           <li><a href="/projects" class="font-display text-lg">Projects</a></li>
           <li><a href="/for_hire" class="font-display text-lg">For Hire</a></li>
-          <li><a href="/contact" class="font-display text-lg">Contact</a></li>
+          <li><a href="/#section-contact" class="font-display text-lg">Contact</a></li>
         </ul>
       </div>
     </nav>

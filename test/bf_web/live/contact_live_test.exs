@@ -1,4 +1,4 @@
-defmodule BrilliantFantasticWeb.ContactLiveTest do
+defmodule BrilliantFantasticWeb.HomeLive.ContactFormTest do
   use BrilliantFantasticWeb.ConnCase
 
   import Phoenix.LiveViewTest
@@ -10,11 +10,11 @@ defmodule BrilliantFantasticWeb.ContactLiveTest do
     "message" => "I would love to discuss a potential project together."
   }
 
-  describe "GET /contact" do
+  describe "contact form on homepage" do
     test "renders the contact form with all fields", %{conn: conn} do
-      {:ok, view, html} = live(conn, ~p"/contact")
+      {:ok, view, html} = live(conn, ~p"/")
 
-      assert html =~ "Contact"
+      assert html =~ "Let&#39;s connect" or html =~ "Let's connect"
       assert has_element?(view, "input[name='contact_form[name]']")
       assert has_element?(view, "input[name='contact_form[email]']")
       assert has_element?(view, "input[name='contact_form[subject]']")
@@ -25,7 +25,7 @@ defmodule BrilliantFantasticWeb.ContactLiveTest do
 
   describe "validate (phx-change)" do
     test "shows validation errors for invalid data", %{conn: conn} do
-      {:ok, view, _html} = live(conn, ~p"/contact")
+      {:ok, view, _html} = live(conn, ~p"/")
 
       html =
         view
@@ -36,7 +36,7 @@ defmodule BrilliantFantasticWeb.ContactLiveTest do
     end
 
     test "shows error when message is too short", %{conn: conn} do
-      {:ok, view, _html} = live(conn, ~p"/contact")
+      {:ok, view, _html} = live(conn, ~p"/")
 
       html =
         view
@@ -47,7 +47,7 @@ defmodule BrilliantFantasticWeb.ContactLiveTest do
     end
 
     test "shows error for invalid email format", %{conn: conn} do
-      {:ok, view, _html} = live(conn, ~p"/contact")
+      {:ok, view, _html} = live(conn, ~p"/")
 
       html =
         view
@@ -60,7 +60,7 @@ defmodule BrilliantFantasticWeb.ContactLiveTest do
 
   describe "submit (phx-submit)" do
     test "shows all validation errors when submitting empty form", %{conn: conn} do
-      {:ok, view, _html} = live(conn, ~p"/contact")
+      {:ok, view, _html} = live(conn, ~p"/")
 
       html =
         view
@@ -71,7 +71,7 @@ defmodule BrilliantFantasticWeb.ContactLiveTest do
     end
 
     test "resets form and shows success flash on valid submission", %{conn: conn} do
-      {:ok, view, _html} = live(conn, ~p"/contact")
+      {:ok, view, _html} = live(conn, ~p"/")
 
       view
       |> form("form", contact_form: @valid_attrs)
@@ -89,7 +89,7 @@ defmodule BrilliantFantasticWeb.ContactLiveTest do
     test "delivers contact email on valid submission", %{conn: conn} do
       import Swoosh.TestAssertions
 
-      {:ok, view, _html} = live(conn, ~p"/contact")
+      {:ok, view, _html} = live(conn, ~p"/")
 
       view
       |> form("form", contact_form: @valid_attrs)
