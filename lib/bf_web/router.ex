@@ -23,7 +23,7 @@ defmodule BrilliantFantasticWeb.Router do
     get "/projects", ProjectController, :index
     get "/for_hire", ForHireController, :index
     get "/for-hire", ForHireController, :index
-    get "/contact", ContactController, :index
+    live "/contact", ContactLive
   end
 
   # Other scopes may use custom stacks.
