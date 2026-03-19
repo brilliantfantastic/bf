@@ -921,14 +921,75 @@
   color: transparent;
 }
 
-[data-theme="brilliant"] #section-contact h2 a {
-  color: transparent;
-  -webkit-text-stroke: 2px oklch(93% 0.01 80);
+[data-theme="brilliant"] #section-contact .input,
+[data-theme="brilliant"] #section-contact .textarea {
+  background: oklch(22% 0.01 250);
+  color: oklch(93% 0.01 80);
+  border-color: oklch(40% 0.01 250);
 }
 
-[data-theme="brilliant"] #section-contact h2 a:hover {
-  color: oklch(55% 0.22 25);
-  -webkit-text-stroke: 0;
+[data-theme="brilliant"] #section-contact .input::placeholder,
+[data-theme="brilliant"] #section-contact .textarea::placeholder {
+  color: oklch(55% 0.01 250);
+}
+
+[data-theme="brilliant"] #section-contact .input:focus,
+[data-theme="brilliant"] #section-contact .textarea:focus {
+  border-color: oklch(55% 0.22 25);
+}
+
+[data-theme="brilliant"] #section-contact .btn {
+  border: 2px solid oklch(93% 0.01 80);
+  background: transparent;
+  color: oklch(93% 0.01 80);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+[data-theme="brilliant"] #section-contact .btn:hover {
+  background: oklch(55% 0.22 25);
+  border-color: oklch(55% 0.22 25);
+  color: oklch(98% 0.002 250);
+}
+
+/* ── Contact Form: Fantastic Fun ── */
+[data-theme="fantastic"] #section-contact .btn {
+  font-family: "Okkult", fantasy;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  border-radius: 2rem;
+  padding-inline: 2rem;
+  background: oklch(58% 0.233 277.117);
+  color: oklch(96% 0.018 272.314);
+  border: none;
+  box-shadow: 4px 4px 0 oklch(37% 0.044 257.287);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+[data-theme="fantastic"] #section-contact .btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 oklch(37% 0.044 257.287);
+}
+
+[data-theme="fantastic"] #section-contact .btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 oklch(37% 0.044 257.287);
+}
+
+/* ── Toast: Theme-Aware ── */
+[data-theme="brilliant"] .alert-info {
+  background: oklch(22% 0.01 250);
+  color: oklch(93% 0.01 80);
+  border: 2px solid oklch(55% 0.22 25);
+}
+
+[data-theme="fantastic"] .alert-info {
+  background: oklch(58% 0.233 277.117);
+  color: oklch(96% 0.018 272.314);
+  border-radius: 1.5rem;
+  border: none;
+  box-shadow: 4px 4px 0 oklch(37% 0.044 257.287);
+  font-family: "Okkult", fantasy;
 }
 
 /* ── Inner Pages: Brilliant Brutalist ── */
