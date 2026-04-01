@@ -10,7 +10,11 @@ import Config
 config :bf,
   namespace: BrilliantFantastic,
   ecto_repos: [BrilliantFantastic.Repo],
-  generators: [timestamp_type: :utc_datetime]
+  generators: [timestamp_type: :utc_datetime],
+  contact_to_email: "me@bf.lol",
+  contact_to_name: "Jamie Wright",
+  contact_from_email: "noreply@bf.lol",
+  contact_from_name: "Contact Form"
 
 # Configure the endpoint
 config :bf, BrilliantFantasticWeb.Endpoint,
