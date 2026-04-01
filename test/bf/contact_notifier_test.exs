@@ -17,7 +17,7 @@ defmodule BrilliantFantastic.ContactNotifierTest do
     test "delivers email to the site owner" do
       ContactNotifier.deliver_contact_message(@contact)
 
-      assert_email_sent(to: [{"Jamie Wright", "me@brilliantfantastic.com"}])
+      assert_email_sent(to: [{"Jamie Wright", "me@bf.lol"}])
     end
 
     test "sets reply-to as the sender's name and email" do
@@ -36,7 +36,7 @@ defmodule BrilliantFantastic.ContactNotifierTest do
       contact = %{@contact | subject: nil}
       ContactNotifier.deliver_contact_message(contact)
 
-      assert_email_sent(subject: "Message from ada@example.com on brilliantfantastic.com")
+      assert_email_sent(subject: "Message from ada@example.com on bf.lol")
     end
 
     test "includes the sender's name, email, and message in the body" do
@@ -52,7 +52,7 @@ defmodule BrilliantFantastic.ContactNotifierTest do
     test "sends from the noreply address" do
       ContactNotifier.deliver_contact_message(@contact)
 
-      assert_email_sent(from: {"Contact Form", "noreply@brilliantfantastic.com"})
+      assert_email_sent(from: {"Contact Form", "noreply@bf.lol"})
     end
   end
 end

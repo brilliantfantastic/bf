@@ -55,7 +55,7 @@ This application is deployed to [Gigalixir](https://gigalixir.com) using buildpa
 
 The application is automatically deployed to production when code is merged into the `main` branch. CI must pass before deployment is triggered.
 
-The production application lives at https://brilliantfantastic.gigalixirapp.com.
+The production application lives at https://bf.gigalixirapp.com.
 
 ### Manual deployment
 
@@ -74,7 +74,7 @@ gigalixir login
 3. Add the git remote
 
 ```
-gigalixir git:remote brilliantfantastic
+gigalixir git:remote bf
 ```
 
 4. Deploy

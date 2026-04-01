@@ -57,6 +57,16 @@ if config_env() == :prod do
 
   config :bf, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")
 
+  for {key, env} <- [
+        contact_to_email: "CONTACT_TO_EMAIL",
+        contact_to_name: "CONTACT_TO_NAME",
+        contact_from_email: "CONTACT_FROM_EMAIL",
+        contact_from_name: "CONTACT_FROM_NAME"
+      ],
+      value = System.get_env(env) do
+    config :bf, [{key, value}]
+  end
+
   config :bf, BrilliantFantasticWeb.Endpoint,
     url: [host: host, port: 443, scheme: "https"],
     http: [
