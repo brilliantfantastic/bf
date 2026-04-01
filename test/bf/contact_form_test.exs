@@ -35,11 +35,10 @@ defmodule BrilliantFantastic.ContactFormTest do
       assert "can't be blank" in errors_on(changeset).email
     end
 
-    test "requires subject" do
+    test "does not require subject" do
       changeset = ContactForm.changeset(%ContactForm{}, Map.delete(@valid_attrs, :subject))
 
-      refute changeset.valid?
-      assert "can't be blank" in errors_on(changeset).subject
+      assert changeset.valid?
     end
 
     test "requires message" do

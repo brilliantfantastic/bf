@@ -32,6 +32,13 @@ defmodule BrilliantFantastic.ContactNotifierTest do
       assert_email_sent(subject: "Collaboration inquiry")
     end
 
+    test "defaults subject when not provided" do
+      contact = %{@contact | subject: nil}
+      ContactNotifier.deliver_contact_message(contact)
+
+      assert_email_sent(subject: "Message from ada@example.com on brilliantfantastic.com")
+    end
+
     test "includes the sender's name, email, and message in the body" do
       ContactNotifier.deliver_contact_message(@contact)
 

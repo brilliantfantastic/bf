@@ -28,7 +28,7 @@
       <.form for={@form} phx-change="validate" phx-submit="submit" class="space-y-4">
         <.input field={@form[:name]} label="Name" required phx-debounce="blur" />
         <.input field={@form[:email]} type="email" label="Email" required phx-debounce="blur" />
-        <.input field={@form[:subject]} label="Subject" required phx-debounce="blur" />
+        <.input field={@form[:subject]} label="Subject (optional)" phx-debounce="blur" />
         <.input field={@form[:message]} type="textarea" label="Message" required rows={6} phx-debounce="blur" />
 
         <.button type="submit" variant="primary" phx-disable-with="Sending...">Send message</.button>
