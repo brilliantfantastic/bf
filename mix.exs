@@ -11,7 +11,8 @@ defmodule BrilliantFantastic.MixProject do
       aliases: aliases(),
       deps: deps(),
       compilers: [:phoenix_live_view] ++ Mix.compilers(),
-      listeners: [Phoenix.CodeReloader]
+      listeners: [Phoenix.CodeReloader],
+      dialyzer: [plt_local_path: "priv/plts"]
     ]
   end
 
@@ -68,7 +69,10 @@ defmodule BrilliantFantastic.MixProject do
       {:bandit, "~> 1.5"},
       {:nimble_publisher, "~> 1.1", runtime: false},
       {:makeup_elixir, "~> 0.16", runtime: false},
-      {:makeup_erlang, "~> 1.0", runtime: false}
+      {:makeup_erlang, "~> 1.0", runtime: false},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
+      {:mix_audit, "~> 2.1", only: [:dev, :test], runtime: false}
     ]
   end
 
