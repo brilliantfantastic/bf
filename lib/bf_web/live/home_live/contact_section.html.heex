@@ -12,7 +12,11 @@
       </div>
 
       <%!-- Fantastic: snarky, randomized, with balloon pop --%>
-      <div id="contact-success-fantastic" class="contact-success text-center py-16 hidden fantastic:block" phx-hook=".BalloonPop">
+      <div
+        id="contact-success-fantastic"
+        class="contact-success text-center py-16 hidden fantastic:block"
+        phx-hook=".BalloonPop"
+      >
         <h2 class="font-display text-5xl lg:text-7xl mb-6">
           {@success_headline}
         </h2>
@@ -29,9 +33,18 @@
         <.input field={@form[:name]} label="Name" required phx-debounce="blur" />
         <.input field={@form[:email]} type="email" label="Email" required phx-debounce="blur" />
         <.input field={@form[:subject]} label="Subject (optional)" phx-debounce="blur" />
-        <.input field={@form[:message]} type="textarea" label="Message" required rows={6} phx-debounce="blur" />
+        <.input
+          field={@form[:message]}
+          type="textarea"
+          label="Message"
+          required
+          rows={6}
+          phx-debounce="blur"
+        />
 
-        <.button type="submit" variant="primary" phx-disable-with="Sending...">Send message</.button>
+        <.button type="submit" variant="primary" phx-disable-with="Sending...">
+          Send message
+        </.button>
       </.form>
     <% end %>
   </div>

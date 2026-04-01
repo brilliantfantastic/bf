@@ -29,7 +29,14 @@ defmodule BrilliantFantasticWeb.HomeLive.ContactFormTest do
 
       html =
         view
-        |> form("form", contact_form: %{"name" => "", "email" => "not-an-email", "subject" => "", "message" => ""})
+        |> form("form",
+          contact_form: %{
+            "name" => "",
+            "email" => "not-an-email",
+            "subject" => "",
+            "message" => ""
+          }
+        )
         |> render_change()
 
       assert html =~ "can&#39;t be blank" or html =~ "can't be blank"
@@ -64,7 +71,9 @@ defmodule BrilliantFantasticWeb.HomeLive.ContactFormTest do
 
       html =
         view
-        |> form("form", contact_form: %{"name" => "", "email" => "", "subject" => "", "message" => ""})
+        |> form("form",
+          contact_form: %{"name" => "", "email" => "", "subject" => "", "message" => ""}
+        )
         |> render_submit()
 
       assert html =~ "can&#39;t be blank" or html =~ "can't be blank"

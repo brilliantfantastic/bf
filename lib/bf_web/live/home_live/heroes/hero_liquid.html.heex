@@ -1,17 +1,49 @@
-<section id="section-hero" class="flex-1 relative flex items-center justify-center overflow-hidden liquid-stage">
+<section
+  id="section-hero"
+  class="flex-1 relative flex items-center justify-center overflow-hidden liquid-stage"
+>
   <div class="hero-bg"></div>
   <%!-- SVG filter for turbulence distortion --%>
   <svg class="absolute w-0 h-0" aria-hidden="true">
     <defs>
       <filter id="liquid-warp">
-        <feTurbulence id="liquid-turb" type="fractalNoise" baseFrequency="0.015" numOctaves="3" result="noise" />
-        <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G" />
+        <feTurbulence
+          id="liquid-turb"
+          type="fractalNoise"
+          baseFrequency="0.015"
+          numOctaves="3"
+          result="noise"
+        />
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="noise"
+          scale="8"
+          xChannelSelector="R"
+          yChannelSelector="G"
+        />
       </filter>
       <filter id="liquid-warp-heavy">
-        <feTurbulence id="liquid-turb-heavy" type="fractalNoise" baseFrequency="0.025" numOctaves="4" result="noise">
-          <animate attributeName="baseFrequency" values="0.02;0.04;0.02" dur="8s" repeatCount="indefinite" />
+        <feTurbulence
+          id="liquid-turb-heavy"
+          type="fractalNoise"
+          baseFrequency="0.025"
+          numOctaves="4"
+          result="noise"
+        >
+          <animate
+            attributeName="baseFrequency"
+            values="0.02;0.04;0.02"
+            dur="8s"
+            repeatCount="indefinite"
+          />
         </feTurbulence>
-        <feDisplacementMap in="SourceGraphic" in2="noise" scale="30" xChannelSelector="R" yChannelSelector="G">
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="noise"
+          scale="30"
+          xChannelSelector="R"
+          yChannelSelector="G"
+        >
           <animate attributeName="scale" values="20;40;20" dur="6s" repeatCount="indefinite" />
         </feDisplacementMap>
       </filter>

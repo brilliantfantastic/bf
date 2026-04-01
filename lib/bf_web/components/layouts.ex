@@ -122,7 +122,9 @@ defmodule BrilliantFantasticWeb.Layouts do
 
   See <head> in root.html.heex which applies the theme before page load.
   """
-  attr :randomize, :boolean, default: false, doc: "Also push randomize-direction on fantastic click"
+  attr :randomize, :boolean,
+    default: false,
+    doc: "Also push randomize-direction on fantastic click"
 
   def theme_toggle(assigns) do
     fantastic_click =
@@ -162,12 +164,18 @@ defmodule BrilliantFantasticWeb.Layouts do
   that opens a full-screen overlay. Uses daisyUI semantic color classes
   so it automatically adapts to the active theme.
   """
-  attr :morph, :boolean, default: false, doc: "Enable scroll-driven morph animation (home page only)"
+  attr :morph, :boolean,
+    default: false,
+    doc: "Enable scroll-driven morph animation (home page only)"
+
   attr :randomize_direction, :boolean, default: false, doc: "Pass randomize to theme toggle"
 
   def nav_menu(assigns) do
     ~H"""
-    <nav id="section-nav" class="sticky top-0 z-20 bg-base-200/90 backdrop-blur border-b border-base-300">
+    <nav
+      id="section-nav"
+      class="sticky top-0 z-20 bg-base-200/90 backdrop-blur border-b border-base-300"
+    >
       <%!-- Desktop: horizontal links spread across full width --%>
       <div class="hidden lg:flex items-center justify-between px-6 lg:px-16 py-3">
         <a href="/" class={["font-display text-xl", if(@morph, do: "nav-logo")]}>
@@ -197,7 +205,9 @@ defmodule BrilliantFantasticWeb.Layouts do
         >
           Contact
         </a>
-        <div id={if(@morph, do: "theme-toggle-nav")}><.theme_toggle randomize={@randomize_direction} /></div>
+        <div id={if(@morph, do: "theme-toggle-nav")}>
+          <.theme_toggle randomize={@randomize_direction} />
+        </div>
       </div>
 
       <%!-- Mobile: hamburger + vertical menu --%>
@@ -207,7 +217,9 @@ defmodule BrilliantFantasticWeb.Layouts do
             Brilliant Fantastic
           </a>
           <div class="flex items-center gap-3">
-            <div id={if(@morph, do: "theme-toggle-nav-mobile")}><.theme_toggle randomize={@randomize_direction} /></div>
+            <div id={if(@morph, do: "theme-toggle-nav-mobile")}>
+              <.theme_toggle randomize={@randomize_direction} />
+            </div>
             <button phx-click={JS.toggle(to: "#mobile-menu")} aria-label="Toggle menu">
               <.icon name="hero-bars-3" class="size-6" />
             </button>

@@ -34,24 +34,42 @@
   <div id="hero-fantastic-wrap" class="flex-1 flex flex-col">
     <%= case @direction do %>
       <% nil -> %>
-      <% "transformation" -> %><.hero_transformation />
-      <% "typography_art" -> %><.hero_typography_art />
-      <% "generative_canvas" -> %><.hero_generative_canvas />
-      <% "world_building" -> %><.hero_world_building />
-      <% "anti_hero" -> %><.hero_anti_hero />
-      <% "marquee" -> %><.hero_marquee />
-      <% "typewriter" -> %><.hero_typewriter />
-      <% "chromatic" -> %><.hero_chromatic />
-      <% "tilt" -> %><.hero_tilt />
-      <% "fragments" -> %><.hero_fragments />
-      <% "neon_noir" -> %><.hero_neon_noir />
-      <% "liquid" -> %><.hero_liquid />
-      <% "terminal" -> %><.hero_terminal />
-      <% "brutalist" -> %><.hero_brutalist />
-      <% "botanical" -> %><.hero_botanical />
-      <% "holographic" -> %><.hero_holographic />
-      <% "cosmic" -> %><.hero_cosmic />
-      <% "kaleidoscope" -> %><.hero_kaleidoscope />
+      <% "transformation" -> %>
+        <.hero_transformation />
+      <% "typography_art" -> %>
+        <.hero_typography_art />
+      <% "generative_canvas" -> %>
+        <.hero_generative_canvas />
+      <% "world_building" -> %>
+        <.hero_world_building />
+      <% "anti_hero" -> %>
+        <.hero_anti_hero />
+      <% "marquee" -> %>
+        <.hero_marquee />
+      <% "typewriter" -> %>
+        <.hero_typewriter />
+      <% "chromatic" -> %>
+        <.hero_chromatic />
+      <% "tilt" -> %>
+        <.hero_tilt />
+      <% "fragments" -> %>
+        <.hero_fragments />
+      <% "neon_noir" -> %>
+        <.hero_neon_noir />
+      <% "liquid" -> %>
+        <.hero_liquid />
+      <% "terminal" -> %>
+        <.hero_terminal />
+      <% "brutalist" -> %>
+        <.hero_brutalist />
+      <% "botanical" -> %>
+        <.hero_botanical />
+      <% "holographic" -> %>
+        <.hero_holographic />
+      <% "cosmic" -> %>
+        <.hero_cosmic />
+      <% "kaleidoscope" -> %>
+        <.hero_kaleidoscope />
     <% end %>
   </div>
 </div>
@@ -64,7 +82,12 @@
 
 <.meet_jamie />
 
-<.contact_section form={@form} contact_submitted={@contact_submitted} success_headline={@success_headline} success_subtitle={@success_subtitle} />
+<.contact_section
+  form={@form}
+  contact_submitted={@contact_submitted}
+  success_headline={@success_headline}
+  success_subtitle={@success_subtitle}
+/>
 
 <script :type={Phoenix.LiveView.ColocatedHook} name=".BalloonPop">
   export default {

@@ -40,7 +40,8 @@ defmodule BrilliantFantasticWeb.BlogLiveTest do
     end
 
     test "redirects to blog index for nonexistent post", %{conn: conn} do
-      assert {:error, {:live_redirect, %{to: "/blog"}}} = live(conn, ~p"/blog/nonexistent-post-id")
+      assert {:error, {:live_redirect, %{to: "/blog"}}} =
+               live(conn, ~p"/blog/nonexistent-post-id")
     end
   end
 end

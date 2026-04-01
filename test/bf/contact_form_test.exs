@@ -72,7 +72,8 @@ defmodule BrilliantFantastic.ContactFormTest do
     end
 
     test "accepts a standard email address" do
-      changeset = ContactForm.changeset(%ContactForm{}, %{@valid_attrs | email: "user@domain.com"})
+      changeset =
+        ContactForm.changeset(%ContactForm{}, %{@valid_attrs | email: "user@domain.com"})
 
       assert changeset.valid?
     end

@@ -1,9 +1,12 @@
-<section id="section-hero" class="flex-1 relative flex items-center justify-center overflow-hidden">
-    <canvas id="hero-canvas" class="hero-canvas"></canvas>
-    <h1 class="font-display text-7xl lg:text-9xl leading-none text-center relative z-10 hero-canvas-text px-6">
-      Brilliant<br />Fantastic
-    </h1>
-  </section>
+<section
+  id="section-hero"
+  class="flex-1 relative flex items-center justify-center overflow-hidden"
+>
+  <canvas id="hero-canvas" class="hero-canvas"></canvas>
+  <h1 class="font-display text-7xl lg:text-9xl leading-none text-center relative z-10 hero-canvas-text px-6">
+    Brilliant<br />Fantastic
+  </h1>
+</section>
 
 <div id="hero-canvas-controller" phx-hook=".HeroCanvas" phx-update="ignore"></div>
 <script :type={Phoenix.LiveView.ColocatedHook} name=".HeroCanvas">
