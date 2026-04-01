@@ -1,4 +1,8 @@
 defmodule BrilliantFantastic.ContactNotifier do
+  @moduledoc """
+  Delivers contact form submissions via email.
+  """
+
   import Swoosh.Email
 
   alias BrilliantFantastic.Mailer

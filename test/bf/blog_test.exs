@@ -6,7 +6,7 @@ defmodule BrilliantFantastic.BlogTest do
   describe "all_posts/0" do
     test "returns posts sorted newest first" do
       posts = Blog.all_posts()
-      assert length(posts) > 0
+      assert [_ | _] = posts
 
       dates = Enum.map(posts, & &1.date)
       assert dates == Enum.sort(dates, {:desc, Date})

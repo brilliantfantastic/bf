@@ -3,8 +3,8 @@ defmodule BrilliantFantastic.ContactNotifierTest do
 
   import Swoosh.TestAssertions
 
-  alias BrilliantFantastic.ContactNotifier
   alias BrilliantFantastic.ContactForm
+  alias BrilliantFantastic.ContactNotifier
 
   @contact %ContactForm{
     name: "Ada Lovelace",

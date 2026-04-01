@@ -1,8 +1,8 @@
 defmodule BrilliantFantasticWeb.HomeLive do
   use BrilliantFantasticWeb, :live_view
 
-  alias BrilliantFantasticWeb.Components.Illustrations
   alias BrilliantFantastic.ContactForm
+  alias BrilliantFantasticWeb.Components.Illustrations
 
   require Logger
 
@@ -72,12 +72,7 @@ defmodule BrilliantFantasticWeb.HomeLive do
 
     case Ecto.Changeset.apply_action(changeset, :submit) do
       {:ok, contact} ->
-        Task.start(fn ->
-          case BrilliantFantastic.ContactNotifier.deliver_contact_message(contact) do
-            {:ok, _} -> :ok
-            {:error, reason} -> Logger.error("Contact form email failed: #{inspect(reason)}")
-          end
-        end)
+        deliver_contact_email(contact)
 
         socket =
           socket
@@ -91,5 +86,14 @@ defmodule BrilliantFantasticWeb.HomeLive do
       {:error, changeset} ->
         {:noreply, assign(socket, form: to_form(changeset))}
     end
+  end
+
+  defp deliver_contact_email(contact) do
+    Task.start(fn ->
+      case BrilliantFantastic.ContactNotifier.deliver_contact_message(contact) do
+        {:ok, _} -> :ok
+        {:error, reason} -> Logger.error("Contact form email failed: #{inspect(reason)}")
+      end
+    end)
   end
 end
