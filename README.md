@@ -3,6 +3,8 @@ Brilliant Fantastic
 
 > A treehouse on the internet.
 
+For the best experience reading this README, please [set the mood](https://www.youtube.com/watch?v=UHNVQ2PHTr4) first.
+
 ## DESCRIPTION
 
 Brilliant Fantastic is the personal website of Jamie Wright. It features a dual-theme experience — a clean brutalist "Brilliant" side and an expressive, playful "Fantastic" side — with a blog, contact form, and animated illustrations.
