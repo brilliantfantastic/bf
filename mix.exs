@@ -12,7 +12,10 @@ defmodule BrilliantFantastic.MixProject do
       deps: deps(),
       compilers: [:phoenix_live_view] ++ Mix.compilers(),
       listeners: [Phoenix.CodeReloader],
-      dialyzer: [plt_local_path: "priv/plts"]
+      dialyzer: [
+        plt_local_path: "priv/plts",
+        plt_add_apps: [:mix, :ex_unit]
+      ]
     ]
   end
 
