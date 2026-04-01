@@ -1,16 +1,38 @@
 <section id="section-contact" class="px-6 lg:px-16 py-32 bg-base-200/80">
   <div class="max-w-lg mx-auto">
-    <h2 class="font-display text-5xl lg:text-7xl text-center mb-12">
-      Let's connect
-    </h2>
+    <%= if @contact_submitted do %>
+      <%!-- Brilliant: plain, static success --%>
+      <div id="contact-success" class="contact-success text-center py-16 fantastic:hidden">
+        <h2 class="font-display text-5xl lg:text-7xl mb-6">
+          Transmission logged.
+        </h2>
+        <p class="text-lg opacity-80">
+          Your message is very important to us. Please continue to hold.
+        </p>
+      </div>
 
-    <.form for={@form} phx-change="validate" phx-submit="submit" class="space-y-4">
-      <.input field={@form[:name]} label="Name" required phx-debounce="blur" />
-      <.input field={@form[:email]} type="email" label="Email" required phx-debounce="blur" />
-      <.input field={@form[:subject]} label="Subject" required phx-debounce="blur" />
-      <.input field={@form[:message]} type="textarea" label="Message" required rows={6} phx-debounce="blur" />
+      <%!-- Fantastic: snarky, randomized, with balloon pop --%>
+      <div id="contact-success-fantastic" class="contact-success text-center py-16 hidden fantastic:block" phx-hook=".BalloonPop">
+        <h2 class="font-display text-5xl lg:text-7xl mb-6">
+          {@success_headline}
+        </h2>
+        <p class="text-lg opacity-80">
+          {@success_subtitle}
+        </p>
+      </div>
+    <% else %>
+      <h2 class="font-display text-5xl lg:text-7xl text-center mb-12">
+        Let's connect
+      </h2>
 
-      <.button type="submit" variant="primary" phx-disable-with="Sending...">Send message</.button>
-    </.form>
+      <.form for={@form} phx-change="validate" phx-submit="submit" class="space-y-4">
+        <.input field={@form[:name]} label="Name" required phx-debounce="blur" />
+        <.input field={@form[:email]} type="email" label="Email" required phx-debounce="blur" />
+        <.input field={@form[:subject]} label="Subject (optional)" phx-debounce="blur" />
+        <.input field={@form[:message]} type="textarea" label="Message" required rows={6} phx-debounce="blur" />
+
+        <.button type="submit" variant="primary" phx-disable-with="Sending...">Send message</.button>
+      </.form>
+    <% end %>
   </div>
 </section>

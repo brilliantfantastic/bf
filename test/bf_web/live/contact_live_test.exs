@@ -70,20 +70,18 @@ defmodule BrilliantFantasticWeb.HomeLive.ContactFormTest do
       assert html =~ "can&#39;t be blank" or html =~ "can't be blank"
     end
 
-    test "resets form and shows success flash on valid submission", %{conn: conn} do
+    test "replaces form with thank-you message on valid submission", %{conn: conn} do
       {:ok, view, _html} = live(conn, ~p"/")
 
       view
       |> form("form", contact_form: @valid_attrs)
       |> render_submit()
 
-      html = render(view)
+      render(view)
 
-      # Form fields should be reset (no user-entered values remain)
-      refute html =~ ~s(value="Ada Lovelace")
-      refute html =~ ~s(value="ada@example.com")
-      refute html =~ ~s(value="Collaboration inquiry")
-      refute html =~ "I would love to discuss a potential project together."
+      # Success state should be visible, form should not
+      assert has_element?(view, "#contact-success")
+      refute has_element?(view, "form")
     end
 
     test "delivers contact email on valid submission", %{conn: conn} do

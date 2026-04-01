@@ -296,6 +296,7 @@ defmodule BrilliantFantasticWeb.Layouts do
   def robot_background(assigns) do
     ~H"""
     <div
+      id="robot-background"
       class="hidden fantastic:block fixed inset-0 z-0 overflow-hidden pointer-events-none"
       aria-hidden="true"
     >
