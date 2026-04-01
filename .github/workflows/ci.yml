@@ -77,9 +77,11 @@ jobs:
 
       - name: Create PLTs
         if: steps.plt-cache.outputs.cache-hit != 'true'
+        env:
+          MIX_ENV: dev
         run: |
           mkdir -p priv/plts
-          MIX_ENV=dev mix dialyzer --plt
+          mix dialyzer --plt
 
       - name: Save PLT Cache
         uses: actions/cache/save@v4
@@ -90,4 +92,6 @@ jobs:
           key: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-plts-${{ hashFiles('mix.lock') }}
 
       - name: Run Dialyzer
-        run: MIX_ENV=dev mix dialyzer --no-check
+        env:
+          MIX_ENV: dev
+        run: mix dialyzer --no-check
