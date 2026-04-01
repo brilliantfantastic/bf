@@ -1,0 +1,29 @@
+name: Deploy to Gigalixir
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Gigalixir CLI
+        run: sudo pip install gigalixir
+
+      - name: Authenticate with Gigalixir
+        run: gigalixir login -e "$GIGALIXIR_EMAIL" -y -p "$GIGALIXIR_PASSWORD"
+        env:
+          GIGALIXIR_EMAIL: ${{ secrets.GIGALIXIR_EMAIL }}
+          GIGALIXIR_PASSWORD: ${{ secrets.GIGALIXIR_PASSWORD }}
+
+      - name: Deploy
+        run: |
+          gigalixir git:remote ${{ secrets.GIGALIXIR_APP_NAME }}
+          git push -f gigalixir HEAD:refs/heads/master
