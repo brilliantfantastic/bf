@@ -66,6 +66,56 @@
 
 <.contact_section form={@form} contact_submitted={@contact_submitted} />
 
+<script :type={Phoenix.LiveView.ColocatedHook} name=".BalloonPop">
+  export default {
+    mounted() {
+      const section = document.getElementById("section-contact");
+      const container = document.getElementById("robot-background");
+      if (!section || !container) return;
+
+      const sectionRect = section.getBoundingClientRect();
+      const margin = 200;
+      const zone = {
+        top: sectionRect.top - margin,
+        bottom: sectionRect.bottom + margin,
+      };
+
+      const robots = [...container.children];
+      const nearby = robots.filter((el) => {
+        const rect = el.getBoundingClientRect();
+        return rect.bottom >= zone.top && rect.top <= zone.bottom;
+      });
+
+      const targets = nearby.length > 0 ? nearby : robots;
+      const shuffled = targets.sort(() => Math.random() - 0.5);
+      const picks = shuffled.slice(0, Math.min(2, shuffled.length));
+
+      picks.forEach((el, i) => {
+        setTimeout(() => {
+          el.classList.add("robot-balloon-pop");
+        }, i * 150);
+      });
+
+      // Deflate on intentional scroll after a 500ms delay
+      const scrollStart = window.scrollY;
+      const scrollThreshold = 50; // px of real scrolling before triggering
+      let deflateTimer = null;
+      const onScroll = () => {
+        if (Math.abs(window.scrollY - scrollStart) < scrollThreshold) return;
+        if (deflateTimer) return;
+        deflateTimer = setTimeout(() => {
+          picks.forEach((el) => {
+            el.classList.remove("robot-balloon-pop");
+            el.classList.add("robot-balloon-deflate");
+          });
+          window.removeEventListener("scroll", onScroll);
+        }, 500);
+      };
+      window.addEventListener("scroll", onScroll);
+    }
+  };
+</script>
+
 <div id="nav-morph-controller" phx-hook=".NavMorph" phx-update="ignore"></div>
 <script :type={Phoenix.LiveView.ColocatedHook} name=".NavMorph">
   // Sparkle SVG path (matches the sparkle component in layouts.ex)

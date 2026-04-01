@@ -1,7 +1,7 @@
 <section id="section-contact" class="px-6 lg:px-16 py-32 bg-base-200/80">
   <div class="max-w-lg mx-auto">
     <%= if @contact_submitted do %>
-      <div class="contact-success text-center py-16">
+      <div id="contact-success" class="contact-success text-center py-16" phx-hook=".BalloonPop">
         <h2 class="font-display text-5xl lg:text-7xl mb-6">
           Thank you!
         </h2>

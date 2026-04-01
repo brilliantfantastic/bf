@@ -180,6 +180,34 @@
 .robot-animate-wander { animation: robot-float-wander 15s ease-in-out infinite; }
 .robot-animate-drift { animation: robot-float-drift 25s ease-in-out infinite; }
 
+/* Balloon pop: inflate with a wobble, then settle at full size */
+@keyframes robot-balloon-pop {
+  0%   { transform: scale(1) rotate(0deg); opacity: 0.3; }
+  20%  { transform: scale(3) rotate(-8deg); opacity: 0.9; }
+  40%  { transform: scale(3.8) rotate(5deg); opacity: 1; }
+  60%  { transform: scale(3.4) rotate(-3deg); opacity: 0.9; }
+  80%  { transform: scale(3.7) rotate(1deg); opacity: 0.85; }
+  100% { transform: scale(3.5) rotate(0deg); opacity: 0.8; }
+}
+
+.robot-balloon-pop {
+  animation: robot-balloon-pop 800ms ease-out forwards !important;
+  pointer-events: none;
+}
+
+/* Deflate: shrink back to original size */
+@keyframes robot-balloon-deflate {
+  0%   { transform: scale(3.5) rotate(0deg); opacity: 0.8; }
+  40%  { transform: scale(1.8) rotate(3deg); opacity: 0.5; }
+  70%  { transform: scale(0.8) rotate(-2deg); opacity: 0.35; }
+  100% { transform: scale(1) rotate(0deg); opacity: 0.3; }
+}
+
+.robot-balloon-deflate {
+  animation: robot-balloon-deflate 600ms ease-in-out forwards !important;
+  pointer-events: none;
+}
+
 /* Nav logo: collapsed initially, appears before toggle morph */
 .nav-logo {
   opacity: 0;
