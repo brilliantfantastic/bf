@@ -22,6 +22,7 @@ defmodule BrilliantFantasticWeb.HomeLive do
       socket
       |> assign(:direction, direction)
       |> assign(:form, to_form(ContactForm.changeset(%{})))
+      |> assign(:contact_submitted, false)
 
     {:ok, socket}
   end
@@ -52,7 +53,7 @@ defmodule BrilliantFantasticWeb.HomeLive do
 
         socket =
           socket
-          |> put_flash(:info, "Message sent! We'll get back to you soon.")
+          |> assign(:contact_submitted, true)
           |> assign(form: to_form(ContactForm.changeset(%{})))
 
         {:noreply, socket}

@@ -64,7 +64,7 @@
 
 <.meet_jamie />
 
-<.contact_section form={@form} />
+<.contact_section form={@form} contact_submitted={@contact_submitted} />
 
 <div id="nav-morph-controller" phx-hook=".NavMorph" phx-update="ignore"></div>
 <script :type={Phoenix.LiveView.ColocatedHook} name=".NavMorph">

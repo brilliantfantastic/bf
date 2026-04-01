@@ -1,16 +1,27 @@
 <section id="section-contact" class="px-6 lg:px-16 py-32 bg-base-200/80">
   <div class="max-w-lg mx-auto">
-    <h2 class="font-display text-5xl lg:text-7xl text-center mb-12">
-      Let's connect
-    </h2>
+    <%= if @contact_submitted do %>
+      <div class="contact-success text-center py-16">
+        <h2 class="font-display text-5xl lg:text-7xl mb-6">
+          Thank you!
+        </h2>
+        <p class="text-lg opacity-80">
+          Your message is on its way. I'll get back to you soon.
+        </p>
+      </div>
+    <% else %>
+      <h2 class="font-display text-5xl lg:text-7xl text-center mb-12">
+        Let's connect
+      </h2>
 
-    <.form for={@form} phx-change="validate" phx-submit="submit" class="space-y-4">
-      <.input field={@form[:name]} label="Name" required phx-debounce="blur" />
-      <.input field={@form[:email]} type="email" label="Email" required phx-debounce="blur" />
-      <.input field={@form[:subject]} label="Subject" required phx-debounce="blur" />
-      <.input field={@form[:message]} type="textarea" label="Message" required rows={6} phx-debounce="blur" />
+      <.form for={@form} phx-change="validate" phx-submit="submit" class="space-y-4">
+        <.input field={@form[:name]} label="Name" required phx-debounce="blur" />
+        <.input field={@form[:email]} type="email" label="Email" required phx-debounce="blur" />
+        <.input field={@form[:subject]} label="Subject" required phx-debounce="blur" />
+        <.input field={@form[:message]} type="textarea" label="Message" required rows={6} phx-debounce="blur" />
 
-      <.button type="submit" variant="primary" phx-disable-with="Sending...">Send message</.button>
-    </.form>
+        <.button type="submit" variant="primary" phx-disable-with="Sending...">Send message</.button>
+      </.form>
+    <% end %>
   </div>
 </section>
