@@ -1,7 +1,18 @@
 <section id="section-contact" class="px-6 lg:px-16 py-32 bg-base-200/80">
   <div class="max-w-lg mx-auto">
     <%= if @contact_submitted do %>
-      <div id="contact-success" class="contact-success text-center py-16" phx-hook=".BalloonPop">
+      <%!-- Brilliant: plain, static success --%>
+      <div id="contact-success" class="contact-success text-center py-16 fantastic:hidden">
+        <h2 class="font-display text-5xl lg:text-7xl mb-6">
+          Transmission logged.
+        </h2>
+        <p class="text-lg opacity-80">
+          Your message is very important to us. Please continue to hold.
+        </p>
+      </div>
+
+      <%!-- Fantastic: snarky, randomized, with balloon pop --%>
+      <div id="contact-success-fantastic" class="contact-success text-center py-16 hidden fantastic:block" phx-hook=".BalloonPop">
         <h2 class="font-display text-5xl lg:text-7xl mb-6">
           {@success_headline}
         </h2>
