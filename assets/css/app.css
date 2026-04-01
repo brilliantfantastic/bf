@@ -944,7 +944,7 @@
   color: oklch(55% 0.22 25);
 }
 
-[data-theme="brilliant"] #section-contact h2 {
+[data-theme="brilliant"] #section-contact > div > h2 {
   -webkit-text-stroke: 2px oklch(93% 0.01 80);
   color: transparent;
 }
@@ -1012,7 +1012,6 @@
 
 [data-theme="fantastic"] .contact-success h2 {
   font-family: "Okkult", fantasy;
-  color: oklch(58% 0.233 277.117);
 }
 
 [data-theme="fantastic"] .contact-success p {

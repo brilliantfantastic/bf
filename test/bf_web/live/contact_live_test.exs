@@ -77,13 +77,10 @@ defmodule BrilliantFantasticWeb.HomeLive.ContactFormTest do
       |> form("form", contact_form: @valid_attrs)
       |> render_submit()
 
-      html = render(view)
+      render(view)
 
-      # Success state should be visible
-      assert html =~ "Thank you!"
-      assert html =~ "Your message is on its way"
-
-      # Form should no longer be rendered
+      # Success state should be visible, form should not
+      assert has_element?(view, "#contact-success")
       refute has_element?(view, "form")
     end
 

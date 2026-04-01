@@ -6,6 +6,32 @@ defmodule BrilliantFantasticWeb.HomeLive do
 
   require Logger
 
+  @success_headlines [
+    "Loud and clear, good buddy!",
+    "Bold move, hitting send.",
+    "Roger that, space cadet.",
+    "Consider us bothered.",
+    "Look at you, connecting.",
+    "Officially in the void.",
+    "Pigeon is en route.",
+    "Read you loud and clear.",
+    "Well, well, well.",
+    "You had us at hello."
+  ]
+
+  @success_subtitles [
+    "Our fastest carrier pigeon is already stretching its wings.",
+    "Way faster than snail mail. Slightly slower than telepathy.",
+    "A real human will read this. Wild, right?",
+    "We've alerted the pigeons. They seem excited.",
+    "No carrier pigeons were harmed in the sending of this message.",
+    "Your words are traveling at the speed of internet. So, pretty fast.",
+    "We could've used snail mail but we like you too much.",
+    "Sit tight. We're composing a reply that's equally fantastic.",
+    "The pigeons are arguing over who gets to deliver this one.",
+    "Faster than a letter, slower than a hug. We'll be in touch."
+  ]
+
   @directions ~w(
     transformation typography_art generative_canvas world_building
     anti_hero marquee typewriter chromatic tilt fragments
@@ -23,6 +49,8 @@ defmodule BrilliantFantasticWeb.HomeLive do
       |> assign(:direction, direction)
       |> assign(:form, to_form(ContactForm.changeset(%{})))
       |> assign(:contact_submitted, false)
+      |> assign(:success_headline, Enum.random(@success_headlines))
+      |> assign(:success_subtitle, Enum.random(@success_subtitles))
 
     {:ok, socket}
   end
@@ -54,6 +82,8 @@ defmodule BrilliantFantasticWeb.HomeLive do
         socket =
           socket
           |> assign(:contact_submitted, true)
+          |> assign(:success_headline, Enum.random(@success_headlines))
+          |> assign(:success_subtitle, Enum.random(@success_subtitles))
           |> assign(form: to_form(ContactForm.changeset(%{})))
 
         {:noreply, socket}

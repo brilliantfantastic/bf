@@ -3,10 +3,10 @@
     <%= if @contact_submitted do %>
       <div id="contact-success" class="contact-success text-center py-16" phx-hook=".BalloonPop">
         <h2 class="font-display text-5xl lg:text-7xl mb-6">
-          Thank you!
+          {@success_headline}
         </h2>
         <p class="text-lg opacity-80">
-          Your message is on its way. I'll get back to you soon.
+          {@success_subtitle}
         </p>
       </div>
     <% else %>
