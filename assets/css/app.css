@@ -393,12 +393,14 @@
 [data-theme="brilliant"] .prose pre {
   background: oklch(94% 0.004 250); /* base-200 */
   border: 1px solid oklch(88% 0.006 250); /* base-300 */
+  color: oklch(20% 0.005 250); /* near-black — overrides typography's white default */
 }
 
 [data-theme="fantastic"] .prose pre {
   background: oklch(25% 0.02 280);
   border: 1px solid oklch(35% 0.04 280);
   box-shadow: 0 0 20px -4px oklch(58% 0.233 277.117 / 0.2); /* primary glow */
+  color: oklch(90% 0.01 280); /* near-white for dark background */
 }
 
 /* ── Brilliant theme: Tango syntax highlighting (muted, editorial) ── */
