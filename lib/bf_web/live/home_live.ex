@@ -1,6 +1,7 @@
 defmodule BrilliantFantasticWeb.HomeLive do
   use BrilliantFantasticWeb, :live_view
 
+  alias BrilliantFantastic.Blog
   alias BrilliantFantastic.ContactForm
   alias BrilliantFantasticWeb.Components.Illustrations
 
@@ -44,8 +45,12 @@ defmodule BrilliantFantasticWeb.HomeLive do
   def mount(_params, _session, socket) do
     direction = if connected?(socket), do: Enum.random(@directions)
 
+    posts = Blog.recent_posts(4)
+
     socket =
       socket
+      |> assign(:featured_post, List.first(posts))
+      |> assign(:recent_posts, Enum.drop(posts, 1))
       |> assign(:direction, direction)
       |> assign(:form, to_form(ContactForm.changeset(%{})))
       |> assign(:contact_submitted, false)

@@ -1,25 +1,13 @@
-<div class="bg-base-200/80 rounded-box p-6">
+<div :if={@recent_posts != []} class="bg-base-200/80 rounded-box p-6">
   <h3 class="font-display text-xl mb-4">Recent posts</h3>
   <ul class="space-y-3">
-    <li>
-      <a href="/blog" class="text-base-content/70 hover:text-primary transition-colors">
-        When the Levee Breaks: The Story Behind the Drum Sound
-      </a>
-    </li>
-    <li>
-      <a href="/blog" class="text-base-content/70 hover:text-primary transition-colors">
-        Houses of the Holy: Album Art That Changed Music
-      </a>
-    </li>
-    <li>
-      <a href="/blog" class="text-base-content/70 hover:text-primary transition-colors">
-        Jimmy Page's Guitar Alchemy: From Session Man to Legend
-      </a>
-    </li>
-    <li>
-      <a href="/blog" class="text-base-content/70 hover:text-primary transition-colors">
-        Going to California: Zeppelin's Acoustic Side
-      </a>
+    <li :for={post <- @recent_posts}>
+      <.link
+        navigate={~p"/blog/#{post.id}"}
+        class="text-base-content/70 hover:text-primary transition-colors"
+      >
+        {post.title}
+      </.link>
     </li>
   </ul>
 </div>
