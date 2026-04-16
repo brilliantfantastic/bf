@@ -1048,6 +1048,10 @@
   margin-bottom: 2rem;
 }
 
+[data-theme="fantastic"] .brutal-page-header {
+  margin-bottom: 3rem;
+}
+
 [data-theme="brilliant"] .brutal-page-header h1 {
   text-transform: uppercase;
   letter-spacing: -0.02em;
