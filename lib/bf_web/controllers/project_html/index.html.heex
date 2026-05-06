@@ -5,4 +5,49 @@
     <span class="brutal-label block mb-2">Selected work</span>
     <h1 class="font-display text-5xl">Projects</h1>
   </div>
+
+  <div :if={@projects == []} class="text-base-content/60">
+    No projects to show yet. Check back soon!
+  </div>
+
+  <ul class="space-y-16 brutal-projects-list">
+    <li :for={project <- @projects}>
+      <article class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+        <%!-- LEFT: timeline, name, description, links --%>
+        <div class="max-w-lg">
+          <time class="brutal-timeline block mb-3">
+            {format_timeline(project.started_on, project.ended_on)}
+          </time>
+
+          <h2 class="font-display text-3xl lg:text-4xl mt-1">
+            {project.name}
+          </h2>
+
+          <p class="mt-3 text-base-content/70 leading-relaxed">
+            {project.description}
+          </p>
+
+          <ul :if={project.links != []} class="flex flex-wrap gap-x-5 gap-y-2 mt-5 brutal-project-links">
+            <li :for={link <- project.links}>
+              <.link
+                href={link.url}
+                class="text-primary hover:text-primary/80 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.label} &rarr;
+              </.link>
+            </li>
+          </ul>
+        </div>
+
+        <%!-- RIGHT: fanned-out image stack (3-4 images) --%>
+        <div :if={project.images != []} class="brutal-project-images" aria-hidden="false">
+          <div :for={image <- project.images} class="brutal-project-image-frame" tabindex="0">
+            <img src={image.src} alt={image.alt} loading="lazy" />
+          </div>
+        </div>
+      </article>
+    </li>
+  </ul>
 </section>

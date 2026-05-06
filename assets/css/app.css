@@ -1150,6 +1150,222 @@
   color: oklch(55% 0.22 25);
 }
 
+/* ── Projects List: Fan-out image stack (theme-agnostic layout) ── */
+.brutal-projects-list .brutal-project-images {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+}
+
+.brutal-projects-list .brutal-project-image-frame {
+  --tx: -50%;
+  --ty: -50%;
+  --rot: 0deg;
+  --rot-hover: 0deg;
+  --size: 60%;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--size);
+  height: var(--size);
+  overflow: hidden;
+  cursor: pointer;
+  transform-origin: center center;
+  transform: translate(var(--tx), var(--ty)) rotate(var(--rot));
+  transition:
+    transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 350ms cubic-bezier(0.4, 0, 0.2, 1),
+    z-index 0s linear 250ms;
+  background: var(--color-base-100);
+  outline: none;
+  will-change: transform, box-shadow;
+}
+
+.brutal-projects-list .brutal-project-image-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Default fan-out positions for up to 4 images.
+   Translates are from the centered (top:50%, left:50%) origin.
+   --rot is the resting angle; --rot-hover keeps a small playful tilt. */
+.brutal-projects-list .brutal-project-image-frame:nth-child(1) {
+  --tx: -95%;
+  --ty: -85%;
+  --rot: -9deg;
+  --rot-hover: -7deg;
+  --size: 55%;
+  z-index: 1;
+}
+.brutal-projects-list .brutal-project-image-frame:nth-child(2) {
+  --tx: -5%;
+  --ty: -75%;
+  --rot: 5deg;
+  --rot-hover: 3deg;
+  --size: 65%;
+  z-index: 2;
+}
+.brutal-projects-list .brutal-project-image-frame:nth-child(3) {
+  --tx: -100%;
+  --ty: 5%;
+  --rot: -3deg;
+  --rot-hover: -1deg;
+  --size: 48%;
+  z-index: 3;
+}
+.brutal-projects-list .brutal-project-image-frame:nth-child(4) {
+  --tx: -15%;
+  --ty: 15%;
+  --rot: 8deg;
+  --rot-hover: 6deg;
+  --size: 62%;
+  z-index: 4;
+}
+
+/* When there are only 3 images, soften the spread so the stack stays balanced */
+.brutal-projects-list .brutal-project-image-frame:nth-child(1):nth-last-child(3) {
+  --tx: -90%;
+  --ty: -70%;
+  --rot: -7deg;
+  --rot-hover: -5deg;
+  --size: 58%;
+}
+.brutal-projects-list .brutal-project-image-frame:nth-child(1):nth-last-child(3) ~ .brutal-project-image-frame:nth-child(2) {
+  --tx: -10%;
+  --ty: -60%;
+  --rot: 4deg;
+  --rot-hover: 2deg;
+  --size: 68%;
+}
+.brutal-projects-list .brutal-project-image-frame:nth-child(1):nth-last-child(3) ~ .brutal-project-image-frame:nth-child(3) {
+  --tx: -50%;
+  --ty: 0%;
+  --rot: -2deg;
+  --rot-hover: -0.5deg;
+  --size: 52%;
+}
+
+/* Hover / focus: stay in place, lift slightly with a tiny turn + soft shadow.
+   Position (--tx/--ty) and bounding box change minimally to avoid edge-glitch. */
+.brutal-projects-list .brutal-project-image-frame:hover,
+.brutal-projects-list .brutal-project-image-frame:focus-visible {
+  transform:
+    translate(var(--tx), calc(var(--ty) - 6px))
+    rotate(var(--rot-hover))
+    scale(1.05);
+  z-index: 20;
+  box-shadow:
+    0 14px 30px -10px oklch(20% 0.02 250 / 0.35),
+    0 4px 10px -4px oklch(20% 0.02 250 / 0.20);
+  transition:
+    transform 380ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    z-index 0s linear 0s;
+}
+
+/* Subtle inner zoom for a touch of depth without bounding-box growth */
+.brutal-projects-list .brutal-project-image-frame:hover img,
+.brutal-projects-list .brutal-project-image-frame:focus-visible img {
+  transform: scale(1.03);
+}
+
+/* ── Projects List: Brilliant theme (brutalist editorial) ── */
+[data-theme="brilliant"] .brutal-projects-list article {
+  border-bottom: 1px solid oklch(20% 0.01 250 / 0.1);
+  padding-bottom: 4rem;
+}
+
+[data-theme="brilliant"] .brutal-projects-list li:last-child article {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+[data-theme="brilliant"] .brutal-projects-list .brutal-timeline {
+  font-family: "Courier New", monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: oklch(55% 0.22 25);
+}
+
+[data-theme="brilliant"] .brutal-projects-list h2 {
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+
+[data-theme="brilliant"] .brutal-projects-list p {
+  font-family: "Courier New", monospace;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+[data-theme="brilliant"] .brutal-projects-list .brutal-project-links {
+  font-family: "Courier New", monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+[data-theme="brilliant"] .brutal-projects-list .brutal-project-image-frame {
+  border: 2px solid oklch(20% 0.01 250);
+  border-radius: 0;
+  background: oklch(96% 0.005 250);
+}
+
+[data-theme="brilliant"] .brutal-projects-list .brutal-project-image-frame:hover,
+[data-theme="brilliant"] .brutal-projects-list .brutal-project-image-frame:focus-visible {
+  box-shadow:
+    0 14px 30px -10px oklch(20% 0.02 250 / 0.35),
+    0 4px 10px -4px oklch(20% 0.02 250 / 0.20);
+}
+
+/* ── Projects List: Fantastic theme (palette-aware soft) ── */
+[data-theme="fantastic"] .brutal-projects-list .brutal-timeline {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  font-size: 0.9rem;
+  color: var(--color-base-content);
+  opacity: 0.7;
+}
+
+[data-theme="fantastic"] .brutal-projects-list h2 {
+  letter-spacing: -0.01em;
+}
+
+[data-theme="fantastic"] .brutal-projects-list p {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-base-content);
+  opacity: 0.85;
+}
+
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-links a {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--color-primary);
+}
+
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-image-frame {
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in oklch, var(--color-base-content) 12%, transparent);
+  background: var(--color-base-200);
+  box-shadow: 0 4px 12px -4px color-mix(in oklch, var(--color-base-content) 25%, transparent);
+}
+
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-image-frame:hover,
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-image-frame:focus-visible {
+  box-shadow:
+    0 18px 36px -10px color-mix(in oklch, var(--color-base-content) 45%, transparent),
+    0 4px 12px -4px color-mix(in oklch, var(--color-primary) 35%, transparent);
+}
+
 /* ── Hero Wrap: show only the active theme's hero ────────────── */
 [data-theme="brilliant"] #hero-fantastic-wrap { display: none; }
 [data-theme="fantastic"] #hero-brilliant-wrap { display: none; }
