@@ -57,6 +57,19 @@ defmodule BrilliantFantasticWeb.ProjectHTML do
     Calendar.strftime(date, "%b %Y")
   end
 
+  @status_titles %{
+    current: "Currently active",
+    retired: "Retired",
+    hiatus: "On hiatus",
+    upcoming: "Coming soon"
+  }
+
+  @doc """
+  Human-readable label for a project status — used as the tooltip on the
+  status dot.
+  """
+  def status_title(status), do: Map.get(@status_titles, status, "Unknown status")
+
   @doc """
   Renders a project description as HTML, treating each non-empty line as its
   own paragraph and supporting inline markdown.

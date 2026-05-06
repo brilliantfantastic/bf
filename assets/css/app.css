@@ -1186,6 +1186,72 @@ html {
   margin-top: 1.75rem;
 }
 
+/* Status dot — small colored indicator next to the project timeline.
+   Color is intentionally theme-agnostic so status reads the same in
+   brilliant and fantastic. CSS tooltip uses the dot's aria-label so
+   we get reliable instant hover feedback (the native title attribute
+   has a long, browser-dependent delay). */
+.brutal-status-dot {
+  position: relative;
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  margin-right: 0.55rem;
+  vertical-align: 0.05em;
+  background: oklch(60% 0.04 260);
+}
+
+.brutal-status-dot::after {
+  content: attr(aria-label);
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  padding: 0.3rem 0.55rem;
+  background: var(--color-base-content);
+  color: var(--color-base-100);
+  border-radius: 4px;
+  white-space: nowrap;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease;
+  z-index: 100;
+}
+
+/* Promote the dot to its own stacking context on hover/focus so the
+   tooltip layer sits above neighboring h2 / project content. */
+.brutal-status-dot:hover,
+.brutal-status-dot:focus-visible {
+  z-index: 100;
+}
+
+.brutal-status-dot:hover::after,
+.brutal-status-dot:focus-visible::after {
+  opacity: 1;
+}
+
+.brutal-status-dot.brutal-status-current {
+  background: oklch(62% 0.18 145);
+}
+
+.brutal-status-dot.brutal-status-retired {
+  background: oklch(58% 0.22 22);
+}
+
+.brutal-status-dot.brutal-status-hiatus {
+  background: oklch(58% 0.18 295);
+}
+
+.brutal-status-dot.brutal-status-upcoming {
+  background: oklch(75% 0.16 85);
+}
+
 .brutal-projects-list .brutal-project-next-link {
   display: inline-flex;
   align-items: center;

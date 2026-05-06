@@ -95,8 +95,8 @@ defmodule BrilliantFantastic.Projects do
                 ended_on: ~D[2020-07-30],
                 description: """
                 My most ambitious tiny project. A web, mobile, and Mac app that displayed progress on a timer from a central server.
-                This opened a lot of use cases around users performing tasks together instead of just in silos.
-                The project provided me with a lot of learnings and content for speaking and writing.
+                I tried to build a pomodoro app that made it fun to do tasks together instead of just in silos.
+                This made for a very fun project, I learned Elixir OTP, and I made a lot of content for speaking and writing.
                 """,
                 links: [
                   %{
@@ -149,7 +149,11 @@ defmodule BrilliantFantastic.Projects do
                 We launched with a big bang, did some really fun work, but it went out with a whimper. I found I like small.
                 """,
                 links: [
-                  %{label: "Blog post", url: "/blog/i-left-kinship"}
+                  %{label: "Blog post", url: "/blog/i-left-kinship"},
+                  %{
+                    label: "Old website",
+                    url: "https://web.archive.org/web/20220119120639/https://kinship.it"
+                  }
                 ],
                 images: [
                   %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
@@ -163,8 +167,8 @@ defmodule BrilliantFantastic.Projects do
                 started_on: ~D[2012-03-27],
                 ended_on: ~D[2020-12-31],
                 description: """
-                I co-founded Toledo Ohio's first coworking space with two other buddies back in 2012. We funded it via a successful Kickstarter campaign.
-                It was a wild ride and I learned a ton about community, physical business, and myself. A Covid casualty but I'm proud of what we built.
+                I co-founded Toledo Ohio's first coworking space with two other buddies back in 2012. We funded it via a small infusion of cash and a successful Kickstarter campaign.
+                It was a wild ride and I learned a ton about community, physical businesses, and myself. A Covid casualty but I'm proud of what we built.
                 """,
                 links: [
                   %{
@@ -190,14 +194,19 @@ defmodule BrilliantFantastic.Projects do
                 started_on: ~D[2013-09-09],
                 ended_on: ~D[2014-03-30],
                 description: """
-                Live in-person training events with myself and my employee (at the time) for software developers interested in Ruby on Rails. I have a love for teaching and I decided to do workshops after years of speaking.
-                It went amazing and we got a lot of great feedback and some graduates soon got jobs!
-                We poured so much time into this and built a whole new app with the class but we only gave this training a handful of times.
+                Live in-person training events with myself and [Keith](https://github.com/keiththomps){: target="_blank"}, who was an employee at the time, for software developers interested in Ruby on Rails.
+                I have a love for teaching and I decided to do workshops after years of speaking.
+                It went amazingly delicious, we got a lot of great feedback, and some graduates even got Ruby jobs. 🤘
+                We poured so much time into this and built a [whole new app](https://github.com/brilliantfantastic/magpie){: target="_blank"} with the class but we only gave this training a handful of times.
                 """,
                 links: [
                   %{
                     label: "Old training site",
                     url: "https://bfantastic.herokuapp.com/training"
+                  },
+                  %{
+                    label: "App we built",
+                    url: "https://github.com/brilliantfantastic/magpie"
                   }
                 ],
                 images: [
@@ -237,7 +246,11 @@ defmodule BrilliantFantastic.Projects do
                 Then I started hearing about this new startup called Slack.
                 """,
                 links: [
-                  %{label: "How I learned about Slack", url: "https://example.com/kinship-retro"}
+                  %{
+                    label: "How I learned about Slack",
+                    url:
+                      "https://www.fastcompany.com/3015730/flickr-cofounders-launch-slack-an-email-killer"
+                  }
                 ],
                 images: [
                   %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
@@ -302,9 +315,13 @@ defmodule BrilliantFantastic.Projects do
                 ended_on: ~D[2013-01-12],
                 description: """
                 A web app that allowed you to create tasks using natural language within a magic textbox.
-                It was my first foray into SaaS and I learned a ton of shit about building and launching a product.
+                My first foray into SaaS and the first software product I launched.
                 """,
                 links: [
+                  %{
+                    label: "Wayback Machine cached page",
+                    url: "https://web.archive.org/web/20140106184051/http://teammorale.com/"
+                  },
                   %{label: "Old Twitter account", url: "https://twitter.com/morale"}
                 ],
                 images: [
@@ -323,7 +340,7 @@ defmodule BrilliantFantastic.Projects do
                 My agentic-programming workflow in a cli-tool.
                 """,
                 links: [
-                  %{label: "Change me", url: "https://example.com/kinship-retro"}
+                  %{label: "Future home", url: "https://machinegobrrr.com"}
                 ],
                 images: [
                   %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
@@ -338,10 +355,10 @@ defmodule BrilliantFantastic.Projects do
                 ended_on: :now,
                 description: """
                 A mobile and voice app as a present to my wife.
-                She hates grocery shopping and she does the majority of it. It's time for AI to do this shit instead of pretending to 'create art'.
+                Everyone hates grocery shopping and my wife does the majority of it. It's time for AI to do this shit instead of pretending to 'create art'.
                 """,
                 links: [
-                  %{label: "Change me", url: "https://example.com/kinship-retro"}
+                  %{label: "Future home", url: "https://aisleway.com"}
                 ],
                 images: [
                   %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
@@ -356,10 +373,12 @@ defmodule BrilliantFantastic.Projects do
                 ended_on: :now,
                 description: """
                 A hardware/software expieriment to build a sound proof booth to measure the strength of your screams.
+                Everyone needs this because of all the \*waves hands in all directions\*.
+                A cathartic measurement device for the apocalypse.
                 Coming to a street corner near you soon-ish.
                 """,
                 links: [
-                  %{label: "Change me", url: "https://example.com/kinship-retro"}
+                  %{label: "Parts list", url: "https://example.com/kinship-retro"}
                 ],
                 images: [
                   %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},

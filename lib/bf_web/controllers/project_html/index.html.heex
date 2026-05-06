@@ -17,7 +17,12 @@
           <%!-- LEFT: timeline, name, description, links --%>
           <div class="max-w-lg">
             <time class="brutal-timeline block mb-3">
-              {format_timeline(project.started_on, project.ended_on)}
+              <span
+                class={"brutal-status-dot brutal-status-#{project.status}"}
+                role="img"
+                aria-label={status_title(project.status)}
+                tabindex="0"
+              ></span>{format_timeline(project.started_on, project.ended_on)}
             </time>
 
             <h2 class="font-display text-3xl lg:text-4xl mt-1">
