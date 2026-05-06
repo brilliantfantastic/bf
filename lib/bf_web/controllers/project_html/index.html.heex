@@ -23,11 +23,14 @@
             {project.name}
           </h2>
 
-          <p class="mt-3 text-base-content/70 leading-relaxed">
-            {project.description}
-          </p>
+          <div class="mt-3 space-y-3 leading-relaxed brutal-project-description">
+            <p :for={paragraph <- paragraphs(project.description)}>{paragraph}</p>
+          </div>
 
-          <ul :if={project.links != []} class="flex flex-wrap gap-x-5 gap-y-2 mt-5 brutal-project-links">
+          <ul
+            :if={project.links != []}
+            class="flex flex-wrap gap-x-5 gap-y-2 mt-5 brutal-project-links"
+          >
             <li :for={link <- project.links}>
               <.link
                 href={link.url}

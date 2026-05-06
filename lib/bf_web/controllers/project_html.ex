@@ -17,4 +17,14 @@ defmodule BrilliantFantasticWeb.ProjectHTML do
   defp format_date(%Date{} = date) do
     Calendar.strftime(date, "%b %Y")
   end
+
+  @doc """
+  Splits a description into paragraphs, treating each non-empty line as its own.
+  """
+  def paragraphs(description) when is_binary(description) do
+    description
+    |> String.split(~r/\n+/)
+    |> Enum.map(&String.trim/1)
+    |> Enum.reject(&(&1 == ""))
+  end
 end
