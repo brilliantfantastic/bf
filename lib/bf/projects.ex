@@ -269,7 +269,7 @@ defmodule BrilliantFantastic.Projects do
                 """,
                 links: [
                   %{
-                    label: "Photo from Star Wars night",
+                    label: "Photo from a Star Wars event",
                     url:
                       "https://s3.us-east-1.amazonaws.com/production.lookbooth/photos/aweber/toledo-mud-hens-vs-charlotte-knights--2/050513.6393.gallery.JPG"
                   }
