@@ -20,6 +20,6 @@ defmodule BrilliantFantasticWeb.BlogLive.Index do
      |> assign(:posts, posts)
      |> assign(:page, page)
      |> assign(:total_pages, total_pages)
-     |> assign(:page_title, "Blog")}
+     |> assign(:page_title, "blog")}
   end
 end

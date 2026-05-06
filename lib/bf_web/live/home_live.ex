@@ -49,6 +49,7 @@ defmodule BrilliantFantasticWeb.HomeLive do
 
     socket =
       socket
+      |> assign(:page_title, "home")
       |> assign(:featured_post, List.first(posts))
       |> assign(:recent_posts, Enum.drop(posts, 1))
       |> assign(:direction, direction)

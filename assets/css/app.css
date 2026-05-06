@@ -120,6 +120,12 @@
 /* Make LiveView wrapper divs transparent for layout */
 [data-phx-session], [data-phx-teleported-src] { display: contents }
 
+/* Smooth in-page anchor jumps. Browsers automatically skip the
+   animation when the user has prefers-reduced-motion set. */
+html {
+  scroll-behavior: smooth;
+}
+
 @theme {
   --font-display: sans-serif;
 }
@@ -756,6 +762,18 @@
   text-transform: uppercase;
 }
 
+/* Fantastic label: italic serif as the editorial counterpart to
+   brilliant's industrial Courier mono. Distinct from both the body
+   sans and the chunky Okkult headline; accent color from the palette. */
+[data-theme="fantastic"] .brutal-label {
+  font-family: ui-serif, Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+}
+
 /* ── Nav: Brilliant Brutalist ── */
 [data-theme="brilliant"] #section-nav {
   background: oklch(93% 0.01 80 / 0.95);
@@ -928,13 +946,13 @@
 }
 
 /* ── Contact Section: Brilliant Brutalist ── */
-[data-theme="brilliant"] #section-contact {
+[data-theme="brilliant"] #contact {
   background: oklch(15% 0.01 250);
   color: oklch(93% 0.01 80);
   position: relative;
 }
 
-[data-theme="brilliant"] #section-contact::before {
+[data-theme="brilliant"] #contact::before {
   content: "CONNECT";
   position: absolute;
   top: 1.5rem;
@@ -946,29 +964,29 @@
   color: oklch(55% 0.22 25);
 }
 
-[data-theme="brilliant"] #section-contact > div > h2 {
+[data-theme="brilliant"] #contact > div > h2 {
   -webkit-text-stroke: 2px oklch(93% 0.01 80);
   color: transparent;
 }
 
-[data-theme="brilliant"] #section-contact .input,
-[data-theme="brilliant"] #section-contact .textarea {
+[data-theme="brilliant"] #contact .input,
+[data-theme="brilliant"] #contact .textarea {
   background: oklch(22% 0.01 250);
   color: oklch(93% 0.01 80);
   border-color: oklch(40% 0.01 250);
 }
 
-[data-theme="brilliant"] #section-contact .input::placeholder,
-[data-theme="brilliant"] #section-contact .textarea::placeholder {
+[data-theme="brilliant"] #contact .input::placeholder,
+[data-theme="brilliant"] #contact .textarea::placeholder {
   color: oklch(55% 0.01 250);
 }
 
-[data-theme="brilliant"] #section-contact .input:focus,
-[data-theme="brilliant"] #section-contact .textarea:focus {
+[data-theme="brilliant"] #contact .input:focus,
+[data-theme="brilliant"] #contact .textarea:focus {
   border-color: oklch(55% 0.22 25);
 }
 
-[data-theme="brilliant"] #section-contact .btn {
+[data-theme="brilliant"] #contact .btn {
   border: 2px solid oklch(93% 0.01 80);
   background: transparent;
   color: oklch(93% 0.01 80);
@@ -976,14 +994,14 @@
   letter-spacing: 0.1em;
 }
 
-[data-theme="brilliant"] #section-contact .btn:hover {
+[data-theme="brilliant"] #contact .btn:hover {
   background: oklch(55% 0.22 25);
   border-color: oklch(55% 0.22 25);
   color: oklch(98% 0.002 250);
 }
 
 /* ── Contact Form: Fantastic Fun ── */
-[data-theme="fantastic"] #section-contact .btn {
+[data-theme="fantastic"] #contact .btn {
   font-family: "Okkult", fantasy;
   font-size: 1.1rem;
   letter-spacing: 0.05em;
@@ -996,12 +1014,12 @@
   transition: transform 0.15s, box-shadow 0.15s;
 }
 
-[data-theme="fantastic"] #section-contact .btn:hover {
+[data-theme="fantastic"] #contact .btn:hover {
   transform: translate(-2px, -2px);
   box-shadow: 6px 6px 0 oklch(37% 0.044 257.287);
 }
 
-[data-theme="fantastic"] #section-contact .btn:active {
+[data-theme="fantastic"] #contact .btn:active {
   transform: translate(2px, 2px);
   box-shadow: 1px 1px 0 oklch(37% 0.044 257.287);
 }
@@ -1148,6 +1166,424 @@
 
 [data-theme="brilliant"] .brutal-pagination a:hover {
   color: oklch(55% 0.22 25);
+}
+
+/* ── Projects List: Fan-out image stack (theme-agnostic layout) ── */
+/* Layout-only containment — keeps each article's layout isolated for
+   scroll perf, but unlike contain: paint does NOT clip overflow, so
+   images can spill past the article edge for a "scattered photos"
+   look and the status-dot tooltip never gets cut off. */
+.brutal-projects-list > li {
+  contain: layout;
+  /* Anchor target offset so jumping to a project doesn't slam under
+     the nav. Browsers honor prefers-reduced-motion automatically when
+     scroll-behavior: smooth is set on html. */
+  scroll-margin-top: 6rem;
+}
+
+.brutal-projects-list .brutal-project-next {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 1.75rem;
+}
+
+/* Status dot — small colored indicator next to the project timeline.
+   Color is intentionally theme-agnostic so status reads the same in
+   brilliant and fantastic. CSS tooltip uses the dot's aria-label so
+   we get reliable instant hover feedback (the native title attribute
+   has a long, browser-dependent delay). */
+.brutal-status-dot {
+  position: relative;
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  margin-right: 0.55rem;
+  vertical-align: 0.05em;
+  background: oklch(60% 0.04 260);
+}
+
+.brutal-status-dot::after {
+  content: attr(aria-label);
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  padding: 0.3rem 0.55rem;
+  background: var(--color-base-content);
+  color: var(--color-base-100);
+  border-radius: 4px;
+  white-space: nowrap;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease;
+  z-index: 100;
+}
+
+/* Promote the dot to its own stacking context on hover/focus so the
+   tooltip layer sits above neighboring h2 / project content. */
+.brutal-status-dot:hover,
+.brutal-status-dot:focus-visible {
+  z-index: 100;
+}
+
+.brutal-status-dot:hover::after,
+.brutal-status-dot:focus-visible::after {
+  opacity: 1;
+}
+
+.brutal-status-dot.brutal-status-current {
+  background: oklch(62% 0.18 145);
+}
+
+.brutal-status-dot.brutal-status-retired {
+  background: oklch(58% 0.22 22);
+}
+
+.brutal-status-dot.brutal-status-hiatus {
+  background: oklch(58% 0.18 295);
+}
+
+.brutal-status-dot.brutal-status-upcoming {
+  background: oklch(75% 0.16 85);
+}
+
+.brutal-projects-list .brutal-project-next-link {
+  display: inline-flex;
+  align-items: center;
+  transition: color 200ms;
+}
+
+.brutal-projects-list .brutal-project-next-link .brutal-project-next-arrow {
+  transition: transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.brutal-projects-list .brutal-project-next-link:hover .brutal-project-next-arrow {
+  transform: translateY(3px);
+}
+
+.brutal-projects-list .brutal-project-images {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+}
+
+.brutal-projects-list .brutal-project-image-frame {
+  --tx: -50%;
+  --ty: -50%;
+  --rot: 0deg;
+  --rot-hover: 0deg;
+  --size: 60%;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--size);
+  height: var(--size);
+  overflow: hidden;
+  cursor: pointer;
+  transform-origin: center center;
+  transform: translate(var(--tx), var(--ty)) rotate(var(--rot));
+  transition:
+    transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 350ms cubic-bezier(0.4, 0, 0.2, 1),
+    z-index 0s linear 250ms;
+  background: var(--color-base-100);
+  outline: none;
+}
+
+/* Promote to a compositor layer only while the user is interacting —
+   avoids permanent GPU layers for every image on the page. */
+.brutal-projects-list .brutal-project-image-frame:hover,
+.brutal-projects-list .brutal-project-image-frame:focus-visible {
+  will-change: transform, box-shadow;
+}
+
+.brutal-projects-list .brutal-project-image-frame img,
+.brutal-projects-list .brutal-project-image-frame .brutal-project-image-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.brutal-projects-list .brutal-project-image-frame img {
+  object-fit: cover;
+}
+
+.brutal-projects-list .brutal-project-image-frame .brutal-project-image-svg svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Default fan-out positions for up to 4 images.
+   Translates are from the centered (top:50%, left:50%) origin.
+   --rot is the resting angle; --rot-hover keeps a small playful tilt. */
+.brutal-projects-list .brutal-project-image-frame:nth-child(1) {
+  --tx: -95%;
+  --ty: -85%;
+  --rot: -9deg;
+  --rot-hover: -7deg;
+  --size: 55%;
+  z-index: 1;
+}
+.brutal-projects-list .brutal-project-image-frame:nth-child(2) {
+  --tx: -5%;
+  --ty: -75%;
+  --rot: 5deg;
+  --rot-hover: 3deg;
+  --size: 65%;
+  z-index: 2;
+}
+.brutal-projects-list .brutal-project-image-frame:nth-child(3) {
+  --tx: -100%;
+  --ty: 5%;
+  --rot: -3deg;
+  --rot-hover: -1deg;
+  --size: 48%;
+  z-index: 3;
+}
+.brutal-projects-list .brutal-project-image-frame:nth-child(4) {
+  --tx: -5%;
+  --ty: 15%;
+  --rot: 8deg;
+  --rot-hover: 6deg;
+  --size: 62%;
+  z-index: 4;
+}
+
+/* When there are only 3 images, soften the spread so the stack stays balanced */
+.brutal-projects-list .brutal-project-image-frame:nth-child(1):nth-last-child(3) {
+  --tx: -90%;
+  --ty: -70%;
+  --rot: -7deg;
+  --rot-hover: -5deg;
+  --size: 58%;
+}
+.brutal-projects-list .brutal-project-image-frame:nth-child(1):nth-last-child(3) ~ .brutal-project-image-frame:nth-child(2) {
+  --tx: -10%;
+  --ty: -60%;
+  --rot: 4deg;
+  --rot-hover: 2deg;
+  --size: 68%;
+}
+.brutal-projects-list .brutal-project-image-frame:nth-child(1):nth-last-child(3) ~ .brutal-project-image-frame:nth-child(3) {
+  --tx: -50%;
+  --ty: 0%;
+  --rot: -2deg;
+  --rot-hover: -0.5deg;
+  --size: 52%;
+}
+
+/* Hover / focus: stay in place, lift slightly with a tiny turn + soft shadow.
+   Position (--tx/--ty) and bounding box change minimally to avoid edge-glitch. */
+.brutal-projects-list .brutal-project-image-frame:hover,
+.brutal-projects-list .brutal-project-image-frame:focus-visible {
+  transform:
+    translate(var(--tx), calc(var(--ty) - 6px))
+    rotate(var(--rot-hover))
+    scale(1.05);
+  z-index: 20;
+  box-shadow:
+    0 14px 30px -10px oklch(20% 0.02 250 / 0.35),
+    0 4px 10px -4px oklch(20% 0.02 250 / 0.20);
+  transition:
+    transform 380ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    z-index 0s linear 0s;
+}
+
+/* Subtle inner zoom for a touch of depth without bounding-box growth */
+.brutal-projects-list .brutal-project-image-frame:hover img,
+.brutal-projects-list .brutal-project-image-frame:focus-visible img,
+.brutal-projects-list .brutal-project-image-frame:hover .brutal-project-image-svg,
+.brutal-projects-list .brutal-project-image-frame:focus-visible .brutal-project-image-svg {
+  transform: scale(1.03);
+}
+
+/* ── Projects List: Brilliant theme (brutalist editorial) ── */
+[data-theme="brilliant"] .brutal-projects-list article {
+  border-bottom: 1px solid oklch(20% 0.01 250 / 0.1);
+  padding-bottom: 4rem;
+}
+
+[data-theme="brilliant"] .brutal-projects-list li:last-child article {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+[data-theme="brilliant"] .brutal-projects-list .brutal-timeline {
+  font-family: "Courier New", monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: oklch(55% 0.22 25);
+}
+
+[data-theme="brilliant"] .brutal-projects-list h2 {
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+
+[data-theme="brilliant"] .brutal-projects-list p {
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+}
+
+[data-theme="brilliant"] .brutal-projects-list .brutal-project-links {
+  font-family: "Courier New", monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-top: 1.25rem;
+}
+
+[data-theme="brilliant"] .brutal-projects-list .brutal-project-link {
+  color: var(--color-base-content);
+}
+
+[data-theme="brilliant"] .brutal-projects-list .brutal-project-link-arrow {
+  color: oklch(55% 0.22 25);
+}
+
+[data-theme="brilliant"] .brutal-projects-list .brutal-project-link:hover {
+  color: oklch(55% 0.22 25);
+}
+
+[data-theme="brilliant"] .brutal-projects-list .brutal-project-next-link {
+  font-family: "Courier New", monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-base-content);
+}
+
+[data-theme="brilliant"] .brutal-projects-list .brutal-project-next-arrow {
+  color: oklch(55% 0.22 25);
+}
+
+[data-theme="brilliant"] .brutal-projects-list .brutal-project-next-link:hover {
+  color: oklch(55% 0.22 25);
+}
+
+[data-theme="brilliant"] .brutal-projects-list .brutal-project-description a {
+  color: oklch(55% 0.22 25);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+[data-theme="brilliant"] .brutal-projects-list .brutal-project-description a:hover {
+  color: oklch(45% 0.22 25);
+}
+
+[data-theme="brilliant"] .brutal-projects-list .brutal-project-image-frame {
+  border: 2px solid oklch(20% 0.01 250);
+  border-radius: 0;
+  background: oklch(96% 0.005 250);
+}
+
+[data-theme="brilliant"] .brutal-projects-list .brutal-project-image-frame:hover,
+[data-theme="brilliant"] .brutal-projects-list .brutal-project-image-frame:focus-visible {
+  box-shadow:
+    0 14px 30px -10px oklch(20% 0.02 250 / 0.35),
+    0 4px 10px -4px oklch(20% 0.02 250 / 0.20);
+}
+
+/* ── Projects List: Fantastic theme (palette-aware soft) ── */
+/* Inherit body font for prose (matches blog body) — Okkult stays
+   reserved for the project name (h2). */
+[data-theme="fantastic"] .brutal-projects-list .brutal-timeline {
+  font-size: 0.875rem;
+  color: var(--color-base-content);
+  opacity: 0.5;
+}
+
+[data-theme="fantastic"] .brutal-projects-list h2 {
+  letter-spacing: -0.01em;
+}
+
+[data-theme="fantastic"] .brutal-projects-list p {
+  color: var(--color-base-content);
+  opacity: 0.7;
+}
+
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-links {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 1.25rem;
+}
+
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-link {
+  color: var(--color-base-content);
+  opacity: 0.85;
+  font-weight: 500;
+}
+
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-link-arrow {
+  color: var(--color-primary);
+  opacity: 1;
+}
+
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-link:hover {
+  color: var(--color-primary);
+  opacity: 1;
+}
+
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-next-link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-base-content);
+  opacity: 0.85;
+}
+
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-next-arrow {
+  color: var(--color-primary);
+  opacity: 1;
+}
+
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-next-link:hover {
+  color: var(--color-primary);
+  opacity: 1;
+}
+
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-description a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-description a:hover {
+  color: var(--color-accent);
+}
+
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-image-frame {
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in oklch, var(--color-base-content) 12%, transparent);
+  background: var(--color-base-200);
+  box-shadow: 0 4px 12px -4px color-mix(in oklch, var(--color-base-content) 25%, transparent);
+}
+
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-image-frame:hover,
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-image-frame:focus-visible {
+  box-shadow:
+    0 18px 36px -10px color-mix(in oklch, var(--color-base-content) 45%, transparent),
+    0 4px 12px -4px color-mix(in oklch, var(--color-primary) 35%, transparent);
 }
 
 /* ── Hero Wrap: show only the active theme's hero ────────────── */

@@ -19,7 +19,7 @@ defmodule BrilliantFantasticWeb.BlogLive.Show do
         {:noreply,
          socket
          |> assign(:post, post)
-         |> assign(:page_title, post.title)}
+         |> assign(:page_title, String.downcase(post.title))}
     end
   end
 end

@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content={get_csrf_token()} />
 
-    <.live_title default="Brilliant Fantastic" suffix={assigns[:page_title_suffix]}>
-      {assigns[:page_title]}
+    <.live_title default="brilliant fantastic" prefix="brilliant fantastic // ">
+      {assigns[:page_title] && String.downcase(assigns[:page_title])}
     </.live_title>
 
     <link phx-track-static rel="stylesheet" href={~p"/assets/css/app.css"} />
@@ -252,7 +252,7 @@
 
         const SECTION_IDS = [
           "section-hero", "section-nav", "section-blog",
-          "section-jamie", "section-contact"
+          "section-jamie", "contact"
         ];
 
         const pickRandom = (arr, n) => {
