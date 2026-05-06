@@ -104,7 +104,11 @@ defmodule BrilliantFantastic.Projects do
                     url:
                       "https://podcasts.apple.com/us/podcast/s4e17-i-really-hope-the-3rd-part-is-profit/id1193304664?i=1000486687250"
                   },
-                  %{label: "Old launch page", url: "https://chronic.io"}
+                  %{label: "Old launch page", url: "https://chronic.io"},
+                  %{
+                    label: "Beer City Code 2019 talk",
+                    url: "https://speakerdeck.com/jwright/building-a-websocket-api"
+                  }
                 ],
                 images: [
                   %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
@@ -113,7 +117,7 @@ defmodule BrilliantFantastic.Projects do
                 ]
               },
               %{
-                name: "Letbotski",
+                name: "Lebotski",
                 status: :retired,
                 started_on: ~D[2022-08-17],
                 ended_on: ~D[2022-08-29],
@@ -123,7 +127,10 @@ defmodule BrilliantFantastic.Projects do
                 """,
                 links: [
                   %{label: "GitHub", url: "https://github.com/jwright/lebotski"},
-                  %{label: "ElixirConf 2023 talk", url: "https://github.com/jwright/lebotski"}
+                  %{
+                    label: "ElixirConf 2022 talk",
+                    url: "https://www.youtube.com/watch?v=FyRLeAggi6o"
+                  }
                 ],
                 images: [
                   %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
@@ -142,7 +149,7 @@ defmodule BrilliantFantastic.Projects do
                 We launched with a big bang, did some really fun work, but it went out with a whimper. I found I like small.
                 """,
                 links: [
-                  %{label: "Blog post", url: "https://example.com/kinship-retro"}
+                  %{label: "Blog post", url: "/blog/i-left-kinship"}
                 ],
                 images: [
                   %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
