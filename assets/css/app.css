@@ -1349,6 +1349,17 @@
   font-size: 0.7rem;
 }
 
+[data-theme="brilliant"] .brutal-projects-list .brutal-project-description a {
+  color: oklch(55% 0.22 25);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+[data-theme="brilliant"] .brutal-projects-list .brutal-project-description a:hover {
+  color: oklch(45% 0.22 25);
+}
+
 [data-theme="brilliant"] .brutal-projects-list .brutal-project-image-frame {
   border: 2px solid oklch(20% 0.01 250);
   border-radius: 0;
@@ -1382,6 +1393,17 @@
 
 [data-theme="fantastic"] .brutal-projects-list .brutal-project-links a {
   color: var(--color-primary);
+}
+
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-description a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-description a:hover {
+  color: var(--color-accent);
 }
 
 [data-theme="fantastic"] .brutal-projects-list .brutal-project-image-frame {

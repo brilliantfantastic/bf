@@ -24,7 +24,7 @@
           </h2>
 
           <div class="mt-3 space-y-3 leading-relaxed brutal-project-description">
-            <p :for={paragraph <- paragraphs(project.description)}>{paragraph}</p>
+            {render_description(project.description)}
           </div>
 
           <ul

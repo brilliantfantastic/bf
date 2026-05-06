@@ -2,21 +2,40 @@ defmodule BrilliantFantastic.Projects do
   @moduledoc """
   Hardcoded list of projects shown on the /projects page.
 
-  Placeholder content for now — real projects, copy, and images come later.
+  Order is preserved as written — no sorting is applied.
   """
 
   alias BrilliantFantastic.Projects.Project
 
   @projects [
               %{
+                name: "Tatsu",
+                status: :current,
+                started_on: ~D[2014-10-26],
+                ended_on: :now,
+                description: """
+                A native Slack app that helps teams get organized right where they work. Track tasks, gather feedback with polls, and keep in-sync with syncups.
+                Kill the meeting and keep work moving.
+                """,
+                links: [
+                  %{label: "Website", url: "https://tatsu.io"},
+                  %{label: "Slack App", url: "https://slack.com/marketplace/A0EP69E58-tatsu"}
+                ],
+                images: [
+                  %{src: "/images/projects/placeholder-5.svg", alt: "Field Notes 1"},
+                  %{src: "/images/projects/placeholder-6.svg", alt: "Field Notes 2"},
+                  %{src: "/images/projects/placeholder-7.svg", alt: "Field Notes 3"}
+                ]
+              },
+              %{
                 name: "Mixtape",
-                status: :live,
+                status: :current,
                 started_on: ~D[2025-12-31],
                 ended_on: :now,
                 description: """
-                Every month since January 2018, I have created a playlist on Spotify that is just music that I discover that month.
-                It's like a time capsule of music discovery and I wanted to make it automatic.
-                Mixtape is a web app that connects to your Spotify or Apple Music and creates a time capsuled playlist when you favorite a song.
+                Every month since January 2018, I have created a playlist on Spotify that is the music that I discover that month.
+                It's like a time capsule of music discovery and I wanted to automate it a bit.
+                Mixtape is an app that connects to your Spotify or Apple Music and creates a time capsuled playlist when you favorite a song.
                 It's a dope-ass passion project that scratches my love of music.
                 """,
                 links: [
@@ -30,22 +49,105 @@ defmodule BrilliantFantastic.Projects do
                 ]
               },
               %{
-                name: "Tatsu",
-                status: :live,
-                started_on: ~D[2014-10-26],
+                name: "Juvet",
+                status: :current,
+                started_on: ~D[2018-03-09],
                 ended_on: :now,
                 description: """
-                A native Slack app that helps teams get organized right in Slack. Track tasks, gather feedback with polls, and keep in-sync with syncups.
-                Kill the meeting and keep work moving.
+                An open source Elixir library for building chatbots like web application frameworks such as Phoenix or Ruby on Rails.
+                I built this as a necessity for building Tatsu and I thought others may benefit from it as well.
                 """,
                 links: [
-                  %{label: "Website", url: "https://tatsu.io"},
-                  %{label: "Slack App", url: "https://slack.com/marketplace/A0EP69E58-tatsu"}
+                  %{label: "GitHub", url: "https://github.com/juvet/juvet"},
+                  %{label: "Useless website", url: "https://juvet.io"}
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-5.svg", alt: "Field Notes 1"},
-                  %{src: "/images/projects/placeholder-6.svg", alt: "Field Notes 2"},
-                  %{src: "/images/projects/placeholder-7.svg", alt: "Field Notes 3"}
+                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
+                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
+                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                ]
+              },
+              %{
+                name: "The Standup Podcast",
+                status: :hiatus,
+                started_on: ~D[2017-01-09],
+                ended_on: :now,
+                description: """
+                A podcast I do with my friend [Keith](https://github.com/keiththomps){: target="_blank"} about the software industry, startups, and entrepreneurship.
+                There are currently 79 episodes out, then we took a hiatus. Will we be back?
+                """,
+                links: [
+                  %{
+                    label: "Apple podcast",
+                    url: "https://podcasts.apple.com/us/podcast/the-standup/id1193304664"
+                  }
+                ],
+                images: [
+                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
+                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
+                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                ]
+              },
+              %{
+                name: "Chronic",
+                status: :retired,
+                started_on: ~D[2017-07-06],
+                ended_on: ~D[2020-07-30],
+                description: """
+                My most ambitious tiny project. A web, mobile, and Mac app that displayed progress on a timer from a central server.
+                This opened a lot of use cases around users performing tasks together instead of just in silos.
+                The project provided me with a lot of learnings and content for speaking and writing.
+                """,
+                links: [
+                  %{
+                    label: "Podcast episode",
+                    url:
+                      "https://podcasts.apple.com/us/podcast/s4e17-i-really-hope-the-3rd-part-is-profit/id1193304664?i=1000486687250"
+                  },
+                  %{label: "Old launch page", url: "https://chronic.io"}
+                ],
+                images: [
+                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
+                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
+                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                ]
+              },
+              %{
+                name: "Letbotski",
+                status: :retired,
+                started_on: ~D[2022-08-17],
+                ended_on: ~D[2022-08-29],
+                description: """
+                An open source Slack app that really ties Slack together by helping users find cocktail bars, bowling alleys, and dispensaries near a location.
+                It was an example app built on Juvet for a talk I gave at nerd conferences.
+                """,
+                links: [
+                  %{label: "GitHub", url: "https://github.com/jwright/lebotski"},
+                  %{label: "ElixirConf 2023 talk", url: "https://github.com/jwright/lebotski"}
+                ],
+                images: [
+                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
+                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
+                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                ]
+              },
+              %{
+                name: "Kinship",
+                status: :retired,
+                started_on: ~D[2018-03-07],
+                ended_on: ~D[2019-02-18],
+                description: """
+                I wanted to try my hand at building a larger agency with friends and I failed.
+                I thought just the magic formula of getting the best people would be the simple recipe to success.
+                We launched with a big bang, did some really fun work, but it went out with a whimper. I found I like small.
+                """,
+                links: [
+                  %{label: "Blog post", url: "https://example.com/kinship-retro"}
+                ],
+                images: [
+                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
+                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
+                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
                 ]
               },
               %{
@@ -76,22 +178,64 @@ defmodule BrilliantFantastic.Projects do
                 ]
               },
               %{
-                name: "Morale",
+                name: "Delicious Training",
                 status: :retired,
-                started_on: ~D[2008-04-23],
-                ended_on: ~D[2013-01-12],
+                started_on: ~D[2013-09-09],
+                ended_on: ~D[2014-03-30],
                 description: """
-                A web app that allowed you to create tasks using natural language within a magic textbox.
-                It was my first foray into SaaS and I learned a ton of shit about building and launching a product.
+                Live in-person training events with myself and my employee (at the time) for software developers interested in Ruby on Rails. I have a love for teaching and I decided to do workshops after years of speaking.
+                It went amazing and we got a lot of great feedback and some graduates soon got jobs!
+                We poured so much time into this and built a whole new app with the class but we only gave this training a handful of times.
                 """,
                 links: [
-                  %{label: "Old Twitter account", url: "https://twitter.com/morale"}
+                  %{
+                    label: "Old training site",
+                    url: "https://bfantastic.herokuapp.com/training"
+                  }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Pocket Compass 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Pocket Compass 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Pocket Compass 3"},
-                  %{src: "/images/projects/placeholder-4.svg", alt: "Pocket Compass 4"}
+                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
+                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
+                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                ]
+              },
+              %{
+                name: "Callback",
+                status: :retired,
+                started_on: ~D[2016-12-10],
+                ended_on: ~D[2022-12-03],
+                description: """
+                A web app for developers to schedule webhooks like cron jobs.
+                I got sick of building the same background job system that took into account timezone changes and so I built it and made it into a service for all to use.
+                """,
+                links: [
+                  %{
+                    label: "Wayback Machine cached launch page",
+                    url: "https://web.archive.org/web/20221223073826/http://callback.run/"
+                  }
+                ],
+                images: [
+                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
+                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
+                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                ]
+              },
+              %{
+                name: "Funnelcake",
+                status: :retired,
+                started_on: ~D[2013-10-11],
+                ended_on: ~D[2014-05-26],
+                description: """
+                A new chat application that focused on human and bot interactions in threaded conversations.
+                Then I started hearing about this new startup called Slack.
+                """,
+                links: [
+                  %{label: "How I learned about Slack", url: "https://example.com/kinship-retro"}
+                ],
+                images: [
+                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
+                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
+                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
                 ]
               },
               %{
@@ -145,58 +289,34 @@ defmodule BrilliantFantastic.Projects do
                 ]
               },
               %{
-                name: "Kinship",
+                name: "Morale",
                 status: :retired,
-                started_on: ~D[2018-03-07],
-                ended_on: ~D[2019-02-18],
+                started_on: ~D[2008-04-23],
+                ended_on: ~D[2013-01-12],
                 description: """
-                I wanted to try my hand at building a larger agency with friends and I failed.
-                I thought just the magic formula of getting the best people would be the simple recipe to success.
-                We launched with a big bang, did some really fun work, but it went out with a whimper. I found I like small.
+                A web app that allowed you to create tasks using natural language within a magic textbox.
+                It was my first foray into SaaS and I learned a ton of shit about building and launching a product.
                 """,
                 links: [
-                  %{label: "Blog post", url: "https://example.com/kinship-retro"}
+                  %{label: "Old Twitter account", url: "https://twitter.com/morale"}
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{src: "/images/projects/placeholder-1.svg", alt: "Pocket Compass 1"},
+                  %{src: "/images/projects/placeholder-2.svg", alt: "Pocket Compass 2"},
+                  %{src: "/images/projects/placeholder-3.svg", alt: "Pocket Compass 3"},
+                  %{src: "/images/projects/placeholder-4.svg", alt: "Pocket Compass 4"}
                 ]
               },
               %{
-                name: "Juvet",
-                status: :live,
-                started_on: ~D[2018-03-09],
+                name: "machinegobrrr",
+                status: :upcoming,
+                started_on: ~D[2026-04-04],
                 ended_on: :now,
                 description: """
-                An open source Elixir library for building chatbots in Slack, with more platforms to come.
-                I built this as a necessity for building Tatsu and I thought others may benefit from it as well.
+                My agentic-programming workflow in a cli-tool.
                 """,
                 links: [
-                  %{label: "GitHub", url: "https://github.com/juvet/juvet"},
-                  %{label: "Useless website", url: "https://juvet.io"}
-                ],
-                images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
-                ]
-              },
-              %{
-                name: "Delicious Training",
-                status: :retired,
-                started_on: ~D[2013-09-09],
-                ended_on: ~D[2014-03-30],
-                description: """
-                Live in-person training events with myself and my employee (at the time) for software developers interested in Ruby on Rails. I have a love for teaching and I decided to do workshops after years of speaking.
-                It went amazing and we got a lot of great feedback and some graduates soon got jobs!
-                We poured so much time into this and built a whole new app with the class but we only gave this training a handful of times.
-                """,
-                links: [
-                  %{
-                    label: "Old training site",
-                    url: "https://bfantastic.herokuapp.com/training"
-                  }
+                  %{label: "Change me", url: "https://example.com/kinship-retro"}
                 ],
                 images: [
                   %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
@@ -206,7 +326,7 @@ defmodule BrilliantFantastic.Projects do
               },
               %{
                 name: "Aisleway",
-                status: :working_on_it,
+                status: :upcoming,
                 started_on: ~D[2026-02-09],
                 ended_on: :now,
                 description: """
@@ -223,72 +343,8 @@ defmodule BrilliantFantastic.Projects do
                 ]
               },
               %{
-                name: "Callback",
-                status: :retired,
-                started_on: ~D[2016-12-10],
-                ended_on: ~D[2022-12-03],
-                description: """
-                A web app for developers to schedule webhooks like cron jobs.
-                I got sick of building the same background job system that took into account timezone changes and so I built it and made it into a service for all to use.
-                """,
-                links: [
-                  %{
-                    label: "Wayback Machine cached launch page",
-                    url: "https://web.archive.org/web/20221223073826/http://callback.run/"
-                  }
-                ],
-                images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
-                ]
-              },
-              %{
-                name: "Chronic",
-                status: :retired,
-                started_on: ~D[2017-07-06],
-                ended_on: ~D[2020-07-30],
-                description: """
-                My most ambitious tiny project. A web, mobile, and Mac app that displayed progress from a central server.
-                This opened a lot of use cases around users performing tasks together instead of just in silos.
-                The project provided me with a lot of learnings and content for speaking and writing.
-                """,
-                links: [
-                  %{
-                    label: "Podcast episode",
-                    url:
-                      "https://podcasts.apple.com/us/podcast/s4e17-i-really-hope-the-3rd-part-is-profit/id1193304664?i=1000486687250"
-                  },
-                  %{label: "Old launch page", url: "https://chronic.io"}
-                ],
-                images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
-                ]
-              },
-              %{
-                name: "Letbotski",
-                status: :retired,
-                started_on: ~D[2022-08-17],
-                ended_on: ~D[2022-08-29],
-                description: """
-                An open source Slack app that really ties Slack together by helping users find cocktail bars, bowling alleys, and dispensaries near a location.
-                It was an example app built on Juvet for a talk I gave at nerd conferences.
-                """,
-                links: [
-                  %{label: "GitHub", url: "https://github.com/jwright/lebotski"},
-                  %{label: "ElixirConf 2023 talk", url: "https://github.com/jwright/lebotski"}
-                ],
-                images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
-                ]
-              },
-              %{
                 name: "Scream Machine",
-                status: :planning,
+                status: :upcoming,
                 started_on: ~D[2026-02-11],
                 ended_on: :now,
                 description: """
@@ -303,71 +359,12 @@ defmodule BrilliantFantastic.Projects do
                   %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
                   %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
                 ]
-              },
-              %{
-                name: "machinegobrrr",
-                status: :planning,
-                started_on: ~D[2026-04-04],
-                ended_on: :now,
-                description: """
-                My agentic-programming workflow in a cli-tool.
-                """,
-                links: [
-                  %{label: "Change me", url: "https://example.com/kinship-retro"}
-                ],
-                images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
-                ]
-              },
-              %{
-                name: "Funnelcake",
-                status: :retired,
-                started_on: ~D[2013-10-11],
-                ended_on: ~D[2014-05-26],
-                description: """
-                A new chat application that focused on human and bot interactions in threaded conversations.
-                Then I started hearing about this new startup called Slack.
-                """,
-                links: [
-                  %{label: "How I learned about Slack", url: "https://example.com/kinship-retro"}
-                ],
-                images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
-                ]
-              },
-              %{
-                name: "The Standup Podcast",
-                status: :hiatus,
-                started_on: ~D[2017-01-09],
-                ended_on: :now,
-                description: """
-                A podcast I do with my friend Keith about the software industry, startups, and entrepreneurship.
-                There are currently 79 episodes out, then we took a hiatus. Will we be back?
-                """,
-                links: [
-                  %{
-                    label: "Apple podcast",
-                    url: "https://podcasts.apple.com/us/podcast/the-standup/id1193304664"
-                  }
-                ],
-                images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
-                ]
               }
             ]
             |> Enum.map(&Project.build/1)
-            |> Enum.sort_by(fn %Project{status: status, started_on: started_on} ->
-              {if(status == :live, do: 0, else: 1), -Date.to_gregorian_days(started_on)}
-            end)
 
   @doc """
-  Returns all projects, sorted with `:live` projects first then by `started_on` desc.
+  Returns all projects in the order defined in the module — no sorting applied.
   """
   def all_projects, do: @projects
 end

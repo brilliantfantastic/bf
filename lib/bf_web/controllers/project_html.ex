@@ -58,12 +58,47 @@ defmodule BrilliantFantasticWeb.ProjectHTML do
   end
 
   @doc """
-  Splits a description into paragraphs, treating each non-empty line as its own.
+  Renders a project description as HTML, treating each non-empty line as its
+  own paragraph and supporting inline markdown.
+
+  Per-link `target="_blank"` is supported via Earmark's IAL syntax:
+
+      [Keith](https://github.com/keiththomps){: target="_blank"}
+
+  Any link rendered with `target="_blank"` automatically gets
+  `rel="noopener noreferrer"` added for security.
+
+  Uses Earmark (already pulled in transitively via nimble_publisher).
   """
-  def paragraphs(description) when is_binary(description) do
+  def render_description(description) when is_binary(description) do
     description
+    |> normalize_paragraphs()
+    |> Earmark.as_html!(escape: false, smartypants: false)
+    |> add_noopener_to_blank_links()
+    |> Phoenix.HTML.raw()
+  end
+
+  # Treats single newlines as paragraph breaks so existing descriptions keep
+  # rendering as separate paragraphs without needing to be reformatted with
+  # blank lines between them.
+  defp normalize_paragraphs(text) do
+    text
     |> String.split(~r/\n+/)
     |> Enum.map(&String.trim/1)
     |> Enum.reject(&(&1 == ""))
+    |> Enum.join("\n\n")
+  end
+
+  # Adds rel="noopener noreferrer" to any <a target="_blank"> that doesn't
+  # already have a rel attribute. Prevents window.opener leakage from
+  # newly-opened tabs.
+  defp add_noopener_to_blank_links(html) do
+    Regex.replace(~r{<a\b([^>]*\btarget="_blank"[^>]*)>}, html, fn match, attrs ->
+      if Regex.match?(~r/\brel=/, attrs) do
+        match
+      else
+        ~s(<a #{String.trim(attrs)} rel="noopener noreferrer">)
+      end
+    end)
   end
 end
