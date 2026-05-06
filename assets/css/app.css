@@ -762,8 +762,9 @@
 [data-theme="fantastic"] .brutal-label {
   font-family: ui-serif, Georgia, "Times New Roman", serif;
   font-style: italic;
-  font-size: 1rem;
-  letter-spacing: 0.01em;
+  font-variant: small-caps;
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
   color: var(--color-accent);
 }
 
