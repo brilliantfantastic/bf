@@ -946,13 +946,13 @@ html {
 }
 
 /* ── Contact Section: Brilliant Brutalist ── */
-[data-theme="brilliant"] #section-contact {
+[data-theme="brilliant"] #contact {
   background: oklch(15% 0.01 250);
   color: oklch(93% 0.01 80);
   position: relative;
 }
 
-[data-theme="brilliant"] #section-contact::before {
+[data-theme="brilliant"] #contact::before {
   content: "CONNECT";
   position: absolute;
   top: 1.5rem;
@@ -964,29 +964,29 @@ html {
   color: oklch(55% 0.22 25);
 }
 
-[data-theme="brilliant"] #section-contact > div > h2 {
+[data-theme="brilliant"] #contact > div > h2 {
   -webkit-text-stroke: 2px oklch(93% 0.01 80);
   color: transparent;
 }
 
-[data-theme="brilliant"] #section-contact .input,
-[data-theme="brilliant"] #section-contact .textarea {
+[data-theme="brilliant"] #contact .input,
+[data-theme="brilliant"] #contact .textarea {
   background: oklch(22% 0.01 250);
   color: oklch(93% 0.01 80);
   border-color: oklch(40% 0.01 250);
 }
 
-[data-theme="brilliant"] #section-contact .input::placeholder,
-[data-theme="brilliant"] #section-contact .textarea::placeholder {
+[data-theme="brilliant"] #contact .input::placeholder,
+[data-theme="brilliant"] #contact .textarea::placeholder {
   color: oklch(55% 0.01 250);
 }
 
-[data-theme="brilliant"] #section-contact .input:focus,
-[data-theme="brilliant"] #section-contact .textarea:focus {
+[data-theme="brilliant"] #contact .input:focus,
+[data-theme="brilliant"] #contact .textarea:focus {
   border-color: oklch(55% 0.22 25);
 }
 
-[data-theme="brilliant"] #section-contact .btn {
+[data-theme="brilliant"] #contact .btn {
   border: 2px solid oklch(93% 0.01 80);
   background: transparent;
   color: oklch(93% 0.01 80);
@@ -994,14 +994,14 @@ html {
   letter-spacing: 0.1em;
 }
 
-[data-theme="brilliant"] #section-contact .btn:hover {
+[data-theme="brilliant"] #contact .btn:hover {
   background: oklch(55% 0.22 25);
   border-color: oklch(55% 0.22 25);
   color: oklch(98% 0.002 250);
 }
 
 /* ── Contact Form: Fantastic Fun ── */
-[data-theme="fantastic"] #section-contact .btn {
+[data-theme="fantastic"] #contact .btn {
   font-family: "Okkult", fantasy;
   font-size: 1.1rem;
   letter-spacing: 0.05em;
@@ -1014,12 +1014,12 @@ html {
   transition: transform 0.15s, box-shadow 0.15s;
 }
 
-[data-theme="fantastic"] #section-contact .btn:hover {
+[data-theme="fantastic"] #contact .btn:hover {
   transform: translate(-2px, -2px);
   box-shadow: 6px 6px 0 oklch(37% 0.044 257.287);
 }
 
-[data-theme="fantastic"] #section-contact .btn:active {
+[data-theme="fantastic"] #contact .btn:active {
   transform: translate(2px, 2px);
   box-shadow: 1px 1px 0 oklch(37% 0.044 257.287);
 }
