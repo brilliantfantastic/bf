@@ -378,7 +378,11 @@ defmodule BrilliantFantastic.Projects do
                 Coming to a street corner near you soon-ish.
                 """,
                 links: [
-                  %{label: "Parts list", url: "https://example.com/kinship-retro"}
+                  %{
+                    label: "Parts list",
+                    url:
+                      "https://github.com/brilliantfantastic/scream_machine/blob/main/docs/SHOPPING-LIST.md"
+                  }
                 ],
                 images: [
                   %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
