@@ -73,7 +73,7 @@ defmodule BrilliantFantastic.Projects do
                 started_on: ~D[2017-01-09],
                 ended_on: :now,
                 description: """
-                A podcast I do with my friend [Keith](https://github.com/keiththomps){: target="_blank"} about the software industry, startups, and entrepreneurship.
+                A podcast I do with my friend [Keith](https://github.com/keiththomps){: target="_blank"} about the software industry, development, and entrepreneurship.
                 There are currently 79 episodes out, then we took a hiatus. Will we be back?
                 """,
                 links: [
