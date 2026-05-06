@@ -5,7 +5,7 @@ defmodule BrilliantFantasticWeb.ProjectController do
 
   def index(conn, _params) do
     conn
-    |> assign(:page_title, "Projects")
+    |> assign(:page_title, "Portfolio")
     |> assign(:projects, Projects.all_projects())
     |> render(:index)
   end
