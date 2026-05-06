@@ -1169,11 +1169,12 @@ html {
 }
 
 /* ── Projects List: Fan-out image stack (theme-agnostic layout) ── */
-/* Paint isolation per article so a scroll-triggered repaint of one card
-   doesn't force repaint of the others. Cheap on the GPU and (unlike
-   content-visibility) doesn't affect SVG rasterization. */
+/* Layout-only containment — keeps each article's layout isolated for
+   scroll perf, but unlike contain: paint does NOT clip overflow, so
+   images can spill past the article edge for a "scattered photos"
+   look and the status-dot tooltip never gets cut off. */
 .brutal-projects-list > li {
-  contain: paint;
+  contain: layout;
   /* Anchor target offset so jumping to a project doesn't slam under
      the nav. Browsers honor prefers-reduced-motion automatically when
      scroll-behavior: smooth is set on html. */
@@ -1349,7 +1350,7 @@ html {
   z-index: 3;
 }
 .brutal-projects-list .brutal-project-image-frame:nth-child(4) {
-  --tx: -15%;
+  --tx: -5%;
   --ty: 15%;
   --rot: 8deg;
   --rot-hover: 6deg;
