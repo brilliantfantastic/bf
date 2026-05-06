@@ -756,6 +756,17 @@
   text-transform: uppercase;
 }
 
+/* Fantastic label: italic serif as the editorial counterpart to
+   brilliant's industrial Courier mono. Distinct from both the body
+   sans and the chunky Okkult headline; accent color from the palette. */
+[data-theme="fantastic"] .brutal-label {
+  font-family: ui-serif, Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  color: var(--color-accent);
+}
+
 /* ── Nav: Brilliant Brutalist ── */
 [data-theme="brilliant"] #section-nav {
   background: oklch(93% 0.01 80 / 0.95);
@@ -1351,12 +1362,12 @@
 }
 
 /* ── Projects List: Fantastic theme (palette-aware soft) ── */
+/* Inherit body font for prose (matches blog body) — Okkult stays
+   reserved for the project name (h2). */
 [data-theme="fantastic"] .brutal-projects-list .brutal-timeline {
-  font-family: var(--font-display);
-  letter-spacing: 0.04em;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   color: var(--color-base-content);
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 [data-theme="fantastic"] .brutal-projects-list h2 {
@@ -1364,16 +1375,11 @@
 }
 
 [data-theme="fantastic"] .brutal-projects-list p {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  line-height: 1.7;
   color: var(--color-base-content);
-  opacity: 0.85;
+  opacity: 0.7;
 }
 
 [data-theme="fantastic"] .brutal-projects-list .brutal-project-links a {
-  font-family: var(--font-display);
-  font-size: 1rem;
   color: var(--color-primary);
 }
 
