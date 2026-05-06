@@ -14,7 +14,7 @@ defmodule BrilliantFantastic.MixProject do
       listeners: [Phoenix.CodeReloader],
       dialyzer: [
         plt_local_path: "priv/plts",
-        plt_add_apps: [:mix, :ex_unit]
+        plt_add_apps: [:mix, :ex_unit, :earmark]
       ]
     ]
   end
