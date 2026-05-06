@@ -47,7 +47,7 @@
         <%!-- RIGHT: fanned-out image stack (3-4 images) --%>
         <div :if={project.images != []} class="brutal-project-images" aria-hidden="false">
           <div :for={image <- project.images} class="brutal-project-image-frame" tabindex="0">
-            <img src={image.src} alt={image.alt} loading="lazy" />
+            <.project_image image={image} />
           </div>
         </div>
       </article>

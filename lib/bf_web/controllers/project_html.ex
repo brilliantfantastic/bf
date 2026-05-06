@@ -1,7 +1,46 @@
 defmodule BrilliantFantasticWeb.ProjectHTML do
   use BrilliantFantasticWeb, :html
 
+  # Inline placeholder SVGs at compile time so they paint as part of the
+  # parent layer instead of going through the <img> rasterization path —
+  # 30+ rotated SVGs were causing long paint frames during scroll.
+  for n <- 1..7 do
+    @external_resource "priv/static/images/projects/placeholder-#{n}.svg"
+  end
+
+  @placeholder_svgs (for n <- 1..7, into: %{} do
+                       path = "priv/static/images/projects/placeholder-#{n}.svg"
+
+                       {"/images/projects/placeholder-#{n}.svg",
+                        path |> File.read!() |> String.trim()}
+                     end)
+
   embed_templates "project_html/*"
+
+  attr :image, :map, required: true
+
+  @doc """
+  Renders a project image — inline SVG for known placeholder paths, plain
+  `<img>` otherwise. Inline SVGs avoid the per-image raster step that was
+  blowing the paint budget with 30+ rotated frames on screen.
+  """
+  def project_image(%{image: image} = assigns) do
+    case Map.get(@placeholder_svgs, image.src) do
+      nil ->
+        ~H"""
+        <img src={@image.src} alt={@image.alt} loading="lazy" />
+        """
+
+      svg ->
+        assigns = assign(assigns, :svg, svg)
+
+        ~H"""
+        <span class="brutal-project-image-svg" role="img" aria-label={@image.alt}>
+          {Phoenix.HTML.raw(@svg)}
+        </span>
+        """
+    end
+  end
 
   @doc """
   Formats a project timeline as `MMM YYYY → MMM YYYY` or `MMM YYYY → now`.
