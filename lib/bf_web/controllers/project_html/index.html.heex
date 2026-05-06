@@ -34,11 +34,11 @@
             <li :for={link <- project.links}>
               <.link
                 href={link.url}
-                class="text-primary hover:text-primary/80 transition-colors"
+                class="brutal-project-link transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {link.label} &rarr;
+                {link.label}<span class="brutal-project-link-arrow">&nbsp;&rarr;</span>
               </.link>
             </li>
           </ul>

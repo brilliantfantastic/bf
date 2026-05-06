@@ -1344,9 +1344,23 @@
 
 [data-theme="brilliant"] .brutal-projects-list .brutal-project-links {
   font-family: "Courier New", monospace;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-size: 0.7rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-top: 1.25rem;
+}
+
+[data-theme="brilliant"] .brutal-projects-list .brutal-project-link {
+  color: var(--color-base-content);
+}
+
+[data-theme="brilliant"] .brutal-projects-list .brutal-project-link-arrow {
+  color: oklch(55% 0.22 25);
+}
+
+[data-theme="brilliant"] .brutal-projects-list .brutal-project-link:hover {
+  color: oklch(55% 0.22 25);
 }
 
 [data-theme="brilliant"] .brutal-projects-list .brutal-project-description a {
@@ -1391,8 +1405,27 @@
   opacity: 0.7;
 }
 
-[data-theme="fantastic"] .brutal-projects-list .brutal-project-links a {
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-links {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 1.25rem;
+}
+
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-link {
+  color: var(--color-base-content);
+  opacity: 0.85;
+  font-weight: 500;
+}
+
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-link-arrow {
   color: var(--color-primary);
+  opacity: 1;
+}
+
+[data-theme="fantastic"] .brutal-projects-list .brutal-project-link:hover {
+  color: var(--color-primary);
+  opacity: 1;
 }
 
 [data-theme="fantastic"] .brutal-projects-list .brutal-project-description a {
