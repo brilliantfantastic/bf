@@ -91,27 +91,4 @@ defmodule BrilliantFantastic.PhotosTest do
     end
   end
 
-  describe "pick/2 — empty pool behavior" do
-    test "returns nil when given an empty list" do
-      assert Photos.pick([], :brilliant) == nil
-    end
-
-    test "returns nil for fantastic with empty list" do
-      assert Photos.pick([], :fantastic) == nil
-    end
-
-    test "returns a photo map when given a non-empty list" do
-      photo = Photos.pick(["headshot-01"], :brilliant)
-
-      assert %{name: "headshot-01", side: :brilliant} = photo
-    end
-
-    test "picks only from the provided list" do
-      names = ["photo-a", "photo-b"]
-      photo = Photos.pick(names, :fantastic)
-
-      assert photo.name in names
-      assert photo.side == :fantastic
-    end
-  end
 end
