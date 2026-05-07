@@ -13,6 +13,7 @@ defmodule Mix.Tasks.Bf.ProcessPhotosTest do
     tmp_root = Path.join(System.tmp_dir!(), "bf_photo_test_#{token}")
     tmp_source = Path.join(tmp_root, "source")
     tmp_output = Path.join(tmp_root, "output")
+    tmp_manifest = Path.join(tmp_root, "photos.manifest")
 
     # Create source dir for brilliant side with a tiny test JPG
     source_brilliant = Path.join(tmp_source, "brilliant")
@@ -31,6 +32,7 @@ defmodule Mix.Tasks.Bf.ProcessPhotosTest do
     {:ok,
      tmp_source: tmp_source,
      tmp_output: tmp_output,
+     tmp_manifest: tmp_manifest,
      source_jpg: source_jpg,
      source_brilliant: source_brilliant}
   end
@@ -58,7 +60,8 @@ defmodule Mix.Tasks.Bf.ProcessPhotosTest do
 
   test "generates WebP output for a single width", %{
     tmp_source: tmp_source,
-    tmp_output: tmp_output
+    tmp_output: tmp_output,
+    tmp_manifest: tmp_manifest
   } do
     drain_shell_messages()
 
@@ -67,6 +70,8 @@ defmodule Mix.Tasks.Bf.ProcessPhotosTest do
       tmp_source,
       "--output",
       tmp_output,
+      "--manifest",
+      tmp_manifest,
       "--widths",
       "480"
     ])
@@ -77,9 +82,10 @@ defmodule Mix.Tasks.Bf.ProcessPhotosTest do
            "expected #{expected_webp} to exist after processing"
   end
 
-  test "logs a success message after processing", %{
+  test "writes a manifest listing processed photo names", %{
     tmp_source: tmp_source,
-    tmp_output: tmp_output
+    tmp_output: tmp_output,
+    tmp_manifest: tmp_manifest
   } do
     drain_shell_messages()
 
@@ -88,6 +94,32 @@ defmodule Mix.Tasks.Bf.ProcessPhotosTest do
       tmp_source,
       "--output",
       tmp_output,
+      "--manifest",
+      tmp_manifest,
+      "--widths",
+      "480"
+    ])
+
+    assert File.exists?(tmp_manifest), "expected manifest file to be written"
+    content = File.read!(tmp_manifest)
+    assert content =~ "[brilliant]"
+    assert content =~ "test-photo"
+  end
+
+  test "logs a success message after processing", %{
+    tmp_source: tmp_source,
+    tmp_output: tmp_output,
+    tmp_manifest: tmp_manifest
+  } do
+    drain_shell_messages()
+
+    Mix.Tasks.Bf.ProcessPhotos.run([
+      "--source",
+      tmp_source,
+      "--output",
+      tmp_output,
+      "--manifest",
+      tmp_manifest,
       "--widths",
       "480"
     ])
@@ -102,9 +134,19 @@ defmodule Mix.Tasks.Bf.ProcessPhotosTest do
 
   test "skips already-up-to-date files on re-run (idempotency)", %{
     tmp_source: tmp_source,
-    tmp_output: tmp_output
+    tmp_output: tmp_output,
+    tmp_manifest: tmp_manifest
   } do
-    args = ["--source", tmp_source, "--output", tmp_output, "--widths", "480"]
+    args = [
+      "--source",
+      tmp_source,
+      "--output",
+      tmp_output,
+      "--manifest",
+      tmp_manifest,
+      "--widths",
+      "480"
+    ]
 
     drain_shell_messages()
     Mix.Tasks.Bf.ProcessPhotos.run(args)
@@ -122,9 +164,19 @@ defmodule Mix.Tasks.Bf.ProcessPhotosTest do
 
   test "--force re-processes even when output is up to date", %{
     tmp_source: tmp_source,
-    tmp_output: tmp_output
+    tmp_output: tmp_output,
+    tmp_manifest: tmp_manifest
   } do
-    base_args = ["--source", tmp_source, "--output", tmp_output, "--widths", "480"]
+    base_args = [
+      "--source",
+      tmp_source,
+      "--output",
+      tmp_output,
+      "--manifest",
+      tmp_manifest,
+      "--widths",
+      "480"
+    ]
 
     drain_shell_messages()
     Mix.Tasks.Bf.ProcessPhotos.run(base_args)

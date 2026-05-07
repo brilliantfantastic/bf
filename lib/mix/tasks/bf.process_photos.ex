@@ -8,6 +8,11 @@ defmodule Mix.Tasks.Bf.ProcessPhotos do
   and `fantastic/`), generates multiple resolutions, and writes WebP outputs to
   `priv/static/images/photos/{side}/`.
 
+  After processing, writes a manifest file (`priv/photos.manifest` by default)
+  listing all photo names per side. `BrilliantFantastic.Photos` reads this
+  manifest at compile time, so the registry recompiles automatically when the
+  manifest changes — no `mix compile --force` or server restart needed.
+
   Source files are gitignored; only the WebP outputs are committed.
 
   ## Usage
@@ -20,6 +25,8 @@ defmodule Mix.Tasks.Bf.ProcessPhotos do
       subdirectories (default: `priv/photos_source`)
     * `--output PATH` — output base directory; WebP files are written to
       `{output}/{side}/{name}-{width}.webp` (default: `priv/static/images/photos`)
+    * `--manifest PATH` — path to write the photos manifest
+      (default: `priv/photos.manifest`)
     * `--quality N` — WebP quality, 1–100 (default: 90)
     * `--widths CSV` — comma-separated output widths in pixels
       (default: `480,960,1440,1920`)
@@ -33,14 +40,18 @@ defmodule Mix.Tasks.Bf.ProcessPhotos do
   2. Drop renamed JPGs into `priv/photos_source/brilliant/` or
      `priv/photos_source/fantastic/`.
   3. Run `mix bf.process_photos`.
-  4. Commit the generated WebP files in `priv/static/images/photos/`.
+  4. Commit the generated WebP files in `priv/static/images/photos/` and the
+     updated `priv/photos.manifest`.
   """
 
   use Mix.Task
 
+  @sides ["brilliant", "fantastic"]
+
   @switches [
     source: :string,
     output: :string,
+    manifest: :string,
     quality: :integer,
     widths: :string,
     force: :boolean
@@ -49,6 +60,7 @@ defmodule Mix.Tasks.Bf.ProcessPhotos do
   @defaults [
     source: "priv/photos_source",
     output: "priv/static/images/photos",
+    manifest: "priv/photos.manifest",
     quality: 90,
     widths: "480,960,1440,1920",
     force: false
@@ -65,6 +77,7 @@ defmodule Mix.Tasks.Bf.ProcessPhotos do
     opts = Keyword.merge(@defaults, opts)
     source_dir = opts[:source]
     output_base = opts[:output]
+    manifest_path = opts[:manifest]
     quality = opts[:quality]
     force = opts[:force]
 
@@ -85,9 +98,11 @@ defmodule Mix.Tasks.Bf.ProcessPhotos do
 
     Application.ensure_all_started(:image)
 
-    for side <- ["brilliant", "fantastic"] do
+    for side <- @sides do
       process_side(side, source_dir, output_base, widths, quality, force)
     end
+
+    write_manifest(manifest_path, output_base)
   end
 
   defp process_side(side, source_dir, output_base, widths, quality, force) do
@@ -135,6 +150,36 @@ defmodule Mix.Tasks.Bf.ProcessPhotos do
     end
   end
 
+  # Scans the output directory for all WebP files and writes the manifest
+  # listing unique photo names per side. Called after all processing.
+  defp write_manifest(manifest_path, output_base) do
+    sections =
+      Enum.map(@sides, fn side ->
+        names =
+          Path.join(output_base, "#{side}/*.webp")
+          |> Path.wildcard()
+          |> Enum.map(fn path ->
+            # Strip the trailing -{width} from the basename, e.g. "foo-960.webp" -> "foo"
+            Path.basename(path, ".webp") |> String.replace(~r/-\d+$/, "")
+          end)
+          |> Enum.uniq()
+          |> Enum.sort()
+
+        {side, names}
+      end)
+
+    content =
+      Enum.map_join(sections, "\n", fn {side, names} ->
+        "[#{side}]\n" <> Enum.join(names, "\n")
+      end) <> "\n"
+
+    File.mkdir_p!(Path.dirname(manifest_path))
+    File.write!(manifest_path, content)
+
+    total = sections |> Enum.map(fn {_, names} -> length(names) end) |> Enum.sum()
+    Mix.shell().info("Wrote #{manifest_path} (#{total} photos)")
+  end
+
   defp all_up_to_date?(output_paths, src_mtime) do
     Enum.all?(output_paths, fn dest ->
       case File.stat(dest) do
@@ -145,16 +190,13 @@ defmodule Mix.Tasks.Bf.ProcessPhotos do
   end
 
   defp generate_variants(src_path, output_paths, widths, quality) do
-    results =
-      Enum.zip(widths, output_paths)
-      |> Enum.reduce_while({:ok, 0}, fn {width, dest}, {:ok, acc_bytes} ->
-        case generate_one(src_path, dest, width, quality) do
-          {:ok, bytes} -> {:cont, {:ok, acc_bytes + bytes}}
-          {:error, _} = err -> {:halt, err}
-        end
-      end)
-
-    results
+    Enum.zip(widths, output_paths)
+    |> Enum.reduce_while({:ok, 0}, fn {width, dest}, {:ok, acc_bytes} ->
+      case generate_one(src_path, dest, width, quality) do
+        {:ok, bytes} -> {:cont, {:ok, acc_bytes + bytes}}
+        {:error, _} = err -> {:halt, err}
+      end
+    end)
   end
 
   defp generate_one(src_path, dest_path, width, quality) do

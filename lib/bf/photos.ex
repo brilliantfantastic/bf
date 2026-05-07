@@ -2,14 +2,17 @@ defmodule BrilliantFantastic.Photos do
   @moduledoc """
   Compile-time registry of hero background photos.
 
-  Scans `{photos_dir}/{brilliant,fantastic}/*-960.webp` at compile time,
-  where `photos_dir` defaults to `priv/static/images/photos` but can be
-  overridden per environment via:
+  Reads photo names from a manifest file at compile time. The manifest path
+  defaults to `priv/photos.manifest` but can be overridden per environment via:
 
-      config :bf, :photos_dir, "test/fixtures/photos"
+      config :bf, :photos_manifest, "/absolute/path/to/photos.manifest"
 
-  Uses `@external_resource` so adding or removing WebP files triggers a
-  recompile of this module.
+  Uses `@external_resource` on the manifest so any change to it (e.g. after
+  running `mix bf.process_photos`) triggers an automatic recompile of this
+  module without needing `mix compile --force` or a server restart.
+
+  If the manifest doesn't exist yet (fresh checkout, no photos processed),
+  both pools are empty and `random/1` returns `nil`.
 
   ## Public API
 
@@ -23,30 +26,50 @@ defmodule BrilliantFantastic.Photos do
       #=> "/images/photos/brilliant/headshot-01-960.webp"
   """
 
-  @photos_dir Application.compile_env(
-                :bf,
-                :photos_dir,
-                Path.expand("../../priv/static/images/photos", __DIR__)
-              )
-  @sides [:brilliant, :fantastic]
+  @manifest_path Application.compile_env(
+                   :bf,
+                   :photos_manifest,
+                   Path.expand("../../priv/photos.manifest", __DIR__)
+                 )
+
   @widths [480, 960, 1440, 1920]
 
-  # Register each matched WebP as an external resource so file changes trigger
-  # recompilation.
-  for side <- @sides,
-      file <- Path.wildcard(Path.join(@photos_dir, "#{side}/*-960.webp")) do
-    @external_resource file
-  end
+  @external_resource @manifest_path
 
-  @brilliant_photos Path.join(@photos_dir, "brilliant/*-960.webp")
-                    |> Path.wildcard()
-                    |> Enum.map(&Path.basename(&1, "-960.webp"))
-                    |> Enum.sort()
+  # Parse the manifest at compile time, returning %{brilliant: [...], fantastic: [...]}.
+  # Falls back to empty lists when the file doesn't exist (e.g. fresh checkout).
+  {brilliant_photos, fantastic_photos} =
+    case File.read(@manifest_path) do
+      {:error, _} ->
+        {[], []}
 
-  @fantastic_photos Path.join(@photos_dir, "fantastic/*-960.webp")
-                    |> Path.wildcard()
-                    |> Enum.map(&Path.basename(&1, "-960.webp"))
-                    |> Enum.sort()
+      {:ok, content} ->
+        %{brilliant: b, fantastic: f} =
+          content
+          |> String.split("\n")
+          |> Enum.reduce(%{current: nil, brilliant: [], fantastic: []}, fn line, acc ->
+            line = String.trim(line)
+
+            cond do
+              line == "[brilliant]" -> %{acc | current: :brilliant}
+              line == "[fantastic]" -> %{acc | current: :fantastic}
+              line == "" -> acc
+              acc.current != nil -> Map.update!(acc, acc.current, &[line | &1])
+              true -> acc
+            end
+          end)
+          |> then(fn acc ->
+            %{
+              brilliant: acc.brilliant |> Enum.reverse() |> Enum.sort(),
+              fantastic: acc.fantastic |> Enum.reverse() |> Enum.sort()
+            }
+          end)
+
+        {b, f}
+    end
+
+  @brilliant_photos brilliant_photos
+  @fantastic_photos fantastic_photos
 
   @doc "Returns a random photo map for the given side, or nil if the pool is empty."
   @spec random(:brilliant | :fantastic) :: %{name: String.t(), side: atom()} | nil

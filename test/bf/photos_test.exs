@@ -3,8 +3,8 @@ defmodule BrilliantFantastic.PhotosTest do
 
   alias BrilliantFantastic.Photos
 
-  # Fixture names committed under priv/static/images/photos/{side}/
-  # test-fixture-{a,b}-{480,960,1440,1920}.webp
+  # Fixture names listed in test/fixtures/photos.manifest and stored under
+  # test/fixtures/photos/{side}/test-fixture-{a,b}-{480,960,1440,1920}.webp
   @fixture_name "test-fixture-a"
 
   describe "random/1" do

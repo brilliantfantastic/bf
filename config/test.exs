@@ -40,6 +40,6 @@ config :phoenix_live_view,
 config :phoenix,
   sort_verified_routes_query_params: true
 
-# Point the photo registry at test fixtures so production photos don't
+# Point the photo registry at the test manifest so production photos don't
 # pollute the registry and test-fixture photos don't appear in production.
-config :bf, :photos_dir, Path.expand("../test/fixtures/photos", __DIR__)
+config :bf, :photos_manifest, Path.expand("../test/fixtures/photos.manifest", __DIR__)
