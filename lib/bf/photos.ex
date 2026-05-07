@@ -57,6 +57,10 @@ defmodule BrilliantFantastic.Photos do
   def src(%{name: name, side: side}), do: "/images/photos/#{side}/#{name}-960.webp"
 
   # nil-safe: returns nil when pool is empty (e.g. no photos processed yet).
-  defp pick([], _side), do: nil
-  defp pick(names, side), do: %{name: Enum.random(names), side: side}
+  defp pick(names, side) do
+    case names do
+      [] -> nil
+      _ -> %{name: Enum.random(names), side: side}
+    end
+  end
 end
