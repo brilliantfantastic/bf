@@ -2389,10 +2389,6 @@ html {
   opacity: 0.04;
 }
 
-[data-theme="brilliant"] .neon-stage .hero-bg {
-  background: oklch(15% 0.02 260);
-}
-
 [data-theme="brilliant"] .neon-floor {
   background: linear-gradient(to top,
     oklch(12% 0.02 260 / 0.6) 0%,
@@ -2676,10 +2672,6 @@ html {
 }
 
 /* -- Brilliant: amber-on-dark, clean terminal -- */
-[data-theme="brilliant"] .terminal-stage .hero-bg {
-  background: oklch(15% 0.01 250);
-}
-
 [data-theme="brilliant"] .terminal-prompt {
   color: oklch(65% 0.12 85);
 }
