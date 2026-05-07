@@ -18,6 +18,8 @@ defmodule Mix.Tasks.Bf.ProcessPhotos do
 
     * `--source PATH` — source directory containing `brilliant/` and `fantastic/`
       subdirectories (default: `priv/photos_source`)
+    * `--output PATH` — output base directory; WebP files are written to
+      `{output}/{side}/{name}-{width}.webp` (default: `priv/static/images/photos`)
     * `--quality N` — WebP quality, 1–100 (default: 90)
     * `--widths CSV` — comma-separated output widths in pixels
       (default: `480,960,1440,1920`)
@@ -36,10 +38,9 @@ defmodule Mix.Tasks.Bf.ProcessPhotos do
 
   use Mix.Task
 
-  @output_base "priv/static/images/photos"
-
   @switches [
     source: :string,
+    output: :string,
     quality: :integer,
     widths: :string,
     force: :boolean
@@ -47,6 +48,7 @@ defmodule Mix.Tasks.Bf.ProcessPhotos do
 
   @defaults [
     source: "priv/photos_source",
+    output: "priv/static/images/photos",
     quality: 90,
     widths: "480,960,1440,1920",
     force: false
@@ -62,6 +64,7 @@ defmodule Mix.Tasks.Bf.ProcessPhotos do
 
     opts = Keyword.merge(@defaults, opts)
     source_dir = opts[:source]
+    output_base = opts[:output]
     quality = opts[:quality]
     force = opts[:force]
 
@@ -79,11 +82,11 @@ defmodule Mix.Tasks.Bf.ProcessPhotos do
     Application.ensure_all_started(:image)
 
     for side <- ["brilliant", "fantastic"] do
-      process_side(side, source_dir, widths, quality, force)
+      process_side(side, source_dir, output_base, widths, quality, force)
     end
   end
 
-  defp process_side(side, source_dir, widths, quality, force) do
+  defp process_side(side, source_dir, output_base, widths, quality, force) do
     side_source = Path.join(source_dir, side)
 
     unless File.dir?(side_source) do
@@ -95,15 +98,15 @@ defmodule Mix.Tasks.Bf.ProcessPhotos do
       if jpgs == [] do
         Mix.shell().info("[#{side}] no JPG files found in #{side_source}")
       else
-        Enum.each(jpgs, &process_file(&1, side, widths, quality, force))
+        Enum.each(jpgs, &process_file(&1, side, output_base, widths, quality, force))
       end
     end
   end
 
-  defp process_file(src_path, side, widths, quality, force) do
+  defp process_file(src_path, side, output_base, widths, quality, force) do
     filename = Path.basename(src_path)
     basename = src_path |> Path.basename() |> Path.rootname() |> String.downcase()
-    output_dir = Path.join(@output_base, side)
+    output_dir = Path.join(output_base, side)
 
     File.mkdir_p!(output_dir)
 
