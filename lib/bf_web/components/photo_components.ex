@@ -19,7 +19,7 @@ defmodule BrilliantFantasticWeb.PhotoComponents do
 
   attr :class, :any,
     default: nil,
-    doc: "Additional CSS classes appended to hero-photo (string or list)"
+    doc: "Additional CSS classes appended to photo-bg (string or list)"
 
   @doc """
   Renders a hero photo `<img>` with responsive srcset, or nothing if photo is nil.
@@ -29,7 +29,7 @@ defmodule BrilliantFantasticWeb.PhotoComponents do
   def hero_photo(assigns) do
     ~H"""
     <img
-      class={["hero-photo", @class]}
+      class={["photo-bg", @class]}
       src={Photos.src(@photo)}
       srcset={Photos.srcset(@photo)}
       sizes="100vw"

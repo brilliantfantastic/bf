@@ -3554,7 +3554,7 @@ html {
 
 /* Base positioning: photos sit at z-index 0, behind hero-bg (z-index 0 too,
    but hero-bg comes later in DOM so paints on top of the photo). */
-.hero-photo {
+.photo-bg {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -3576,43 +3576,43 @@ html {
 [data-theme="fantastic"] .brilliant-photo { display: none; }
 
 /* ── Brilliant treatment (hero context only) ───────────────────────
-   .hero-photo.brilliant-photo means "both classes on the same element",
+   .photo-bg.brilliant-photo means "both classes on the same element",
    so it does NOT match meet-jamie's <img class="brilliant-photo"> which
-   lacks the .hero-photo class. Meet Jamie keeps its grayscale hover from
+   lacks the .photo-bg class. Meet Jamie keeps its grayscale hover from
    Tailwind without being bleached out by the heavy opacity here. */
-.hero-photo.brilliant-photo {
+.photo-bg.brilliant-photo {
   opacity: 0.35;
   filter: grayscale(100%) contrast(1.05);
 }
 
 /* ── Fantastic treatment groups (hero context only) ────────────────
-   Same double-class trick: .hero-photo.fantastic-photo.treatment-X
+   Same double-class trick: .photo-bg.fantastic-photo.treatment-X
    only matches the hero <img>, not the meet-jamie portrait. */
-.hero-photo.fantastic-photo.treatment-scanline {
+.photo-bg.fantastic-photo.treatment-scanline {
   mix-blend-mode: screen;
   opacity: 0.5;
   filter: contrast(1.2) saturate(1.3);
 }
 
-.hero-photo.fantastic-photo.treatment-soft-glow {
+.photo-bg.fantastic-photo.treatment-soft-glow {
   mix-blend-mode: screen;
   opacity: 0.45;
   filter: blur(2px) saturate(1.4) brightness(1.1);
 }
 
-.hero-photo.fantastic-photo.treatment-structural {
+.photo-bg.fantastic-photo.treatment-structural {
   mix-blend-mode: multiply;
   opacity: 0.55;
   filter: contrast(1.3) saturate(0.8);
 }
 
-.hero-photo.fantastic-photo.treatment-organic {
+.photo-bg.fantastic-photo.treatment-organic {
   mix-blend-mode: overlay;
   opacity: 0.5;
   filter: saturate(1.2) hue-rotate(-10deg);
 }
 
-.hero-photo.fantastic-photo.treatment-restrained {
+.photo-bg.fantastic-photo.treatment-restrained {
   opacity: 0.4;
   filter: saturate(1.1);
 }
