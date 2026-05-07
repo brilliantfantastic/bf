@@ -56,6 +56,7 @@ defmodule BrilliantFantastic.Photos do
   @spec src(%{name: String.t(), side: atom()}) :: String.t()
   def src(%{name: name, side: side}), do: "/images/photos/#{side}/#{name}-960.webp"
 
-  defp pick([], _side), do: nil
-  defp pick(names, side), do: %{name: Enum.random(names), side: side}
+  @doc false
+  def pick([], _side), do: nil
+  def pick(names, side), do: %{name: Enum.random(names), side: side}
 end
