@@ -154,7 +154,9 @@ defmodule Mix.Tasks.Bf.ProcessPhotos do
   end
 
   defp generate_one(src_path, dest_path, width, quality) do
-    with {:ok, img} <- Image.thumbnail(src_path, width),
+    # Pass "WIDTHx9999" so width is always the binding constraint — portrait
+    # photos would otherwise be height-constrained when given a plain integer.
+    with {:ok, img} <- Image.thumbnail(src_path, "#{width}x9999"),
          {:ok, img} <- Image.sharpen(img),
          {:ok, _} <- Image.write(img, dest_path, quality: quality, effort: 6) do
       stat = File.stat!(dest_path)
