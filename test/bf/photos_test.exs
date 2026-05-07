@@ -90,5 +90,4 @@ defmodule BrilliantFantastic.PhotosTest do
       assert result == "/images/photos/fantastic/#{@fixture_name}-960.webp"
     end
   end
-
 end

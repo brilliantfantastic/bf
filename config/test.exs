@@ -39,3 +39,7 @@ config :phoenix_live_view,
 # Sort query params output of verified routes for robust url comparisons
 config :phoenix,
   sort_verified_routes_query_params: true
+
+# Point the photo registry at test fixtures so production photos don't
+# pollute the registry and test-fixture photos don't appear in production.
+config :bf, :photos_dir, Path.expand("../test/fixtures/photos", __DIR__)

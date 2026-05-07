@@ -2,9 +2,14 @@ defmodule BrilliantFantastic.Photos do
   @moduledoc """
   Compile-time registry of hero background photos.
 
-  Scans `priv/static/images/photos/{brilliant,fantastic}/*-960.webp` at
-  compile time. Uses `@external_resource` so adding or removing WebP files
-  triggers a recompile of this module.
+  Scans `{photos_dir}/{brilliant,fantastic}/*-960.webp` at compile time,
+  where `photos_dir` defaults to `priv/static/images/photos` but can be
+  overridden per environment via:
+
+      config :bf, :photos_dir, "test/fixtures/photos"
+
+  Uses `@external_resource` so adding or removing WebP files triggers a
+  recompile of this module.
 
   ## Public API
 
@@ -18,7 +23,11 @@ defmodule BrilliantFantastic.Photos do
       #=> "/images/photos/brilliant/headshot-01-960.webp"
   """
 
-  @photos_dir Path.expand("../../priv/static/images/photos", __DIR__)
+  @photos_dir Application.compile_env(
+                :bf,
+                :photos_dir,
+                Path.expand("../../priv/static/images/photos", __DIR__)
+              )
   @sides [:brilliant, :fantastic]
   @widths [480, 960, 1440, 1920]
 
