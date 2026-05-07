@@ -54,8 +54,7 @@ defmodule BrilliantFantasticWeb.HomeLive do
       |> assign(:featured_post, List.first(posts))
       |> assign(:recent_posts, Enum.drop(posts, 1))
       |> assign(:direction, direction)
-      |> assign(:brilliant_photo, Photos.random(:brilliant))
-      |> assign(:fantastic_photo, Photos.random(:fantastic))
+      |> assign_photos_and_treatment()
       |> assign(:form, to_form(ContactForm.changeset(%{})))
       |> assign(:contact_submitted, false)
       |> assign(:success_headline, Enum.random(@success_headlines))
@@ -65,12 +64,12 @@ defmodule BrilliantFantasticWeb.HomeLive do
   end
 
   def handle_event("randomize-direction", _params, socket) do
+    direction = Enum.random(@directions)
+
     {:noreply,
-     assign(socket,
-       direction: Enum.random(@directions),
-       brilliant_photo: Photos.random(:brilliant),
-       fantastic_photo: Photos.random(:fantastic)
-     )}
+     socket
+     |> assign(:direction, direction)
+     |> assign_photos_and_treatment()}
   end
 
   def handle_event("validate", %{"contact_form" => params}, socket) do
@@ -100,6 +99,15 @@ defmodule BrilliantFantasticWeb.HomeLive do
       {:error, changeset} ->
         {:noreply, assign(socket, form: to_form(changeset))}
     end
+  end
+
+  defp assign_photos_and_treatment(socket) do
+    direction = socket.assigns[:direction]
+
+    socket
+    |> assign(:brilliant_photo, Photos.random(:brilliant))
+    |> assign(:fantastic_photo, Photos.random(:fantastic))
+    |> assign(:fantastic_treatment_class, treatment_group_for(direction))
   end
 
   def treatment_group_for(nil), do: nil

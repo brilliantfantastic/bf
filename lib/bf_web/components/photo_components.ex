@@ -16,7 +16,10 @@ defmodule BrilliantFantasticWeb.PhotoComponents do
   alias BrilliantFantastic.Photos
 
   attr :photo, :map, default: nil, doc: "Photo map with :name and :side keys, or nil"
-  attr :class, :string, default: nil, doc: "Additional CSS classes appended to hero-photo"
+
+  attr :class, :any,
+    default: nil,
+    doc: "Additional CSS classes appended to hero-photo (string or list)"
 
   @doc """
   Renders a hero photo `<img>` with responsive srcset, or nothing if photo is nil.

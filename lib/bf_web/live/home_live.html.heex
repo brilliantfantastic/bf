@@ -8,6 +8,7 @@
   <%!-- Brilliant: always brutalist --%>
   <div id="hero-brilliant-wrap" class="flex-1 flex flex-col">
     <section id="section-hero-brilliant" class="flex-1 relative overflow-hidden brutal-stage">
+      <.hero_photo photo={@brilliant_photo} class="brilliant-photo" />
       <div class="hero-bg"></div>
       <%!-- Exposed grid --%>
       <div class="brutal-grid" aria-hidden="true">
@@ -32,6 +33,7 @@
 
   <%!-- Fantastic: random direction --%>
   <div id="hero-fantastic-wrap" class="flex-1 flex flex-col">
+    <.hero_photo photo={@fantastic_photo} class={["fantastic-photo", @fantastic_treatment_class]} />
     <%= case @direction do %>
       <% nil -> %>
       <% "transformation" -> %>
@@ -80,7 +82,7 @@
 
 <.latest_blog_section featured_post={@featured_post} recent_posts={@recent_posts} />
 
-<.meet_jamie />
+<.meet_jamie brilliant_photo={@brilliant_photo} fantastic_photo={@fantastic_photo} />
 
 <.contact_section
   form={@form}
