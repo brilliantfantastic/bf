@@ -68,6 +68,10 @@ defmodule Mix.Tasks.Bf.ProcessPhotos do
     quality = opts[:quality]
     force = opts[:force]
 
+    unless quality in 1..100 do
+      Mix.raise("Invalid --quality #{quality}. Must be an integer between 1 and 100.")
+    end
+
     widths =
       opts[:widths]
       |> String.split(",")
