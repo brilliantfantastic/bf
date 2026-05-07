@@ -63,12 +63,16 @@ defmodule Mix.Tasks.Bf.ProcessPhotosTest do
     drain_shell_messages()
 
     Mix.Tasks.Bf.ProcessPhotos.run([
-      "--source", tmp_source,
-      "--output", tmp_output,
-      "--widths", "480"
+      "--source",
+      tmp_source,
+      "--output",
+      tmp_output,
+      "--widths",
+      "480"
     ])
 
     expected_webp = Path.join([tmp_output, "brilliant", "test-photo-480.webp"])
+
     assert File.exists?(expected_webp),
            "expected #{expected_webp} to exist after processing"
   end
@@ -80,9 +84,12 @@ defmodule Mix.Tasks.Bf.ProcessPhotosTest do
     drain_shell_messages()
 
     Mix.Tasks.Bf.ProcessPhotos.run([
-      "--source", tmp_source,
-      "--output", tmp_output,
-      "--widths", "480"
+      "--source",
+      tmp_source,
+      "--output",
+      tmp_output,
+      "--widths",
+      "480"
     ])
 
     messages = collect_shell_messages()
