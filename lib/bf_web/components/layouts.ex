@@ -241,6 +241,34 @@ defmodule BrilliantFantasticWeb.Layouts do
   end
 
   @doc """
+  Renders the site-wide footer with the large Brillfan logo lockup.
+  """
+  def site_footer(assigns) do
+    ~H"""
+    <footer class="relative z-10 border-t border-base-300 bg-base-200/70 backdrop-blur">
+      <div class="px-6 lg:px-16 py-20 lg:py-32">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12 lg:gap-16">
+          <img
+            src={~p"/images/brillfan-robot.svg"}
+            alt="Brillfan, the Brilliant Fantastic robot mascot"
+            class="w-40 sm:w-48 lg:w-72 h-auto select-none"
+            draggable="false"
+          />
+          <div class="font-display leading-[0.9] text-center sm:text-left">
+            <span class="block text-6xl sm:text-7xl lg:text-9xl">brilliant</span>
+            <span class="block text-6xl sm:text-7xl lg:text-9xl text-primary">fantastic</span>
+          </div>
+        </div>
+
+        <p class="mt-16 text-center text-sm text-base-content/60">
+          &copy; {DateTime.utc_now().year} Brilliant Fantastic. &#47; Established 2006.
+        </p>
+      </div>
+    </footer>
+    """
+  end
+
+  @doc """
   Renders a decorative background of scattered sparkle shapes.
 
   Only visible when the fantastic theme is active, using the
