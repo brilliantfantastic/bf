@@ -108,10 +108,7 @@ defmodule Mix.Tasks.Bf.ProcessPhotos do
   defp process_side(side, source_dir, output_base, widths, quality, force) do
     side_source = Path.join(source_dir, side)
 
-    unless File.dir?(side_source) do
-      Mix.shell().info("[#{side}] source directory not found: #{side_source} — skipping")
-      :ok
-    else
+    if File.dir?(side_source) do
       jpgs = Path.wildcard(Path.join(side_source, "*.{jpg,jpeg}"))
 
       if jpgs == [] do
@@ -119,6 +116,9 @@ defmodule Mix.Tasks.Bf.ProcessPhotos do
       else
         Enum.each(jpgs, &process_file(&1, side, output_base, widths, quality, force))
       end
+    else
+      Mix.shell().info("[#{side}] source directory not found: #{side_source} — skipping")
+      :ok
     end
   end
 

@@ -1,6 +1,8 @@
 defmodule Mix.Tasks.Bf.ProcessPhotosTest do
   use ExUnit.Case, async: false
 
+  alias Mix.Tasks.Bf.ProcessPhotos
+
   # Mix task tests cannot run async: true because Mix.shell() is process-global.
 
   setup do
@@ -65,7 +67,7 @@ defmodule Mix.Tasks.Bf.ProcessPhotosTest do
   } do
     drain_shell_messages()
 
-    Mix.Tasks.Bf.ProcessPhotos.run([
+    ProcessPhotos.run([
       "--source",
       tmp_source,
       "--output",
@@ -89,7 +91,7 @@ defmodule Mix.Tasks.Bf.ProcessPhotosTest do
   } do
     drain_shell_messages()
 
-    Mix.Tasks.Bf.ProcessPhotos.run([
+    ProcessPhotos.run([
       "--source",
       tmp_source,
       "--output",
@@ -113,7 +115,7 @@ defmodule Mix.Tasks.Bf.ProcessPhotosTest do
   } do
     drain_shell_messages()
 
-    Mix.Tasks.Bf.ProcessPhotos.run([
+    ProcessPhotos.run([
       "--source",
       tmp_source,
       "--output",
@@ -149,11 +151,11 @@ defmodule Mix.Tasks.Bf.ProcessPhotosTest do
     ]
 
     drain_shell_messages()
-    Mix.Tasks.Bf.ProcessPhotos.run(args)
+    ProcessPhotos.run(args)
     drain_shell_messages()
 
     # Re-run — file is now up to date
-    Mix.Tasks.Bf.ProcessPhotos.run(args)
+    ProcessPhotos.run(args)
     messages = collect_shell_messages()
 
     assert Enum.any?(messages, fn msg ->
@@ -179,11 +181,11 @@ defmodule Mix.Tasks.Bf.ProcessPhotosTest do
     ]
 
     drain_shell_messages()
-    Mix.Tasks.Bf.ProcessPhotos.run(base_args)
+    ProcessPhotos.run(base_args)
     drain_shell_messages()
 
     # Force re-run
-    Mix.Tasks.Bf.ProcessPhotos.run(base_args ++ ["--force"])
+    ProcessPhotos.run(base_args ++ ["--force"])
     messages = collect_shell_messages()
 
     # Should log a success/variant line (not a skip)
