@@ -1305,6 +1305,7 @@ html {
 }
 
 .brutal-projects-list .brutal-project-image-frame img,
+.brutal-projects-list .brutal-project-image-frame video,
 .brutal-projects-list .brutal-project-image-frame .brutal-project-image-svg {
   display: block;
   width: 100%;
@@ -1312,8 +1313,9 @@ html {
   transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.brutal-projects-list .brutal-project-image-frame img {
-  object-fit: cover;
+.brutal-projects-list .brutal-project-image-frame img,
+.brutal-projects-list .brutal-project-image-frame video {
+  object-fit: contain;
 }
 
 .brutal-projects-list .brutal-project-image-frame .brutal-project-image-svg svg {

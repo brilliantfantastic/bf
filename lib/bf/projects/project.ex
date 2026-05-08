@@ -19,7 +19,11 @@ defmodule BrilliantFantastic.Projects.Project do
 
   @type link :: %{label: String.t(), url: String.t()}
 
-  @type image :: %{src: String.t(), alt: String.t()}
+  @type image :: %{
+          required(:src) => String.t(),
+          required(:alt) => String.t(),
+          optional(:poster) => String.t()
+        }
 
   @type t :: %__MODULE__{
           id: String.t(),

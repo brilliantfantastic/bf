@@ -25,19 +25,35 @@ defmodule BrilliantFantasticWeb.ProjectHTML do
   blowing the paint budget with 30+ rotated frames on screen.
   """
   def project_image(%{image: image} = assigns) do
-    case Map.get(@placeholder_svgs, image.src) do
-      nil ->
+    cond do
+      String.ends_with?(image.src, ".mp4") ->
+        assigns = assign_new(assigns, :poster, fn -> Map.get(image, :poster) end)
+
         ~H"""
-        <img src={@image.src} alt={@image.alt} loading="lazy" />
+        <video
+          src={@image.src}
+          poster={@poster}
+          aria-label={@image.alt}
+          autoplay
+          loop
+          muted
+          playsinline
+          preload="metadata"
+        />
         """
 
-      svg ->
+      svg = Map.get(@placeholder_svgs, image.src) ->
         assigns = assign(assigns, :svg, svg)
 
         ~H"""
         <span class="brutal-project-image-svg" role="img" aria-label={@image.alt}>
           {Phoenix.HTML.raw(@svg)}
         </span>
+        """
+
+      true ->
+        ~H"""
+        <img src={@image.src} alt={@image.alt} loading="lazy" />
         """
     end
   end

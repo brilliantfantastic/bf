@@ -22,9 +22,9 @@ defmodule BrilliantFantastic.Projects do
                   %{label: "Slack App", url: "https://slack.com/marketplace/A0EP69E58-tatsu"}
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-5.svg", alt: "Field Notes 1"},
-                  %{src: "/images/projects/placeholder-6.svg", alt: "Field Notes 2"},
-                  %{src: "/images/projects/placeholder-7.svg", alt: "Field Notes 3"}
+                  %{src: "/images/projects/tatsu-web.mp4", alt: "Tatsu website scroll"},
+                  %{src: "/images/projects/placeholder-6.svg", alt: "Tatsu in Slack"},
+                  %{src: "/images/projects/placeholder-7.svg", alt: "Tatsu syncup"}
                 ]
               },
               %{
