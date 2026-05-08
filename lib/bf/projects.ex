@@ -23,8 +23,8 @@ defmodule BrilliantFantastic.Projects do
                 ],
                 images: [
                   %{src: "/images/projects/tatsu-web.mp4", alt: "Tatsu website scroll"},
-                  %{src: "/images/projects/placeholder-6.svg", alt: "Tatsu in Slack"},
-                  %{src: "/images/projects/placeholder-7.svg", alt: "Tatsu syncup"}
+                  %{src: "/images/projects/tatsu-new-task.mp4", alt: "Creating a new task in Tatsu"},
+                  %{src: "/images/projects/tatsu-take-poll.mp4", alt: "Taking a poll in Tatsu"}
                 ]
               },
               %{
