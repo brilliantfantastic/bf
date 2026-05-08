@@ -86,6 +86,8 @@ defmodule BrilliantFantasticWeb do
       import Phoenix.HTML
       # Core UI components
       import BrilliantFantasticWeb.CoreComponents
+      # Photo background components
+      import BrilliantFantasticWeb.PhotoComponents
 
       # Common modules used in templates
       alias BrilliantFantasticWeb.Layouts

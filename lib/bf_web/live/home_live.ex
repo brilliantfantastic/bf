@@ -3,6 +3,7 @@ defmodule BrilliantFantasticWeb.HomeLive do
 
   alias BrilliantFantastic.Blog
   alias BrilliantFantastic.ContactForm
+  alias BrilliantFantastic.Photos
   alias BrilliantFantasticWeb.Components.Illustrations
 
   require Logger
@@ -53,6 +54,7 @@ defmodule BrilliantFantasticWeb.HomeLive do
       |> assign(:featured_post, List.first(posts))
       |> assign(:recent_posts, Enum.drop(posts, 1))
       |> assign(:direction, direction)
+      |> assign_photos_and_treatment()
       |> assign(:form, to_form(ContactForm.changeset(%{})))
       |> assign(:contact_submitted, false)
       |> assign(:success_headline, Enum.random(@success_headlines))
@@ -62,7 +64,12 @@ defmodule BrilliantFantasticWeb.HomeLive do
   end
 
   def handle_event("randomize-direction", _params, socket) do
-    {:noreply, assign(socket, :direction, Enum.random(@directions))}
+    direction = Enum.random(@directions)
+
+    {:noreply,
+     socket
+     |> assign(:direction, direction)
+     |> assign_photos_and_treatment()}
   end
 
   def handle_event("validate", %{"contact_form" => params}, socket) do
@@ -91,6 +98,36 @@ defmodule BrilliantFantasticWeb.HomeLive do
 
       {:error, changeset} ->
         {:noreply, assign(socket, form: to_form(changeset))}
+    end
+  end
+
+  defp assign_photos_and_treatment(socket) do
+    direction = socket.assigns[:direction]
+
+    socket
+    |> assign(:brilliant_photo, Photos.random(:brilliant))
+    |> assign(:fantastic_photo, Photos.random(:fantastic))
+    |> assign(:fantastic_treatment_class, treatment_group_for(direction))
+  end
+
+  def treatment_group_for(nil), do: nil
+
+  def treatment_group_for(direction) do
+    case direction do
+      d when d in ~w(neon_noir terminal chromatic) ->
+        "treatment-scanline"
+
+      d when d in ~w(holographic cosmic kaleidoscope generative_canvas) ->
+        "treatment-soft-glow"
+
+      d when d in ~w(brutalist typography_art fragments transformation anti_hero) ->
+        "treatment-structural"
+
+      d when d in ~w(botanical liquid world_building) ->
+        "treatment-organic"
+
+      _ ->
+        "treatment-restrained"
     end
   end
 

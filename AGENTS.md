@@ -1,5 +1,17 @@
 This is a web application written using the Phoenix web framework.
 
+## Adding photos
+
+To add new background photos to the hero or Meet Jamie sections:
+
+1. **Pre-rename** source JPG files with descriptive names in Finder (e.g. `headshot-01.jpg`, `studio-01.jpg`). The filename without extension becomes the WebP basename — no `DSC0xxxx` names.
+2. **Drop** renamed files into `priv/photos_source/brilliant/` (for the brilliant-side hero) or `priv/photos_source/fantastic/` (for the fantastic-side hero).
+3. **Process**: run `mix bf.process_photos`. This generates 480/960/1440/1920px WebP variants in `priv/static/images/photos/{brilliant,fantastic}/` and updates `priv/photos.manifest`.
+4. **Refresh**: in dev with code reload running, the photo registry recompiles automatically because the manifest changed — just refresh the page. No `mix compile --force` or server restart needed.
+5. **Commit** the generated WebP files in `priv/static/images/photos/` and the updated `priv/photos.manifest`. Do NOT commit the originals — `priv/photos_source/` is gitignored.
+
+Run `mix help bf.process_photos` for available flags (`--force`, `--quality`, `--widths`, `--source`).
+
 ## Project guidelines
 
 - Use `mix precommit` alias when you are done with all changes and fix any pending issues

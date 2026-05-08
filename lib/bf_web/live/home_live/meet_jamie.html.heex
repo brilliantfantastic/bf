@@ -39,9 +39,20 @@
         </div>
         <div class="brutal-image-frame">
           <img
-            src="/images/jamie.jpg"
+            :if={@brilliant_photo}
+            class="relative rounded-2xl -rotate-2 shadow-xl object-cover w-80 h-96 grayscale hover:grayscale-0 transition-all duration-500 brilliant-photo"
+            src={BrilliantFantastic.Photos.src(@brilliant_photo)}
+            srcset={BrilliantFantastic.Photos.srcset(@brilliant_photo)}
+            sizes="320px"
             alt="Jamie"
-            class="relative rounded-2xl -rotate-2 shadow-xl object-cover w-80 h-96 grayscale hover:grayscale-0 transition-all duration-500"
+          />
+          <img
+            :if={@fantastic_photo}
+            class="relative rounded-2xl -rotate-2 shadow-xl object-cover w-80 h-96 grayscale hover:grayscale-0 transition-all duration-500 fantastic-photo"
+            src={BrilliantFantastic.Photos.src(@fantastic_photo)}
+            srcset={BrilliantFantastic.Photos.srcset(@fantastic_photo)}
+            sizes="320px"
+            alt="Jamie"
           />
         </div>
       </div>

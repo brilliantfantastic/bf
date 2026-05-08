@@ -38,3 +38,10 @@ npm-debug.log
 # Claude Code
 .claude/
 
+# Photo source originals — processed locally, outputs committed, originals are not
+/priv/photos_source/**/*
+!/priv/photos_source/brilliant/
+!/priv/photos_source/fantastic/
+!/priv/photos_source/brilliant/.gitkeep
+!/priv/photos_source/fantastic/.gitkeep
+
