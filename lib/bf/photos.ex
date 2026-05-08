@@ -89,10 +89,13 @@ defmodule BrilliantFantastic.Photos do
   def src(%{name: name, side: side}), do: "/images/photos/#{side}/#{name}-960.webp"
 
   # nil-safe: returns nil when pool is empty (e.g. no photos processed yet).
+  # Uses Enum.take_random/2 because its return type is list() — this prevents
+  # dialyzer from narrowing the empty-list branch out at call sites where the
+  # compile-time manifest is non-empty.
   defp pick(names, side) do
-    case names do
+    case Enum.take_random(names, 1) do
       [] -> nil
-      _ -> %{name: Enum.random(names), side: side}
+      [name] -> %{name: name, side: side}
     end
   end
 end
