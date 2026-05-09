@@ -22,7 +22,8 @@ defmodule BrilliantFantastic.Projects.Project do
   @type image :: %{
           required(:src) => String.t(),
           required(:alt) => String.t(),
-          optional(:poster) => String.t()
+          optional(:poster) => String.t(),
+          optional(:padded) => boolean()
         }
 
   @type t :: %__MODULE__{

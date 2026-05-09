@@ -42,10 +42,8 @@ defmodule BrilliantFantastic.Projects do
                   %{label: "Check it out", url: "https://tape.mx"}
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Lorem Atlas screenshot 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Lorem Atlas screenshot 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Lorem Atlas screenshot 3"},
-                  %{src: "/images/projects/placeholder-4.svg", alt: "Lorem Atlas logo"}
+                  %{src: "/images/projects/mixtape-web-scroll.mp4", alt: "Mixtape website scroll"},
+                  %{src: "/images/projects/mixtape-add-song.mp4", alt: "Adding a song to a Mixtape"}
                 ]
               },
               %{
@@ -62,9 +60,8 @@ defmodule BrilliantFantastic.Projects do
                   %{label: "Useless website", url: "https://juvet.io"}
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{src: "/images/projects/juvet-logo.svg", alt: "Juvet logo", padded: true},
+                  %{src: "/images/projects/juvet-cheex-code.mp4", alt: "Cheex code built on Juvet"}
                 ]
               },
               %{
@@ -83,9 +80,8 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{src: "/images/projects/standup-logo.png", alt: "The Standup Podcast logo"},
+                  %{src: "/images/projects/placeholder-2.svg", alt: "The Standup 2"}
                 ]
               },
               %{

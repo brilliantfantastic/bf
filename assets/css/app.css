@@ -1318,6 +1318,11 @@ html {
   object-fit: contain;
 }
 
+.brutal-projects-list .brutal-project-image-frame img.brutal-project-image-padded,
+.brutal-projects-list .brutal-project-image-frame video.brutal-project-image-padded {
+  padding: 8%;
+}
+
 .brutal-projects-list .brutal-project-image-frame .brutal-project-image-svg svg {
   display: block;
   width: 100%;
@@ -1358,6 +1363,22 @@ html {
   --rot-hover: 6deg;
   --size: 62%;
   z-index: 4;
+}
+
+/* When there are only 2 images, place them on a balanced diagonal */
+.brutal-projects-list .brutal-project-image-frame:nth-child(1):nth-last-child(2) {
+  --tx: -90%;
+  --ty: -75%;
+  --rot: -6deg;
+  --rot-hover: -4deg;
+  --size: 62%;
+}
+.brutal-projects-list .brutal-project-image-frame:nth-child(1):nth-last-child(2) ~ .brutal-project-image-frame:nth-child(2) {
+  --tx: -10%;
+  --ty: -25%;
+  --rot: 5deg;
+  --rot-hover: 3deg;
+  --size: 62%;
 }
 
 /* When there are only 3 images, soften the spread so the stack stays balanced */

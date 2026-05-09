@@ -25,14 +25,20 @@ defmodule BrilliantFantasticWeb.ProjectHTML do
   blowing the paint budget with 30+ rotated frames on screen.
   """
   def project_image(%{image: image} = assigns) do
+    padded_class = if Map.get(image, :padded), do: "brutal-project-image-padded", else: nil
+
+    assigns =
+      assigns
+      |> assign(:padded_class, padded_class)
+      |> assign_new(:poster, fn -> Map.get(image, :poster) end)
+
     cond do
       String.ends_with?(image.src, ".mp4") ->
-        assigns = assign_new(assigns, :poster, fn -> Map.get(image, :poster) end)
-
         ~H"""
         <video
           src={@image.src}
           poster={@poster}
+          class={@padded_class}
           aria-label={@image.alt}
           autoplay
           loop
@@ -53,7 +59,7 @@ defmodule BrilliantFantasticWeb.ProjectHTML do
 
       true ->
         ~H"""
-        <img src={@image.src} alt={@image.alt} loading="lazy" />
+        <img src={@image.src} alt={@image.alt} class={@padded_class} loading="lazy" />
         """
     end
   end
