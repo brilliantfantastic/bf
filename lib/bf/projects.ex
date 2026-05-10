@@ -107,9 +107,9 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{src: "/images/projects/chronic-logo.png", alt: "Chronic logo", padded: true},
+                  %{src: "/images/projects/placeholder-2.svg", alt: "Chronic 2"},
+                  %{src: "/images/projects/placeholder-3.svg", alt: "Chronic 3"}
                 ]
               },
               %{
@@ -129,9 +129,9 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{src: "/images/projects/lebotski-logo.jpg", alt: "Lebotski logo"},
+                  %{src: "/images/projects/lebotski-using.mp4", alt: "Using Lebotski in Slack"},
+                  %{src: "/images/projects/lebotski-talk.mp4", alt: "Lebotski talk demo"}
                 ]
               },
               %{
@@ -153,7 +153,7 @@ defmodule BrilliantFantastic.Projects do
                 ],
                 images: [
                   %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
+                  %{src: "/images/projects/kinship-shirts.jpg", alt: "Kinship branded shirts"},
                   %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
                 ]
               },
@@ -179,9 +179,9 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-5.svg", alt: "Quietly Brilliant 1"},
-                  %{src: "/images/projects/placeholder-6.svg", alt: "Quietly Brilliant 2"},
-                  %{src: "/images/projects/placeholder-7.svg", alt: "Quietly Brilliant 3"}
+                  %{src: "/images/projects/seed-logo.png", alt: "Seed Coworking logo", padded: true},
+                  %{src: "/images/projects/placeholder-6.svg", alt: "Seed Coworking 2"},
+                  %{src: "/images/projects/placeholder-7.svg", alt: "Seed Coworking 3"}
                 ]
               },
               %{
