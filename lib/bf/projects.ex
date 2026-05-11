@@ -180,7 +180,7 @@ defmodule BrilliantFantastic.Projects do
                 ],
                 images: [
                   %{src: "/images/projects/seed-logo.png", alt: "Seed Coworking logo", padded: true},
-                  %{src: "/images/projects/placeholder-6.svg", alt: "Seed Coworking 2"},
+                  %{src: "/images/projects/seed-floorplan.jpg", alt: "Seed Coworking floorplan"},
                   %{src: "/images/projects/placeholder-7.svg", alt: "Seed Coworking 3"}
                 ]
               },
