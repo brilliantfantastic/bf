@@ -250,8 +250,7 @@ defmodule BrilliantFantastic.Projects do
                 ],
                 images: [
                   %{src: "/images/projects/funnelcake-logo.jpg", alt: "Funnelcake logo", padded: true},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Funnelcake 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Funnelcake 3"}
+                  %{src: "/images/projects/funnelcake-web.jpg", alt: "Funnelcake website"}
                 ]
               },
               %{
