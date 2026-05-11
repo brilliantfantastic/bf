@@ -4,14 +4,20 @@ defmodule BrilliantFantasticWeb.ProjectHTML do
   # Inline placeholder SVGs at compile time so they paint as part of the
   # parent layer instead of going through the <img> rasterization path —
   # 30+ rotated SVGs were causing long paint frames during scroll.
-  for n <- 1..7 do
-    @external_resource "priv/static/images/projects/placeholder-#{n}.svg"
+  @placeholder_names ~w(
+    coming very soon
+    coming-2 very-2 soon-2
+    coming-3 very-3 soon-3
+  )
+
+  for name <- @placeholder_names do
+    @external_resource "priv/static/images/projects/placeholder-#{name}.svg"
   end
 
-  @placeholder_svgs (for n <- 1..7, into: %{} do
-                       path = "priv/static/images/projects/placeholder-#{n}.svg"
+  @placeholder_svgs (for name <- @placeholder_names, into: %{} do
+                       path = "priv/static/images/projects/placeholder-#{name}.svg"
 
-                       {"/images/projects/placeholder-#{n}.svg",
+                       {"/images/projects/placeholder-#{name}.svg",
                         path |> File.read!() |> String.trim()}
                      end)
 
@@ -25,19 +31,41 @@ defmodule BrilliantFantasticWeb.ProjectHTML do
   blowing the paint budget with 30+ rotated frames on screen.
   """
   def project_image(%{image: image} = assigns) do
-    case Map.get(@placeholder_svgs, image.src) do
-      nil ->
+    padded_class = if Map.get(image, :padded), do: "brutal-project-image-padded", else: nil
+
+    assigns =
+      assigns
+      |> assign(:padded_class, padded_class)
+      |> assign_new(:poster, fn -> Map.get(image, :poster) end)
+
+    cond do
+      String.ends_with?(image.src, ".mp4") ->
         ~H"""
-        <img src={@image.src} alt={@image.alt} loading="lazy" />
+        <video
+          src={@image.src}
+          poster={@poster}
+          class={@padded_class}
+          aria-label={@image.alt}
+          autoplay
+          loop
+          muted
+          playsinline
+          preload="metadata"
+        />
         """
 
-      svg ->
+      svg = Map.get(@placeholder_svgs, image.src) ->
         assigns = assign(assigns, :svg, svg)
 
         ~H"""
         <span class="brutal-project-image-svg" role="img" aria-label={@image.alt}>
           {Phoenix.HTML.raw(@svg)}
         </span>
+        """
+
+      true ->
+        ~H"""
+        <img src={@image.src} alt={@image.alt} class={@padded_class} loading="lazy" />
         """
     end
   end

@@ -1305,6 +1305,7 @@ html {
 }
 
 .brutal-projects-list .brutal-project-image-frame img,
+.brutal-projects-list .brutal-project-image-frame video,
 .brutal-projects-list .brutal-project-image-frame .brutal-project-image-svg {
   display: block;
   width: 100%;
@@ -1312,8 +1313,14 @@ html {
   transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.brutal-projects-list .brutal-project-image-frame img {
-  object-fit: cover;
+.brutal-projects-list .brutal-project-image-frame img,
+.brutal-projects-list .brutal-project-image-frame video {
+  object-fit: contain;
+}
+
+.brutal-projects-list .brutal-project-image-frame img.brutal-project-image-padded,
+.brutal-projects-list .brutal-project-image-frame video.brutal-project-image-padded {
+  padding: 8%;
 }
 
 .brutal-projects-list .brutal-project-image-frame .brutal-project-image-svg svg {
@@ -1331,7 +1338,7 @@ html {
   --rot: -9deg;
   --rot-hover: -7deg;
   --size: 55%;
-  z-index: 1;
+  z-index: 4;
 }
 .brutal-projects-list .brutal-project-image-frame:nth-child(2) {
   --tx: -5%;
@@ -1339,7 +1346,7 @@ html {
   --rot: 5deg;
   --rot-hover: 3deg;
   --size: 65%;
-  z-index: 2;
+  z-index: 3;
 }
 .brutal-projects-list .brutal-project-image-frame:nth-child(3) {
   --tx: -100%;
@@ -1347,7 +1354,7 @@ html {
   --rot: -3deg;
   --rot-hover: -1deg;
   --size: 48%;
-  z-index: 3;
+  z-index: 2;
 }
 .brutal-projects-list .brutal-project-image-frame:nth-child(4) {
   --tx: -5%;
@@ -1355,7 +1362,32 @@ html {
   --rot: 8deg;
   --rot-hover: 6deg;
   --size: 62%;
-  z-index: 4;
+  z-index: 1;
+}
+
+/* When there is only 1 image, center it in the square frame */
+.brutal-projects-list .brutal-project-image-frame:nth-child(1):nth-last-child(1) {
+  --tx: -50%;
+  --ty: -50%;
+  --rot: -2deg;
+  --rot-hover: 1deg;
+  --size: 80%;
+}
+
+/* When there are only 2 images, place them on a balanced diagonal */
+.brutal-projects-list .brutal-project-image-frame:nth-child(1):nth-last-child(2) {
+  --tx: -90%;
+  --ty: -75%;
+  --rot: -6deg;
+  --rot-hover: -4deg;
+  --size: 62%;
+}
+.brutal-projects-list .brutal-project-image-frame:nth-child(1):nth-last-child(2) ~ .brutal-project-image-frame:nth-child(2) {
+  --tx: -10%;
+  --ty: -25%;
+  --rot: 5deg;
+  --rot-hover: 3deg;
+  --size: 62%;
 }
 
 /* When there are only 3 images, soften the spread so the stack stays balanced */

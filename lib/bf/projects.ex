@@ -22,9 +22,12 @@ defmodule BrilliantFantastic.Projects do
                   %{label: "Slack App", url: "https://slack.com/marketplace/A0EP69E58-tatsu"}
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-5.svg", alt: "Field Notes 1"},
-                  %{src: "/images/projects/placeholder-6.svg", alt: "Field Notes 2"},
-                  %{src: "/images/projects/placeholder-7.svg", alt: "Field Notes 3"}
+                  %{src: "/images/projects/tatsu-web.mp4", alt: "Tatsu website scroll"},
+                  %{
+                    src: "/images/projects/tatsu-new-task.mp4",
+                    alt: "Creating a new task in Tatsu"
+                  },
+                  %{src: "/images/projects/tatsu-take-poll.mp4", alt: "Taking a poll in Tatsu"}
                 ]
               },
               %{
@@ -42,10 +45,14 @@ defmodule BrilliantFantastic.Projects do
                   %{label: "Check it out", url: "https://tape.mx"}
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Lorem Atlas screenshot 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Lorem Atlas screenshot 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Lorem Atlas screenshot 3"},
-                  %{src: "/images/projects/placeholder-4.svg", alt: "Lorem Atlas logo"}
+                  %{
+                    src: "/images/projects/mixtape-web-scroll.mp4",
+                    alt: "Mixtape website scroll"
+                  },
+                  %{
+                    src: "/images/projects/mixtape-add-song.mp4",
+                    alt: "Adding a song to a Mixtape"
+                  }
                 ]
               },
               %{
@@ -62,9 +69,11 @@ defmodule BrilliantFantastic.Projects do
                   %{label: "Useless website", url: "https://juvet.io"}
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{src: "/images/projects/juvet-logo.svg", alt: "Juvet logo", padded: true},
+                  %{
+                    src: "/images/projects/juvet-cheex-code.mp4",
+                    alt: "Cheex code built on Juvet"
+                  }
                 ]
               },
               %{
@@ -83,9 +92,11 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{src: "/images/projects/standup-logo.png", alt: "The Standup Podcast logo"},
+                  %{
+                    src: "/images/projects/standup-podcast-search.mp4",
+                    alt: "Searching The Standup Podcast"
+                  }
                 ]
               },
               %{
@@ -111,9 +122,8 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{src: "/images/projects/chronic-logo.png", alt: "Chronic logo", padded: true},
+                  %{src: "/images/projects/chronic-talk.mp4", alt: "Chronic conference talk"}
                 ]
               },
               %{
@@ -133,9 +143,9 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{src: "/images/projects/lebotski-logo.jpg", alt: "Lebotski logo"},
+                  %{src: "/images/projects/lebotski-talk.mp4", alt: "Lebotski talk demo"},
+                  %{src: "/images/projects/lebotski-using.mp4", alt: "Using Lebotski in Slack"}
                 ]
               },
               %{
@@ -156,9 +166,13 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{src: "/images/projects/kinship-logo.jpg", alt: "Kinship logo"},
+                  %{
+                    src: "/images/projects/kinship-wall-logo.jpg",
+                    alt: "Kinship logo on the office wall"
+                  },
+                  %{src: "/images/projects/kinship-travel.jpg", alt: "Kinship team travel"},
+                  %{src: "/images/projects/kinship-working.jpg", alt: "Kinship team working"}
                 ]
               },
               %{
@@ -183,9 +197,13 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-5.svg", alt: "Quietly Brilliant 1"},
-                  %{src: "/images/projects/placeholder-6.svg", alt: "Quietly Brilliant 2"},
-                  %{src: "/images/projects/placeholder-7.svg", alt: "Quietly Brilliant 3"}
+                  %{
+                    src: "/images/projects/seed-logo.png",
+                    alt: "Seed Coworking logo",
+                    padded: true
+                  },
+                  %{src: "/images/projects/seed-floorplan.jpg", alt: "Seed Coworking floorplan"},
+                  %{src: "/images/projects/seed-website.jpg", alt: "Seed Coworking website"}
                 ]
               },
               %{
@@ -210,9 +228,12 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{src: "/images/projects/training-flyer.jpg", alt: "Delicious Training flyer"},
+                  %{
+                    src: "/images/projects/training-poster.png",
+                    alt: "Delicious Training poster"
+                  },
+                  %{src: "/images/projects/keith-training.jpg", alt: "Keith leading a training"}
                 ]
               },
               %{
@@ -231,9 +252,12 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{
+                    src: "/images/projects/callback-logo.png",
+                    alt: "Callback logo",
+                    padded: true
+                  },
+                  %{src: "/images/projects/callback-screenshot.png", alt: "Callback screenshot"}
                 ]
               },
               %{
@@ -253,9 +277,12 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{
+                    src: "/images/projects/funnelcake-logo.jpg",
+                    alt: "Funnelcake logo",
+                    padded: true
+                  },
+                  %{src: "/images/projects/funnelcake-web.jpg", alt: "Funnelcake website"}
                 ]
               },
               %{
@@ -275,9 +302,19 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-5.svg", alt: "Greenhouse 1"},
-                  %{src: "/images/projects/placeholder-6.svg", alt: "Greenhouse 2"},
-                  %{src: "/images/projects/placeholder-7.svg", alt: "Greenhouse 3"}
+                  %{src: "/images/projects/lookbooth-logo.png", alt: "Lookbooth logo"},
+                  %{
+                    src: "/images/projects/lookbooth-wedding-gallery.jpg",
+                    alt: "Lookbooth wedding gallery"
+                  },
+                  %{
+                    src: "/images/projects/lookbooth-event-gallery.jpg",
+                    alt: "Lookbooth event gallery"
+                  },
+                  %{
+                    src: "/images/projects/lookbooth-starwars-gallery.jpg",
+                    alt: "Lookbooth Star Wars gallery"
+                  }
                 ]
               },
               %{
@@ -302,10 +339,7 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Tatsu 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Tatsu 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Tatsu 3"},
-                  %{src: "/images/projects/placeholder-4.svg", alt: "Tatsu 4"}
+                  %{src: "/images/projects/koki-logo.svg", alt: "Koki logo", padded: true}
                 ]
               },
               %{
@@ -325,10 +359,10 @@ defmodule BrilliantFantastic.Projects do
                   %{label: "Old Twitter account", url: "https://twitter.com/morale"}
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Pocket Compass 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Pocket Compass 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Pocket Compass 3"},
-                  %{src: "/images/projects/placeholder-4.svg", alt: "Pocket Compass 4"}
+                  %{src: "/images/projects/morale-logo.png", alt: "Morale logo", padded: true},
+                  %{src: "/images/projects/morale-website.jpg", alt: "Morale marketing site"},
+                  %{src: "/images/projects/morale-dashboard.jpg", alt: "Morale dashboard"},
+                  %{src: "/images/projects/morale-tickets.png", alt: "Morale tickets view"}
                 ]
               },
               %{
@@ -343,9 +377,9 @@ defmodule BrilliantFantastic.Projects do
                   %{label: "Future home", url: "https://machinegobrrr.com"}
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{src: "/images/projects/placeholder-coming.svg", alt: "Coming"},
+                  %{src: "/images/projects/placeholder-very.svg", alt: "Very"},
+                  %{src: "/images/projects/placeholder-soon.svg", alt: "Soon"}
                 ]
               },
               %{
@@ -361,9 +395,9 @@ defmodule BrilliantFantastic.Projects do
                   %{label: "Future home", url: "https://aisleway.com"}
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{src: "/images/projects/placeholder-coming-2.svg", alt: "Coming"},
+                  %{src: "/images/projects/placeholder-very-2.svg", alt: "Very"},
+                  %{src: "/images/projects/placeholder-soon-2.svg", alt: "Soon"}
                 ]
               },
               %{
@@ -385,9 +419,9 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{src: "/images/projects/placeholder-coming-3.svg", alt: "Coming"},
+                  %{src: "/images/projects/placeholder-very-3.svg", alt: "Very"},
+                  %{src: "/images/projects/placeholder-soon-3.svg", alt: "Soon"}
                 ]
               }
             ]
