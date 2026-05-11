@@ -23,7 +23,10 @@ defmodule BrilliantFantastic.Projects do
                 ],
                 images: [
                   %{src: "/images/projects/tatsu-web.mp4", alt: "Tatsu website scroll"},
-                  %{src: "/images/projects/tatsu-new-task.mp4", alt: "Creating a new task in Tatsu"},
+                  %{
+                    src: "/images/projects/tatsu-new-task.mp4",
+                    alt: "Creating a new task in Tatsu"
+                  },
                   %{src: "/images/projects/tatsu-take-poll.mp4", alt: "Taking a poll in Tatsu"}
                 ]
               },
@@ -42,8 +45,14 @@ defmodule BrilliantFantastic.Projects do
                   %{label: "Check it out", url: "https://tape.mx"}
                 ],
                 images: [
-                  %{src: "/images/projects/mixtape-web-scroll.mp4", alt: "Mixtape website scroll"},
-                  %{src: "/images/projects/mixtape-add-song.mp4", alt: "Adding a song to a Mixtape"}
+                  %{
+                    src: "/images/projects/mixtape-web-scroll.mp4",
+                    alt: "Mixtape website scroll"
+                  },
+                  %{
+                    src: "/images/projects/mixtape-add-song.mp4",
+                    alt: "Adding a song to a Mixtape"
+                  }
                 ]
               },
               %{
@@ -61,7 +70,10 @@ defmodule BrilliantFantastic.Projects do
                 ],
                 images: [
                   %{src: "/images/projects/juvet-logo.svg", alt: "Juvet logo", padded: true},
-                  %{src: "/images/projects/juvet-cheex-code.mp4", alt: "Cheex code built on Juvet"}
+                  %{
+                    src: "/images/projects/juvet-cheex-code.mp4",
+                    alt: "Cheex code built on Juvet"
+                  }
                 ]
               },
               %{
@@ -81,7 +93,10 @@ defmodule BrilliantFantastic.Projects do
                 ],
                 images: [
                   %{src: "/images/projects/standup-logo.png", alt: "The Standup Podcast logo"},
-                  %{src: "/images/projects/standup-podcast-search.mp4", alt: "Searching The Standup Podcast"}
+                  %{
+                    src: "/images/projects/standup-podcast-search.mp4",
+                    alt: "Searching The Standup Podcast"
+                  }
                 ]
               },
               %{
@@ -152,7 +167,10 @@ defmodule BrilliantFantastic.Projects do
                 ],
                 images: [
                   %{src: "/images/projects/kinship-logo.jpg", alt: "Kinship logo"},
-                  %{src: "/images/projects/kinship-wall-logo.jpg", alt: "Kinship logo on the office wall"},
+                  %{
+                    src: "/images/projects/kinship-wall-logo.jpg",
+                    alt: "Kinship logo on the office wall"
+                  },
                   %{src: "/images/projects/kinship-travel.jpg", alt: "Kinship team travel"},
                   %{src: "/images/projects/kinship-working.jpg", alt: "Kinship team working"}
                 ]
@@ -179,7 +197,11 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/seed-logo.png", alt: "Seed Coworking logo", padded: true},
+                  %{
+                    src: "/images/projects/seed-logo.png",
+                    alt: "Seed Coworking logo",
+                    padded: true
+                  },
                   %{src: "/images/projects/seed-floorplan.jpg", alt: "Seed Coworking floorplan"},
                   %{src: "/images/projects/seed-website.jpg", alt: "Seed Coworking website"}
                 ]
@@ -207,7 +229,10 @@ defmodule BrilliantFantastic.Projects do
                 ],
                 images: [
                   %{src: "/images/projects/training-flyer.jpg", alt: "Delicious Training flyer"},
-                  %{src: "/images/projects/training-poster.png", alt: "Delicious Training poster"},
+                  %{
+                    src: "/images/projects/training-poster.png",
+                    alt: "Delicious Training poster"
+                  },
                   %{src: "/images/projects/keith-training.jpg", alt: "Keith leading a training"}
                 ]
               },
@@ -227,7 +252,11 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/callback-logo.png", alt: "Callback logo", padded: true},
+                  %{
+                    src: "/images/projects/callback-logo.png",
+                    alt: "Callback logo",
+                    padded: true
+                  },
                   %{src: "/images/projects/callback-screenshot.png", alt: "Callback screenshot"}
                 ]
               },
@@ -248,7 +277,11 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/funnelcake-logo.jpg", alt: "Funnelcake logo", padded: true},
+                  %{
+                    src: "/images/projects/funnelcake-logo.jpg",
+                    alt: "Funnelcake logo",
+                    padded: true
+                  },
                   %{src: "/images/projects/funnelcake-web.jpg", alt: "Funnelcake website"}
                 ]
               },
@@ -270,9 +303,18 @@ defmodule BrilliantFantastic.Projects do
                 ],
                 images: [
                   %{src: "/images/projects/lookbooth-logo.png", alt: "Lookbooth logo"},
-                  %{src: "/images/projects/lookbooth-wedding-gallery.jpg", alt: "Lookbooth wedding gallery"},
-                  %{src: "/images/projects/lookbooth-event-gallery.jpg", alt: "Lookbooth event gallery"},
-                  %{src: "/images/projects/lookbooth-starwars-gallery.jpg", alt: "Lookbooth Star Wars gallery"}
+                  %{
+                    src: "/images/projects/lookbooth-wedding-gallery.jpg",
+                    alt: "Lookbooth wedding gallery"
+                  },
+                  %{
+                    src: "/images/projects/lookbooth-event-gallery.jpg",
+                    alt: "Lookbooth event gallery"
+                  },
+                  %{
+                    src: "/images/projects/lookbooth-starwars-gallery.jpg",
+                    alt: "Lookbooth Star Wars gallery"
+                  }
                 ]
               },
               %{
