@@ -1365,6 +1365,15 @@ html {
   z-index: 4;
 }
 
+/* When there is only 1 image, center it in the square frame */
+.brutal-projects-list .brutal-project-image-frame:nth-child(1):nth-last-child(1) {
+  --tx: -50%;
+  --ty: -50%;
+  --rot: -2deg;
+  --rot-hover: 1deg;
+  --size: 80%;
+}
+
 /* When there are only 2 images, place them on a balanced diagonal */
 .brutal-projects-list .brutal-project-image-frame:nth-child(1):nth-last-child(2) {
   --tx: -90%;

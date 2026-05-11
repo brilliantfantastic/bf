@@ -153,8 +153,9 @@ defmodule BrilliantFantastic.Projects do
                 ],
                 images: [
                   %{src: "/images/projects/kinship-logo.jpg", alt: "Kinship logo"},
-                  %{src: "/images/projects/kinship-shirts.jpg", alt: "Kinship branded shirts"},
-                  %{src: "/images/projects/kinship-travel.jpg", alt: "Kinship team travel"}
+                  %{src: "/images/projects/kinship-wall-logo.jpg", alt: "Kinship logo on the office wall"},
+                  %{src: "/images/projects/kinship-travel.jpg", alt: "Kinship team travel"},
+                  %{src: "/images/projects/kinship-working.jpg", alt: "Kinship team working"}
                 ]
               },
               %{
@@ -181,7 +182,7 @@ defmodule BrilliantFantastic.Projects do
                 images: [
                   %{src: "/images/projects/seed-logo.png", alt: "Seed Coworking logo", padded: true},
                   %{src: "/images/projects/seed-floorplan.jpg", alt: "Seed Coworking floorplan"},
-                  %{src: "/images/projects/placeholder-7.svg", alt: "Seed Coworking 3"}
+                  %{src: "/images/projects/seed-website.jpg", alt: "Seed Coworking website"}
                 ]
               },
               %{
@@ -248,9 +249,9 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{src: "/images/projects/funnelcake-logo.jpg", alt: "Funnelcake logo", padded: true},
+                  %{src: "/images/projects/placeholder-2.svg", alt: "Funnelcake 2"},
+                  %{src: "/images/projects/placeholder-3.svg", alt: "Funnelcake 3"}
                 ]
               },
               %{
@@ -271,8 +272,9 @@ defmodule BrilliantFantastic.Projects do
                 ],
                 images: [
                   %{src: "/images/projects/lookbooth-logo.png", alt: "Lookbooth logo"},
-                  %{src: "/images/projects/placeholder-6.svg", alt: "Lookbooth 2"},
-                  %{src: "/images/projects/placeholder-7.svg", alt: "Lookbooth 3"}
+                  %{src: "/images/projects/lookbooth-wedding-gallery.jpg", alt: "Lookbooth wedding gallery"},
+                  %{src: "/images/projects/lookbooth-event-gallery.jpg", alt: "Lookbooth event gallery"},
+                  %{src: "/images/projects/lookbooth-starwars-gallery.jpg", alt: "Lookbooth Star Wars gallery"}
                 ]
               },
               %{
@@ -297,10 +299,7 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Tatsu 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Tatsu 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Tatsu 3"},
-                  %{src: "/images/projects/placeholder-4.svg", alt: "Tatsu 4"}
+                  %{src: "/images/projects/koki-logo.svg", alt: "Koki logo", padded: true}
                 ]
               },
               %{
@@ -320,10 +319,10 @@ defmodule BrilliantFantastic.Projects do
                   %{label: "Old Twitter account", url: "https://twitter.com/morale"}
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Pocket Compass 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Pocket Compass 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Pocket Compass 3"},
-                  %{src: "/images/projects/placeholder-4.svg", alt: "Pocket Compass 4"}
+                  %{src: "/images/projects/morale-logo.png", alt: "Morale logo", padded: true},
+                  %{src: "/images/projects/morale-website.jpg", alt: "Morale marketing site"},
+                  %{src: "/images/projects/morale-dashboard.jpg", alt: "Morale dashboard"},
+                  %{src: "/images/projects/morale-tickets.png", alt: "Morale tickets view"}
                 ]
               },
               %{
