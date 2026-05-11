@@ -5,7 +5,7 @@ defmodule BrilliantFantasticWeb.ProjectHTML do
   # parent layer instead of going through the <img> rasterization path —
   # 30+ rotated SVGs were causing long paint frames during scroll.
   @placeholder_names ~w(
-    1 2 3 4 5 6 7
+    2 3
     coming very soon
     coming-2 very-2 soon-2
     coming-3 very-3 soon-3
