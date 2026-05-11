@@ -4,14 +4,21 @@ defmodule BrilliantFantasticWeb.ProjectHTML do
   # Inline placeholder SVGs at compile time so they paint as part of the
   # parent layer instead of going through the <img> rasterization path —
   # 30+ rotated SVGs were causing long paint frames during scroll.
-  for n <- 1..7 do
-    @external_resource "priv/static/images/projects/placeholder-#{n}.svg"
+  @placeholder_names ~w(
+    1 2 3 4 5 6 7
+    coming very soon
+    coming-2 very-2 soon-2
+    coming-3 very-3 soon-3
+  )
+
+  for name <- @placeholder_names do
+    @external_resource "priv/static/images/projects/placeholder-#{name}.svg"
   end
 
-  @placeholder_svgs (for n <- 1..7, into: %{} do
-                       path = "priv/static/images/projects/placeholder-#{n}.svg"
+  @placeholder_svgs (for name <- @placeholder_names, into: %{} do
+                       path = "priv/static/images/projects/placeholder-#{name}.svg"
 
-                       {"/images/projects/placeholder-#{n}.svg",
+                       {"/images/projects/placeholder-#{name}.svg",
                         path |> File.read!() |> String.trim()}
                      end)
 

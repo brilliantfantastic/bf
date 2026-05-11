@@ -337,9 +337,9 @@ defmodule BrilliantFantastic.Projects do
                   %{label: "Future home", url: "https://machinegobrrr.com"}
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{src: "/images/projects/placeholder-coming.svg", alt: "Coming"},
+                  %{src: "/images/projects/placeholder-very.svg", alt: "Very"},
+                  %{src: "/images/projects/placeholder-soon.svg", alt: "Soon"}
                 ]
               },
               %{
@@ -355,9 +355,9 @@ defmodule BrilliantFantastic.Projects do
                   %{label: "Future home", url: "https://aisleway.com"}
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{src: "/images/projects/placeholder-coming-2.svg", alt: "Coming"},
+                  %{src: "/images/projects/placeholder-very-2.svg", alt: "Very"},
+                  %{src: "/images/projects/placeholder-soon-2.svg", alt: "Soon"}
                 ]
               },
               %{
@@ -379,9 +379,9 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{src: "/images/projects/placeholder-coming-3.svg", alt: "Coming"},
+                  %{src: "/images/projects/placeholder-very-3.svg", alt: "Very"},
+                  %{src: "/images/projects/placeholder-soon-3.svg", alt: "Soon"}
                 ]
               }
             ]
