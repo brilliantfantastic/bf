@@ -130,8 +130,8 @@ defmodule BrilliantFantastic.Projects do
                 ],
                 images: [
                   %{src: "/images/projects/lebotski-logo.jpg", alt: "Lebotski logo"},
-                  %{src: "/images/projects/lebotski-using.mp4", alt: "Using Lebotski in Slack"},
-                  %{src: "/images/projects/lebotski-talk.mp4", alt: "Lebotski talk demo"}
+                  %{src: "/images/projects/lebotski-talk.mp4", alt: "Lebotski talk demo"},
+                  %{src: "/images/projects/lebotski-using.mp4", alt: "Using Lebotski in Slack"}
                 ]
               },
               %{
@@ -152,9 +152,9 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
+                  %{src: "/images/projects/kinship-logo.jpg", alt: "Kinship logo"},
                   %{src: "/images/projects/kinship-shirts.jpg", alt: "Kinship branded shirts"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{src: "/images/projects/kinship-travel.jpg", alt: "Kinship team travel"}
                 ]
               },
               %{
@@ -206,9 +206,9 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{src: "/images/projects/training-flyer.jpg", alt: "Delicious Training flyer"},
+                  %{src: "/images/projects/training-poster.png", alt: "Delicious Training poster"},
+                  %{src: "/images/projects/keith-training.jpg", alt: "Keith leading a training"}
                 ]
               },
               %{
@@ -227,9 +227,8 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-1.svg", alt: "Kinship 1"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Kinship 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Kinship 3"}
+                  %{src: "/images/projects/callback-logo.png", alt: "Callback logo", padded: true},
+                  %{src: "/images/projects/callback-screenshot.png", alt: "Callback screenshot"}
                 ]
               },
               %{
@@ -271,9 +270,9 @@ defmodule BrilliantFantastic.Projects do
                   }
                 ],
                 images: [
-                  %{src: "/images/projects/placeholder-5.svg", alt: "Greenhouse 1"},
-                  %{src: "/images/projects/placeholder-6.svg", alt: "Greenhouse 2"},
-                  %{src: "/images/projects/placeholder-7.svg", alt: "Greenhouse 3"}
+                  %{src: "/images/projects/lookbooth-logo.png", alt: "Lookbooth logo"},
+                  %{src: "/images/projects/placeholder-6.svg", alt: "Lookbooth 2"},
+                  %{src: "/images/projects/placeholder-7.svg", alt: "Lookbooth 3"}
                 ]
               },
               %{
