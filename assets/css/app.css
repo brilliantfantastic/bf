@@ -1338,7 +1338,7 @@ html {
   --rot: -9deg;
   --rot-hover: -7deg;
   --size: 55%;
-  z-index: 1;
+  z-index: 4;
 }
 .brutal-projects-list .brutal-project-image-frame:nth-child(2) {
   --tx: -5%;
@@ -1346,7 +1346,7 @@ html {
   --rot: 5deg;
   --rot-hover: 3deg;
   --size: 65%;
-  z-index: 2;
+  z-index: 3;
 }
 .brutal-projects-list .brutal-project-image-frame:nth-child(3) {
   --tx: -100%;
@@ -1354,7 +1354,7 @@ html {
   --rot: -3deg;
   --rot-hover: -1deg;
   --size: 48%;
-  z-index: 3;
+  z-index: 2;
 }
 .brutal-projects-list .brutal-project-image-frame:nth-child(4) {
   --tx: -5%;
@@ -1362,7 +1362,7 @@ html {
   --rot: 8deg;
   --rot-hover: 6deg;
   --size: 62%;
-  z-index: 4;
+  z-index: 1;
 }
 
 /* When there is only 1 image, center it in the square frame */

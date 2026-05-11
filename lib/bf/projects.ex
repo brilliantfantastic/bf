@@ -81,7 +81,7 @@ defmodule BrilliantFantastic.Projects do
                 ],
                 images: [
                   %{src: "/images/projects/standup-logo.png", alt: "The Standup Podcast logo"},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "The Standup 2"}
+                  %{src: "/images/projects/standup-podcast-search.mp4", alt: "Searching The Standup Podcast"}
                 ]
               },
               %{
@@ -108,8 +108,7 @@ defmodule BrilliantFantastic.Projects do
                 ],
                 images: [
                   %{src: "/images/projects/chronic-logo.png", alt: "Chronic logo", padded: true},
-                  %{src: "/images/projects/placeholder-2.svg", alt: "Chronic 2"},
-                  %{src: "/images/projects/placeholder-3.svg", alt: "Chronic 3"}
+                  %{src: "/images/projects/chronic-talk.mp4", alt: "Chronic conference talk"}
                 ]
               },
               %{
