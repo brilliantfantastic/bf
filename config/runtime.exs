@@ -60,8 +60,7 @@ if config_env() == :prod do
   for {key, env} <- [
         contact_to_email: "CONTACT_TO_EMAIL",
         contact_to_name: "CONTACT_TO_NAME",
-        contact_from_email: "CONTACT_FROM_EMAIL",
-        contact_from_name: "CONTACT_FROM_NAME"
+        contact_from_email: "CONTACT_FROM_EMAIL"
       ],
       value = System.get_env(env) do
     config :bf, [{key, value}]

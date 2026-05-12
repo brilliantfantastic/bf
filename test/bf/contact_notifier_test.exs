@@ -49,10 +49,10 @@ defmodule BrilliantFantastic.ContactNotifierTest do
       end)
     end
 
-    test "sends from the noreply address" do
+    test "sends from the visitor's name on the verified noreply address" do
       ContactNotifier.deliver_contact_message(@contact)
 
-      assert_email_sent(from: {"Contact Form", "noreply@bf.lol"})
+      assert_email_sent(from: {"Ada Lovelace", "noreply@bf.lol"})
     end
   end
 end
