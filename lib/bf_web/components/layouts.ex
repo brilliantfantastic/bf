@@ -193,12 +193,15 @@ defmodule BrilliantFantasticWeb.Layouts do
         >
           Projects
         </a>
-        <a
-          href="/for_hire"
-          class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors"
-        >
-          For Hire
-        </a>
+        <div class="relative">
+          <a
+            href="/for_hire"
+            class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors"
+          >
+            For Hire
+          </a>
+          <.available_sign />
+        </div>
         <a
           href="/#contact"
           class="font-display tracking-wide text-base-content/70 hover:text-primary transition-colors"
@@ -265,6 +268,64 @@ defmodule BrilliantFantasticWeb.Layouts do
         </p>
       </div>
     </footer>
+    """
+  end
+
+  @doc """
+  Renders the small "Available" shop sign that hangs under the For Hire
+  nav link and swings in on load.
+  """
+  def available_sign(assigns) do
+    ~H"""
+    <span class="nav-available-sign" aria-hidden="true">
+      <svg viewBox="0 0 56 64" xmlns="http://www.w3.org/2000/svg">
+        <%!-- Twin cords --%>
+        <path
+          d="M22 0 L22 14 M34 0 L34 14"
+          stroke="currentColor"
+          stroke-width="1.25"
+          fill="none"
+          opacity="0.7"
+        />
+        <%!-- Hook rings --%>
+        <circle cx="22" cy="14" r="1.6" fill="none" stroke="currentColor" stroke-width="1" />
+        <circle cx="34" cy="14" r="1.6" fill="none" stroke="currentColor" stroke-width="1" />
+        <%!-- Sign body --%>
+        <rect
+          x="4"
+          y="18"
+          width="48"
+          height="40"
+          class="fill-primary stroke-base-content"
+          stroke-width="1.5"
+          rx="1"
+        />
+        <%!-- Inner double border --%>
+        <rect
+          x="7"
+          y="21"
+          width="42"
+          height="34"
+          fill="none"
+          class="stroke-primary-content"
+          stroke-width="0.6"
+          opacity="0.7"
+        />
+        <%!-- Text --%>
+        <text
+          x="28"
+          y="42"
+          text-anchor="middle"
+          font-family="serif"
+          font-weight="700"
+          font-size="8.5"
+          letter-spacing="0.6"
+          class="fill-primary-content"
+        >
+          AVAILABLE
+        </text>
+      </svg>
+    </span>
     """
   end
 

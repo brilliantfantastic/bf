@@ -76,6 +76,11 @@ defmodule BrilliantFantastic.Photos do
   def random(:brilliant), do: pick(@brilliant_photos, :brilliant)
   def random(:fantastic), do: pick(@fantastic_photos, :fantastic)
 
+  @doc "Returns the full pool of photos for the given side, in deterministic order."
+  @spec all(:brilliant | :fantastic) :: [%{name: String.t(), side: atom()}]
+  def all(:brilliant), do: Enum.map(@brilliant_photos, &%{name: &1, side: :brilliant})
+  def all(:fantastic), do: Enum.map(@fantastic_photos, &%{name: &1, side: :fantastic})
+
   @doc "Returns a responsive srcset string with all four widths."
   @spec srcset(%{name: String.t(), side: atom()}) :: String.t()
   def srcset(%{name: name, side: side}) do
