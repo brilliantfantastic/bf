@@ -40,6 +40,43 @@ window.addEventListener("phx:page-loading-stop", _info => topbar.hide())
 // connect if there are any LiveViews on the page
 liveSocket.connect()
 
+// Publish a "scroll past the nav" offset as `--scroll-y` on <body>. Used by
+// the "Available" sign in the nav: the sign should ride with the nav until
+// the nav itself sticks to the viewport top, then act like it's nailed to
+// the page (scrolling out of view as the reader continues down). This avoids
+// the home page case where the nav lives below a full-bleed hero — there's
+// no point pulling the sign up while the user is still reading the hero.
+;(() => {
+  let navTop = 0
+  let raf = null
+
+  const measure = () => {
+    const nav = document.getElementById("section-nav")
+    navTop = nav ? nav.offsetTop : 0
+  }
+
+  const update = () => {
+    const offset = Math.max(0, window.scrollY - navTop)
+    document.body.style.setProperty("--scroll-y", `${offset}px`)
+    raf = null
+  }
+
+  measure()
+  update()
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (raf) return
+      raf = requestAnimationFrame(update)
+    },
+    {passive: true},
+  )
+  window.addEventListener("resize", () => {
+    measure()
+    update()
+  })
+})()
+
 // expose liveSocket on window for web console debug logs and latency simulation:
 // >> liveSocket.enableDebug()
 // >> liveSocket.enableLatencySim(1000)  // enabled for duration of browser session

@@ -3675,6 +3675,16 @@ html {
   filter: drop-shadow(0 2px 3px oklch(20% 0.02 250 / 0.25));
 }
 
+/* The nav itself is sticky, so by default the sign would stay fixed to the
+   viewport with the nav. We want the opposite: the sign should "stick to
+   the page" and scroll up out of view as the reader scrolls down. We do
+   that by translating it upward by window.scrollY, which the JS publishes
+   as `--scroll-y` on <body>. Using the standalone `translate` property
+   composes with the swing-in `transform: rotate(...)` instead of clobbering it. */
+.nav-available-sign {
+  translate: 0 calc(var(--scroll-y, 0px) * -1);
+}
+
 @keyframes nav-sign-swing-in {
   0% {
     transform: rotate(-32deg);
