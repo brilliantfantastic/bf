@@ -1,11 +1,11 @@
 %{
-  title: "Hello, World!",
+  title: "Available Now",
   author: "Jamie Wright",
-  slug: "hello-world",
-  summary: "The very first post on the Brilliant Fantastic blog. A quick hello and a taste of what's to come.",
-  date: "2026-02-27",
+  slug: "available-now",
+  summary: "A nice website overhaul is available now. Turns out, I am too.",
+  date: "2026-05-12",
   published: true,
-  tags: ["meta", "elixir"],
+  tags: ["bf", "consulting"],
   cover_image: nil
 }
 ---
