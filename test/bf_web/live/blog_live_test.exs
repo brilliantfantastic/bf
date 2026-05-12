@@ -7,35 +7,30 @@ defmodule BrilliantFantasticWeb.BlogLiveTest do
     test "renders blog index with post titles", %{conn: conn} do
       {:ok, _view, html} = live(conn, ~p"/blog")
       assert html =~ "Blog"
-      assert html =~ "Hello, World!"
+      assert html =~ "Available Now"
     end
 
     test "displays post summary", %{conn: conn} do
       {:ok, _view, html} = live(conn, ~p"/blog")
-      assert html =~ "first post on the Brilliant Fantastic blog"
+      assert html =~ "A nice website overhaul is available now"
     end
 
     test "links to individual posts", %{conn: conn} do
       {:ok, view, _html} = live(conn, ~p"/blog")
-      assert has_element?(view, "a[href='/blog/hello-world']")
+      assert has_element?(view, "a[href='/blog/available-now']")
     end
   end
 
   describe "BlogLive.Show" do
     test "renders a single post with title and body", %{conn: conn} do
-      {:ok, _view, html} = live(conn, ~p"/blog/hello-world")
-      assert html =~ "Hello, World!"
-      assert html =~ "Welcome"
+      {:ok, _view, html} = live(conn, ~p"/blog/available-now")
+      assert html =~ "Available Now"
+      assert html =~ "Poor Jamie"
       assert html =~ "Jamie Wright"
     end
 
-    test "renders code blocks with makeup classes", %{conn: conn} do
-      {:ok, _view, html} = live(conn, ~p"/blog/hello-world")
-      assert html =~ "makeup"
-    end
-
     test "has back link to blog index", %{conn: conn} do
-      {:ok, view, _html} = live(conn, ~p"/blog/hello-world")
+      {:ok, view, _html} = live(conn, ~p"/blog/available-now")
       assert has_element?(view, "a[href='/blog']")
     end
 
