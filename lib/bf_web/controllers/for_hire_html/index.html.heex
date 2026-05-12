@@ -3,6 +3,215 @@
 <section class="px-6 lg:px-16 py-16 brutal-page">
   <div class="brutal-page-header">
     <span class="brutal-label block mb-2">Available for work</span>
-    <h1 class="font-display text-5xl">For Hire</h1>
+    <h1 class="font-display text-5xl lg:text-7xl">For Hire</h1>
   </div>
+
+  <%!-- Hero pitch — theme-aware tagline --%>
+  <div class="for-hire-pitch mt-12 max-w-3xl">
+    <p class="font-display text-3xl lg:text-5xl leading-tight fantastic:hidden">
+      I ship <span class="text-primary">brilliant</span> software.
+    </p>
+    <p class="font-display text-3xl lg:text-5xl leading-tight hidden fantastic:block">
+      I make <span class="text-primary">fantastic</span> things.
+    </p>
+    <p class="mt-6 text-lg lg:text-xl text-base-content/70 fantastic:hidden">
+      Twenty-plus years of building products people and companies actually use.
+      Available for principal engineering, technical leadership, and consulting.
+    </p>
+    <p class="mt-6 text-lg lg:text-xl text-base-content/70 hidden fantastic:block">
+      Two decades of shipping software that doesn&rsquo;t suck. Open to small bets with sharp
+      people.
+    </p>
+  </div>
+</section>
+
+<%!-- Capabilities --%>
+<section class="px-6 lg:px-16 py-16 bg-base-200/40">
+  <span class="brutal-label block mb-6">What I do</span>
+  <ul class="for-hire-capabilities grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+    <li class="for-hire-card">
+      <span class="for-hire-card-number font-display">01</span>
+      <h3 class="font-display text-2xl mt-3">Product engineering</h3>
+      <p class="mt-2 text-base-content/70 leading-relaxed">
+        End-to-end building and shipping. From the sketch through the production postmortem.
+      </p>
+    </li>
+    <li class="for-hire-card">
+      <span class="for-hire-card-number font-display">02</span>
+      <h3 class="font-display text-2xl mt-3">Elixir &amp; Ruby &amp; JavaScript</h3>
+      <p class="mt-2 text-base-content/70 leading-relaxed">
+        10+ years of Elixir & 15+ years of Ruby in production. Rails, Phoenix, LiveView, Hotwire, ES6, and OTP-shaped problems welcome.
+      </p>
+    </li>
+    <li class="for-hire-card">
+      <span class="for-hire-card-number font-display">03</span>
+      <h3 class="font-display text-2xl mt-3">AI &amp; agents</h3>
+      <p class="mt-2 text-base-content/70 leading-relaxed">
+        LLM applications, agent workflows, evals, and prompt engineering.
+        New tools and workflows, used thoughtfully. I know how to talk to robots.
+      </p>
+    </li>
+    <li class="for-hire-card">
+      <span class="for-hire-card-number font-display">04</span>
+      <h3 class="font-display text-2xl mt-3">Founding-team mode</h3>
+      <p class="mt-2 text-base-content/70 leading-relaxed">
+        I move fast in two-to-five-person teams. Cofounder energy, without the equity drama. I prefer to own the product work and be an engineer on the team.
+      </p>
+    </li>
+  </ul>
+</section>
+
+<%!-- Proof points --%>
+<section class="px-6 lg:px-16 py-20">
+  <ul class="for-hire-stats grid gap-10 md:grid-cols-4 text-center md:text-left">
+    <li>
+      <span class="font-display text-6xl lg:text-7xl text-primary block">20+</span>
+      <span class="text-sm uppercase tracking-widest text-base-content/60">years shipping</span>
+    </li>
+    <li>
+      <span class="font-display text-6xl lg:text-7xl text-primary block">25+</span>
+      <span class="text-sm uppercase tracking-widest text-base-content/60">
+        client projects launched
+      </span>
+    </li>
+    <li>
+      <span class="font-display text-6xl lg:text-7xl text-primary block">17+</span>
+      <span class="text-sm uppercase tracking-widest text-base-content/60">
+        personal projects launched
+      </span>
+    </li>
+    <li>
+      <span class="font-display text-6xl lg:text-7xl text-primary block">45k+</span>
+      <span class="text-sm uppercase tracking-widest text-base-content/60">GitHub commits</span>
+    </li>
+  </ul>
+</section>
+
+<%!-- Selected work --%>
+<section class="px-6 lg:px-16 py-16 bg-base-200/40">
+  <span class="brutal-label block mb-6">Selected work</span>
+  <ul class="for-hire-selected grid gap-10 lg:grid-cols-3">
+    <li>
+      <h3 class="font-display text-3xl">
+        <.link
+          navigate="https://www.clickfunnels.com"
+          class="hover:text-primary transition-colors"
+          target="_blank"
+        >
+          ClickFunnels
+        </.link>
+      </h3>
+      <p class="mt-2 text-base-content/70 leading-relaxed">
+        I worked on main application with a concentration on the payment systems and affiliate application. Built with Rails and TypeScript.
+      </p>
+    </li>
+    <li>
+      <h3 class="font-display text-3xl">
+        <.link
+          navigate="https://www.offerlab.com/"
+          class="hover:text-primary transition-colors"
+          target="_blank"
+        >
+          OfferLab
+        </.link>
+      </h3>
+      <p class="mt-2 text-base-content/70 leading-relaxed">
+        I built one of the first payment cloning systems on the web. This allowed for a single credit card transaction to purchase a bundle of products from various merchants.
+      </p>
+    </li>
+    <li>
+      <h3 class="font-display text-3xl">
+        <.link
+          navigate="https://flexprogrip.com"
+          class="hover:text-primary transition-colors"
+          target="_blank"
+        >
+          FlexPro Grip
+        </.link>
+      </h3>
+      <p class="mt-2 text-base-content/70 leading-relaxed">
+        I built an iOS application using React Native and an Elixir-powered backend for MLB pitchers to capture their training data. The application interacted with a custom device via Bluetooth.
+      </p>
+    </li>
+  </ul>
+</section>
+
+<%!-- Working philosophy --%>
+<section class="px-6 lg:px-16 py-20">
+  <span class="brutal-label block mb-6">How I work</span>
+  <ol class="for-hire-tenets grid gap-10 md:grid-cols-3">
+    <li>
+      <span class="font-display text-5xl text-primary block">01</span>
+      <p class="mt-3 font-display text-2xl leading-snug">Swallow the frog.</p>
+      <p class="mt-2 text-base-content/70">
+        Shipping beats theorizing. The first version teaches you what the right version is. Reduce the unknown as fast as possible.
+      </p>
+    </li>
+    <li>
+      <span class="font-display text-5xl text-primary block">02</span>
+      <p class="mt-3 font-display text-2xl leading-snug">Small teams. Real outcomes.</p>
+      <p class="mt-2 text-base-content/70">
+        Two senior people who trust each other will out-deliver six who
+        are still figuring out the new development workflows.
+      </p>
+    </li>
+    <li>
+      <span class="font-display text-5xl text-primary block">03</span>
+      <p class="mt-3 font-display text-2xl leading-snug">The boring code is the right code.</p>
+      <p class="mt-2 text-base-content/70">
+        Cleverness is a tax future-you will pay with interest. Most of
+        the time, the obvious answer is the answer.
+      </p>
+    </li>
+  </ol>
+</section>
+
+<%!-- Photo fan-out --%>
+<section class="for-hire-photo-section py-20 overflow-hidden">
+  <div class="px-6 lg:px-16 mb-12">
+    <span class="brutal-label block mb-2">In two modes</span>
+    <h2 class="font-display text-4xl lg:text-5xl max-w-2xl">
+      Brilliant on the clock. Fantastic the rest of the time.
+    </h2>
+  </div>
+
+  <div class="for-hire-photo-row" aria-label="Brilliant photos">
+    <div :for={photo <- @brilliant_photos} class="for-hire-photo-frame">
+      <img
+        src={Photos.src(photo)}
+        srcset={Photos.srcset(photo)}
+        sizes="(min-width: 1024px) 280px, 200px"
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </div>
+
+  <div class="for-hire-photo-row for-hire-photo-row--fantastic" aria-label="Fantastic photos">
+    <div :for={photo <- @fantastic_photos} class="for-hire-photo-frame">
+      <img
+        src={Photos.src(photo)}
+        srcset={Photos.srcset(photo)}
+        sizes="(min-width: 1024px) 280px, 200px"
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </div>
+</section>
+
+<%!-- CTA --%>
+<section class="px-6 lg:px-16 py-24 text-center">
+  <h2 class="font-display text-5xl lg:text-7xl mb-8">Let&rsquo;s talk.</h2>
+  <p class="text-lg text-base-content/70 mb-10 max-w-xl mx-auto">
+    If any of this sounds like the advantage you need, drop me a line. I read every message.
+  </p>
+  <.link
+    navigate={~p"/#contact"}
+    class="inline-block font-display text-xl px-10 py-4 bg-primary text-primary-content hover:opacity-90 transition-opacity"
+  >
+    Start a conversation &rarr;
+  </.link>
 </section>
