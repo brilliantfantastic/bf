@@ -55,7 +55,13 @@ This application is deployed to [Gigalixir](https://gigalixir.com) using buildpa
 
 The application is automatically deployed to production when code is merged into the `main` branch. CI must pass before deployment is triggered.
 
-The production application lives at https://bf.gigalixirapp.com.
+The production application lives at https://bf.lol.
+
+### Services used
+
+* [Gigalixir](https://gigalixir.com) for hosting
+* [Resend](https://resend.com) for transactional email
+* [Tailwind CSS](https://tailwindcss.com) for styling
 
 ### Manual deployment
 

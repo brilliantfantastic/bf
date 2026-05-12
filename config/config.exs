@@ -13,8 +13,7 @@ config :bf,
   generators: [timestamp_type: :utc_datetime],
   contact_to_email: "me@bf.lol",
   contact_to_name: "Jamie Wright",
-  contact_from_email: "noreply@bf.lol",
-  contact_from_name: "Contact Form"
+  contact_from_email: "noreply@bf.lol"
 
 # Configure the endpoint
 config :bf, BrilliantFantasticWeb.Endpoint,

@@ -11,7 +11,6 @@ defmodule BrilliantFantastic.ContactNotifier do
     to_email = Application.get_env(:bf, :contact_to_email)
     to_name = Application.get_env(:bf, :contact_to_name)
     from_email = Application.get_env(:bf, :contact_from_email)
-    from_name = Application.get_env(:bf, :contact_from_name)
 
     subject_line =
       if contact.subject && contact.subject != "",
@@ -20,7 +19,7 @@ defmodule BrilliantFantastic.ContactNotifier do
 
     new()
     |> to({to_name, to_email})
-    |> from({from_name, from_email})
+    |> from({contact.name, from_email})
     |> reply_to({contact.name, contact.email})
     |> subject(subject_line)
     |> text_body("""
