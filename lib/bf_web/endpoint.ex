@@ -25,6 +25,7 @@ defmodule BrilliantFantasticWeb.Endpoint do
     from: :bf,
     gzip: not code_reloading?,
     only: BrilliantFantasticWeb.static_paths(),
+    only_matching: ~w(favicon apple-touch-icon),
     raise_on_missing_only: code_reloading?
 
   # Code reloading can be explicitly enabled under the
