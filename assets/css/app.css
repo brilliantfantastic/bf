@@ -3712,7 +3712,7 @@ html {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  padding: 1rem 1.5rem;
+  padding: 2.5rem 1.5rem;
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -3722,7 +3722,15 @@ html {
 }
 
 .for-hire-photo-row + .for-hire-photo-row {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+}
+
+[data-theme="fantastic"] .for-hire-photo-row {
+  padding: 2rem 1.5rem;
+}
+
+[data-theme="fantastic"] .for-hire-photo-row + .for-hire-photo-row {
+  margin-top: 0.5rem;
 }
 
 .for-hire-photo-frame {
