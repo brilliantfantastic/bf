@@ -3650,6 +3650,79 @@ html {
 }
 
 /* ============================================================
+   "Available" sign hanging under the For Hire nav link
+   ============================================================ */
+
+.nav-available-sign {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -28px;
+  margin-top: -2px;
+  width: 56px;
+  height: 64px;
+  pointer-events: none;
+  display: block;
+  transform-origin: 50% 0%;
+  z-index: 30;
+  animation: nav-sign-swing-in 1.8s cubic-bezier(0.34, 0.4, 0.4, 1) 0.5s both;
+}
+
+.nav-available-sign svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 3px oklch(20% 0.02 250 / 0.25));
+}
+
+@keyframes nav-sign-swing-in {
+  0% {
+    transform: rotate(-32deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  30% {
+    transform: rotate(22deg);
+  }
+  50% {
+    transform: rotate(-12deg);
+  }
+  70% {
+    transform: rotate(6deg);
+  }
+  85% {
+    transform: rotate(-2deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Tiny passive sway after the swing-in settles, on hover only */
+.nav-available-sign:hover,
+div:hover > .nav-available-sign {
+  animation: nav-sign-sway 1.6s ease-in-out infinite;
+}
+
+@keyframes nav-sign-sway {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-available-sign {
+    animation: none;
+  }
+}
+
+/* ============================================================
    For Hire page
    ============================================================ */
 
