@@ -13,6 +13,77 @@ defmodule BrilliantFantasticWeb.Layouts do
   # and other static content.
   embed_templates "layouts/*"
 
+  @default_description "Brilliant Fantastic — Jamie Wright, principal-level software engineer with 20+ years of experience. Available for contract or full-time work."
+
+  @doc """
+  Renders Open Graph, Twitter Card, and SEO meta tags.
+
+  Reads its values from the same assigns each page already sets
+  (`page_title`, plus optional `page_description`, `page_image`,
+  `page_url_path`, `page_type`, `page_article`). Builds absolute
+  URLs from the endpoint so the tags work in link previews.
+  """
+  attr :page_title, :string, default: nil
+  attr :page_description, :string, default: nil
+  attr :page_image, :string, default: nil
+  attr :page_url_path, :string, default: "/"
+  attr :page_type, :string, default: "website"
+  attr :page_article, :any, default: nil
+
+  def social_meta(assigns) do
+    base = BrilliantFantasticWeb.Endpoint.url()
+
+    og_title =
+      if assigns.page_title,
+        do: "Brilliant Fantastic // #{assigns.page_title}",
+        else: "Brilliant Fantastic"
+
+    description = assigns.page_description || @default_description
+    image_url = base <> (assigns.page_image || random_photo_path())
+    page_url = base <> assigns.page_url_path
+
+    assigns =
+      assigns
+      |> assign(:og_title, og_title)
+      |> assign(:description, description)
+      |> assign(:image_url, image_url)
+      |> assign(:page_url, page_url)
+
+    ~H"""
+    <meta name="description" content={@description} />
+    <link rel="canonical" href={@page_url} />
+
+    <meta property="og:type" content={@page_type} />
+    <meta property="og:site_name" content="Brilliant Fantastic" />
+    <meta property="og:title" content={@og_title} />
+    <meta property="og:description" content={@description} />
+    <meta property="og:url" content={@page_url} />
+    <meta property="og:image" content={@image_url} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={@og_title} />
+    <meta name="twitter:description" content={@description} />
+    <meta name="twitter:image" content={@image_url} />
+
+    <%= if @page_article do %>
+      <meta property="article:published_time" content={Date.to_iso8601(@page_article.date)} />
+      <meta property="article:author" content={@page_article.author} />
+      <%= for tag <- @page_article.tags || [] do %>
+        <meta property="article:tag" content={tag} />
+      <% end %>
+    <% end %>
+    """
+  end
+
+  defp random_photo_path do
+    side = Enum.random([:brilliant, :fantastic])
+
+    case BrilliantFantastic.Photos.random(side) do
+      nil -> "/apple-touch-icon.png"
+      photo -> BrilliantFantastic.Photos.src(photo)
+    end
+  end
+
   @doc """
   Renders your app layout.
 

@@ -20,6 +20,8 @@ defmodule BrilliantFantasticWeb.BlogLive.Index do
      |> assign(:posts, posts)
      |> assign(:page, page)
      |> assign(:total_pages, total_pages)
-     |> assign(:page_title, "blog")}
+     |> assign(:page_title, "blog")
+     |> assign(:page_description, "Writing from Jamie Wright on building software, working with clients, and running a one-person studio.")
+     |> assign(:page_url_path, "/blog")}
   end
 end

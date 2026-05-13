@@ -19,7 +19,12 @@ defmodule BrilliantFantasticWeb.BlogLive.Show do
         {:noreply,
          socket
          |> assign(:post, post)
-         |> assign(:page_title, String.downcase(post.title))}
+         |> assign(:page_title, post.title)
+         |> assign(:page_description, post.summary)
+         |> assign(:page_url_path, "/blog/#{post.id}")
+         |> assign(:page_type, "article")
+         |> assign(:page_article, post)
+         |> assign(:page_image, post.cover_image)}
     end
   end
 end

@@ -12,6 +12,15 @@
       {assigns[:page_title] && String.downcase(assigns[:page_title])}
     </.live_title>
 
+    <Layouts.social_meta
+      page_title={assigns[:page_title]}
+      page_description={assigns[:page_description]}
+      page_image={assigns[:page_image]}
+      page_url_path={assigns[:page_url_path] || "/"}
+      page_type={assigns[:page_type] || "website"}
+      page_article={assigns[:page_article]}
+    />
+
     <link phx-track-static rel="stylesheet" href={~p"/assets/css/app.css"} />
     <script defer phx-track-static type="text/javascript" src={~p"/assets/js/app.js"}>
     </script>
