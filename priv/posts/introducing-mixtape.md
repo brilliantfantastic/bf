@@ -22,6 +22,6 @@ Mixtape is my attempt to return that act to my own listening. A time capsule of 
 
 ## Automatically remember the songs you discover
 
-I have been doing what Mixtape offers manually since January of 2018. I have created a monthly playlist ever since then. I created Mixtape to automate the process for me but I believe more music lovers want this.
+I have been doing what Mixtape offers manually since January of 2018. I have created a monthly playlist ever since then. I created Mixtape to automate the process for me but I suspect more music lovers may want this.
 
 [Follow me on Spotify →](https://open.spotify.com/user/bfantastic)
