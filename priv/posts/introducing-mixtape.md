@@ -6,7 +6,7 @@
   date: "2026-05-14",
   published: true,
   tags: ["mixtape", "projects"],
-  cover_image: "priv/static/images/blog/introducing-mixtape/hero-image.png"
+  cover_image: "/static/images/blog/introducing-mixtape/hero-image.png"
 }
 ---
 
