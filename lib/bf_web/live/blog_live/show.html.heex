@@ -15,6 +15,12 @@
       </time>
       <h1 class="font-display text-4xl lg:text-5xl mt-2">{@post.title}</h1>
       <p class="mt-3 text-base-content/60 brutal-author">By {@post.author}</p>
+      <img
+        :if={@post.cover_image}
+        src={@post.cover_image}
+        alt={@post.title}
+        class="mt-8 w-full rounded-lg"
+      />
     </header>
 
     <div class="prose lg:prose-xl prose-headings:font-display max-w-none">
