@@ -324,7 +324,7 @@ defmodule BrilliantFantastic.Projects do
                 ended_on: ~D[2012-10-16],
                 description: """
                 I got tired of entering calendar information for my kids events when I knew there were others that already did it and I just wanted to copy theirs.
-                Koki was a web app that contained a marketplace of shared calendars so you could simple import calendars and events you cared about.
+                Koki was a web app that contained a marketplace of shared calendars so you could simply import calendars and events you cared about.
                 I did not really know how to sell this and so I abandoned it but I still think it's a great idea.
                 """,
                 links: [
@@ -406,7 +406,7 @@ defmodule BrilliantFantastic.Projects do
                 started_on: ~D[2026-02-11],
                 ended_on: :now,
                 description: """
-                A hardware/software expieriment to build a sound proof booth to measure the strength of your screams.
+                A hardware/software experiment to build a soundproof booth to measure the strength of your screams.
                 Everyone needs this because of all the \*waves hands in all directions\*.
                 A cathartic measurement device for the apocalypse.
                 Coming to a street corner near you soon-ish.
