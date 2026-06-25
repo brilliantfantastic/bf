@@ -1,0 +1,5 @@
+# earmark - Stored XSS via unescaped HTML attribute values
+# Compile-time only (runtime: false) used by nimble_publisher for blog posts.
+# No patched version exists; package is retired upstream. Content is trusted
+# (not user-generated), so XSS risk is not applicable to this app.
+GHSA-52mm-h59v-f3c7
