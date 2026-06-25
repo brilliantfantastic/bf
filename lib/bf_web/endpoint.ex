@@ -51,6 +51,7 @@ defmodule BrilliantFantasticWeb.Endpoint do
 
   plug Plug.MethodOverride
   plug Plug.Head
+  plug BrilliantFantasticWeb.RedirectPlug
   plug Plug.Session, @session_options
   plug BrilliantFantasticWeb.Router
 end
