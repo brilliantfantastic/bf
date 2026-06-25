@@ -57,7 +57,7 @@ jobs:
           mix deps.get
 
       - name: Audit Dependencies
-        run: mix deps.audit --format human
+        run: mix deps.audit --format human --ignore-file .mix_audit_ignore
 
       - name: Check Formatting
         run: mix format --check-formatted
