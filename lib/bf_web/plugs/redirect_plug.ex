@@ -1,4 +1,5 @@
 defmodule BrilliantFantasticWeb.RedirectPlug do
+  @moduledoc false
   import Plug.Conn
 
   def init(opts), do: opts
