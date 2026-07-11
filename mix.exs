@@ -14,7 +14,7 @@ defmodule BrilliantFantastic.MixProject do
       listeners: [Phoenix.CodeReloader],
       dialyzer: [
         plt_local_path: "priv/plts",
-        plt_add_apps: [:mix, :ex_unit, :earmark]
+        plt_add_apps: [:mix, :ex_unit]
       ]
     ]
   end
@@ -70,7 +70,8 @@ defmodule BrilliantFantastic.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.2.0"},
       {:bandit, "~> 1.5"},
-      {:nimble_publisher, "~> 1.1", runtime: false},
+      {:mdex_native, "~> 0.2"},
+      {:nimble_publisher, "~> 2.0", runtime: false},
       {:makeup_elixir, "~> 0.16", runtime: false},
       {:makeup_erlang, "~> 1.0", runtime: false},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
