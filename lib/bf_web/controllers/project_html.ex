@@ -102,19 +102,20 @@ defmodule BrilliantFantasticWeb.ProjectHTML do
   Renders a project description as HTML, treating each non-empty line as its
   own paragraph and supporting inline markdown.
 
-  Per-link `target="_blank"` is supported via Earmark's IAL syntax:
+  Per-link `target="_blank"` is supported via IAL-style syntax:
 
       [Keith](https://github.com/keiththomps){: target="_blank"}
 
   Any link rendered with `target="_blank"` automatically gets
   `rel="noopener noreferrer"` added for security.
 
-  Uses Earmark (already pulled in transitively via nimble_publisher).
+  Uses MDEx's comrak engine (same as nimble_publisher).
   """
   def render_description(description) when is_binary(description) do
     description
     |> normalize_paragraphs()
-    |> Earmark.as_html!(escape: false, smartypants: false)
+    |> MDExNative.Comrak.markdown_to_html(render: [unsafe: true])
+    |> apply_target_blank_ials()
     |> add_noopener_to_blank_links()
     |> Phoenix.HTML.raw()
   end
@@ -128,6 +129,17 @@ defmodule BrilliantFantasticWeb.ProjectHTML do
     |> Enum.map(&String.trim/1)
     |> Enum.reject(&(&1 == ""))
     |> Enum.join("\n\n")
+  end
+
+  # Comrak has no IAL support (Earmark did), so `{: target="_blank"}` comes
+  # through as literal text right after the link; fold it back into the
+  # preceding <a> tag. The quotes may arrive HTML-escaped as &quot;.
+  defp apply_target_blank_ials(html) do
+    Regex.replace(
+      ~r/<a ([^>]*)>(.*?)<\/a>\{:\s*target=(?:"|&quot;)_blank(?:"|&quot;)\}/,
+      html,
+      ~S(<a \1 target="_blank">\2</a>)
+    )
   end
 
   # Adds rel="noopener noreferrer" to any <a target="_blank"> that doesn't
