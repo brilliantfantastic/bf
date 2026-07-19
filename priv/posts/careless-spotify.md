@@ -31,7 +31,7 @@ It's a blast to be able to go back, pick any year and any month and listen to th
 
 ## Spotify could not care less
 
-I want to share my music discoveries and see what others have discovered but Spotify has made it much harder to do that. And it seems like they don't care.
+I want to share my new music discoveries as well as see what others have discovered. Spotify has made it much harder to do that. And it seems like they don't care.
 
 It seems they now are treating developers like a nuisance instead of an integral part of their community. Spotify's priorities seem to be money, control, then the community. The artists, users, and developers come after the money.
 
@@ -43,15 +43,22 @@ On February 6 of this year (2026), Spotify announced that the following changes 
 4. Developers can only have one app per account in 'Development Mode'.
 5. To move out of developer mode, developers must prove a monthly minimum of 250k active users. *Introduced May 15, 2025*
 
-This is a huge blow to developers who are trying to build apps that expand Spotify's platform's reach.
+All of these policy changes seem, from the outside, to help protect Spotify's revenue stream and not the artists, nor the developers, nor Spotify's own marketing team.
 
-## Outline
+Let's address them from the aspect of the Spotify developer.
 
-* 'Non-commercial use'
-* "Development Mode will be reduced in scope while continuing to support learning, experimentation, and personal projects for non-commercial use by individual developers"
-  * But how does getting a 'real' license and making that harder benefit the developer community
-* Brings 4 new policies on the table:
-  * [Introduction of develeoper modes](https://developer.spotify.com/blog/2021-05-27-improving-the-developer-and-user-experience-for-third-party-apps)
-  * [Refining access for WebAPI endpoints](https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api)
-  * [Introducing new extended quota mode criteria](https://developer.spotify.com/blog/2025-04-15-updating-the-criteria-for-web-api-extended-access)
-  * [Deprecating outdated OAuth flows](https://developer.spotify.com/blog/2025-02-12-increasing-the-security-requirements-for-integrating-with-spotify)
+### Reducing the number of users allowed in 'Development Mode'
+
+I give this one a pass.
+
+### Developers are required to be on any paid plan
+
+### API access to various endpoints have been removed
+
+### Developers can only have one app per account
+
+This is aggregeous and unfair to the platform.
+
+### A monthly minimum of 250k active users
+
+What? How does this get done?
