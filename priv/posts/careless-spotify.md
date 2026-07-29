@@ -19,29 +19,29 @@ Fixing anything that a hammer can handle, \
 Gary saves money 'cause Gary don't gamble \
 **🎶🎶🎶**
 
-I would of never found out about Stephen Wilson, Jr., his song about Gary, Thunder Jackson, and countless other songs from every genre of music if it weren't for Spotify.
+I would of never found out about [Stephen Wilson, Jr.](https://open.spotify.com/artist/4DSDa4HvAWqvb3dMHUOAfd?si=4MGLaJKiRYmUiktRWcSKJg), his [song about Gary](https://open.spotify.com/track/5HMmz01XM5IYaGP0KSsDvQ?si=b22fa47e933744f7), [Thunder Jackson](https://open.spotify.com/artist/3o0xJMKswwtXz2PhrRCHhJ?si=rYaPIXZUReqDfoA9lk3j7w), and [countless other songs](https://open.spotify.com/user/bfantastic) from every genre of music if it weren't for Spotify.
 
 It's the only algorithm that I guard with all my might, *'Dad, play that West Virgina song'* be dammed. Not on my algorithm, sister.
 
 ## 🫶 Spotify
 
-First off, ~🎶fuck your bitch and the click you claim🎶~ let me get this off my chest. Spotify, **please use more of your revenue and power to pay the artists** that provide you and your company a very lucrative platform. A platform that gives your CEO a salary worth more in one year than one of most successful artists of all time.
+First off, ~🎶fuck your bitch and the click you claim🎶~ let me get this off my chest. Spotify, **please use more of your revenue and power to pay the artists** that provide you and your company a very lucrative platform. A platform that gives your [CEO a salary worth more in one year than one of most successful artists of all time](https://www.musicradar.com/news/daniel-ek-spotify-earnings).
 
 ---
 
-Since 2018, I have been using Spotify to discover new music and build my playlists. One playlist per month to hold all the music I discovered that month. I learned this from Ben Brown.
+Since 2018, I have been using Spotify to discover new music and build my playlists. One playlist per month to hold all the music I discovered that month. I learned this from [Ben Brown](https://open.spotify.com/user/mrbenbrown?si=7f72b1e84a0d4f46) (although he no longer does this).
 
 I always appreciate the platform's ability to help me discover new music.
 
 It's a blasty to be able to go back, ask your carmates to pick any year and any month and listen to the songs discovered that month.
 
-So, like any nerd would do, I built a Spotify app to help automate the lazy parts. I wanted to share my new music discoveries as well as see what others have discovered.
+So, like any nerd would do, [I built a Spotify app](https://tape.mx) to help automate the lazy parts. I wanted to share my new music discoveries as well as see what others have discovered.
 
-It's been so fun creating and curating these playlists but there were aspects that could make it easier. Since I wanted to discover more music on Spotify, I wanted others to curate their own playlists as well.
+It's been so fun creating and curating these playlists. Since I wanted to discover more music on Spotify, I wanted others to curate their own playlists as well.
 
 ## Spotify could not care less
 
-Spotify has recently made it much harder to build applications on their platform by reducing developers ability to distribute apps built for their platform. And it seems like they don't care.
+Spotify has [made it much harder to build applications on their platform](https://developer.spotify.com/blog/2026-02-06-update-on-developer-access-and-platform-security) by reducing developers ability to distribute apps built for their platform. And it seems like they don't care.
 
 It seems they now are treating developers like a nuisance instead of an integral part of their community. Spotify's priorities seem to be money, control, then the community. The artists, users, and developers come after the money.
 
@@ -51,7 +51,7 @@ On February 6 of this year (2026), Spotify announced that the following changes 
 2. Developers are required to be on any paid plan to access the Spotify Web API.
 3. API access to various endpoints have been removed.
 4. Developers can only have one app per account in 'Development Mode'.
-5. To move out of developer mode, developers must prove a monthly minimum of 250k active users. *Introduced May 15, 2025*
+5. To move out of developer mode, developers must prove a monthly minimum of 250k active users. *Introduced [April 15, 2025](https://developer.spotify.com/blog/2025-04-15-updating-the-criteria-for-web-api-extended-access)*
 
 All of these policy changes seem, from the outside, to help protect Spotify's revenue stream, it's moat, and not the artists, nor the developers, nor Spotify's own marketing team.
 
@@ -108,6 +108,8 @@ Additionally, how do I test my applications now if I can only have one app?
 Do I have to add my ngrok test endpoint to my production app alongside the production endpoints? It doesn't seem like a great idea to pollute all of your environments of your application. Do I have to sign up for another Premium Spotify account just to have a staging environment? A QA environment?
 
 Spotify has made Apple Music seem more attractive simply based on a better ecosystem for their users.
+
+> *Update*: [Spotify has reversed course](https://developer.spotify.com/blog/2026-07-23-web-api-quota-updates) a bit on this one. Speaking up can work. Developers now have *more* available apps with 25 per account. Nice work! This makes it easier to test apps and the 'create-your-own-app' process is a bit more usable.
 
 ### A monthly minimum of 250k active users
 
