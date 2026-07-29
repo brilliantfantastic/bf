@@ -6,36 +6,38 @@
   date: "2026-07-11",
   published: true,
   tags: ["mixtape", "projects"],
-  cover_image: "/images/blog/introducing-mixtape/hero-image.png"
+  cover_image: "/images/blog/careless-spotify/signup-email-screenshot.png"
 }
 ---
 
 ## Finding Gary
 
-*🎶🎶🎶* \
+**🎶🎶🎶** \
 Ain't a lot of boys named Gary these days, \
 Born with a cigarette glued to their face, \
 Fixing anything that a hammer can handle, \
 Gary saves money 'cause Gary don't gamble \
-*🎶🎶🎶*
+**🎶🎶🎶**
 
 I would of never found out about Stephen Wilson, Jr., his song about Gary, Thunder Jackson, and countless other songs from every genre of music if it weren't for Spotify.
 
-It's the only algorithm that I guard with all my might, 'Dad, play that West Virgina song' be dammed. Not on my algorithm, sister.
+It's the only algorithm that I guard with all my might, *'Dad, play that West Virgina song'* be dammed. Not on my algorithm, sister.
 
 ## 🫶 Spotify
 
-First off, ~🎶fuck your bitch and the click you claim🎶~ let me get this off my chest. Spotify, **please use more of your revenue and power to pay the artists** that provide you this platform. A platform that gives your CEO a salary worth more in one year than one of most successful artists of all time.
+First off, ~🎶fuck your bitch and the click you claim🎶~ let me get this off my chest. Spotify, **please use more of your revenue and power to pay the artists** that provide you and your company a very lucrative platform. A platform that gives your CEO a salary worth more in one year than one of most successful artists of all time.
 
 ---
 
-Since 2018, I have been using Spotify to discover new music and build my playlists. One playlist per month to hold all the music I discovered that month.
+Since 2018, I have been using Spotify to discover new music and build my playlists. One playlist per month to hold all the music I discovered that month. I learned this from Ben Brown.
 
 I always appreciate the platform's ability to help me discover new music.
 
-It's a blasty to be able to go back, pick any year and any month and listen to the songs I discovered that month. So, like any nerd would do, I built a Spotify app to help automate that.
+It's a blasty to be able to go back, ask your carmates to pick any year and any month and listen to the songs discovered that month.
 
-I wanted to share my new music discoveries as well as see what others have discovered. It's been so fun creating and curating these playlists but there were aspects that could make it easier. Since I wanted to discover more music on Spotify, I wanted others to curate their own playlists as well.
+So, like any nerd would do, I built a Spotify app to help automate the lazy parts. I wanted to share my new music discoveries as well as see what others have discovered.
+
+It's been so fun creating and curating these playlists but there were aspects that could make it easier. Since I wanted to discover more music on Spotify, I wanted others to curate their own playlists as well.
 
 ## Spotify could not care less
 
@@ -61,13 +63,13 @@ On it's own, I give this one a pass.
 
 However, I feel like this will result in less testing and less feedback from users on Spotify apps. This could result in an increase of poor application experiences within Spotify's ecosystem.
 
-Going from 25 to 5 users is an 80% drop in users and that seems unnecessary. This alongside the other changes makes getting distribution more difficult.
+Dropping test users by 80%, from 25 to 5 users, seems unnecessary. This alongside the other changes makes getting distribution more difficult.
 
 ### Developers are required to be on any paid plan
 
 Making this a requirement for development mode apps seems ridiculous.
 
-I understand that Spotify wants to make sure that developers are serious about their apps because 'they can afford it' but this seems like a cash grab.
+I understand that Spotify wants to make sure that developers are serious about their apps because 'they can afford it' but this seems as useful as a speeding ticket.
 
 There are many developers who are just starting out and may not have the funds to pay for a paid plan but they have a love for music and are curious. To that, this is stifling. It results in a smaller and less diverse developer community.
 
@@ -119,10 +121,12 @@ Spotify, how does a developer get from 5 users you specify, whom can easily sign
 
 ## The end is near
 
-Spotify is not serious about developers and their apps. They seem, from the outside, to only seriously care about their revenue and their moat.
+Spotify is not serious about developers nor their ecosystem. They seem, from the outside, to only seriously care about their revenue and their moat.
+
+The end, it seems, is moving to Apple music, where, *checks notes*, Apple of all companies, has a more friendly developer policy.
 
 Spotify used to be against the corpotate greed of the music industry and now they are just another corporate entity that is only concerned with their bottom line.
 
-I love the Spotify platform, but their policies suck ass.
+I love the Spotify platform, but their policies and their developer relations suck ass.
 
-I hope they do better. There seems to be a better way for artists, both musical and nerdy, to make money from a platform that directly benefits from said artists.
+I hope they do better. There must be a better way for artists, both musical and nerdy, to make money from a platform that directly benefits from said artists.
