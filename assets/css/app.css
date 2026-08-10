@@ -1133,8 +1133,6 @@ html {
   text-transform: uppercase;
 }
 
-/* Short centered rule above the caption, in place of the left bar the other
-   header elements use — a left bar fights the centering. */
 [data-theme="brilliant"] .brutal-blog-post header .brutal-cover-caption::before {
   content: "";
   display: block;

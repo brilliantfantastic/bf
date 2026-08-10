@@ -26,7 +26,11 @@ defmodule BrilliantFantastic.Blog.Post do
   @doc """
   Builds a post from a front matter `attrs` map.
 
-  A cover image is declared either grouped:
+  A cover image is declared as a url on its own:
+
+      cover_image: "/images/blog/post/hero.png"
+
+  grouped with its alt text:
 
       cover_image: %{url: "/images/blog/post/hero.png", alt: "A description"}
 
@@ -35,7 +39,7 @@ defmodule BrilliantFantastic.Blog.Post do
       cover_image_url: "/images/blog/post/hero.png",
       cover_image_alt: "A description"
 
-  Both normalize to `:cover_image_url` and `:cover_image_alt`. The alt is
+  All three normalize to `:cover_image_url` and `:cover_image_alt`. The alt is
   optional, the url is not.
   """
   def build(filepath, attrs, body) do
@@ -60,20 +64,7 @@ defmodule BrilliantFantastic.Blog.Post do
   # Raises rather than silently dropping the image, since a typo here would not
   # surface until someone noticed a post had published without its cover.
   defp normalize_cover_image(%{cover_image: cover} = attributes, filename) do
-    unless is_map(cover) do
-      raise ArgumentError, """
-      #{filename}: `cover_image` must be a map, got: #{inspect(cover)}
-
-      Use either:
-
-          cover_image: %{url: "/images/...", alt: "A description"}
-
-      or the flat form:
-
-          cover_image_url: "/images/...",
-          cover_image_alt: "A description"
-      """
-    end
+    cover = wrap_cover_image(cover, filename)
 
     case Map.keys(cover) -- @cover_image_keys do
       [] -> :ok
@@ -95,6 +86,24 @@ defmodule BrilliantFantastic.Blog.Post do
   end
 
   defp normalize_cover_image(attributes, _filename), do: attributes
+
+  defp wrap_cover_image(url, _filename) when is_binary(url), do: %{url: url}
+  defp wrap_cover_image(cover, _filename) when is_map(cover), do: cover
+
+  defp wrap_cover_image(other, filename) do
+    raise ArgumentError, """
+    #{filename}: `cover_image` must be a url or a map, got: #{inspect(other)}
+
+    Use any of:
+
+        cover_image: "/images/..."
+
+        cover_image: %{url: "/images/...", alt: "A description"}
+
+        cover_image_url: "/images/...",
+        cover_image_alt: "A description"
+    """
+  end
 
   defp add_id(%{id: _id} = attributes), do: attributes
   defp add_id(%{slug: slug} = attributes), do: Map.put(attributes, :id, slugify(slug))

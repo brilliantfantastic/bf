@@ -44,14 +44,15 @@ defmodule BrilliantFantastic.Blog.PostTest do
       assert post.cover_image_alt == nil
     end
 
-    test "raises when cover_image is a bare string" do
-      assert_raise ArgumentError, ~r/`cover_image` must be a map/, fn ->
-        build(%{cover_image: "/images/hero.png"})
-      end
+    test "reads a bare string as the url" do
+      post = build(%{cover_image: "/images/hero.png"})
+
+      assert post.cover_image_url == "/images/hero.png"
+      assert post.cover_image_alt == nil
     end
 
-    test "raises when cover_image is nil" do
-      assert_raise ArgumentError, ~r/`cover_image` must be a map/, fn ->
+    test "raises when cover_image is neither a url nor a map" do
+      assert_raise ArgumentError, ~r/must be a url or a map/, fn ->
         build(%{cover_image: nil})
       end
     end
@@ -76,7 +77,7 @@ defmodule BrilliantFantastic.Blog.PostTest do
 
     test "names the offending file in the error" do
       assert_raise ArgumentError, ~r/a-post\.md/, fn ->
-        build(%{cover_image: "/images/hero.png"})
+        build(%{cover_image: nil})
       end
     end
   end
