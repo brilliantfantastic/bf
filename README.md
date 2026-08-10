@@ -19,11 +19,29 @@ mix deps.get
 
 * Create the database
 
-You may need to adjust the database connection string in [config/dev.exs](config/dev.exs).
-
 ```
 mix ecto.create
 ```
+
+The app connects to Postgres as `postgres`/`postgres` on `localhost:5432`. If your Postgres
+listens elsewhere, set `DATABASE_PORT`:
+
+```
+DATABASE_PORT=5452 mix ecto.create
+```
+
+If you see `FATAL 28P01 (invalid_password)`, check the port before the credentials. That error
+means something answered on 5432 and rejected the login — often another project's Postgres
+(a Docker container, say) sitting on the default port. Confirm what is actually there:
+
+```
+docker ps | grep 5432
+lsof -nP -iTCP:5432 -sTCP:LISTEN
+```
+
+Note that an unprivileged `lsof` will not list a container's listener, so check both.
+Export `DATABASE_PORT` in your shell profile to avoid prefixing every command. CI runs Postgres
+on 5432, which is why the default stays as it is.
 
 * Start the Phoenix server
 
@@ -40,6 +58,8 @@ You can run the tests with the standard mix command:
 ```
 mix test
 ```
+
+The same `DATABASE_PORT` note from the installation section applies here.
 
 You can also run the full precommit suite:
 
