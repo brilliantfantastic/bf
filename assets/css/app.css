@@ -1126,6 +1126,22 @@ html {
   color: oklch(55% 0.22 25);
 }
 
+[data-theme="brilliant"] .brutal-blog-post header .brutal-cover-caption {
+  font-family: "Courier New", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+[data-theme="brilliant"] .brutal-blog-post header .brutal-cover-caption::before {
+  content: "";
+  display: block;
+  width: 2rem;
+  height: 3px;
+  margin: 0 auto 0.6rem;
+  background-color: oklch(55% 0.22 25);
+}
+
 [data-theme="brilliant"] .brutal-blog-post .prose {
   font-family: "Courier New", monospace;
   font-size: 0.9rem;

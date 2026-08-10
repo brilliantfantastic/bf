@@ -6,8 +6,10 @@
   date: "2026-07-18",
   published: true,
   tags: ["mixtape", "projects"],
-  cover_image: "/images/blog/careless-spotify/signup-email-screenshot.png"
-  # cover_image_alt: "Screenshot of my original Spotify signup email from 2011"
+  cover_image: %{
+    url: "/images/blog/careless-spotify/signup-email-screenshot.png",
+    alt: "Screenshot of my original Spotify signup email from 2011"
+  }
 }
 ---
 
