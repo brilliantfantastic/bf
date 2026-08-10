@@ -14,23 +14,30 @@ defmodule BrilliantFantasticWeb.TrailingSlashPlug do
   def init(opts), do: opts
 
   def call(%Plug.Conn{request_path: path} = conn, _opts) when path != "/" do
-    if String.ends_with?(path, "/") do
-      target =
-        case String.trim_trailing(path, "/") do
-          "" -> "/"
-          trimmed -> trimmed
-        end
-
-      query = if conn.query_string != "", do: "?#{conn.query_string}", else: ""
-
-      conn
-      |> put_resp_header("location", target <> query)
-      |> send_resp(301, "")
-      |> halt()
+    if trailing_slash?(path) do
+      redirect_to_canonical(conn, clean_trailing_slash(path))
     else
       conn
     end
   end
 
   def call(conn, _opts), do: conn
+
+  defp trailing_slash?(path), do: String.ends_with?(path, "/")
+
+  defp clean_trailing_slash(path) do
+    case String.trim_trailing(path, "/") do
+      "" -> "/"
+      trimmed -> trimmed
+    end
+  end
+
+  defp redirect_to_canonical(conn, target) do
+    query = if conn.query_string != "", do: "?#{conn.query_string}", else: ""
+
+    conn
+    |> put_resp_header("location", target <> query)
+    |> send_resp(301, "")
+    |> halt()
+  end
 end
