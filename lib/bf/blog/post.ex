@@ -5,6 +5,8 @@ defmodule BrilliantFantastic.Blog.Post do
 
   @defaults %{published: false}
 
+  @cover_image_keys [:url, :alt]
+
   @enforce_keys [:id, :author, :title, :summary, :date, :published]
   defstruct [
     :id,
@@ -15,14 +17,36 @@ defmodule BrilliantFantastic.Blog.Post do
     :summary,
     :date,
     :published,
-    :cover_image,
+    :cover_image_url,
+    :cover_image_alt,
     :filename,
     :tags
   ]
 
+  @doc """
+  Builds a post from a front matter `attrs` map.
+
+  A cover image is declared either grouped:
+
+      cover_image: %{url: "/images/blog/post/hero.png", alt: "A description"}
+
+  or flat:
+
+      cover_image_url: "/images/blog/post/hero.png",
+      cover_image_alt: "A description"
+
+  Both normalize to `:cover_image_url` and `:cover_image_alt`. The alt is
+  optional, the url is not.
+  """
   def build(filepath, attrs, body) do
     filename = filepath |> Path.split() |> List.last()
-    attributes = attrs |> merge_defaults() |> convert_date() |> add_id()
+
+    attributes =
+      attrs
+      |> merge_defaults()
+      |> convert_date()
+      |> normalize_cover_image(filename)
+      |> add_id()
 
     struct!(__MODULE__, [filename: filename, body: body] ++ Map.to_list(attributes))
   end
@@ -32,6 +56,45 @@ defmodule BrilliantFantastic.Blog.Post do
   defp convert_date(%{date: date} = attributes) do
     Map.put(attributes, :date, Date.from_iso8601!(date))
   end
+
+  # Raises rather than silently dropping the image, since a typo here would not
+  # surface until someone noticed a post had published without its cover.
+  defp normalize_cover_image(%{cover_image: cover} = attributes, filename) do
+    unless is_map(cover) do
+      raise ArgumentError, """
+      #{filename}: `cover_image` must be a map, got: #{inspect(cover)}
+
+      Use either:
+
+          cover_image: %{url: "/images/...", alt: "A description"}
+
+      or the flat form:
+
+          cover_image_url: "/images/...",
+          cover_image_alt: "A description"
+      """
+    end
+
+    case Map.keys(cover) -- @cover_image_keys do
+      [] -> :ok
+      unknown -> raise ArgumentError, "#{filename}: unknown cover_image keys: #{inspect(unknown)}"
+    end
+
+    unless is_binary(Map.get(cover, :url)) do
+      raise ArgumentError, "#{filename}: cover_image requires a `url`"
+    end
+
+    for key <- [:cover_image_url, :cover_image_alt], Map.has_key?(attributes, key) do
+      raise ArgumentError, "#{filename}: cannot set both `cover_image` and `#{key}`"
+    end
+
+    attributes
+    |> Map.delete(:cover_image)
+    |> Map.put(:cover_image_url, cover.url)
+    |> Map.put(:cover_image_alt, Map.get(cover, :alt))
+  end
+
+  defp normalize_cover_image(attributes, _filename), do: attributes
 
   defp add_id(%{id: _id} = attributes), do: attributes
   defp add_id(%{slug: slug} = attributes), do: Map.put(attributes, :id, slugify(slug))

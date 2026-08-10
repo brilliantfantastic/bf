@@ -6,7 +6,11 @@
   date: "2026-05-14",
   published: true,
   tags: ["mixtape", "projects"],
-  cover_image: "/images/blog/introducing-mixtape/hero-image.png"
+  cover_image: %{
+    url: "/images/blog/introducing-mixtape/hero-image.png",
+    alt:
+      "The OG (and existing) Mixtape landing page."
+  }
 }
 ---
 

@@ -20,12 +20,14 @@ defmodule BrilliantFantasticWeb.Layouts do
 
   Reads its values from the same assigns each page already sets
   (`page_title`, plus optional `page_description`, `page_image`,
-  `page_url_path`, `page_type`, `page_article`). Builds absolute
-  URLs from the endpoint so the tags work in link previews.
+  `page_image_alt`, `page_url_path`, `page_type`, `page_article`).
+  Builds absolute URLs from the endpoint so the tags work in link
+  previews.
   """
   attr :page_title, :string, default: nil
   attr :page_description, :string, default: nil
   attr :page_image, :string, default: nil
+  attr :page_image_alt, :string, default: nil
   attr :page_url_path, :string, default: "/"
   attr :page_type, :string, default: "website"
   attr :page_article, :any, default: nil
@@ -42,11 +44,16 @@ defmodule BrilliantFantasticWeb.Layouts do
     image_url = base <> (assigns.page_image || random_photo_path())
     page_url = base <> assigns.page_url_path
 
+    # The alt only describes `page_image`. Without one we fall back to a random
+    # photo, which the alt would misdescribe, so drop it.
+    image_alt = assigns.page_image && assigns.page_image_alt
+
     assigns =
       assigns
       |> assign(:og_title, og_title)
       |> assign(:description, description)
       |> assign(:image_url, image_url)
+      |> assign(:image_alt, image_alt)
       |> assign(:page_url, page_url)
 
     ~H"""
@@ -59,11 +66,13 @@ defmodule BrilliantFantasticWeb.Layouts do
     <meta property="og:description" content={@description} />
     <meta property="og:url" content={@page_url} />
     <meta property="og:image" content={@image_url} />
+    <meta :if={@image_alt} property="og:image:alt" content={@image_alt} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={@og_title} />
     <meta name="twitter:description" content={@description} />
     <meta name="twitter:image" content={@image_url} />
+    <meta :if={@image_alt} name="twitter:image:alt" content={@image_alt} />
 
     <%= if @page_article do %>
       <meta property="article:published_time" content={Date.to_iso8601(@page_article.date)} />

@@ -6,7 +6,7 @@
   date: "2026-05-12",
   published: true,
   tags: ["bf", "consulting"],
-  cover_image: nil
+  cover_image_url: nil
 }
 ---
 

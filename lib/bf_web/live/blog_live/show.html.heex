@@ -15,12 +15,19 @@
       </time>
       <h1 class="font-display text-4xl lg:text-5xl mt-2">{@post.title}</h1>
       <p class="mt-3 text-base-content/60 brutal-author">By {@post.author}</p>
-      <img
-        :if={@post.cover_image}
-        src={@post.cover_image}
-        alt={@post.title}
-        class="mt-8 w-full rounded-lg"
-      />
+      <figure :if={@post.cover_image_url} class="mt-8 brutal-cover">
+        <img
+          src={@post.cover_image_url}
+          alt={@post.cover_image_alt || @post.title}
+          class="w-full rounded-lg"
+        />
+        <figcaption
+          :if={@post.cover_image_alt}
+          class="mt-3 text-sm text-center text-base-content/60 brutal-cover-caption"
+        >
+          {@post.cover_image_alt}
+        </figcaption>
+      </figure>
     </header>
 
     <div class="prose lg:prose-xl prose-headings:font-display max-w-none">

@@ -24,7 +24,8 @@ defmodule BrilliantFantasticWeb.BlogLive.Show do
          |> assign(:page_url_path, "/blog/#{post.id}")
          |> assign(:page_type, "article")
          |> assign(:page_article, post)
-         |> assign(:page_image, post.cover_image)}
+         |> assign(:page_image, post.cover_image_url)
+         |> assign(:page_image_alt, post.cover_image_alt)}
     end
   end
 end
