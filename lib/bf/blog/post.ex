@@ -64,29 +64,22 @@ defmodule BrilliantFantastic.Blog.Post do
   # Raises rather than silently dropping the image, since a typo here would not
   # surface until someone noticed a post had published without its cover.
   defp normalize_cover_image(%{cover_image: cover} = attributes, filename) do
-    cover = wrap_cover_image(cover, filename)
-
-    case Map.keys(cover) -- @cover_image_keys do
-      [] -> :ok
-      unknown -> raise ArgumentError, "#{filename}: unknown cover_image keys: #{inspect(unknown)}"
-    end
-
-    unless is_binary(Map.get(cover, :url)) do
-      raise ArgumentError, "#{filename}: cover_image requires a `url`"
-    end
-
     for key <- [:cover_image_url, :cover_image_alt], Map.has_key?(attributes, key) do
       raise ArgumentError, "#{filename}: cannot set both `cover_image` and `#{key}`"
     end
 
+    cover = wrap_cover_image(cover, filename)
+    validate_cover_image!(cover, filename)
+
     attributes
     |> Map.delete(:cover_image)
-    |> Map.put(:cover_image_url, cover.url)
+    |> Map.put(:cover_image_url, Map.get(cover, :url))
     |> Map.put(:cover_image_alt, Map.get(cover, :alt))
   end
 
   defp normalize_cover_image(attributes, _filename), do: attributes
 
+  defp wrap_cover_image(nil, _filename), do: %{}
   defp wrap_cover_image(url, _filename) when is_binary(url), do: %{url: url}
   defp wrap_cover_image(cover, _filename) when is_map(cover), do: cover
 
@@ -103,6 +96,19 @@ defmodule BrilliantFantastic.Blog.Post do
         cover_image_url: "/images/...",
         cover_image_alt: "A description"
     """
+  end
+
+  defp validate_cover_image!(cover, _filename) when map_size(cover) == 0, do: :ok
+
+  defp validate_cover_image!(cover, filename) do
+    case Map.keys(cover) -- @cover_image_keys do
+      [] -> :ok
+      unknown -> raise ArgumentError, "#{filename}: unknown cover_image keys: #{inspect(unknown)}"
+    end
+
+    unless is_binary(Map.get(cover, :url)) do
+      raise ArgumentError, "#{filename}: cover_image requires a `url`"
+    end
   end
 
   defp add_id(%{id: _id} = attributes), do: attributes
