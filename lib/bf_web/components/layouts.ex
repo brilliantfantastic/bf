@@ -352,10 +352,11 @@ defmodule BrilliantFantasticWeb.Layouts do
   end
 
   @doc """
-  Whether to advertise availability with the nav's "Available" sign.
+  Whether to advertise availability for hire.
 
-  Flip `:available_for_hire` in `config/config.exs` to hide the sign. The
-  rest of the for-hire copy stays put either way.
+  Flip `:available_for_hire` in `config/config.exs` to turn the
+  advertising off: it hides the nav's "Available" sign and softens the
+  meet-Jamie link to "Hire me". The For Hire page itself is unaffected.
   """
   def available_for_hire?, do: Application.get_env(:bf, :available_for_hire, true)
 
