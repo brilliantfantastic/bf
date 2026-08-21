@@ -280,7 +280,7 @@ defmodule BrilliantFantasticWeb.Layouts do
           >
             For Hire
           </a>
-          <.available_sign />
+          <.available_sign :if={available_for_hire?()} />
         </div>
         <a
           href="/#contact"
@@ -350,6 +350,14 @@ defmodule BrilliantFantasticWeb.Layouts do
     </footer>
     """
   end
+
+  @doc """
+  Whether to advertise availability with the nav's "Available" sign.
+
+  Flip `:available_for_hire` in `config/config.exs` to hide the sign. The
+  rest of the for-hire copy stays put either way.
+  """
+  def available_for_hire?, do: Application.get_env(:bf, :available_for_hire, true)
 
   @doc """
   Renders the small "Available" shop sign that hangs under the For Hire
