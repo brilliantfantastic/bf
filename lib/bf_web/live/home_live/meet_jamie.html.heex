@@ -36,7 +36,8 @@
             navigate={~p"/for_hire"}
             class="inline-flex items-center gap-2 font-display text-xl text-primary hover:opacity-80 transition-opacity"
           >
-            Currently available for hire <span aria-hidden="true">&rarr;</span>
+            {if Layouts.available_for_hire?(), do: "Currently available for hire", else: "Hire me"}
+            <span aria-hidden="true">&rarr;</span>
           </.link>
         </p>
       </div>
