@@ -16,7 +16,7 @@ config :bf,
   contact_from_email: "noreply@bf.lol",
   # Shows the "Available" sign hanging under the For Hire nav link.
   # Overridden at runtime by the AVAILABLE_FOR_HIRE env var.
-  available_for_hire: true
+  available_for_hire: false
 
 # Configure the endpoint
 config :bf, BrilliantFantasticWeb.Endpoint,
