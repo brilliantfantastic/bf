@@ -13,7 +13,7 @@ defmodule BrilliantFantasticWeb.Layouts do
   # and other static content.
   embed_templates "layouts/*"
 
-  @default_description "Brilliant Fantastic — Jamie Wright, principal-level software engineer with 20+ years of experience. Available for contract or full-time work."
+  @default_description_lede "Brilliant Fantastic — Jamie Wright, principal-level software engineer with 20+ years of experience."
 
   @doc """
   Renders Open Graph, Twitter Card, and SEO meta tags.
@@ -40,7 +40,7 @@ defmodule BrilliantFantasticWeb.Layouts do
         do: "Brilliant Fantastic // #{assigns.page_title}",
         else: "Brilliant Fantastic"
 
-    description = assigns.page_description || @default_description
+    description = assigns.page_description || "#{@default_description_lede} #{hire_blurb()}"
     image_url = base <> (assigns.page_image || random_photo_path())
     page_url = base <> assigns.page_url_path
 
@@ -359,6 +359,15 @@ defmodule BrilliantFantasticWeb.Layouts do
   meet-Jamie link to "Hire me". The For Hire page itself is unaffected.
   """
   def available_for_hire?, do: Application.get_env(:bf, :available_for_hire, true)
+
+  @doc """
+  The closing sentence shared by the site's meta descriptions.
+  """
+  def hire_blurb do
+    if available_for_hire?(),
+      do: "Available for contract or full-time work.",
+      else: "Reach out if I can help."
+  end
 
   @doc """
   Renders the small "Available" shop sign that hangs under the For Hire
