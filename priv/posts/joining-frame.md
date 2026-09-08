@@ -6,7 +6,10 @@
   date: "2026-08-11",
   published: true,
   tags: ["bf", "career"],
-  cover_image: nil
+  cover_image: %{
+    url: "/images/blog/joining-frame/frame-cancun-offsite.webp",
+    alt: "Taboo in Cancun. The DJ is the center of attention"
+  }
 }
 ---
 
