@@ -27,6 +27,8 @@ I talked to a lot of companies over the summer. The hiring process is broken AF 
 - The problem. There are a lot of legit businesses that want to do business online but the regulations have not caught up to them yet. Through software, we are enabling those companies to do business online in a compliant way alongside customers they can trust.
 - The craft. We care about how things are built, not just that they ship. We actively fight AI slop. We fuck up but we hate when we do and know we can do better. It's a dojo mentality. Add bonus points because the <a href="https://www.linkedin.com/in/alaxic" target="_blank" rel="noopener">CEO</a> still writes and reviews code.
 
+I am excited about the stage at which Frame is at. We are a small team and I love that. We can do a lot and move fast with a small team. Especially with this team.
+
 ## What this means for my company
 
 This is my first W-2 stint, minus a jaunt in 2015, for two decades. I have been a consultant in one capacity or another since 2006.
