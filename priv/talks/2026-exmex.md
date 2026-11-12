@@ -5,8 +5,8 @@
   location: "Austin, TX",
   date: "2026-11-12",
   summary: "Resources, links, and next steps from my ExMex 2026 talk.",
-  speakerdeck_id: nil,
-  slides_url: nil,
+  speakerdeck_id: "d166aa7e3b5c4350b4986bd8e003fdb6",
+  slides_url: "https://speakerdeck.com/jwright/kcdc2023",
   sections: [:hire, :projects, :recent_posts, :contact],
   published: true
 }

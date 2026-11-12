@@ -28,9 +28,12 @@ defmodule BrilliantFantasticWeb.TalkLiveTest do
                live(conn, ~p"/jamie/talks/no-such-talk/thankyou")
     end
 
-    test "shows the slides placeholder when speakerdeck_id is nil", %{conn: conn} do
+    test "embeds the Speaker Deck player and links to the deck", %{conn: conn} do
       {:ok, view, _html} = live(conn, ~p"/jamie/talks/2026-exmex/thankyou")
-      assert has_element?(view, "#talk-slides-placeholder")
+
+      assert has_element?(view, ~s(#talk-slides iframe[src^="https://speakerdeck.com/player/"]))
+      assert has_element?(view, ~s(#talk-slides a[href^="https://speakerdeck.com/"]))
+      refute has_element?(view, "#talk-slides-placeholder")
     end
 
     test "renders the talk header with event and title", %{conn: conn} do
