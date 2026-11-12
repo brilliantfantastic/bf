@@ -36,6 +36,12 @@ defmodule BrilliantFantasticWeb.TalkLiveTest do
       refute has_element?(view, "#talk-slides-placeholder")
     end
 
+    test "links the event label in the header to the event's site", %{conn: conn} do
+      {:ok, view, _html} = live(conn, ~p"/jamie/talks/2026-exmex/thankyou")
+
+      assert has_element?(view, ~s(#talk-header a#talk-event[href="https://exmexconf.com"]))
+    end
+
     test "renders the talk header with event and title", %{conn: conn} do
       {:ok, view, _html} = live(conn, ~p"/jamie/talks/2026-exmex/thankyou")
       assert has_element?(view, "#talk-header")
