@@ -33,6 +33,6 @@
   </div>
 
   <%= for section <- @talk.sections do %>
-    <.talk_section name={section} />
+    <.talk_section name={section} talk={@talk} />
   <% end %>
 </section>

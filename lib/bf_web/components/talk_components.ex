@@ -76,6 +76,7 @@ defmodule BrilliantFantasticWeb.TalkComponents do
   Allowed names: `:hire`, `:projects`, `:recent_posts`, `:contact`.
   """
   attr :name, :atom, required: true
+  attr :talk, :map, default: nil, doc: "the talk being shown, used to tag contact emails"
 
   def talk_section(%{name: :hire} = assigns) do
     available = Layouts.available_for_hire?()
@@ -97,17 +98,41 @@ defmodule BrilliantFantasticWeb.TalkComponents do
           Work with me &rarr;
         </.link>
       <% else %>
-        <h2 class="font-display text-3xl lg:text-4xl mb-4">Reach out if I can help</h2>
-        <p class="text-base-content/70 mb-6 max-w-prose">
-          I'm not actively looking for new work right now, but if what you're building
-          sounds interesting, I'd still love to hear about it.
+        <h2 class="font-display text-3xl lg:text-4xl mb-4">Let's keep talking</h2>
+        <p class="text-base-content/70 mb-8 max-w-prose">
+          Whether you have a question or a project, it all lands in the same inbox,
+          and I read every one.
         </p>
-        <a
-          href="/#contact"
-          class="inline-block font-display text-primary hover:text-primary/80 transition-colors text-lg"
-        >
-          Get in touch &rarr;
-        </a>
+        <div class="grid sm:grid-cols-2 gap-6">
+          <a
+            id="talk-contact-question"
+            href={mailto(question_subject(@talk))}
+            class="group block rounded-lg border border-base-300 bg-base-200/60 p-6 transition hover:-translate-y-0.5 hover:border-primary hover:shadow-md"
+          >
+            <span class="brutal-label block mb-2">For individuals</span>
+            <h3 class="font-display text-2xl mb-2">Got a question?</h3>
+            <p class="text-base-content/70 mb-4">
+              Something from the talk you want to dig into, or just want to say hi.
+            </p>
+            <span class="font-display text-primary group-hover:text-primary/80 transition-colors">
+              Ask me &rarr;
+            </span>
+          </a>
+          <a
+            id="talk-contact-work"
+            href={mailto(work_subject(@talk), work_body())}
+            class="group block rounded-lg border border-base-300 bg-base-200/60 p-6 transition hover:-translate-y-0.5 hover:border-primary hover:shadow-md"
+          >
+            <span class="brutal-label block mb-2">For companies</span>
+            <h3 class="font-display text-2xl mb-2">Work together?</h3>
+            <p class="text-base-content/70 mb-4">
+              Tell me what you're building and we'll see whether we're a good fit.
+            </p>
+            <span class="font-display text-primary group-hover:text-primary/80 transition-colors">
+              Let's talk &rarr;
+            </span>
+          </a>
+        </div>
       <% end %>
     </section>
     """
@@ -205,4 +230,31 @@ defmodule BrilliantFantasticWeb.TalkComponents do
     </section>
     """
   end
+
+  # ── Contact emails ───────────────────────────────────────────────────
+
+  # Both contact cards go to the same inbox; the subject says which kind of
+  # message it is and which talk it came from, so it's easy to filter.
+  defp question_subject(talk), do: "Question from #{event_name(talk)}"
+  defp work_subject(talk), do: "Working together (via #{event_name(talk)})"
+
+  defp work_body do
+    "Company:\nWhat we're working on:\n"
+  end
+
+  defp event_name(%{event: event}) when is_binary(event), do: "your #{event} talk"
+  defp event_name(_talk), do: "your talk"
+
+  defp mailto(subject, body \\ nil) do
+    to = Application.get_env(:bf, :contact_to_email)
+
+    query =
+      [subject: subject, body: body]
+      |> Enum.reject(fn {_key, value} -> is_nil(value) end)
+      |> Enum.map_join("&", fn {key, value} -> "#{key}=#{encode(value)}" end)
+
+    "mailto:#{to}?#{query}"
+  end
+
+  defp encode(value), do: URI.encode(value, &URI.char_unreserved?/1)
 end
