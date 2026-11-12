@@ -132,13 +132,13 @@ defmodule BrilliantFantasticWeb.TalkComponents do
             {project.description |> String.trim() |> String.split("\n") |> List.first()}
           </p>
           <a
-            :if={List.first(project.links)}
-            href={List.first(project.links).url}
+            :for={link <- Enum.take(project.links, 1)}
+            href={link.url}
             class="text-sm font-display text-primary hover:text-primary/80 transition-colors"
             target="_blank"
             rel="noopener noreferrer"
           >
-            {List.first(project.links).label} &rarr;
+            {link.label} &rarr;
           </a>
         </li>
       </ul>
@@ -159,7 +159,7 @@ defmodule BrilliantFantasticWeb.TalkComponents do
     assigns = assign(assigns, :posts, posts)
 
     ~H"""
-    <section id="talk-section-recent_posts" class="mt-16 pt-10 border-t border-base-300">
+    <section id="talk-section-recent-posts" class="mt-16 pt-10 border-t border-base-300">
       <span class="brutal-label block mb-3">From the blog</span>
       <h2 class="font-display text-3xl lg:text-4xl mb-8">Recent writing</h2>
       <ul :if={@posts != []} class="space-y-4">

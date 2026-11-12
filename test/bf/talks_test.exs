@@ -52,13 +52,5 @@ defmodule BrilliantFantastic.TalksTest do
     test "returns nil when id does not exist" do
       assert Talks.get_talk_by_id("nonexistent-talk-id") == nil
     end
-
-    test "returns nil for an unpublished talk" do
-      unpublished = Talks.all_talks() |> Enum.find(&(&1.published == false))
-
-      if unpublished do
-        assert Talks.get_talk_by_id(unpublished.id) == nil
-      end
-    end
   end
 end

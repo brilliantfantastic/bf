@@ -17,7 +17,7 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          {URI.parse(@talk.event_url).host} &rarr;
+          {URI.parse(@talk.event_url).host || @talk.event_url} &rarr;
         </a>
       </div>
       <p class="mt-4 text-base-content/70 italic">

@@ -14,12 +14,12 @@ defmodule BrilliantFantasticWeb.TalkLiveTest do
       assert has_element?(view, "#talk-notes")
     end
 
-    test "renders all configured sections in order", %{conn: conn} do
+    test "renders all configured sections", %{conn: conn} do
       {:ok, view, _html} = live(conn, ~p"/jamie/talks/2026-exmex/thankyou")
 
       assert has_element?(view, "#talk-section-hire")
       assert has_element?(view, "#talk-section-projects")
-      assert has_element?(view, "#talk-section-recent_posts")
+      assert has_element?(view, "#talk-section-recent-posts")
       assert has_element?(view, "#talk-section-contact")
     end
 
