@@ -16,7 +16,7 @@
 
 <!-- TODO: Replace this placeholder with real talk notes before the event. -->
 
-It was great connecting with you at ExMex 2026. Here are the slides, resources, and links I mentioned.
+Here are the slides, resources, and links I mentioned that support my talk from ExMex 2026.
 
 ## Resources
 
