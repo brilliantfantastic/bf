@@ -2,6 +2,7 @@ defmodule BrilliantFantasticWeb.SitemapControllerTest do
   use BrilliantFantasticWeb.ConnCase
 
   alias BrilliantFantastic.Blog
+  alias BrilliantFantastic.Talks
 
   test "GET /sitemap.xml returns an XML sitemap", %{conn: conn} do
     conn = get(conn, ~p"/sitemap.xml")
@@ -38,6 +39,25 @@ defmodule BrilliantFantasticWeb.SitemapControllerTest do
 
     for post <- unpublished do
       refute body =~ "/blog/#{post.id}</loc>"
+    end
+  end
+
+  test "sitemap lists every published talk page with a lastmod", %{conn: conn} do
+    body = conn |> get(~p"/sitemap.xml") |> response(200)
+
+    assert [_ | _] = Talks.published_talks()
+
+    for talk <- Talks.published_talks() do
+      assert body =~ "/jamie/talks/#{talk.id}/thankyou</loc>"
+      assert body =~ "<lastmod>#{Date.to_iso8601(talk.date)}</lastmod>"
+    end
+  end
+
+  test "sitemap does not list unpublished talks", %{conn: conn} do
+    body = conn |> get(~p"/sitemap.xml") |> response(200)
+
+    for talk <- Talks.all_talks() -- Talks.published_talks() do
+      refute body =~ "/jamie/talks/#{talk.id}/thankyou</loc>"
     end
   end
 end
