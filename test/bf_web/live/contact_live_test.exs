@@ -21,6 +21,15 @@ defmodule BrilliantFantasticWeb.HomeLive.ContactFormTest do
       assert has_element?(view, "textarea[name='contact_form[message]']")
       assert has_element?(view, "button[type='submit']")
     end
+
+    test "prefills the subject from the subject query param", %{conn: conn} do
+      {:ok, view, _html} = live(conn, ~p"/?subject=Question from your ExMex 2026 talk")
+
+      assert has_element?(
+               view,
+               "input[name='contact_form[subject]'][value='Question from your ExMex 2026 talk']"
+             )
+    end
   end
 
   describe "validate (phx-change)" do

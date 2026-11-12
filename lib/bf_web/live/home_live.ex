@@ -43,7 +43,7 @@ defmodule BrilliantFantasticWeb.HomeLive do
 
   embed_templates "home_live/**/*"
 
-  def mount(_params, _session, socket) do
+  def mount(params, _session, socket) do
     direction = if connected?(socket), do: Enum.random(@directions)
 
     posts = Blog.recent_posts(4)
@@ -56,7 +56,7 @@ defmodule BrilliantFantasticWeb.HomeLive do
       |> assign(:recent_posts, Enum.drop(posts, 1))
       |> assign(:direction, direction)
       |> assign_photos_and_treatment()
-      |> assign(:form, to_form(ContactForm.changeset(%{})))
+      |> assign(:form, to_form(ContactForm.changeset(prefill_contact(params))))
       |> assign(:contact_submitted, false)
       |> assign(:success_headline, Enum.random(@success_headlines))
       |> assign(:success_subtitle, Enum.random(@success_subtitles))
@@ -101,6 +101,14 @@ defmodule BrilliantFantasticWeb.HomeLive do
         {:noreply, assign(socket, form: to_form(changeset))}
     end
   end
+
+  # Links elsewhere on the site (e.g. talk pages) send people to /#contact
+  # with a `subject` param, so the message arrives already labeled.
+  defp prefill_contact(%{"subject" => subject}) when is_binary(subject) do
+    %{"subject" => String.slice(subject, 0, 200)}
+  end
+
+  defp prefill_contact(_params), do: %{}
 
   defp assign_photos_and_treatment(socket) do
     direction = socket.assigns[:direction]
