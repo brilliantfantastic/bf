@@ -2,14 +2,15 @@ defmodule BrilliantFantasticWeb.SitemapController do
   @moduledoc """
   Serves an XML sitemap at `/sitemap.xml`.
 
-  Static routes are listed explicitly; blog posts are pulled from `Blog`
-  (compiled in at build time by NimblePublisher). Every URL is absolute
+  Static routes are listed explicitly; blog posts and talk pages are pulled from
+  `Blog` and `Talks` (compiled in at build time by NimblePublisher). Every URL is absolute
   and uses the canonical (slash-free) form the pages declare in their
   `<link rel="canonical">` tags.
   """
   use BrilliantFantasticWeb, :controller
 
   alias BrilliantFantastic.Blog
+  alias BrilliantFantastic.Talks
   alias BrilliantFantasticWeb.SitemapHTML
 
   # Canonical paths for the static pages.
@@ -25,7 +26,12 @@ defmodule BrilliantFantasticWeb.SitemapController do
         %{loc: base <> "/blog/#{post.id}", lastmod: Date.to_iso8601(post.date)}
       end)
 
-    sitemap_urls = static_urls ++ published_blog_post_urls
+    published_talk_urls =
+      Enum.map(Talks.published_talks(), fn talk ->
+        %{loc: base <> "/jamie/talks/#{talk.id}/thankyou", lastmod: Date.to_iso8601(talk.date)}
+      end)
+
+    sitemap_urls = static_urls ++ published_blog_post_urls ++ published_talk_urls
     xml = SitemapHTML.to_xml(sitemap_urls)
 
     conn

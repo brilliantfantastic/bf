@@ -20,6 +20,8 @@ defmodule BrilliantFantasticWeb.Router do
     live "/", HomeLive
     live "/blog", BlogLive.Index, :index
     live "/blog/:id", BlogLive.Show, :show
+    live "/jamie/talks/:id/thankyou", TalkLive.Show, :show
+    get "/jamie/talks/:id", TalkController, :show
     get "/projects", ProjectController, :index
     get "/for_hire", ForHireController, :index
     get "/for-hire", ForHireController, :index
@@ -46,5 +48,14 @@ defmodule BrilliantFantasticWeb.Router do
       live_dashboard "/dashboard", metrics: BrilliantFantasticWeb.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
+  end
+
+  # Short talk URLs: /2026/exmex -> the 2026-exmex talk. This matches any
+  # two-segment path, so it stays last; the controller 404s anything that
+  # isn't a year plus a published talk.
+  scope "/", BrilliantFantasticWeb do
+    pipe_through :browser
+
+    get "/:year/:event", TalkController, :short
   end
 end
