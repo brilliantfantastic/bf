@@ -5,8 +5,8 @@
   location: "Austin, TX",
   date: "2026-11-12",
   summary: "Resources, links, and next steps from my ExMex 2026 talk.",
-  speakerdeck_id: "d166aa7e3b5c4350b4986bd8e003fdb6",
-  slides_url: "https://speakerdeck.com/jwright/kcdc2023",
+  speakerdeck_id: "ebe7791dcd0d49bda356f33eea714a84",
+  slides_url: "https://speakerdeck.com/jwright/8b82fc851e2ff3fd00479f1a67cacea4",
   sections: [:hire, :projects, :recent_posts, :contact],
   published: true
 }
@@ -16,7 +16,7 @@
 
 <!-- TODO: Replace this placeholder with real talk notes before the event. -->
 
-It was great connecting with you at ExMex 2026. Here are the resources and links I mentioned.
+It was great connecting with you at ExMex 2026. Here are the slides, resources, and links I mentioned.
 
 ## Resources
 
