@@ -16,7 +16,7 @@
 
 <!-- TODO: Replace this placeholder with real talk notes before the event. -->
 
-Here are the slides, resources, and links I mentioned that support my talk from ExMex 2026.
+Here are the slides, resources, and links I mentioned that support my talk from <a href="https://exmexconf.com" target="_blank" rel="noopener">ExMex 2026</a>.
 
 ## Resources
 
