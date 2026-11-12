@@ -20,6 +20,7 @@ defmodule BrilliantFantasticWeb.Router do
     live "/", HomeLive
     live "/blog", BlogLive.Index, :index
     live "/blog/:id", BlogLive.Show, :show
+    live "/jamie/talks/:id/thankyou", TalkLive.Show, :show
     get "/projects", ProjectController, :index
     get "/for_hire", ForHireController, :index
     get "/for-hire", ForHireController, :index

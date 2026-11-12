@@ -1,0 +1,38 @@
+<Layouts.nav_menu />
+
+<section class="px-6 lg:px-16 py-16 max-w-4xl mx-auto brutal-page">
+  <header id="talk-header" class="mb-10 brutal-blog-post">
+    <div class="brutal-page-header">
+      <span class="brutal-label block mb-2">{@talk.event}</span>
+      <h1 class="font-display text-4xl lg:text-5xl mt-2">{@talk.title}</h1>
+      <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-base-content/60">
+        <time datetime={@talk.date}>
+          {Calendar.strftime(@talk.date, "%B %-d, %Y")}
+        </time>
+        <span :if={@talk.location}>{@talk.location}</span>
+        <a
+          :if={@talk.event_url}
+          href={@talk.event_url}
+          class="text-primary hover:text-primary/80 transition-colors"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {URI.parse(@talk.event_url).host} &rarr;
+        </a>
+      </div>
+      <p class="mt-4 text-base-content/70 italic">
+        Thanks for coming to the talk! Here are the slides and resources.
+      </p>
+    </div>
+  </header>
+
+  <.talk_slides talk={@talk} />
+
+  <div id="talk-notes" class="mt-12 prose lg:prose-xl prose-headings:font-display max-w-none">
+    {raw(@talk.body)}
+  </div>
+
+  <%= for section <- @talk.sections do %>
+    <.talk_section name={section} />
+  <% end %>
+</section>
