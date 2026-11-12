@@ -1,9 +1,9 @@
 %{
   title: "Thank you, ExMex 2026",
   event: "ExMex 2026",
-  event_url: "https://exmex.dev",
+  event_url: "https://exmexconf.com",
   location: "Mexico City",
-  date: "2026-11-05",
+  date: "2026-11-12",
   summary: "Resources, links, and next steps from my ExMex 2026 talk.",
   speakerdeck_id: nil,
   slides_url: nil,
